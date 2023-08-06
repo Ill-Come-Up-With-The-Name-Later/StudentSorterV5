@@ -4,6 +4,15 @@ namespace StudentSorter
 {
     public class Importer
     {
+        /// <summary>
+        /// Deserializes a JSON file into a specified type
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type to deserialize the JSON into
+        /// </typeparam>
+        /// <param name="filePath">
+        /// The path of the JSON file to deserialize
+        /// </param>
         public static void Import<T>(string filePath)
         {
             string file = filePath;
