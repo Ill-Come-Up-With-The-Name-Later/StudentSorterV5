@@ -4,8 +4,14 @@
     {
         public static void Export(string fileName, List<string> lines)
         {
-            File.Create(fileName).DisposeAsync();
-            File.WriteAllLinesAsync(fileName, lines.ToArray());
+            try
+            {
+                File.WriteAllLines(fileName, lines);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
         }
     }
 }

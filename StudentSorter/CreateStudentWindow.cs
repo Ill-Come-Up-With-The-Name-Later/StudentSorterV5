@@ -22,9 +22,9 @@ namespace StudentSorter
         /// </summary>
         private void ManualAssignCheck_CheckedChanged(object sender, EventArgs e)
         {
-            DeterminantInput.ReadOnly = !ManualAssignCheck.Checked;
+            DeterminantInput.Enabled = ManualAssignCheck.Checked;
 
-            if (DeterminantInput.ReadOnly) DeterminantInput.Value = 0;
+            if (!DeterminantInput.Enabled) DeterminantInput.Value = 0;
         }
 
         /// <summary>
@@ -32,17 +32,22 @@ namespace StudentSorter
         /// </summary>
         private void CreateStudentButton_Click(object sender, EventArgs e)
         {
-            if(StudentNameInput.Text == null)
+            if (StudentNameInput.Text == null || StudentNameInput.Text.Equals(""))
             {
                 return;
                 throw new ArgumentNullException("Student name was null");
             }
-            if(DeterminantInput.ReadOnly)
+            if (DeterminantInput.Enabled)
             {
                 Student student = new(StudentNameInput.Text);
-                return;
             }
-            Student student1 = new(StudentNameInput.Text, (int) DeterminantInput.Value);
+            else
+            {
+                Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
+            }
+            StudentNameInput.Text = "";
+
+            Console.WriteLine("Created Student!");
         }
 
         /// <summary>

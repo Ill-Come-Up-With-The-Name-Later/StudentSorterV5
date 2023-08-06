@@ -5,11 +5,12 @@
         public List<Student> AllStudents = new();
         public List<Group> AllGroups = new();
 
-        public static Sorter GlobalInstance = new Sorter();
+        private readonly static Sorter? Instance = new();
 
-        public Sorter() 
+        public static Sorter GlobalInstance() => Instance;
+
+        public Sorter()
         {
-            GlobalInstance = this;
-        } 
+        }
     }
 }

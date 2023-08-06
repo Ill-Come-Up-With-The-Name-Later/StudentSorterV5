@@ -78,6 +78,7 @@
             // 
             // DeterminantInput
             // 
+            DeterminantInput.Enabled = false;
             DeterminantInput.Location = new Point(26, 226);
             DeterminantInput.Name = "DeterminantInput";
             DeterminantInput.ReadOnly = true;

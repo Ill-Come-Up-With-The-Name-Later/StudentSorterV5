@@ -14,7 +14,7 @@ namespace StudentSorter
             StudentViewer.DataSource = students;
             students.Columns.Add("Name", typeof(string));
 
-            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+            foreach (Student student in Sorter.GlobalInstance().AllStudents)
             {
                 students.Rows.Add(student.Name);
             }
@@ -22,7 +22,7 @@ namespace StudentSorter
             GroupViewer.DataSource = groups;
             groups.Columns.Add("Name", typeof(string));
 
-            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
             {
                 groups.Rows.Add(group.Name);
             }
@@ -85,7 +85,7 @@ namespace StudentSorter
             string file = GroupSerialize.FileName;
             List<string> groups = new();
 
-            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
             {
                 groups.Add(group.SerializeJSON());
             }
@@ -100,10 +100,13 @@ namespace StudentSorter
             string file = StudentSerialize.FileName;
             List<string> students = new();
 
-            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+            foreach (Student student in Sorter.GlobalInstance().AllStudents)
             {
                 students.Add(student.SerializeJSON());
             }
+
+            Console.WriteLine(students.Count);
+
             Exporter.Export(file, students);
         }
 
@@ -118,10 +121,10 @@ namespace StudentSorter
             if (GroupViewer.Rows.Count > 0)
                 GroupViewer.Rows.Clear();
 
-            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+            foreach (Student student in Sorter.GlobalInstance().AllStudents)
                 students.Rows.Add(student.Name);
 
-            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
                 groups.Rows.Add(group.Name);
         }
     }

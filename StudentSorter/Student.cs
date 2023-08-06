@@ -1,10 +1,9 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StudentSorter
 {
-    public class Student : Serializeable
+    public class Student
     {
-        [JsonInclude]
         public string Name { get; set; }
 
         [JsonIgnore]
@@ -21,7 +20,7 @@ namespace StudentSorter
         {
             Name = name;
 
-            Sorter.GlobalInstance.AllStudents.Add(this);
+            Sorter.GlobalInstance().AllStudents.Add(this);
         }
 
         /// <summary>
@@ -38,7 +37,7 @@ namespace StudentSorter
             Name = name;
             Determinant = determinant;
 
-            Sorter.GlobalInstance.AllStudents.Add(this);
+            Sorter.GlobalInstance().AllStudents.Add(this);
         }
 
         public override bool Equals(object? obj)
@@ -58,5 +57,7 @@ namespace StudentSorter
         {
             return !s1.Equals(s2);
         }
+
+        public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 }

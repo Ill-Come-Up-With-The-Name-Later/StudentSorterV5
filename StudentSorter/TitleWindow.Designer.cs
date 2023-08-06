@@ -46,7 +46,7 @@
             // OpenButton
             // 
             OpenButton.Location = new Point(168, 107);
-            OpenButton.Margin = new Padding(4, 4, 4, 4);
+            OpenButton.Margin = new Padding(4);
             OpenButton.Name = "OpenButton";
             OpenButton.Size = new Size(181, 42);
             OpenButton.TabIndex = 1;
@@ -62,7 +62,7 @@
             Controls.Add(OpenButton);
             Controls.Add(TitleLabel);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "TitleWindow";
             Text = "Random Group Creator";
             ResumeLayout(false);

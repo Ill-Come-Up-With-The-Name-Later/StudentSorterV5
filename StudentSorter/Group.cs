@@ -1,19 +1,15 @@
-﻿using System.Text.Json.Serialization;
+﻿using Newtonsoft.Json;
 
 namespace StudentSorter
 {
-    public class Group : Serializeable
+    public class Group
     {
-        [JsonInclude]
         public string Name { get; set; }
 
-        [JsonInclude]
         public int MinDeterminant { get; set; }
 
-        [JsonInclude]
         public int MaxDeterminant { get; set;}
 
-        [JsonInclude]
         public int Capacity { get; set; }
 
         [JsonIgnore]
@@ -27,7 +23,18 @@ namespace StudentSorter
             MaxDeterminant = maxDeterminant;
             Capacity = capacity;
 
-            Sorter.GlobalInstance.AllGroups.Add(this);
+            Sorter.GlobalInstance().AllGroups.Add(this);
         }
+
+        public override bool Equals(object? obj)
+        {
+            if(obj == null) throw new ArgumentNullException(nameof(obj));
+            if(obj.GetType() != typeof(Group)) return false;
+            Group objGroup = (Group)obj;
+            return objGroup.Name.Equals(Name) && objGroup.Capacity == Capacity && 
+                objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;   
+        }
+
+        public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
     }
 }
