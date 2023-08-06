@@ -125,7 +125,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "CreateStudentWindow";
-            Text = "CreateStudentWindow";
+            Text = "Create Student";
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();
             ResumeLayout(false);
             PerformLayout();

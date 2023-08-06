@@ -15,6 +15,7 @@ namespace StudentSorter
         private void JsonUploader_FileOk(object sender, CancelEventArgs e)
         {
             Importer.Import<Student>(JsonUploader.FileName);
+            Close();
         }
 
         /// <summary>

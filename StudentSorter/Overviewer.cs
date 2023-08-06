@@ -50,7 +50,7 @@ namespace StudentSorter
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
             CreateStudentWindow studentWindow = new();
-            studentWindow.Show(this);
+            studentWindow.Show();
         }
 
         /// <summary>
@@ -58,7 +58,8 @@ namespace StudentSorter
         /// </summary>
         private void AddGroupButton_Click(object sender, EventArgs e)
         {
-
+            CreateGroupWindow window = new();
+            window.Show();
         }
 
         /// <summary>
