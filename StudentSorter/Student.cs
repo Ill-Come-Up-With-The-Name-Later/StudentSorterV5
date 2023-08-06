@@ -70,6 +70,15 @@ namespace StudentSorter
             return group.MinDeterminant <= Determinant && Determinant <= group.MaxDeterminant;
         }
 
+        /// <summary>
+        /// Determines if the student can join a specific group
+        /// </summary>
+        /// <param name="group">
+        /// The group to check
+        /// </param>
+        /// <returns>
+        /// If the student can join the group
+        /// </returns>
         public bool CanJoinGroup(Group group)
         {
             return DeterminantMatches(group) && !(group.IsFull() && InGroup() && group.Contains(this));
