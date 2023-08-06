@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.ComponentModel.Design.Serialization;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using System.ComponentModel;
 
 namespace StudentSorter
 {
@@ -16,8 +7,10 @@ namespace StudentSorter
         public Overviewer()
         {
             InitializeComponent();
+            StudentSerialize.
+
         }
-        
+
         /// <summary>
         /// Opens information about the selected student
         /// </summary>
@@ -49,6 +42,52 @@ namespace StudentSorter
         private void AddGroupButton_Click(object sender, EventArgs e)
         {
 
+        }
+
+        /// <summary>
+        /// Serializes students into a json file
+        /// </summary>
+        private void SerializeStudentsButton_Click(object sender, EventArgs e)
+        {
+            StudentSerialize.ShowDialog();
+        }
+
+        /// <summary>
+        /// Serializes groups into a json file
+        /// </summary>
+        private void SerializeGroupsButton_Click(object sender, EventArgs e)
+        {
+            GroupSerialize.ShowDialog();
+        }
+
+        /// <summary>
+        /// Saves groups to a json file
+        /// </summary>
+        private void GroupSerialize_FileOk(object sender, CancelEventArgs e)
+        {
+            string file = GroupSerialize.FileName;
+            List<string> groups = new();
+
+            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+            {
+                groups.Add(group.SerializeJSON());
+            }
+            Exporter.Export(file, groups);
+        }
+
+        /// <summary>
+        /// Saves students to a json file
+        /// </summary>
+        private void StudentSerialize_FileOk(object sender, CancelEventArgs e)
+        {
+            string file = StudentSerialize.FileName;
+            List<string> students = new();
+
+            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+            {
+                students.Add(student.SerializeJSON());
+            }
+            Exporter.Export(file, students);
         }
     }
 }

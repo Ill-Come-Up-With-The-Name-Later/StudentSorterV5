@@ -36,6 +36,10 @@
             AddStudentButton = new Button();
             AddGroupButton = new Button();
             SortButton = new Button();
+            SerializeStudentsButton = new Button();
+            SerializeGroupsButton = new Button();
+            StudentSerialize = new SaveFileDialog();
+            GroupSerialize = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             SuspendLayout();
@@ -131,11 +135,45 @@
             SortButton.Text = "Randomize Groups";
             SortButton.UseVisualStyleBackColor = true;
             // 
+            // SerializeStudentsButton
+            // 
+            SerializeStudentsButton.Location = new Point(94, 406);
+            SerializeStudentsButton.Name = "SerializeStudentsButton";
+            SerializeStudentsButton.Size = new Size(294, 48);
+            SerializeStudentsButton.TabIndex = 8;
+            SerializeStudentsButton.Text = "Serialize Students to JSON";
+            SerializeStudentsButton.UseVisualStyleBackColor = true;
+            SerializeStudentsButton.Click += SerializeStudentsButton_Click;
+            // 
+            // SerializeGroupsButton
+            // 
+            SerializeGroupsButton.Location = new Point(764, 407);
+            SerializeGroupsButton.Name = "SerializeGroupsButton";
+            SerializeGroupsButton.Size = new Size(271, 47);
+            SerializeGroupsButton.TabIndex = 9;
+            SerializeGroupsButton.Text = "Serialize Groups to JSON";
+            SerializeGroupsButton.UseVisualStyleBackColor = true;
+            SerializeGroupsButton.Click += SerializeGroupsButton_Click;
+            // 
+            // StudentSerialize
+            // 
+            StudentSerialize.FileName = "students.json";
+            StudentSerialize.Title = "Save Students to JSON";
+            StudentSerialize.FileOk += StudentSerialize_FileOk;
+            // 
+            // GroupSerialize
+            // 
+            GroupSerialize.FileName = "groups.json";
+            GroupSerialize.Title = "Save Groups to JSON";
+            GroupSerialize.FileOk += GroupSerialize_FileOk;
+            // 
             // Overviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1161, 488);
+            Controls.Add(SerializeGroupsButton);
+            Controls.Add(SerializeStudentsButton);
             Controls.Add(SortButton);
             Controls.Add(AddGroupButton);
             Controls.Add(AddStudentButton);
@@ -164,5 +202,9 @@
         private Button AddStudentButton;
         private Button AddGroupButton;
         private Button SortButton;
+        private Button SerializeStudentsButton;
+        private Button SerializeGroupsButton;
+        private SaveFileDialog StudentSerialize;
+        private SaveFileDialog GroupSerialize;
     }
 }

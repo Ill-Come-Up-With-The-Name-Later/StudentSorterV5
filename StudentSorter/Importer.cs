@@ -2,7 +2,7 @@
 
 namespace StudentSorter
 {
-    public class Importer
+    public static class Importer
     {
         /// <summary>
         /// Deserializes a JSON file into a specified type
