@@ -144,6 +144,7 @@
             SortButton.TabIndex = 7;
             SortButton.Text = "Randomize Groups";
             SortButton.UseVisualStyleBackColor = true;
+            SortButton.Click += SortButton_Click;
             // 
             // SerializeStudentsButton
             // 

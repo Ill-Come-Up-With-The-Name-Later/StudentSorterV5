@@ -33,7 +33,7 @@ namespace StudentSorter
         /// </summary>
         private void StudentViewer_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            Student student = Sorter.GlobalInstance().AllStudents[StudentViewer.CurrentCell.RowIndex];
         }
 
         /// <summary>
@@ -41,7 +41,7 @@ namespace StudentSorter
         /// </summary>
         private void GroupViewer_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            Group group = Sorter.GlobalInstance().AllGroups[GroupViewer.CurrentCell.RowIndex];
         }
 
         /// <summary>
@@ -116,17 +116,28 @@ namespace StudentSorter
         /// </summary>
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            if (StudentViewer.Rows.Count > 0)
-                StudentViewer.Rows.Clear();
+            try
+            {
+                if (StudentViewer.Rows.Count > 0)
+                    StudentViewer.Rows.Clear();
 
-            if (GroupViewer.Rows.Count > 0)
-                GroupViewer.Rows.Clear();
+                if (GroupViewer.Rows.Count > 0)
+                    GroupViewer.Rows.Clear();
 
-            foreach (Student student in Sorter.GlobalInstance().AllStudents)
-                students.Rows.Add(student.Name);
+                foreach (Student student in Sorter.GlobalInstance().AllStudents)
+                    students.Rows.Add(student.Name);
 
-            foreach (Group group in Sorter.GlobalInstance().AllGroups)
-                groups.Rows.Add(group.Name);
+                foreach (Group group in Sorter.GlobalInstance().AllGroups)
+                    groups.Rows.Add(group.Name);
+            } catch (Exception) { }
+        }
+
+        /// <summary>
+        /// Goes to the sorting window to display the results
+        /// </summary>
+        private void SortButton_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

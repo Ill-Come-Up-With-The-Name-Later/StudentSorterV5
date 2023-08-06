@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Security.Permissions;
 
 namespace StudentSorter
 {
@@ -40,10 +41,45 @@ namespace StudentSorter
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
 
+        /// <summary>
+        /// Determines if the student is in a group
+        /// </summary>
+        /// <returns>
+        /// Whether the student is in a group
+        /// </returns>
+        public bool InGroup()
+        {
+            foreach(Group group in Sorter.GlobalInstance().AllGroups)
+                if (group.Contains(this))
+                    return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Determines if the student's determinant matches a group
+        /// </summary>
+        /// <param name="group">
+        /// The group to check
+        /// </param>
+        /// <returns>
+        /// If the student's determinant matches the group's requirement
+        /// </returns>
+        public bool DeterminantMatches(Group group)
+        {
+            return group.MinDeterminant <= Determinant && Determinant <= group.MaxDeterminant;
+        }
+
+        public bool CanJoinGroup(Group group)
+        {
+            return DeterminantMatches(group) && !(group.IsFull() && InGroup() && group.Contains(this));
+        }
+
         public override bool Equals(object? obj)
         {
             if (obj == null) throw new ArgumentNullException("object was null");
             if(obj .GetType() != typeof(Student)) return false;
+
             Student s = (Student)obj;
             return s.Name.Equals(Name) && s.Determinant == Determinant;
         }
