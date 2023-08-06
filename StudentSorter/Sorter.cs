@@ -2,8 +2,8 @@
 {
     public class Sorter
     {
-        public List<Student> AllStudents;
-        public List<Group> AllGroups;
+        public List<Student> AllStudents = new();
+        public List<Group> AllGroups = new();
 
         public static Sorter GlobalInstance = new Sorter();
 

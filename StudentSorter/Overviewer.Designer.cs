@@ -49,12 +49,16 @@
             StudentViewer.AllowUserToAddRows = false;
             StudentViewer.AllowUserToDeleteRows = false;
             StudentViewer.AllowUserToResizeRows = false;
+            StudentViewer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            StudentViewer.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             StudentViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            StudentViewer.ColumnHeadersVisible = false;
             StudentViewer.Location = new Point(49, 102);
             StudentViewer.Margin = new Padding(4);
             StudentViewer.MultiSelect = false;
             StudentViewer.Name = "StudentViewer";
             StudentViewer.ReadOnly = true;
+            StudentViewer.RowHeadersVisible = false;
             StudentViewer.RowHeadersWidth = 51;
             StudentViewer.RowTemplate.Height = 29;
             StudentViewer.Size = new Size(367, 229);
@@ -65,13 +69,18 @@
             // 
             GroupViewer.AllowUserToAddRows = false;
             GroupViewer.AllowUserToDeleteRows = false;
+            GroupViewer.AllowUserToResizeColumns = false;
             GroupViewer.AllowUserToResizeRows = false;
+            GroupViewer.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            GroupViewer.AutoSizeRowsMode = DataGridViewAutoSizeRowsMode.AllCells;
             GroupViewer.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            GroupViewer.ColumnHeadersVisible = false;
             GroupViewer.Location = new Point(735, 102);
             GroupViewer.Margin = new Padding(4);
             GroupViewer.MultiSelect = false;
             GroupViewer.Name = "GroupViewer";
             GroupViewer.ReadOnly = true;
+            GroupViewer.RowHeadersVisible = false;
             GroupViewer.RowHeadersWidth = 51;
             GroupViewer.RowTemplate.Height = 29;
             GroupViewer.Size = new Size(375, 229);
@@ -105,6 +114,7 @@
             RefreshButton.TabIndex = 4;
             RefreshButton.Text = "Refresh Lists";
             RefreshButton.UseVisualStyleBackColor = true;
+            RefreshButton.Click += RefreshButton_Click;
             // 
             // AddStudentButton
             // 

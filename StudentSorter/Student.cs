@@ -20,6 +20,8 @@ namespace StudentSorter
         public Student(string name)
         {
             Name = name;
+
+            Sorter.GlobalInstance.AllStudents.Add(this);
         }
 
         /// <summary>
@@ -35,6 +37,8 @@ namespace StudentSorter
         {
             Name = name;
             Determinant = determinant;
+
+            Sorter.GlobalInstance.AllStudents.Add(this);
         }
 
         public override bool Equals(object? obj)

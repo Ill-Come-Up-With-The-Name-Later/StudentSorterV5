@@ -1,14 +1,31 @@
 ﻿using System.ComponentModel;
+using System.Data;
 
 namespace StudentSorter
 {
     public partial class Overviewer : Form
     {
+        private readonly DataTable students = new();
+        private readonly DataTable groups = new();
+
         public Overviewer()
         {
             InitializeComponent();
-            StudentSerialize.
+            StudentViewer.DataSource = students;
+            students.Columns.Add("Name", typeof(string));
 
+            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+            {
+                students.Rows.Add(student.Name);
+            }
+
+            GroupViewer.DataSource = groups;
+            groups.Columns.Add("Name", typeof(string));
+
+            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+            {
+                groups.Rows.Add(group.Name);
+            }
         }
 
         /// <summary>
@@ -88,6 +105,24 @@ namespace StudentSorter
                 students.Add(student.SerializeJSON());
             }
             Exporter.Export(file, students);
+        }
+
+        /// <summary>
+        /// Refreshes the lists of students and groups
+        /// </summary>
+        private void RefreshButton_Click(object sender, EventArgs e)
+        {
+            if (StudentViewer.Rows.Count > 0)
+                StudentViewer.Rows.Clear();
+
+            if (GroupViewer.Rows.Count > 0)
+                GroupViewer.Rows.Clear();
+
+            foreach (Student student in Sorter.GlobalInstance.AllStudents)
+                students.Rows.Add(student.Name);
+
+            foreach (Group group in Sorter.GlobalInstance.AllGroups)
+                groups.Rows.Add(group.Name);
         }
     }
 }
