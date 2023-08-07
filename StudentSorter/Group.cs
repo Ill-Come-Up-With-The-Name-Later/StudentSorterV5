@@ -14,6 +14,9 @@ namespace StudentSorter
         public int Capacity { get; set; }
 
         [JsonIgnore]
+        public int Size { get { return Students.Count; } }
+
+        [JsonIgnore]
         private int index = -1;
 
         [JsonIgnore]
@@ -25,6 +28,9 @@ namespace StudentSorter
         [JsonIgnore]
         object IEnumerator.Current => Current;
 
+        [JsonIgnore]
+        public Student this[int index] { get => Students[index]; set { Students[index] = value; } }
+
         [JsonConstructor]
         public Group(string name, int minDeterminant, int maxDeterminant, int capacity)
         {
@@ -32,6 +38,8 @@ namespace StudentSorter
             MinDeterminant = minDeterminant;
             MaxDeterminant = maxDeterminant;
             Capacity = capacity;
+
+            Students = new();
 
             Sorter.GlobalInstance().AllGroups.Add(this);
         }
@@ -44,7 +52,7 @@ namespace StudentSorter
         /// </returns>
         public bool IsFull()
         {
-            return Students.Count >= Capacity;
+            return Size >= Capacity;
         }
 
         /// <summary>
