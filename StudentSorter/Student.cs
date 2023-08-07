@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Security.Permissions;
 
 namespace StudentSorter
 {

@@ -20,7 +20,7 @@ namespace StudentSorter
         private int index = -1;
 
         [JsonIgnore]
-        public List<Student> Students { get; private set; }
+        private List<Student> Students { get; set; }
 
         [JsonIgnore]
         public Student Current => index > -1 ? Students[index] : new Student("Error");
@@ -128,7 +128,7 @@ namespace StudentSorter
 
         public void Dispose()
         {
-            GC.Collect();
+            GC.SuppressFinalize(this);
         }
     }
 }
