@@ -15,17 +15,13 @@ namespace StudentSorter
             students.Columns.Add("Name", typeof(string));
 
             foreach (Student student in Sorter.GlobalInstance().AllStudents)
-            {
                 students.Rows.Add(student.Name);
-            }
 
             GroupViewer.DataSource = groups;
             groups.Columns.Add("Name", typeof(string));
 
             foreach (Group group in Sorter.GlobalInstance().AllGroups)
-            {
                 groups.Rows.Add(group.Name);
-            }
         }
 
         /// <summary>
@@ -87,9 +83,8 @@ namespace StudentSorter
             List<string> groups = new();
 
             foreach (Group group in Sorter.GlobalInstance().AllGroups)
-            {
                 groups.Add(group.SerializeJSON());
-            }
+
             Exporter.Export(file, groups);
         }
 
@@ -102,9 +97,7 @@ namespace StudentSorter
             List<string> students = new();
 
             foreach (Student student in Sorter.GlobalInstance().AllStudents)
-            {
                 students.Add(student.SerializeJSON());
-            }
 
             Console.WriteLine(students.Count);
 
@@ -137,7 +130,10 @@ namespace StudentSorter
         /// </summary>
         private void SortButton_Click(object sender, EventArgs e)
         {
+            Sorter.GlobalInstance().DeterminantRange = 
+                Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
+            Sorter.GlobalInstance().RandomizeDeterminants();
         }
     }
 }

@@ -10,6 +10,7 @@
             }
             catch (Exception ex)
             {
+                Console.WriteLine("File Export error!");
                 Console.WriteLine(ex);
             }
         }

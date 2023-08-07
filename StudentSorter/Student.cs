@@ -19,6 +19,7 @@ namespace StudentSorter
         public Student(string name)
         {
             Name = name;
+            Determinant = int.MinValue;
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }

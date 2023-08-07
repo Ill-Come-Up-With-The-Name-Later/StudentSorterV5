@@ -22,12 +22,14 @@ namespace StudentSorter
             {
                 SupportMultipleContent = true
             };
-
-            while(jsonReader.Read()) 
+            try
             {
-                JsonSerializer serializer = new JsonSerializer();
-                T obj = serializer.Deserialize<T>(jsonReader);
-            }
+                while (jsonReader.Read())
+                {
+                    JsonSerializer serializer = new JsonSerializer();
+                    T obj = serializer.Deserialize<T>(jsonReader);
+                }
+            } catch (Exception) { Console.WriteLine("Import error!"); }
         }
     }
 }

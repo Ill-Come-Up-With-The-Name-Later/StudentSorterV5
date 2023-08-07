@@ -10,7 +10,7 @@ namespace StudentSorter
         }
 
         /// <summary>
-        /// Uploads the json of the groups and creates the objects
+        /// Uploads the JSON of the groups and creates the objects
         /// </summary>
         private void JsonUploader_FileOk(object sender, CancelEventArgs e)
         {
