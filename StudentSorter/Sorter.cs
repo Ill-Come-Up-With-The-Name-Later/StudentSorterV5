@@ -16,6 +16,9 @@
             DeterminantRange = int.MaxValue;
         }
 
+        /// <summary>
+        /// Randomizes each student's determinant
+        /// </summary>
         public void RandomizeDeterminants()
         {
             foreach (var student in AllStudents)
