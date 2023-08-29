@@ -56,7 +56,7 @@ namespace StudentSorter
         /// </summary>
         private void JsonUploadButton_Click(object sender, EventArgs e)
         {
-            JsonUploader.ShowDialog(this);
+            JsonUploader.ShowDialog();
         }
     }
 }
