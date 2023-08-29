@@ -140,7 +140,7 @@
             JsonImportButton.Name = "JsonImportButton";
             JsonImportButton.Size = new Size(197, 78);
             JsonImportButton.TabIndex = 10;
-            JsonImportButton.Text = "Inport Groups from JSON";
+            JsonImportButton.Text = "Upload Groups From a JSON File";
             JsonImportButton.UseVisualStyleBackColor = true;
             JsonImportButton.Click += JsonImportButton_Click;
             // 

@@ -22,7 +22,7 @@ namespace StudentSorter
         /// </summary>
         private void CreateGroupButton_Click(object sender, EventArgs e)
         {
-            if(GroupNameInput.Text.Equals("") || GroupNameInput.Text == null)
+            if (GroupNameInput.Text.Equals("") || GroupNameInput.Text == null)
             {
                 return;
                 throw new ArgumentException("No name entered!");
@@ -33,13 +33,13 @@ namespace StudentSorter
             int minDeterminant = (int)MinDeterminantInput.Value;
             int maxDeterminant = (int)MaxDeterminantInput.Value;
 
-            if(maxDeterminant <= minDeterminant)
+            if (maxDeterminant <= minDeterminant)
             {
                 return;
                 throw new ArgumentException("Max determinant must be greater than min determinant");
             }
 
-            if(capacity <= 0)
+            if (capacity <= 0)
             {
                 return;
                 throw new ArgumentException("Capacity must be greater than 0");

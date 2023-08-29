@@ -30,6 +30,8 @@ namespace StudentSorter
         private void StudentViewer_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             Student student = Sorter.GlobalInstance().AllStudents[StudentViewer.CurrentCell.RowIndex];
+            StudentInfoViewer viewer = new(student);
+            viewer.Show();
         }
 
         /// <summary>

@@ -24,6 +24,7 @@ namespace StudentSorter
         private void ManualAssignCheck_CheckedChanged(object sender, EventArgs e)
         {
             DeterminantInput.Enabled = ManualAssignCheck.Checked;
+            DeterminantInput.ReadOnly = !ManualAssignCheck.Checked;
 
             if (!DeterminantInput.Enabled) DeterminantInput.Value = 0;
         }
@@ -38,7 +39,7 @@ namespace StudentSorter
                 return;
                 throw new ArgumentNullException("Student name was null");
             }
-            if (DeterminantInput.Enabled)
+            if (!DeterminantInput.Enabled)
             {
                 Student student = new(StudentNameInput.Text);
             }
@@ -47,6 +48,7 @@ namespace StudentSorter
                 Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
             }
             StudentNameInput.Text = "";
+            DeterminantInput.Value = 0;
 
             Console.WriteLine("Created Student!");
         }

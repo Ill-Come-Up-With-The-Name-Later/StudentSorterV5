@@ -22,7 +22,8 @@
         public void RandomizeDeterminants()
         {
             foreach (var student in AllStudents)
-                student.Determinant = new Random().Next(1, MaxDeterminant(DeterminantRange));
+                if(!student.DeterminiantSet)
+                    student.Determinant = new Random().Next(1, MaxDeterminant(DeterminantRange));
         }
 
         /// <summary>

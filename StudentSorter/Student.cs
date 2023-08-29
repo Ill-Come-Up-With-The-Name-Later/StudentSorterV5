@@ -5,9 +5,23 @@ namespace StudentSorter
     public class Student
     {
         public string Name { get; set; }
-
-        [JsonIgnore]
         public int Determinant { get; set; }
+        public bool DeterminiantSet { get; set; }
+
+        /// <summary>
+        /// Constructs a student
+        /// </summary>
+        /// <param name="name">
+        /// Student name
+        /// </param>
+        public Student(string name) 
+        {
+            Name = name;
+            Determinant = int.MinValue; 
+            DeterminiantSet = false;
+
+            Sorter.GlobalInstance().AllStudents.Add(this);
+        }
 
         /// <summary>
         /// Constructs a student
@@ -15,11 +29,15 @@ namespace StudentSorter
         /// <param name="name">
         /// The student's name
         /// </param>
+        /// <param name="determinant">
+        /// Whether or not the student's determinant is set
+        /// </param>
         [JsonConstructor]
-        public Student(string name)
+        public Student(string name, int determinant, bool determinantSet)
         {
             Name = name;
-            Determinant = int.MinValue;
+            Determinant = determinant;
+            DeterminiantSet = determinantSet;
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
@@ -37,6 +55,7 @@ namespace StudentSorter
         {
             Name = name;
             Determinant = determinant;
+            DeterminiantSet = true;
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
