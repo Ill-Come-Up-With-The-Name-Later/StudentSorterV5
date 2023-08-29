@@ -7,10 +7,11 @@
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
     <ApplicationIcon>TextTemplate.ico</ApplicationIcon>
+    <StartupObject>StudentSorter.Program</StartupObject>
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="Icon.ico" />
+    <Content Include="TextTemplate.ico" />
   </ItemGroup>
 
   <ItemGroup>

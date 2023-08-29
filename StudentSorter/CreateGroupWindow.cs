@@ -33,7 +33,25 @@ namespace StudentSorter
             int minDeterminant = (int)MinDeterminantInput.Value;
             int maxDeterminant = (int)MaxDeterminantInput.Value;
 
+            if(maxDeterminant <= minDeterminant)
+            {
+                return;
+                throw new ArgumentException("Max determinant must be greater than min determinant");
+            }
+
+            if(capacity <= 0)
+            {
+                return;
+                throw new ArgumentException("Capacity must be greater than 0");
+            }
+
             Group group = new(name, capacity, minDeterminant, maxDeterminant);
+
+            GroupNameInput.Text = "";
+            CapacityInput.Value = 0;
+            MinDeterminantInput.Value = 0;
+            MaxDeterminantInput.Value = 0;
+
             Console.WriteLine("Created group!");
         }
 
