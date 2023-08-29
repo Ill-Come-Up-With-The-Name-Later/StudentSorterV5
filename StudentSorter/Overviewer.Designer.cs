@@ -63,7 +63,7 @@
             StudentViewer.RowTemplate.Height = 29;
             StudentViewer.Size = new Size(367, 229);
             StudentViewer.TabIndex = 0;
-            StudentViewer.CellContentDoubleClick += StudentViewer_CellContentDoubleClick;
+            StudentViewer.CellDoubleClick += StudentViewer_CellDoubleClick;
             // 
             // GroupViewer
             // 
@@ -85,7 +85,7 @@
             GroupViewer.RowTemplate.Height = 29;
             GroupViewer.Size = new Size(375, 229);
             GroupViewer.TabIndex = 1;
-            GroupViewer.CellContentDoubleClick += GroupViewer_CellContentDoubleClick;
+            GroupViewer.CellDoubleClick += GroupViewer_CellDoubleClick;
             // 
             // StudentLabel
             // 

@@ -1,22 +1,14 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace StudentSorter
+﻿namespace StudentSorter
 {
     public partial class StudentInfoViewer : Form
     {
         private Student Student;
+        private int StudentIndex;
 
-        public StudentInfoViewer(Student student)
+        public StudentInfoViewer(int index)
         {
-            Student = student;
+            StudentIndex = index;
+            Student = Sorter.GlobalInstance().AllStudents[StudentIndex];
             InitializeComponent();
         }
 

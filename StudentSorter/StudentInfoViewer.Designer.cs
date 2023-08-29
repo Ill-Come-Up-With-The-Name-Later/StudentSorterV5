@@ -34,7 +34,7 @@
             // StudentNameTitle
             // 
             StudentNameTitle.AutoSize = true;
-            StudentNameTitle.Location = new Point(237, 20);
+            StudentNameTitle.Location = new Point(271, 9);
             StudentNameTitle.Name = "StudentNameTitle";
             StudentNameTitle.Size = new Size(132, 28);
             StudentNameTitle.TabIndex = 0;
@@ -47,7 +47,7 @@
             ClientSize = new Size(659, 389);
             Controls.Add(StudentNameTitle);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "StudentInfoViewer";
             Text = "Student Info Viewer";
             Load += StudentInfoViewer_Load;

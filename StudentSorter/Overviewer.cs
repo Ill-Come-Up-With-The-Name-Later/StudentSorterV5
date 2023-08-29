@@ -25,24 +25,6 @@ namespace StudentSorter
         }
 
         /// <summary>
-        /// Opens information about the selected student
-        /// </summary>
-        private void StudentViewer_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Student student = Sorter.GlobalInstance().AllStudents[StudentViewer.CurrentCell.RowIndex];
-            StudentInfoViewer viewer = new(student);
-            viewer.Show();
-        }
-
-        /// <summary>
-        /// Opens information about the selected group
-        /// </summary>
-        private void GroupViewer_CellContentDoubleClick(object sender, DataGridViewCellEventArgs e)
-        {
-            Group group = Sorter.GlobalInstance().AllGroups[GroupViewer.CurrentCell.RowIndex];
-        }
-
-        /// <summary>
         /// Opens a window to create a student or add from a json file
         /// </summary>
         private void AddStudentButton_Click(object sender, EventArgs e)
@@ -124,7 +106,8 @@ namespace StudentSorter
 
                 foreach (Group group in Sorter.GlobalInstance().AllGroups)
                     groups.Rows.Add(group.Name);
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
         }
 
         /// <summary>
@@ -132,10 +115,28 @@ namespace StudentSorter
         /// </summary>
         private void SortButton_Click(object sender, EventArgs e)
         {
-            Sorter.GlobalInstance().DeterminantRange = 
+            Sorter.GlobalInstance().DeterminantRange =
                 Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
             Sorter.GlobalInstance().RandomizeDeterminants();
+        }
+
+        /// <summary>
+        /// Opens information about the selected student
+        /// </summary>
+        private void StudentViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = StudentViewer.CurrentCell.RowIndex;
+            StudentInfoViewer viewer = new(index);
+            viewer.Show();
+        }
+
+        /// <summary>
+        /// Opens information about the selected group
+        /// </summary>
+        private void GroupViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = GroupViewer.CurrentCell.RowIndex;
         }
     }
 }
