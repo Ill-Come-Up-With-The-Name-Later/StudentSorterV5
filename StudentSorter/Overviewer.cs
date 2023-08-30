@@ -95,19 +95,23 @@ namespace StudentSorter
         {
             try
             {
-                if (StudentViewer.Rows.Count > 0)
-                    StudentViewer.Rows.Clear();
+                students.Rows.Clear();
+            } catch (Exception ex) { }
 
-                if (GroupViewer.Rows.Count > 0)
-                    GroupViewer.Rows.Clear();
-
-                foreach (Student student in Sorter.GlobalInstance().AllStudents)
-                    students.Rows.Add(student.Name);
-
-                foreach (Group group in Sorter.GlobalInstance().AllGroups)
-                    groups.Rows.Add(group.Name);
+            foreach (Student student in Sorter.GlobalInstance().AllStudents)
+            {
+                students.Rows.Add(student.Name);
             }
-            catch (Exception) { }
+
+            try
+            {
+                groups.Rows.Clear();
+            } catch(Exception ex) { }
+
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
+            {
+                groups.Rows.Add(group.Name);
+            }
         }
 
         /// <summary>

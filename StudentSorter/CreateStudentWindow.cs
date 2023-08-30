@@ -39,7 +39,7 @@ namespace StudentSorter
                 return;
                 throw new ArgumentNullException("Student name was null");
             }
-            if (!DeterminantInput.Enabled)
+            if (!ManualAssignCheck.Checked)
             {
                 Student student = new(StudentNameInput.Text);
             }
