@@ -123,6 +123,7 @@ namespace StudentSorter
                 Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
             Sorter.GlobalInstance().RandomizeDeterminants();
+            Sorter.GlobalInstance().ShuffleGroups();
         }
 
         /// <summary>
