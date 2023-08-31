@@ -79,6 +79,14 @@ namespace StudentSorter
             if(Contains(student)) Students.Remove(student);
         }
 
+        /// <summary>
+        /// Clears all students from the group
+        /// </summary>
+        public void Clear()
+        {
+            Students.Clear();
+        }
+
         public override bool Equals(object? obj)
         {
             if(obj == null) throw new ArgumentNullException("object was null");

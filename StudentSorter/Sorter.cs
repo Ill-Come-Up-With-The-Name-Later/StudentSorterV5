@@ -17,6 +17,51 @@
         }
 
         /// <summary>
+        /// Shuffles the groups.
+        /// 
+        /// The shuffle is first by determinant, then by if 
+        /// the group has space
+        /// </summary>
+        public void ShuffleGroups()
+        {
+            int sortedStudents = 0;
+
+            foreach (Group AnalysisGroup in AllGroups)
+            {
+                foreach (Student AnalysisStudent in AllStudents)
+                {
+                    if (AnalysisStudent.CanJoinGroup(AnalysisGroup))
+                    {
+                        AnalysisGroup.AddStudent(AnalysisStudent);
+                        sortedStudents++;
+                    }
+                }
+            }
+
+            foreach (Group AnalysisGroup in AllGroups)
+            {
+                foreach (Student AnalysisStudent in AllStudents)
+                {
+                    if (!AnalysisGroup.IsFull() && !AnalysisStudent.InGroup())
+                    {
+                        AnalysisGroup.AddStudent(AnalysisStudent);
+                        sortedStudents++;
+                    }
+                }
+            }
+            Console.WriteLine($"\nSorted {sortedStudents}/{AllStudents.Count} students!");
+        }
+
+        /// <summary>
+        /// Resets the groups an students to be shuffled again
+        /// </summary>
+        public void Reset()
+        {
+            foreach (Group g in AllGroups) g.Clear();
+            RandomizeDeterminants();
+        }
+
+        /// <summary>
         /// Randomizes each student's determinant
         /// </summary>
         public void RandomizeDeterminants()
