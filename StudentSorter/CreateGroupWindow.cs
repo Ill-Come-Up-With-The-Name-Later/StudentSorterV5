@@ -45,7 +45,7 @@ namespace StudentSorter
                 throw new ArgumentException("Capacity must be greater than 0");
             }
 
-            Group group = new(name, capacity, minDeterminant, maxDeterminant);
+            Group group = new(name, minDeterminant, maxDeterminant, capacity);
 
             GroupNameInput.Text = "";
             CapacityInput.Value = 0;

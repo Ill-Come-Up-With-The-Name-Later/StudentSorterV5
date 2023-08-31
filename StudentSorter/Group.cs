@@ -3,7 +3,7 @@ using System.Collections;
 
 namespace StudentSorter
 {
-    public class Group : IEnumerable<Student>, IEnumerator<Student>
+    public class Group
     {
         public string Name { get; set; }
 
@@ -17,19 +17,8 @@ namespace StudentSorter
         public int Size { get { return Students.Count; } }
 
         [JsonIgnore]
-        private int index = -1;
+        public List<Student> Students { get; private set; }
 
-        [JsonIgnore]
-        private List<Student> Students { get; set; }
-
-        [JsonIgnore]
-        public Student Current => index > -1 ? Students[index] : new Student("Error");
-
-        [JsonIgnore]
-        object IEnumerator.Current => Current;
-
-        [JsonIgnore]
-        public Student this[int index] { get => Students[index]; set { Students[index] = value; } }
 
         [JsonConstructor]
         public Group(string name, int minDeterminant, int maxDeterminant, int capacity)
@@ -98,37 +87,9 @@ namespace StudentSorter
             if(obj.GetType() != typeof(Group)) return false;
             Group objGroup = (Group)obj;
             return objGroup.Name.Equals(Name) && objGroup.Capacity == Capacity && 
-                objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;   
+                objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;
         }
 
         public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
-
-        public IEnumerator<Student> GetEnumerator()
-        {
-            IEnumerator<Student> enumerator = this;
-            return enumerator;
-        }
-
-        IEnumerator IEnumerable.GetEnumerator()
-        {
-            IEnumerator<Student> enumerator = this;
-            return enumerator;
-        }
-
-        public bool MoveNext()
-        {
-            index++;
-            return index < Students.Count;
-        }
-
-        public void Reset()
-        {
-            index = -1;
-        }
-
-        public void Dispose()
-        {
-            GC.SuppressFinalize(this);
-        }
     }
 }

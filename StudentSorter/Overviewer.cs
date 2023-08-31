@@ -141,6 +141,8 @@ namespace StudentSorter
         private void GroupViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = GroupViewer.CurrentCell.RowIndex;
+            GroupInfoViewer viewer = new(index);
+            viewer.Show();
         }
     }
 }
