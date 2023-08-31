@@ -5,7 +5,7 @@
         public List<Student> AllStudents = new();
         public List<Group> AllGroups = new();
 
-        private readonly static Sorter? Instance = new();
+        private readonly static Sorter Instance = new();
 
         public static Sorter GlobalInstance() => Instance;
 
@@ -40,6 +40,11 @@
 
             foreach (Group AnalysisGroup in AllGroups)
             {
+                if(AnalysisGroup.IsFull())
+                {
+                    continue;
+                }
+
                 foreach (Student AnalysisStudent in AllStudents)
                 {
                     if (!AnalysisGroup.IsFull() && !AnalysisStudent.InGroup())

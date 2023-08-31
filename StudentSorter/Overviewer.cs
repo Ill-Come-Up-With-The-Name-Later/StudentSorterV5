@@ -124,6 +124,9 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().RandomizeDeterminants();
             Sorter.GlobalInstance().ShuffleGroups();
+
+            SortDisplay display = new();
+            display.Show();
         }
 
         /// <summary>

@@ -30,6 +30,7 @@
         {
             GroupList = new DataGridView();
             Title = new Label();
+            ReshuffleButton = new Button();
             ((System.ComponentModel.ISupportInitialize)GroupList).BeginInit();
             SuspendLayout();
             // 
@@ -41,28 +42,40 @@
             GroupList.AllowUserToResizeRows = false;
             GroupList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GroupList.ColumnHeadersVisible = false;
-            GroupList.Location = new Point(160, 77);
+            GroupList.Location = new Point(147, 78);
             GroupList.Name = "GroupList";
             GroupList.RowHeadersVisible = false;
             GroupList.RowHeadersWidth = 51;
             GroupList.RowTemplate.Height = 29;
-            GroupList.Size = new Size(345, 245);
+            GroupList.Size = new Size(345, 266);
             GroupList.TabIndex = 0;
+            GroupList.CellDoubleClick += GroupList_CellDoubleClick;
             // 
             // Title
             // 
             Title.AutoSize = true;
-            Title.Location = new Point(258, 21);
+            Title.Location = new Point(250, 24);
             Title.Name = "Title";
             Title.Size = new Size(138, 28);
             Title.TabIndex = 1;
             Title.Text = "Sorting Result:";
+            // 
+            // ReshuffleButton
+            // 
+            ReshuffleButton.Location = new Point(207, 362);
+            ReshuffleButton.Name = "ReshuffleButton";
+            ReshuffleButton.Size = new Size(219, 50);
+            ReshuffleButton.TabIndex = 2;
+            ReshuffleButton.Text = "Reshuffle Groups";
+            ReshuffleButton.UseVisualStyleBackColor = true;
+            ReshuffleButton.Click += ReshuffleButton_Click;
             // 
             // SortDisplay
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(653, 424);
+            Controls.Add(ReshuffleButton);
             Controls.Add(Title);
             Controls.Add(GroupList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -79,5 +92,6 @@
 
         private DataGridView GroupList;
         private Label Title;
+        private Button ReshuffleButton;
     }
 }

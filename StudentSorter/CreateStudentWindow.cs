@@ -36,6 +36,7 @@ namespace StudentSorter
         {
             if (StudentNameInput.Text == null || StudentNameInput.Text.Equals(""))
             {
+                ErrorProvider.SetError(StudentNameInput, "A name is required");
                 return;
                 throw new ArgumentNullException("Student name was null");
             }

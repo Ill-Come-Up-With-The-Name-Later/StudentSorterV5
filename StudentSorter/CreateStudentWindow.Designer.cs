@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             label1 = new Label();
             StudentNameInput = new TextBox();
             StudentNameTitle = new Label();
@@ -36,7 +37,9 @@
             CreateStudentButton = new Button();
             JsonUploadButton = new Button();
             JsonUploader = new OpenFileDialog();
+            ErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -111,6 +114,10 @@
             JsonUploader.Title = "Upload JSON File";
             JsonUploader.FileOk += JsonUploader_FileOk;
             // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
             // CreateStudentWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -128,6 +135,7 @@
             Name = "CreateStudentWindow";
             Text = "Create Student";
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -142,5 +150,6 @@
         private Button CreateStudentButton;
         private Button JsonUploadButton;
         private OpenFileDialog JsonUploader;
+        private ErrorProvider ErrorProvider;
     }
 }

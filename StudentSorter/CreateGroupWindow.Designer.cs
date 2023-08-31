@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             JsonUploader = new OpenFileDialog();
             GroupCreateTitle = new Label();
             GroupNameLabel = new Label();
@@ -40,9 +41,11 @@
             MaxDeterminantInput = new NumericUpDown();
             CreateGroupButton = new Button();
             JsonImportButton = new Button();
+            ErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)CapacityInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // JsonUploader
@@ -147,6 +150,10 @@
             JsonImportButton.UseVisualStyleBackColor = true;
             JsonImportButton.Click += JsonImportButton_Click;
             // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
             // CreateGroupWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -170,6 +177,7 @@
             ((System.ComponentModel.ISupportInitialize)CapacityInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -188,5 +196,6 @@
         private NumericUpDown MaxDeterminantInput;
         private Button CreateGroupButton;
         private Button JsonImportButton;
+        private ErrorProvider ErrorProvider;
     }
 }
