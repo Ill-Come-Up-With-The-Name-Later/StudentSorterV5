@@ -18,6 +18,9 @@
         private void GroupInfoViewer_Load(object sender, EventArgs e)
         {
             GroupNameTitle.Text = SelectedGroup.Name;
+            MaxDeterminantInput.Value = SelectedGroup.MaxDeterminant;
+            MinDeterminantInput.Value = SelectedGroup.MinDeterminant;
+            GroupCapacityInput.Value = SelectedGroup.Capacity;
         }
 
         /// <summary>
@@ -25,7 +28,9 @@
         /// </summary>
         private void GroupInfoViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
-
+            SelectedGroup.Capacity = (int)GroupCapacityInput.Value;
+            SelectedGroup.MinDeterminant = (int)MinDeterminantInput.Value;
+            SelectedGroup.MaxDeterminant = (int)MaxDeterminantInput.Value;
         }
     }
 }

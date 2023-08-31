@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using System.Collections;
 
 namespace StudentSorter
 {
@@ -18,7 +17,6 @@ namespace StudentSorter
 
         [JsonIgnore]
         public List<Student> Students { get; private set; }
-
 
         [JsonConstructor]
         public Group(string name, int minDeterminant, int maxDeterminant, int capacity)

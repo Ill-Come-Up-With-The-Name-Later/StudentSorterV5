@@ -39,6 +39,11 @@
                 Student.Determinant = (int)DeterminantInput.Value;
                 Student.DeterminiantSet = true;
             }
+            else
+            {
+                Student.Determinant = int.MinValue;
+                Student.DeterminiantSet = false;
+            }
         }
 
         /// <summary>

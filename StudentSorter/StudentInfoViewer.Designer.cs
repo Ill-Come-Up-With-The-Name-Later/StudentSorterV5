@@ -77,9 +77,9 @@
             label1.AutoSize = true;
             label1.Location = new Point(42, 275);
             label1.Name = "label1";
-            label1.Size = new Size(388, 28);
+            label1.Size = new Size(392, 28);
             label1.TabIndex = 4;
-            label1.Text = "Student determinant will update on closing";
+            label1.Text = "Student determinant will update on closing.";
             // 
             // StudentInfoViewer
             // 

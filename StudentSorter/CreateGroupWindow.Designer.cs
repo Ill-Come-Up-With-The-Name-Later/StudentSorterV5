@@ -79,6 +79,7 @@
             // CapacityInput
             // 
             CapacityInput.Location = new Point(28, 209);
+            CapacityInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             CapacityInput.Name = "CapacityInput";
             CapacityInput.Size = new Size(150, 34);
             CapacityInput.TabIndex = 3;
@@ -113,6 +114,7 @@
             // MinDeterminantInput
             // 
             MinDeterminantInput.Location = new Point(325, 113);
+            MinDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             MinDeterminantInput.Name = "MinDeterminantInput";
             MinDeterminantInput.Size = new Size(150, 34);
             MinDeterminantInput.TabIndex = 7;
@@ -120,6 +122,7 @@
             // MaxDeterminantInput
             // 
             MaxDeterminantInput.Location = new Point(325, 209);
+            MaxDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             MaxDeterminantInput.Name = "MaxDeterminantInput";
             MaxDeterminantInput.Size = new Size(150, 34);
             MaxDeterminantInput.TabIndex = 8;

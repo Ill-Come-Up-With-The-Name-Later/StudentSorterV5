@@ -80,6 +80,7 @@
             // 
             DeterminantInput.Enabled = false;
             DeterminantInput.Location = new Point(26, 226);
+            DeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             DeterminantInput.Name = "DeterminantInput";
             DeterminantInput.ReadOnly = true;
             DeterminantInput.Size = new Size(157, 34);
