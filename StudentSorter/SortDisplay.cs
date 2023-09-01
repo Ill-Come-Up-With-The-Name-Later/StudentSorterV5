@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Diagnostics;
 
 namespace StudentSorter
 {
@@ -28,7 +29,11 @@ namespace StudentSorter
         /// </summary>
         private void GroupList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
+            int index = GroupList.CurrentCell.RowIndex; if (index < 0) return;
+            Group SelectedGroup = Sorter.GlobalInstance().AllGroups[index];
 
+            GroupStudentList groupStudentList = new(SelectedGroup);
+            groupStudentList.Show();
         }
 
         /// <summary>
@@ -36,6 +41,16 @@ namespace StudentSorter
         /// </summary>
         private void ReshuffleButton_Click(object sender, EventArgs e)
         {
+            Process[] processes = Process.GetProcesses();
+
+            foreach (Process process in processes)
+            {
+                if (process.MainWindowTitle.Equals("Group Student List"))
+                {
+                    process.Kill();
+                }
+            }
+
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
         }
