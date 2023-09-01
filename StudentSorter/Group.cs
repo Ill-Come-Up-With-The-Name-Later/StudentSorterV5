@@ -5,12 +5,10 @@ namespace StudentSorter
     public class Group
     {
         public string Name { get; set; }
-
         public int MinDeterminant { get; set; }
-
         public int MaxDeterminant { get; set;}
-
         public int Capacity { get; set; }
+        public int HashCode { get { return GetHashCode(); } set { } }
 
         [JsonIgnore]
         public int Size { get { return Students.Count; } }
@@ -18,13 +16,60 @@ namespace StudentSorter
         [JsonIgnore]
         public List<Student> Students { get; private set; }
 
-        [JsonConstructor]
+        /// <summary>
+        /// Creates a group
+        /// </summary>
+        /// <param name="name">
+        /// The group name
+        /// </param>
+        /// <param name="minDeterminant">
+        /// The minimum accepted determinant for the group
+        /// </param>
+        /// <param name="maxDeterminant">
+        /// The maximum accepted determinant for the group
+        /// </param>
+        /// <param name="capacity">
+        /// The group's capacity
+        /// </param>
         public Group(string name, int minDeterminant, int maxDeterminant, int capacity)
         {
             Name = name;
             MinDeterminant = minDeterminant;
             MaxDeterminant = maxDeterminant;
             Capacity = capacity;
+            HashCode = new Random().Next();
+
+            Students = new();
+
+            Sorter.GlobalInstance().AllGroups.Add(this);
+        }
+
+        /// <summary>
+        /// Creates a group, for JSON serialization only
+        /// </summary>
+        /// <param name="name">
+        /// The group name
+        /// </param>
+        /// <param name="minDeterminant">
+        /// The minimum accepted determinant for the group
+        /// </param>
+        /// <param name="maxDeterminant">
+        /// The maximum accepted determinant for the group
+        /// </param>
+        /// <param name="capacity">
+        /// The group's capacity
+        /// </param>
+        /// <param name="hashCode">
+        /// The group's hash code
+        /// </param>
+        [JsonConstructor]
+        public Group(string name, int minDeterminant, int maxDeterminant, int capacity, int hashCode)
+        {
+            Name = name;
+            MinDeterminant = minDeterminant;
+            MaxDeterminant = maxDeterminant;
+            Capacity = capacity;
+            HashCode = hashCode;
 
             Students = new();
 
@@ -96,6 +141,21 @@ namespace StudentSorter
                 objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;
         }
 
+        public static bool operator == (Group a, Group b)
+        {
+            return a.Equals(b);
+        }
+
+        public static bool operator != (Group a, Group b)
+        {
+            return !a.Equals(b);
+        }
+
         public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+        public override int GetHashCode()
+        {
+            return HashCode;
+        }
     }
 }

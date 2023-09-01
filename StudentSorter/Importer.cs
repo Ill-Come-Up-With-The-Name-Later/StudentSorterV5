@@ -26,8 +26,8 @@ namespace StudentSorter
             {
                 while (jsonReader.Read())
                 {
-                    JsonSerializer serializer = new JsonSerializer();
-                    T obj = serializer.Deserialize<T>(jsonReader);
+                    JsonSerializer serializer = new();
+                    T? obj = serializer.Deserialize<T>(jsonReader);
                 }
             } catch (Exception) { Console.WriteLine("Import error!"); }
         }

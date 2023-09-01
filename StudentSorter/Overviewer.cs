@@ -96,7 +96,7 @@ namespace StudentSorter
             try
             {
                 students.Rows.Clear();
-            } catch (Exception ex) { }
+            } catch (Exception) { }
 
             foreach (Student student in Sorter.GlobalInstance().AllStudents)
             {
@@ -106,7 +106,7 @@ namespace StudentSorter
             try
             {
                 groups.Rows.Clear();
-            } catch(Exception ex) { }
+            } catch(Exception) { }
 
             foreach (Group group in Sorter.GlobalInstance().AllGroups)
             {

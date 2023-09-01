@@ -7,6 +7,7 @@ namespace StudentSorter
         public string Name { get; set; }
         public int Determinant { get; set; }
         public bool DeterminiantSet { get; set; }
+        public int HashCode { get { return GetHashCode(); } set { } }
 
         /// <summary>
         /// Constructs a student
@@ -19,12 +20,13 @@ namespace StudentSorter
             Name = name;
             Determinant = int.MinValue; 
             DeterminiantSet = false;
+            HashCode = new Random().Next();
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
 
         /// <summary>
-        /// Constructs a student
+        /// Constructs a student. For JSON serialization only
         /// </summary>
         /// <param name="name">
         /// The student's name
@@ -32,12 +34,19 @@ namespace StudentSorter
         /// <param name="determinant">
         /// Whether or not the student's determinant is set
         /// </param>
+        /// <param name="determinantSet">
+        /// Whether or not the student's determinant is set
+        /// </param>
+        /// <param name="hashCode">
+        /// The student's hash code
+        /// </param>
         [JsonConstructor]
-        public Student(string name, int determinant, bool determinantSet)
+        public Student(string name, int determinant, bool determinantSet, int hashCode)
         {
             Name = name;
             Determinant = determinant;
             DeterminiantSet = determinantSet;
+            HashCode = hashCode;
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
@@ -56,6 +65,7 @@ namespace StudentSorter
             Name = name;
             Determinant = determinant;
             DeterminiantSet = true;
+            HashCode = new Random().Next();
 
             Sorter.GlobalInstance().AllStudents.Add(this);
         }
@@ -106,7 +116,7 @@ namespace StudentSorter
         public override bool Equals(object? obj)
         {
             if (obj == null) throw new ArgumentNullException("object was null");
-            if(obj .GetType() != typeof(Student)) return false;
+            if(obj.GetType() != typeof(Student)) return false;
 
             Student s = (Student)obj;
             return s.Name.Equals(Name) && s.Determinant == Determinant;
@@ -123,5 +133,10 @@ namespace StudentSorter
         }
 
         public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
+
+        public override int GetHashCode()
+        {
+            return base.GetHashCode();
+        }
     }
 }
