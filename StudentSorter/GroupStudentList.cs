@@ -20,8 +20,6 @@ namespace StudentSorter
         /// <summary>
         /// Loads the student names into the list
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void GroupStudentList_Load(object sender, EventArgs e)
         {
             foreach (Student student in DisplayGroup.Students)
