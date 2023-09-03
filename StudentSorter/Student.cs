@@ -132,11 +132,17 @@ namespace StudentSorter
             return !s1.Equals(s2);
         }
 
+        /// <summary>
+        /// Serializes the student into JSON
+        /// </summary>
+        /// <returns>
+        /// JSON string of student information
+        /// </returns>
         public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
         public override int GetHashCode()
         {
-            return base.GetHashCode();
+            return HashCode;
         }
     }
 }
