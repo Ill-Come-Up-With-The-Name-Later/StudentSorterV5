@@ -18,6 +18,6 @@ Groups have a name, capacity, minimum accepted determinant, and a maximum accept
 
 # How the Sorting Works
 
-The sorter will first iterate over all the students, and, for each student, it will iterate through every group and check if the student is eligible to join the group.
-If the student is eligible, they will be added to the group. After the sorter iterates through all the students and added based on determinant, it will perform a second
+The sorter will first iterate over all the groups, and, for each group, it will iterate through every student and check if they are eligible to join the group.
+If the student is eligible, they will be added to the group. After the sorter iterates through all the groups and added students based on determinant, it will perform a second
 iteration and add students based on what groups have space left.
