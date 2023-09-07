@@ -96,7 +96,8 @@ namespace StudentSorter
             try
             {
                 students.Rows.Clear();
-            } catch (Exception) { }
+            }
+            catch (Exception) { }
 
             foreach (Student student in Sorter.GlobalInstance().AllStudents)
             {
@@ -106,7 +107,8 @@ namespace StudentSorter
             try
             {
                 groups.Rows.Clear();
-            } catch(Exception) { }
+            }
+            catch (Exception) { }
 
             foreach (Group group in Sorter.GlobalInstance().AllGroups)
             {
@@ -147,6 +149,15 @@ namespace StudentSorter
             int index = GroupViewer.CurrentCell.RowIndex;
             GroupInfoViewer viewer = new(index);
             viewer.Show();
+        }
+
+        /// <summary>
+        /// Opens a window to modify illegal pairs
+        /// </summary>
+        private void DisallowedPairButton_Click(object sender, EventArgs e)
+        {
+            IllegalPairsOverviewer overviewer = new();
+            overviewer.Show();
         }
     }
 }

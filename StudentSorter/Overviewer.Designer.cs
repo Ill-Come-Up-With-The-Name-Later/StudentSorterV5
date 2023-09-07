@@ -40,6 +40,7 @@
             SerializeGroupsButton = new Button();
             StudentSerialize = new SaveFileDialog();
             GroupSerialize = new SaveFileDialog();
+            DisallowedPairButton = new Button();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             SuspendLayout();
@@ -178,11 +179,22 @@
             GroupSerialize.Title = "Save Groups to JSON";
             GroupSerialize.FileOk += GroupSerialize_FileOk;
             // 
+            // DisallowedPairButton
+            // 
+            DisallowedPairButton.Location = new Point(446, 352);
+            DisallowedPairButton.Name = "DisallowedPairButton";
+            DisallowedPairButton.Size = new Size(276, 46);
+            DisallowedPairButton.TabIndex = 10;
+            DisallowedPairButton.Text = "Edit Disallowed Pairs";
+            DisallowedPairButton.UseVisualStyleBackColor = true;
+            DisallowedPairButton.Click += DisallowedPairButton_Click;
+            // 
             // Overviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1161, 488);
+            Controls.Add(DisallowedPairButton);
             Controls.Add(SerializeGroupsButton);
             Controls.Add(SerializeStudentsButton);
             Controls.Add(SortButton);
@@ -217,5 +229,6 @@
         private Button SerializeGroupsButton;
         private SaveFileDialog StudentSerialize;
         private SaveFileDialog GroupSerialize;
+        private Button DisallowedPairButton;
     }
 }

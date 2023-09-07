@@ -37,7 +37,7 @@ namespace StudentSorter
             Student1Hash = Student1.GetHashCode();
             Student2Hash = Student2.GetHashCode();
 
-            Sorter.GlobalInstance().IllegalPairs.Add(this);
+            Sorter.GlobalInstance().AddIllegalPair(this);
         }
 
         /// <summary>
@@ -61,6 +61,8 @@ namespace StudentSorter
 
             Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
             Student2 = Sorter.GlobalInstance().GetStudentByHashCode(Student2Hash);
+
+            Sorter.GlobalInstance().AddIllegalPair(this);
         }
 
         /// <summary>
