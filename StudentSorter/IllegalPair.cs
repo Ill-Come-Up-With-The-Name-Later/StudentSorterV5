@@ -7,7 +7,7 @@ namespace StudentSorter
         public Student Student1 { get; set; }
         public Student Student2 { get; set; }
 
-        public int HashCode { get { return GetHashCode(); } set { } }
+        public int HashCode { get { return GetHashCode(); } set { HashCode = value; } }
 
         /// <summary>
         /// Creates an illegal pair, the two students in the pair
@@ -31,9 +31,15 @@ namespace StudentSorter
         /// <summary>
         /// Creates an IllegalPair. For use with JSON deserialization
         /// </summary>
-        /// <param name="student1"></param>
-        /// <param name="student2"></param>
-        /// <param name="hashCode"></param>
+        /// <param name="student1">
+        /// The first student in the pair
+        /// </param>
+        /// <param name="student2">
+        /// The second student in the pair
+        /// </param>
+        /// <param name="hashCode">
+        /// The HashCode of the pair
+        /// </param>
         [JsonConstructor]
         public IllegalPair(Student student1, Student student2, int hashCode)
         {
@@ -78,10 +84,10 @@ namespace StudentSorter
         }
 
         /// <summary>
-        /// Serializes the group into JSON
+        /// Serializes the IllegalPair into JSON
         /// </summary>
         /// <returns>
-        /// JSON string of the group's information
+        /// JSON string of the IllegalPair's information
         /// </returns>
         public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
 

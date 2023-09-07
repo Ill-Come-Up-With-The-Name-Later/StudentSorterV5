@@ -8,7 +8,7 @@ namespace StudentSorter
         public int MinDeterminant { get; set; }
         public int MaxDeterminant { get; set;}
         public int Capacity { get; set; }
-        public int HashCode { get { return GetHashCode(); } set { } }
+        public int HashCode { get { return GetHashCode(); } set { HashCode = value; } }
 
         [JsonIgnore]
         public int Size { get { return Students.Count; } }

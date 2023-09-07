@@ -7,7 +7,7 @@ namespace StudentSorter
         public string Name { get; set; }
         public int Determinant { get; set; }
         public bool DeterminiantSet { get; set; }
-        public int HashCode { get { return GetHashCode(); } set { } }
+        public int HashCode { get { return GetHashCode(); } set { HashCode = value; } }
 
         /// <summary>
         /// Constructs a student
