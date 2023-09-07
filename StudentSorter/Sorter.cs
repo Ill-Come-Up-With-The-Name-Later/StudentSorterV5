@@ -57,15 +57,76 @@
                 }
             }
             Console.WriteLine($"\nSorted {sortedStudents}/{AllStudents.Count} students!");
-            ReviseSort();
+
+            if (IllegalPairs.Count > 0)
+            {
+                ReviseSort();
+            }
         }
 
         /// <summary>
-        /// Revises the sort by fixing illegal pairs
+        /// Revises the sort by attempting to fix illegal pairs
         /// </summary>
         public void ReviseSort()
         {
+            foreach(IllegalPair pair in IllegalPairs)
+            {
+                foreach(Group group in AllGroups)
+                {
+                    if(group.Contains(pair.AsList()))
+                    {
+                        int groupIndex = new Random().Next(0, AllGroups.Count);
 
+                        while (AllGroups[groupIndex] == group)
+                        {
+                            groupIndex = new Random().Next(0, AllGroups.Count);
+                        }
+
+                        // Pick random student from the other group
+                        int studentIndex = new Random().Next(0, AllGroups[groupIndex].Size);
+
+                        // Student in the IllegalPair
+                        Student student1 = pair.Student1;
+
+                        // The other student
+                        Student other = AllGroups[groupIndex].Students[studentIndex];
+
+                        // Make sure that the randomly picked student the students in the pair
+                        // aren't themselves an illegal pair
+                        while(pair.Contains(other) && PairExists(other, pair.Student2))
+                        {
+                            other = AllGroups[groupIndex].Students[studentIndex];
+                        }
+
+                        // Swap the student from the pair with the other
+                        SwapStudents(student1 , other);
+                    }
+                }
+            }
+        }
+
+        /// <summary>
+        /// Checks if an illegal pair exists with 2 students
+        /// </summary>
+        /// <param name="s1">
+        /// The first student
+        /// </param>
+        /// <param name="s2">
+        /// The second student
+        /// </param>
+        /// <returns>
+        /// Whether the illegal pair exists
+        /// </returns>
+        public bool PairExists(Student s1, Student s2)
+        {
+            foreach(IllegalPair pair in IllegalPairs)
+            {
+                if(pair.Student1 == s1 && pair.Student2 == s2) 
+                {
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>

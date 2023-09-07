@@ -102,6 +102,33 @@ namespace StudentSorter
         }
 
         /// <summary>
+        /// Determines if a set of students are in the group
+        /// </summary>
+        /// <param name="students">
+        /// The list of students to look for
+        /// </param>
+        /// <returns>
+        /// If the students are in the group
+        /// </returns>
+        public bool Contains(List<Student> students)
+        {
+            if(students.Count > Capacity)
+            {
+                return false;
+            }
+
+            foreach(Student student in students)
+            {
+                if(!Contains(student))
+                {
+                    return false;
+                }
+            }
+
+            return true;
+        }
+
+        /// <summary>
         /// Adds a student to the group if the group has space
         /// and they aren't in a group
         /// </summary>

@@ -38,6 +38,21 @@ namespace StudentSorter
         }
 
         /// <summary>
+        /// Converts the pair to a list
+        /// </summary>
+        /// <returns>
+        /// A list containing the students in the pair
+        /// </returns>
+        public List<Student> AsList()
+        {
+            return new List<Student> 
+            {
+                Student1,
+                Student2
+            };
+        }
+
+        /// <summary>
         /// Creates an illegal pair. For use with JSON deserialization only
         /// </summary>
         /// <param name="student1Hash">
