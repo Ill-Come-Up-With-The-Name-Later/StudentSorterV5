@@ -4,8 +4,14 @@ namespace StudentSorter
 {
     public class IllegalPair
     {
+        [JsonIgnore]
         public Student Student1 { get; set; }
+
+        [JsonIgnore]
         public Student Student2 { get; set; }
+
+        public int Student1Hash { get; set; }
+        public int Student2Hash { get; set; }
 
         public int HashCode { get { return GetHashCode(); } set { HashCode = value; } }
 
@@ -25,29 +31,33 @@ namespace StudentSorter
             Student2 = student2;
             HashCode = new Random().Next();
 
+            Student1Hash = Student1.GetHashCode();
+            Student2Hash = Student2.GetHashCode();
+
             Sorter.GlobalInstance().IllegalPairs.Add(this);
         }
 
         /// <summary>
-        /// Creates an IllegalPair. For use with JSON deserialization
+        /// Creates an illegal pair. For use with JSON deserialization only
         /// </summary>
-        /// <param name="student1">
-        /// The first student in the pair
+        /// <param name="student1Hash">
+        /// The hash code of student 1
         /// </param>
-        /// <param name="student2">
-        /// The second student in the pair
+        /// <param name="student2Hash">
+        /// The hash code of student 2
         /// </param>
         /// <param name="hashCode">
-        /// The HashCode of the pair
+        /// The pair's hash code
         /// </param>
         [JsonConstructor]
-        public IllegalPair(Student student1, Student student2, int hashCode)
+        public IllegalPair(int student1Hash, int student2Hash, int hashCode)
         {
-            Student1 = student1;
-            Student2 = student2;
+            Student1Hash = student1Hash; 
+            Student2Hash = student2Hash; 
             HashCode = hashCode;
 
-            Sorter.GlobalInstance().IllegalPairs.Add(this);
+            Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
+            Student2 = Sorter.GlobalInstance().GetStudentByHashCode(student2Hash);
         }
 
         /// <summary>

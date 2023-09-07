@@ -166,5 +166,27 @@
         {
             IllegalPairs.Add(pair);
         }
+
+        /// <summary>
+        /// Gets a student by the HashCode
+        /// </summary>
+        /// <param name="code">
+        /// The hash code to search for
+        /// </param>
+        /// <returns>
+        /// The student or null if no one has the hash code
+        /// </returns>
+        public Student? GetStudentByHashCode(int code)
+        {
+            foreach(Student student in AllStudents)
+            {
+                if(student.HashCode == code)
+                {
+                    return student;
+                }
+            }
+
+            return null;
+        }
     }
 }
