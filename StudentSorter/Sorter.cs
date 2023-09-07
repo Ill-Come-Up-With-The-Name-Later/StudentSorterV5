@@ -99,7 +99,7 @@
                         }
 
                         // Swap the student from the pair with the other
-                        SwapStudents(student1 , other);
+                        SwapStudents(student1, other);
                     }
                 }
             }

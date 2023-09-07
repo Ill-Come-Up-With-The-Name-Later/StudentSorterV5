@@ -3,7 +3,7 @@
     public partial class StudentInfoViewer : Form
     {
         private Student Student;
-        private int StudentIndex;
+        private readonly int StudentIndex;
 
         public StudentInfoViewer(int index)
         {
@@ -22,6 +22,8 @@
 
             DeterminantInput.Enabled = DeterminantSetCheck.Checked;
             DeterminantInput.ReadOnly = !DeterminantSetCheck.Checked;
+
+            IDVal.Text = Student.GetHashCode().ToString();
 
             if (DeterminantSetCheck.Checked)
             {
@@ -53,6 +55,14 @@
         {
             DeterminantInput.Enabled = DeterminantSetCheck.Checked;
             DeterminantInput.ReadOnly = !DeterminantSetCheck.Checked;
+        }
+
+        /// <summary>
+        /// Copies the student's ID to the clipboard
+        /// </summary>
+        private void CopyIDButton_Click(object sender, EventArgs e)
+        {
+            Clipboard.SetText(IDVal.Text);
         }
     }
 }

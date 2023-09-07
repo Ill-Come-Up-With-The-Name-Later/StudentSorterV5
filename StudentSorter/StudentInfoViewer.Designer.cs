@@ -33,6 +33,9 @@
             DeterminantInput = new NumericUpDown();
             DeterminantLabel = new Label();
             label1 = new Label();
+            IDLabel = new Label();
+            IDVal = new Label();
+            CopyIDButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
             SuspendLayout();
             // 
@@ -81,11 +84,42 @@
             label1.TabIndex = 4;
             label1.Text = "Student determinant will update on closing.";
             // 
+            // IDLabel
+            // 
+            IDLabel.AutoSize = true;
+            IDLabel.Location = new Point(261, 77);
+            IDLabel.Name = "IDLabel";
+            IDLabel.Size = new Size(35, 28);
+            IDLabel.TabIndex = 5;
+            IDLabel.Text = "ID:";
+            // 
+            // IDVal
+            // 
+            IDVal.AutoSize = true;
+            IDVal.Location = new Point(302, 77);
+            IDVal.Name = "IDVal";
+            IDVal.Size = new Size(58, 28);
+            IDVal.TabIndex = 6;
+            IDVal.Text = "value";
+            // 
+            // CopyIDButton
+            // 
+            CopyIDButton.Location = new Point(261, 128);
+            CopyIDButton.Name = "CopyIDButton";
+            CopyIDButton.Size = new Size(122, 33);
+            CopyIDButton.TabIndex = 7;
+            CopyIDButton.Text = "Copy ID";
+            CopyIDButton.UseVisualStyleBackColor = true;
+            CopyIDButton.Click += CopyIDButton_Click;
+            // 
             // StudentInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(476, 370);
+            Controls.Add(CopyIDButton);
+            Controls.Add(IDVal);
+            Controls.Add(IDLabel);
             Controls.Add(label1);
             Controls.Add(DeterminantLabel);
             Controls.Add(DeterminantInput);
@@ -109,5 +143,8 @@
         private NumericUpDown DeterminantInput;
         private Label DeterminantLabel;
         private Label label1;
+        private Label IDLabel;
+        private Label IDVal;
+        private Button CopyIDButton;
     }
 }

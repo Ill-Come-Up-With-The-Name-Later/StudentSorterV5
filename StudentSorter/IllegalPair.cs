@@ -10,7 +10,10 @@ namespace StudentSorter
         [JsonIgnore]
         public Student Student2 { get; set; }
 
+        [JsonRequired]
         public int Student1Hash { get; set; }
+
+        [JsonRequired]
         public int Student2Hash { get; set; }
 
         public int HashCode { get { return GetHashCode(); } set { HashCode = value; } }
@@ -38,21 +41,6 @@ namespace StudentSorter
         }
 
         /// <summary>
-        /// Converts the pair to a list
-        /// </summary>
-        /// <returns>
-        /// A list containing the students in the pair
-        /// </returns>
-        public List<Student> AsList()
-        {
-            return new List<Student> 
-            {
-                Student1,
-                Student2
-            };
-        }
-
-        /// <summary>
         /// Creates an illegal pair. For use with JSON deserialization only
         /// </summary>
         /// <param name="student1Hash">
@@ -72,7 +60,22 @@ namespace StudentSorter
             HashCode = hashCode;
 
             Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
-            Student2 = Sorter.GlobalInstance().GetStudentByHashCode(student2Hash);
+            Student2 = Sorter.GlobalInstance().GetStudentByHashCode(Student2Hash);
+        }
+
+        /// <summary>
+        /// Converts the pair to a list
+        /// </summary>
+        /// <returns>
+        /// A list containing the students in the pair
+        /// </returns>
+        public List<Student> AsList()
+        {
+            return new List<Student>
+            {
+                Student1,
+                Student2
+            };
         }
 
         /// <summary>
