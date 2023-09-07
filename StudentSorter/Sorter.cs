@@ -5,6 +5,8 @@
         public List<Student> AllStudents = new();
         public List<Group> AllGroups = new();
 
+        public List<IllegalPair> IllegalPairs = new();
+
         private readonly static Sorter Instance = new();
 
         public static Sorter GlobalInstance() => Instance;
@@ -55,6 +57,69 @@
                 }
             }
             Console.WriteLine($"\nSorted {sortedStudents}/{AllStudents.Count} students!");
+            ReviseSort();
+        }
+
+        /// <summary>
+        /// Revises the sort by fixing illegal pairs
+        /// </summary>
+        public void ReviseSort()
+        {
+
+        }
+
+        /// <summary>
+        /// Swaps the groups of two students
+        /// </summary>
+        /// <param name="student1">
+        /// The first student
+        /// </param>
+        /// <param name="student2">
+        /// The second student
+        /// </param>
+        public void SwapStudents(Student student1, Student student2)
+        {
+            Group? firstGroup = FindStudent(student1);
+            Group? secondGroup = FindStudent(student2);
+
+            if(firstGroup is null || secondGroup is null) 
+            {
+                return;
+                throw new NullReferenceException("At least one of the students is not in a group");
+            }
+
+            if (firstGroup == secondGroup)
+            {
+                return;
+                throw new AbandonedMutexException("Students were in the same group");
+            }
+
+            secondGroup.RemoveStudent(student2);
+            secondGroup.AddStudent(student1);
+
+            firstGroup.RemoveStudent(student1);
+            firstGroup.AddStudent(student2);
+        }
+
+        /// <summary>
+        /// Finds the group of a student if they're in one
+        /// </summary>
+        /// <param name="student">
+        /// The student to find
+        /// </param>
+        /// <returns>
+        /// The group the student is in or null
+        /// </returns>
+        public Group? FindStudent(Student student)
+        {
+            foreach(Group group in AllGroups)
+            {
+                if(group.Contains(student))
+                {
+                    return group;
+                }
+            }
+            return null;
         }
 
         /// <summary>
@@ -89,6 +154,17 @@
         public int MaxDeterminant(int DeterRange)
         {
             return DeterRange * AllGroups.Count;
+        }
+
+        /// <summary>
+        /// Adds an illegal pair to the list of illegal pairs
+        /// </summary>
+        /// <param name="pair">
+        /// The pair to add
+        /// </param>
+        public void AddIllegalPair(IllegalPair pair)
+        {
+            IllegalPairs.Add(pair);
         }
     }
 }
