@@ -13,6 +13,9 @@
 
         public int DeterminantRange { get; set; }
 
+        /// <summary>
+        /// Creates the sorter
+        /// </summary>
         public Sorter()
         {
             DeterminantRange = int.MaxValue;
@@ -77,6 +80,7 @@
                     {
                         int groupIndex = new Random().Next(0, AllGroups.Count);
 
+                        // Ensure the picked group isn't the group currently being looked at
                         while (AllGroups[groupIndex] == group)
                         {
                             groupIndex = new Random().Next(0, AllGroups.Count);
@@ -203,8 +207,8 @@
         }
 
         /// <summary>
-        /// Calculates the maximum determinant a student can have
-        /// The maximum is the Determinant Range times number of groups
+        /// Calculates the maximum determinant a student can have.
+        /// The maximum is the Determinant Range times number of groups.
         /// </summary>
         /// <param name="DeterRange">
         /// The range of determinants accepted (i.e. 8, from 1 to 8 or 9 to 16)
@@ -229,7 +233,7 @@
         }
 
         /// <summary>
-        /// Gets a student by the HashCode
+        /// Gets a student by their HashCode
         /// </summary>
         /// <param name="code">
         /// The hash code to search for
