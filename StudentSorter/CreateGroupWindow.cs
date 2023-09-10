@@ -25,8 +25,12 @@ namespace StudentSorter
             if (GroupNameInput.Text.Equals("") || GroupNameInput.Text == null)
             {
                 ErrorProvider.SetError(GroupNameInput, "A name is required");
-                return;
                 throw new ArgumentException("No name entered!");
+            }
+
+            if (ErrorProvider.HasErrors)
+            {
+                return;
             }
 
             string name = GroupNameInput.Text;
@@ -38,15 +42,18 @@ namespace StudentSorter
             {
                 ErrorProvider.SetError(MinDeterminantInput, "The minimum determinant cannot be greater than the maximum");
                 ErrorProvider.SetError(MaxDeterminantInput, "The maximum determinant cannot be less than the minimum");
-                return;
                 throw new ArgumentException("Max determinant must be greater than min determinant");
             }
 
             if (capacity <= 0)
             {
                 ErrorProvider.SetError(CapacityInput, "The capacity cannot be less than or equal to zero");
-                return;
                 throw new ArgumentException("Capacity must be greater than 0");
+            }
+
+            if(ErrorProvider.HasErrors)
+            {
+                return;
             }
 
             Group group = new(name, minDeterminant, maxDeterminant, capacity);

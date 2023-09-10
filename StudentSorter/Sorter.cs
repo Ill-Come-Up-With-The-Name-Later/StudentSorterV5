@@ -184,6 +184,7 @@
                     return group;
                 }
             }
+            Console.WriteLine("Couldn't find student anywhere!");
             return null;
         }
 
@@ -251,6 +252,7 @@
                 }
             }
 
+            Console.WriteLine($"No student exists with the HashCode {code}!");
             return null;
         }
     }
