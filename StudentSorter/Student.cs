@@ -133,6 +133,24 @@ namespace StudentSorter
         }
 
         /// <summary>
+        /// Operator overload for '+' turns the two students into an
+        /// illegal pair
+        /// </summary>
+        /// <param name="s1">
+        /// The first student
+        /// </param>
+        /// <param name="s2">
+        /// The second student
+        /// </param>
+        /// <returns>
+        /// An illegal pair containing both students
+        /// </returns>
+        public static IllegalPair operator + (Student s1, Student s2)
+        {
+            return new IllegalPair(s1, s2);
+        }
+
+        /// <summary>
         /// Serializes the student into JSON
         /// </summary>
         /// <returns>
