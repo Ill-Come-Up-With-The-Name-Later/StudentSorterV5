@@ -246,7 +246,7 @@
         {
             foreach(Student student in AllStudents)
             {
-                if(student.HashCode == code)
+                if(student.GetHashCode() == code)
                 {
                     return student;
                 }

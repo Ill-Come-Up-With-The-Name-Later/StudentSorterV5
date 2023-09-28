@@ -62,8 +62,6 @@ namespace StudentSorter
             CapacityInput.Value = 0;
             MinDeterminantInput.Value = 0;
             MaxDeterminantInput.Value = 0;
-
-            Console.WriteLine("Created group!");
         }
 
         /// <summary>

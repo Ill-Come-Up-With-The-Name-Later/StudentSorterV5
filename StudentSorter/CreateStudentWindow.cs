@@ -50,8 +50,6 @@ namespace StudentSorter
             }
             StudentNameInput.Text = "";
             DeterminantInput.Value = 0;
-
-            Console.WriteLine("Created Student!");
         }
 
         /// <summary>
