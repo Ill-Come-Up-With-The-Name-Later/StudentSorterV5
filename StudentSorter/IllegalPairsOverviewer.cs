@@ -62,7 +62,8 @@ namespace StudentSorter
         /// </summary>
         private void AddPairButton_Click(object sender, EventArgs e)
         {
-
+            IllegalPairCreator creator = new();
+            creator.Show();
         }
 
         /// <summary>
