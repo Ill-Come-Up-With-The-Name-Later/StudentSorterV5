@@ -7,7 +7,7 @@ namespace StudentSorter
         public string Name { get; set; }
         public int Determinant { get; set; }
         public bool DeterminiantSet { get; set; }
-        public int HashCode { get { return HashCode; } set { } }
+        public int HashCode { get; set; }
 
         /// <summary>
         /// Constructs a student
@@ -110,7 +110,7 @@ namespace StudentSorter
         /// </returns>
         public bool CanJoinGroup(Group group)
         {
-            return DeterminantMatches(group) && !(group.IsFull() && InGroup() && group.Contains(this));
+            return DeterminantMatches(group) && !(group.IsFull() || InGroup() || group.Contains(this));
         }
 
         public override bool Equals(object? obj)

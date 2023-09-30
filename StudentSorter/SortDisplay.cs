@@ -22,6 +22,11 @@ namespace StudentSorter
         {
             foreach (Group group in Sorter.GlobalInstance().AllGroups)
                 Groups.Rows.Add(group.Name);
+
+            foreach (DataGridViewColumn column in GroupList.Columns)
+            {
+                column.Width = GroupList.Width;
+            }
         }
 
         /// <summary>

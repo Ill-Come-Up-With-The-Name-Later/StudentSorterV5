@@ -16,7 +16,7 @@ namespace StudentSorter
         [JsonRequired]
         public int Student2Hash { get; set; }
 
-        public int HashCode { get { return HashCode; } set { } }
+        public int HashCode { get; set; }
 
         /// <summary>
         /// Creates an illegal pair, the two students in the pair

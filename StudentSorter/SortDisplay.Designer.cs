@@ -43,7 +43,9 @@
             GroupList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GroupList.ColumnHeadersVisible = false;
             GroupList.Location = new Point(147, 78);
+            GroupList.MultiSelect = false;
             GroupList.Name = "GroupList";
+            GroupList.ReadOnly = true;
             GroupList.RowHeadersVisible = false;
             GroupList.RowHeadersWidth = 51;
             GroupList.RowTemplate.Height = 29;

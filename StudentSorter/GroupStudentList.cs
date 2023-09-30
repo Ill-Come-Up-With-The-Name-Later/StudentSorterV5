@@ -15,6 +15,8 @@ namespace StudentSorter
             StudentList.DataSource = StudentData;
 
             StudentData.Columns.Add("Student Name", typeof(string));
+
+            Title.Text = $"Students in {group.Name}";
         }
 
         /// <summary>
@@ -25,6 +27,11 @@ namespace StudentSorter
             foreach (Student student in DisplayGroup.Students)
             {
                 StudentData.Rows.Add(student.Name);
+            }
+
+            foreach (DataGridViewColumn column in StudentList.Columns)
+            {
+                column.Width = StudentList.Width;
             }
         }
     }

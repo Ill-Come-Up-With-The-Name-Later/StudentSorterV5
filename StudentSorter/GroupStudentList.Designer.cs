@@ -43,7 +43,9 @@
             StudentList.ColumnHeadersVisible = false;
             StudentList.Location = new Point(161, 67);
             StudentList.Margin = new Padding(4);
+            StudentList.MultiSelect = false;
             StudentList.Name = "StudentList";
+            StudentList.ReadOnly = true;
             StudentList.RowHeadersVisible = false;
             StudentList.RowHeadersWidth = 51;
             StudentList.RowTemplate.Height = 29;
