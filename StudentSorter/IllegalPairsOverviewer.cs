@@ -14,6 +14,11 @@ namespace StudentSorter
             IllegalPairList.DataSource = Pairs;
 
             Pairs.Columns.Add("Pairs", typeof(string));
+
+            foreach(DataGridViewColumn column in Pairs.Columns)
+            {
+                column.Width = IllegalPairList.Width;
+            }
         }
 
         /// <summary>

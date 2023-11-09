@@ -59,5 +59,35 @@ namespace StudentSorter
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
         }
+
+        /// <summary>
+        /// Opens dialog to export the sorting result
+        /// </summary>
+        private void ExportSort_Click(object sender, EventArgs e)
+        {
+            SaveSort.ShowDialog();
+        }
+
+        /// <summary>
+        /// Exports the sort result to a file
+        /// </summary>
+        private void SaveSort_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            List<string> lines = new();
+            string file = SaveSort.FileName;
+
+            foreach(Group group in Sorter.GlobalInstance().AllGroups) 
+            {
+                lines.Add(group.Name);
+                lines.Add("");
+
+                foreach(Student student in group.Students)
+                    lines.Add($" - {student.Name}");
+
+                lines.Add("");
+            }
+
+            File.WriteAllLines(file, lines);
+        }
     }
 }

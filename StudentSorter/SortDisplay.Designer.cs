@@ -31,6 +31,8 @@
             GroupList = new DataGridView();
             Title = new Label();
             ReshuffleButton = new Button();
+            ExportSort = new Button();
+            SaveSort = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)GroupList).BeginInit();
             SuspendLayout();
             // 
@@ -64,7 +66,7 @@
             // 
             // ReshuffleButton
             // 
-            ReshuffleButton.Location = new Point(207, 362);
+            ReshuffleButton.Location = new Point(56, 360);
             ReshuffleButton.Name = "ReshuffleButton";
             ReshuffleButton.Size = new Size(219, 50);
             ReshuffleButton.TabIndex = 2;
@@ -72,11 +74,29 @@
             ReshuffleButton.UseVisualStyleBackColor = true;
             ReshuffleButton.Click += ReshuffleButton_Click;
             // 
+            // ExportSort
+            // 
+            ExportSort.Location = new Point(305, 360);
+            ExportSort.Name = "ExportSort";
+            ExportSort.Size = new Size(237, 50);
+            ExportSort.TabIndex = 3;
+            ExportSort.Text = "Export Sort to txt";
+            ExportSort.UseVisualStyleBackColor = true;
+            ExportSort.Click += ExportSort_Click;
+            // 
+            // SaveSort
+            // 
+            SaveSort.DefaultExt = "txt";
+            SaveSort.FileName = "SortResult.txt";
+            SaveSort.Title = "Export Sort to txt";
+            SaveSort.FileOk += SaveSort_FileOk;
+            // 
             // SortDisplay
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(653, 424);
+            Controls.Add(ExportSort);
             Controls.Add(ReshuffleButton);
             Controls.Add(Title);
             Controls.Add(GroupList);
@@ -95,5 +115,7 @@
         private DataGridView GroupList;
         private Label Title;
         private Button ReshuffleButton;
+        private Button ExportSort;
+        private SaveFileDialog SaveSort;
     }
 }

@@ -16,6 +16,7 @@ namespace StudentSorter
         [JsonRequired]
         public int Student2Hash { get; set; }
 
+        [JsonRequired]
         public int HashCode { get; set; }
 
         /// <summary>

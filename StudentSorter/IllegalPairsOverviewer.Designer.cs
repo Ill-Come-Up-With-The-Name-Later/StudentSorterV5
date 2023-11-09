@@ -58,12 +58,12 @@
             IllegalPairList.AllowUserToResizeRows = false;
             IllegalPairList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             IllegalPairList.ColumnHeadersVisible = false;
-            IllegalPairList.Location = new Point(201, 64);
+            IllegalPairList.Location = new Point(109, 59);
             IllegalPairList.Name = "IllegalPairList";
             IllegalPairList.RowHeadersVisible = false;
             IllegalPairList.RowHeadersWidth = 51;
             IllegalPairList.RowTemplate.Height = 29;
-            IllegalPairList.Size = new Size(312, 247);
+            IllegalPairList.Size = new Size(502, 247);
             IllegalPairList.TabIndex = 0;
             // 
             // Title
