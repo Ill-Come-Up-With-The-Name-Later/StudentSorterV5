@@ -53,7 +53,7 @@ namespace StudentSorter
                 throw new ArgumentException("Capacity must be greater than 0");
             }
 
-            if(ErrorProvider.HasErrors)
+            if (ErrorProvider.HasErrors)
             {
                 return;
             }
@@ -72,6 +72,31 @@ namespace StudentSorter
         private void JsonImportButton_Click(object sender, EventArgs e)
         {
             JsonUploader.ShowDialog();
+        }
+
+        /// <summary>
+        /// Creates groups based on number of students added
+        /// </summary>
+        private void CreateOnStudentsButton_Click(object sender, EventArgs e)
+        {
+            int studentsPerGroup = (int)StudentsPerGroup.Value;
+            int numGroups = Sorter.GlobalInstance().AllStudents.Count / studentsPerGroup;
+
+            if (Sorter.GlobalInstance().AllStudents.Count % studentsPerGroup != 0)
+            {
+                numGroups++;
+            }
+
+            int weightDiff = (studentsPerGroup * 2) - 1;
+            int currentMin = 1;
+
+            for(int i = 0; i < numGroups; i++)
+            {
+                Group group = new($"Group {i + 1}", currentMin, currentMin + weightDiff, studentsPerGroup);
+                currentMin += weightDiff + 1;
+            }
+
+            Close();
         }
     }
 }

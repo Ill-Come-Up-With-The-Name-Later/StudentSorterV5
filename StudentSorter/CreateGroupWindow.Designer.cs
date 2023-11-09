@@ -42,10 +42,15 @@
             CreateGroupButton = new Button();
             JsonImportButton = new Button();
             ErrorProvider = new ErrorProvider(components);
+            CreateOnStudentsButton = new Button();
+            StudentsPerGroup = new NumericUpDown();
+            AutoCreateLabel = new Label();
+            StudentsPerGroupLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)CapacityInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)StudentsPerGroup).BeginInit();
             SuspendLayout();
             // 
             // JsonUploader
@@ -132,7 +137,7 @@
             // 
             // CreateGroupButton
             // 
-            CreateGroupButton.Location = new Point(229, 273);
+            CreateGroupButton.Location = new Point(89, 274);
             CreateGroupButton.Name = "CreateGroupButton";
             CreateGroupButton.Size = new Size(197, 49);
             CreateGroupButton.TabIndex = 9;
@@ -142,7 +147,7 @@
             // 
             // JsonImportButton
             // 
-            JsonImportButton.Location = new Point(229, 349);
+            JsonImportButton.Location = new Point(89, 349);
             JsonImportButton.Name = "JsonImportButton";
             JsonImportButton.Size = new Size(197, 78);
             JsonImportButton.TabIndex = 10;
@@ -154,11 +159,50 @@
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // CreateOnStudentsButton
+            // 
+            CreateOnStudentsButton.Location = new Point(352, 379);
+            CreateOnStudentsButton.Name = "CreateOnStudentsButton";
+            CreateOnStudentsButton.Size = new Size(271, 48);
+            CreateOnStudentsButton.TabIndex = 11;
+            CreateOnStudentsButton.Text = "Create Based on Students";
+            CreateOnStudentsButton.UseVisualStyleBackColor = true;
+            CreateOnStudentsButton.Click += CreateOnStudentsButton_Click;
+            // 
+            // StudentsPerGroup
+            // 
+            StudentsPerGroup.Location = new Point(490, 339);
+            StudentsPerGroup.Name = "StudentsPerGroup";
+            StudentsPerGroup.Size = new Size(150, 34);
+            StudentsPerGroup.TabIndex = 12;
+            // 
+            // AutoCreateLabel
+            // 
+            AutoCreateLabel.AutoSize = true;
+            AutoCreateLabel.Location = new Point(377, 295);
+            AutoCreateLabel.Name = "AutoCreateLabel";
+            AutoCreateLabel.Size = new Size(263, 28);
+            AutoCreateLabel.TabIndex = 13;
+            AutoCreateLabel.Text = "Create Groups Automatically";
+            // 
+            // StudentsPerGroupLabel
+            // 
+            StudentsPerGroupLabel.AutoSize = true;
+            StudentsPerGroupLabel.Location = new Point(351, 341);
+            StudentsPerGroupLabel.Name = "StudentsPerGroupLabel";
+            StudentsPerGroupLabel.Size = new Size(124, 28);
+            StudentsPerGroupLabel.TabIndex = 14;
+            StudentsPerGroupLabel.Text = "Students Per:";
+            // 
             // CreateGroupWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(679, 439);
+            Controls.Add(StudentsPerGroupLabel);
+            Controls.Add(AutoCreateLabel);
+            Controls.Add(StudentsPerGroup);
+            Controls.Add(CreateOnStudentsButton);
             Controls.Add(JsonImportButton);
             Controls.Add(CreateGroupButton);
             Controls.Add(MaxDeterminantInput);
@@ -178,6 +222,7 @@
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)StudentsPerGroup).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -197,5 +242,9 @@
         private Button CreateGroupButton;
         private Button JsonImportButton;
         private ErrorProvider ErrorProvider;
+        private Button CreateOnStudentsButton;
+        private Label StudentsPerGroupLabel;
+        private Label AutoCreateLabel;
+        private NumericUpDown StudentsPerGroup;
     }
 }
