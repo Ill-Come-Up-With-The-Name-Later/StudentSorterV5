@@ -41,7 +41,7 @@
             StudentList.AllowUserToResizeRows = false;
             StudentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             StudentList.ColumnHeadersVisible = false;
-            StudentList.Location = new Point(161, 67);
+            StudentList.Location = new Point(120, 65);
             StudentList.Margin = new Padding(4);
             StudentList.MultiSelect = false;
             StudentList.Name = "StudentList";
@@ -49,7 +49,7 @@
             StudentList.RowHeadersVisible = false;
             StudentList.RowHeadersWidth = 51;
             StudentList.RowTemplate.Height = 29;
-            StudentList.Size = new Size(313, 358);
+            StudentList.Size = new Size(424, 358);
             StudentList.TabIndex = 0;
             // 
             // Title
