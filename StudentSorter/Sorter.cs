@@ -31,6 +31,8 @@
         {
             int sortedStudents = 0;
 
+            AllStudents.Sort(new StudentComparer());
+
             foreach (Group AnalysisGroup in AllGroups)
             {
                 foreach (Student AnalysisStudent in AllStudents)

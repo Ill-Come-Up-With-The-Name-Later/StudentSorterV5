@@ -40,7 +40,6 @@
             StudentList.AllowUserToResizeColumns = false;
             StudentList.AllowUserToResizeRows = false;
             StudentList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            StudentList.ColumnHeadersVisible = false;
             StudentList.Location = new Point(120, 65);
             StudentList.Margin = new Padding(4);
             StudentList.MultiSelect = false;
