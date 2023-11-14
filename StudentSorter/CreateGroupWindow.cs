@@ -4,9 +4,12 @@ namespace StudentSorter
 {
     public partial class CreateGroupWindow : Form
     {
-        public CreateGroupWindow()
+        private Overviewer FormParent;
+
+        public CreateGroupWindow(Overviewer formParent)
         {
             InitializeComponent();
+            FormParent = formParent;
         }
 
         /// <summary>
@@ -15,6 +18,8 @@ namespace StudentSorter
         private void JsonUploader_FileOk(object sender, CancelEventArgs e)
         {
             Importer.Import<Group>(JsonUploader.FileName);
+
+            FormParent.RefreshLists();
 
             Close();
         }

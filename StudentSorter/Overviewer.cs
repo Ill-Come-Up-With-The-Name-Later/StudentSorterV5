@@ -29,7 +29,7 @@ namespace StudentSorter
         /// </summary>
         private void AddStudentButton_Click(object sender, EventArgs e)
         {
-            CreateStudentWindow studentWindow = new();
+            CreateStudentWindow studentWindow = new(this);
             studentWindow.Show();
         }
 
@@ -38,7 +38,7 @@ namespace StudentSorter
         /// </summary>
         private void AddGroupButton_Click(object sender, EventArgs e)
         {
-            CreateGroupWindow window = new();
+            CreateGroupWindow window = new(this);
             window.Show();
         }
 
@@ -93,27 +93,7 @@ namespace StudentSorter
         /// </summary>
         private void RefreshButton_Click(object sender, EventArgs e)
         {
-            try
-            {
-                students.Rows.Clear();
-            }
-            catch (Exception) { }
-
-            foreach (Student student in Sorter.GlobalInstance().AllStudents)
-            {
-                students.Rows.Add(student.Name);
-            }
-
-            try
-            {
-                groups.Rows.Clear();
-            }
-            catch (Exception) { }
-
-            foreach (Group group in Sorter.GlobalInstance().AllGroups)
-            {
-                groups.Rows.Add(group.Name);
-            }
+            RefreshLists();
         }
 
         /// <summary>
@@ -158,6 +138,38 @@ namespace StudentSorter
         {
             IllegalPairsOverviewer overviewer = new();
             overviewer.Show();
+        }
+
+        /// <summary>
+        /// Refreshes student and group lists
+        /// </summary>
+        public void RefreshLists()
+        {
+            try
+            {
+                students.Rows.Clear();
+            }
+            catch (Exception) { }
+
+            foreach (Student student in Sorter.GlobalInstance().AllStudents)
+            {
+                students.Rows.Add(student.Name);
+            }
+
+            StudentLabel.Text = $"Students: {students.Rows.Count}";
+
+            try
+            {
+                groups.Rows.Clear();
+            }
+            catch (Exception) { }
+
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
+            {
+                groups.Rows.Add(group.Name);
+            }
+
+            GroupLabel.Text = $"Groups: {groups.Rows.Count}";
         }
     }
 }
