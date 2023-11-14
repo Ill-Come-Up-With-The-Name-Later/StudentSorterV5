@@ -54,8 +54,11 @@ namespace StudentSorter
             {
                 Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
             }
+
             StudentNameInput.Text = "";
             DeterminantInput.Value = 0;
+
+            FormParent.RefreshLists();
         }
 
         /// <summary>

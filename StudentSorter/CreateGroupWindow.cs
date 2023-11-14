@@ -69,6 +69,8 @@ namespace StudentSorter
             CapacityInput.Value = 0;
             MinDeterminantInput.Value = 0;
             MaxDeterminantInput.Value = 0;
+
+            FormParent.RefreshLists();
         }
 
         /// <summary>
@@ -100,6 +102,8 @@ namespace StudentSorter
                 Group group = new($"Group {i + 1}", currentMin, currentMin + weightDiff, studentsPerGroup);
                 currentMin += weightDiff + 1;
             }
+
+            FormParent.RefreshLists();
 
             Close();
         }
