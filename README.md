@@ -25,5 +25,5 @@ iteration and add students based on what groups have space left.
 # Upcoming Features
 
 <ul>
-  <li> Finish illegal pair implementation (Make the user able to create illegal pairs within the app) </li>
+  <li> None </li>
 </ul>
