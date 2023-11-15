@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             StudentViewer = new DataGridView();
             GroupViewer = new DataGridView();
             StudentLabel = new Label();
@@ -41,8 +42,10 @@
             StudentSerialize = new SaveFileDialog();
             GroupSerialize = new SaveFileDialog();
             DisallowedPairButton = new Button();
+            ErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // StudentViewer
@@ -189,6 +192,10 @@
             DisallowedPairButton.UseVisualStyleBackColor = true;
             DisallowedPairButton.Click += DisallowedPairButton_Click;
             // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
             // Overviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -211,6 +218,7 @@
             Text = "Overviewer";
             ((System.ComponentModel.ISupportInitialize)StudentViewer).EndInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -230,5 +238,6 @@
         private SaveFileDialog StudentSerialize;
         private SaveFileDialog GroupSerialize;
         private Button DisallowedPairButton;
+        private ErrorProvider ErrorProvider;
     }
 }

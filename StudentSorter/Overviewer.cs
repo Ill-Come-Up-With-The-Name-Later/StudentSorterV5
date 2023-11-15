@@ -101,8 +101,16 @@ namespace StudentSorter
         /// </summary>
         private void SortButton_Click(object sender, EventArgs e)
         {
+            ErrorProvider.Clear();
+
+            if(Sorter.GlobalInstance().AllGroups.Count == 0 || Sorter.GlobalInstance().AllGroups.Count == 0)
+            {
+                ErrorProvider.SetError(SortButton, "At least 1 group and 1 student is required.");
+                return;
+            }
+
             Sorter.GlobalInstance().DeterminantRange =
-                Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
+                    Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
             Sorter.GlobalInstance().RandomizeDeterminants();
             Sorter.GlobalInstance().ShuffleGroups();
