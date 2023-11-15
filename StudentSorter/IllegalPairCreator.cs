@@ -32,7 +32,7 @@
         /// </summary>
         private void SelectStudent2_SelectedIndexChanged(object sender, EventArgs e)
         {
-            Student2 = Sorter.GlobalInstance().AllStudents[SelectStudent1.SelectedIndex];
+            Student2 = Sorter.GlobalInstance().AllStudents[SelectStudent2.SelectedIndex];
         }
 
         /// <summary>
