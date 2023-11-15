@@ -15,7 +15,7 @@ namespace StudentSorter
             StudentList.DataSource = StudentData;
 
             StudentData.Columns.Add("Student Name", typeof(string));
-            StudentData.Columns.Add("Weight", typeof(int));
+            StudentData.Columns.Add("Determinant", typeof(int));
 
             Title.Text = $"Students in {group.Name}";
         }
