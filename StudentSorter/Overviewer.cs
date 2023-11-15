@@ -11,6 +11,7 @@ namespace StudentSorter
         public Overviewer()
         {
             InitializeComponent();
+
             StudentViewer.DataSource = students;
             students.Columns.Add("Name", typeof(string));
 
@@ -125,6 +126,7 @@ namespace StudentSorter
         private void StudentViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = StudentViewer.CurrentCell.RowIndex;
+
             StudentInfoViewer viewer = new(index);
             viewer.Show();
         }

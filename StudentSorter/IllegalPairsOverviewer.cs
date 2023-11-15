@@ -6,7 +6,7 @@ namespace StudentSorter
     public partial class IllegalPairsOverviewer : Form
     {
         private readonly DataTable Pairs = new();
-
+        
         public IllegalPairsOverviewer()
         {
             InitializeComponent();
@@ -15,7 +15,7 @@ namespace StudentSorter
 
             Pairs.Columns.Add("Pairs", typeof(string));
 
-            foreach(DataGridViewColumn column in Pairs.Columns)
+            foreach (DataGridViewColumn column in Pairs.Columns)
             {
                 column.Width = IllegalPairList.Width;
             }
@@ -42,7 +42,8 @@ namespace StudentSorter
         private void OpenPairsFile_FileOk(object sender, CancelEventArgs e)
         {
             Importer.Import<IllegalPair>(OpenPairsFile.FileName);
-            Close();
+
+            RefreshPairList();
         }
 
         /// <summary>
@@ -67,7 +68,7 @@ namespace StudentSorter
         /// </summary>
         private void AddPairButton_Click(object sender, EventArgs e)
         {
-            IllegalPairCreator creator = new();
+            IllegalPairCreator creator = new(this);
             creator.Show();
         }
 
@@ -82,8 +83,11 @@ namespace StudentSorter
         /// <summary>
         /// Refreshes the pair list
         /// </summary>
-        private void RefreshPairList()
+        public void RefreshPairList()
         {
+            if(Pairs.Rows.Count > 0)
+                Pairs.Rows.Clear();
+
             foreach (IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
             {
                 Pairs.Rows.Add($"{pair.Student1.Name} and {pair.Student2.Name}");
