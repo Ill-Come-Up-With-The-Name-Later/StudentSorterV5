@@ -33,16 +33,16 @@ namespace StudentSorter
             Importer.Import<Sort>(OpenConfig.FileName);
 
             Sort sort = Sorter.GlobalInstance().SortConfigs[0];
-            
-            if(sort.StudentFile.Length > 0)
+
+            if (sort.StudentFile.Length > 0)
             {
                 Importer.Import<Student>(sort.StudentFile);
             }
-            if(sort.GroupFile.Length > 0)
+            if (sort.GroupFile.Length > 0)
             {
                 Importer.Import<Group>(sort.GroupFile);
             }
-            if(sort.IllegalPairsFile.Length > 0)
+            if (sort.IllegalPairsFile.Length > 0)
             {
                 Importer.Import<IllegalPair>(sort.IllegalPairsFile);
             }

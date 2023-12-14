@@ -69,7 +69,6 @@
             // OpenConfig
             // 
             OpenConfig.DefaultExt = "json";
-            OpenConfig.FileName = "openFileDialog1";
             OpenConfig.Filter = "JSON files|*.json";
             OpenConfig.Title = "Open JSON of configuration";
             OpenConfig.FileOk += OpenConfig_FileOk;
