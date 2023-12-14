@@ -6,13 +6,15 @@ namespace StudentSorter
     public partial class SortDisplay : Form
     {
         private readonly DataTable Groups = new();
+        private readonly Overviewer FormParent;
 
-        public SortDisplay()
+        public SortDisplay(Overviewer formParent)
         {
             InitializeComponent();
 
             GroupList.DataSource = Groups;
             Groups.Columns.Add("Name", typeof(string));
+            FormParent = formParent;
         }
 
         /// <summary>
@@ -76,18 +78,35 @@ namespace StudentSorter
             List<string> lines = new();
             string file = SaveSort.FileName;
 
-            foreach(Group group in Sorter.GlobalInstance().AllGroups) 
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
             {
                 lines.Add(group.Name);
                 lines.Add("");
 
-                foreach(Student student in group.Students)
+                foreach (Student student in group.Students)
                     lines.Add($" - {student.Name}");
 
                 lines.Add("");
             }
 
             File.WriteAllLines(file, lines);
+        }
+
+        /// <summary>
+        /// Resets the sorter, wipes all students, 
+        /// groups, and illegal pairs
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void ResetSorterButton_Click(object sender, EventArgs e)
+        {
+            Close();
+
+            Sorter.GlobalInstance().AllStudents.Clear();
+            Sorter.GlobalInstance().AllGroups.Clear();
+            Sorter.GlobalInstance().IllegalPairs.Clear();
+
+            FormParent.RefreshLists();
         }
     }
 }

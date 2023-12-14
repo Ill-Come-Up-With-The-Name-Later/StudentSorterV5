@@ -33,6 +33,7 @@
             ReshuffleButton = new Button();
             ExportSort = new Button();
             SaveSort = new SaveFileDialog();
+            ResetSorterButton = new Button();
             ((System.ComponentModel.ISupportInitialize)GroupList).BeginInit();
             SuspendLayout();
             // 
@@ -60,7 +61,7 @@
             Title.AutoSize = true;
             Title.Location = new Point(250, 24);
             Title.Name = "Title";
-            Title.Size = new Size(138, 28);
+            Title.Size = new Size(111, 21);
             Title.TabIndex = 1;
             Title.Text = "Sorting Result:";
             // 
@@ -76,7 +77,7 @@
             // 
             // ExportSort
             // 
-            ExportSort.Location = new Point(305, 360);
+            ExportSort.Location = new Point(329, 360);
             ExportSort.Name = "ExportSort";
             ExportSort.Size = new Size(237, 50);
             ExportSort.TabIndex = 3;
@@ -91,11 +92,22 @@
             SaveSort.Title = "Export Sort to txt";
             SaveSort.FileOk += SaveSort_FileOk;
             // 
+            // ResetSorterButton
+            // 
+            ResetSorterButton.Location = new Point(237, 430);
+            ResetSorterButton.Name = "ResetSorterButton";
+            ResetSorterButton.Size = new Size(147, 43);
+            ResetSorterButton.TabIndex = 4;
+            ResetSorterButton.Text = "Reset Sorter";
+            ResetSorterButton.UseVisualStyleBackColor = true;
+            ResetSorterButton.Click += ResetSorterButton_Click;
+            // 
             // SortDisplay
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(653, 424);
+            ClientSize = new Size(653, 501);
+            Controls.Add(ResetSorterButton);
             Controls.Add(ExportSort);
             Controls.Add(ReshuffleButton);
             Controls.Add(Title);
@@ -117,5 +129,6 @@
         private Button ReshuffleButton;
         private Button ExportSort;
         private SaveFileDialog SaveSort;
+        private Button ResetSorterButton;
     }
 }

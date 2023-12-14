@@ -97,7 +97,7 @@ namespace StudentSorter
             int weightDiff = (studentsPerGroup * 2) - 1;
             int currentMin = 1;
 
-            for(int i = 0; i < numGroups; i++)
+            for (int i = 0; i < numGroups; i++)
             {
                 Group group = new($"Group {i + 1}", currentMin, currentMin + weightDiff, studentsPerGroup);
                 currentMin += weightDiff + 1;
