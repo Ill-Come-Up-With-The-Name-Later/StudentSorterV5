@@ -103,6 +103,7 @@ namespace StudentSorter
             Sorter.GlobalInstance().AllStudents.Clear();
             Sorter.GlobalInstance().AllGroups.Clear();
             Sorter.GlobalInstance().IllegalPairs.Clear();
+            Sorter.GlobalInstance().SortConfigs.Clear();
 
             FormParent.RefreshLists();
         }
