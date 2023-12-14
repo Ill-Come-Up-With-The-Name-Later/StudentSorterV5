@@ -8,6 +8,10 @@ namespace StudentSorter
         private readonly DataTable students = new();
         private readonly DataTable groups = new();
 
+        public string StudentFile = "";
+        public string GroupFile = "";
+        public string IllegalPairFile = "";
+
         public Overviewer()
         {
             InitializeComponent();
@@ -71,6 +75,7 @@ namespace StudentSorter
                 groups.Add(group.SerializeJSON());
 
             Exporter.Export(file, groups);
+            GroupFile = file;
         }
 
         /// <summary>
@@ -87,6 +92,8 @@ namespace StudentSorter
             Console.WriteLine(students.Count);
 
             Exporter.Export(file, students);
+
+            StudentFile = file;
         }
 
         /// <summary>
@@ -104,7 +111,7 @@ namespace StudentSorter
         {
             ErrorProvider.Clear();
 
-            if(Sorter.GlobalInstance().AllGroups.Count == 0 || Sorter.GlobalInstance().AllGroups.Count == 0)
+            if (Sorter.GlobalInstance().AllGroups.Count == 0 || Sorter.GlobalInstance().AllGroups.Count == 0)
             {
                 ErrorProvider.SetError(SortButton, "At least 1 group and 1 student is required.");
                 return;
@@ -146,7 +153,7 @@ namespace StudentSorter
         /// </summary>
         private void DisallowedPairButton_Click(object sender, EventArgs e)
         {
-            IllegalPairsOverviewer overviewer = new();
+            IllegalPairsOverviewer overviewer = new(this);
             overviewer.Show();
         }
 
@@ -180,6 +187,29 @@ namespace StudentSorter
             }
 
             GroupLabel.Text = $"Groups: {groups.Rows.Count}";
+        }
+
+        /// <summary>
+        /// Opens config saver dialog
+        /// </summary>
+        private void SaveConfigButton_Click(object sender, EventArgs e)
+        {
+            ConfigSaver.ShowDialog();
+        }
+
+        /// <summary>
+        /// Saves the current configuration for the sorter
+        /// </summary>
+        private void ConfigSaver_FileOk(object sender, CancelEventArgs e)
+        {
+            Sort sort = new(StudentFile, GroupFile, IllegalPairFile);
+
+            List<string> lines = new()
+            {
+                sort.SerializeJSON()
+            };
+
+            Exporter.Export(ConfigSaver.FileName, lines);
         }
     }
 }

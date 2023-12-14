@@ -6,8 +6,9 @@ namespace StudentSorter
     public partial class IllegalPairsOverviewer : Form
     {
         private readonly DataTable Pairs = new();
+        private readonly Overviewer FormParent;
         
-        public IllegalPairsOverviewer()
+        public IllegalPairsOverviewer(Overviewer formParent)
         {
             InitializeComponent();
 
@@ -19,6 +20,8 @@ namespace StudentSorter
             {
                 column.Width = IllegalPairList.Width;
             }
+
+            FormParent = formParent;
         }
 
         /// <summary>
@@ -34,6 +37,7 @@ namespace StudentSorter
                 pairs.Add(pair.SerializeJSON());
 
             Exporter.Export(file, pairs);
+            FormParent.IllegalPairFile = file;
         }
 
         /// <summary>
@@ -42,6 +46,7 @@ namespace StudentSorter
         private void OpenPairsFile_FileOk(object sender, CancelEventArgs e)
         {
             Importer.Import<IllegalPair>(OpenPairsFile.FileName);
+            FormParent.IllegalPairFile = OpenPairsFile.FileName;
 
             RefreshPairList();
         }

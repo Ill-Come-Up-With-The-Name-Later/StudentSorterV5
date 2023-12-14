@@ -18,6 +18,7 @@ namespace StudentSorter
         private void JsonUploader_FileOk(object sender, CancelEventArgs e)
         {
             Importer.Import<Group>(JsonUploader.FileName);
+            FormParent.GroupFile = JsonUploader.FileName;
 
             FormParent.RefreshLists();
 

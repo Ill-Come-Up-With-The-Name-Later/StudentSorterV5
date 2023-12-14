@@ -43,6 +43,8 @@
             GroupSerialize = new SaveFileDialog();
             DisallowedPairButton = new Button();
             ErrorProvider = new ErrorProvider(components);
+            SaveConfigButton = new Button();
+            ConfigSaver = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
@@ -97,7 +99,7 @@
             StudentLabel.Location = new Point(167, 53);
             StudentLabel.Margin = new Padding(4, 0, 4, 0);
             StudentLabel.Name = "StudentLabel";
-            StudentLabel.Size = new Size(88, 28);
+            StudentLabel.Size = new Size(70, 21);
             StudentLabel.TabIndex = 2;
             StudentLabel.Text = "Students";
             // 
@@ -106,7 +108,7 @@
             GroupLabel.AutoSize = true;
             GroupLabel.Location = new Point(870, 53);
             GroupLabel.Name = "GroupLabel";
-            GroupLabel.Size = new Size(76, 28);
+            GroupLabel.Size = new Size(61, 21);
             GroupLabel.TabIndex = 3;
             GroupLabel.Text = "Groups";
             // 
@@ -196,11 +198,29 @@
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // SaveConfigButton
+            // 
+            SaveConfigButton.Location = new Point(475, 475);
+            SaveConfigButton.Name = "SaveConfigButton";
+            SaveConfigButton.Size = new Size(227, 45);
+            SaveConfigButton.TabIndex = 11;
+            SaveConfigButton.Text = "Save Sorter Configuration";
+            SaveConfigButton.UseVisualStyleBackColor = true;
+            SaveConfigButton.Click += SaveConfigButton_Click;
+            // 
+            // ConfigSaver
+            // 
+            ConfigSaver.DefaultExt = "json";
+            ConfigSaver.FileName = "SorterConfiguration";
+            ConfigSaver.Title = "Save Sorter Configuration";
+            ConfigSaver.FileOk += ConfigSaver_FileOk;
+            // 
             // Overviewer
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1161, 488);
+            ClientSize = new Size(1161, 532);
+            Controls.Add(SaveConfigButton);
             Controls.Add(DisallowedPairButton);
             Controls.Add(SerializeGroupsButton);
             Controls.Add(SerializeStudentsButton);
@@ -239,5 +259,7 @@
         private SaveFileDialog GroupSerialize;
         private Button DisallowedPairButton;
         private ErrorProvider ErrorProvider;
+        private Button SaveConfigButton;
+        private SaveFileDialog ConfigSaver;
     }
 }

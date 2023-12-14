@@ -96,8 +96,6 @@ namespace StudentSorter
         /// Resets the sorter, wipes all students, 
         /// groups, and illegal pairs
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void ResetSorterButton_Click(object sender, EventArgs e)
         {
             Close();
