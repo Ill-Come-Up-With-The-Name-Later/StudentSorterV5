@@ -9,6 +9,8 @@
 
         private readonly static Sorter Instance = new();
 
+        public Sort SortConfig = new("", "", "");
+
         public static Sorter GlobalInstance() => Instance;
 
         public int DeterminantRange { get; set; }

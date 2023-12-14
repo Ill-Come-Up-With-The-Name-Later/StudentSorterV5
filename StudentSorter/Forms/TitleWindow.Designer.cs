@@ -30,16 +30,18 @@
         {
             TitleLabel = new Label();
             OpenButton = new Button();
+            ConfigSortButton = new Button();
+            OpenConfig = new OpenFileDialog();
             SuspendLayout();
             // 
             // TitleLabel
             // 
             TitleLabel.AutoSize = true;
             TitleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TitleLabel.Location = new Point(145, 31);
+            TitleLabel.Location = new Point(168, 30);
             TitleLabel.Margin = new Padding(4, 0, 4, 0);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(251, 28);
+            TitleLabel.Size = new Size(199, 21);
             TitleLabel.TabIndex = 0;
             TitleLabel.Text = "Student Group Randomizer";
             // 
@@ -54,11 +56,30 @@
             OpenButton.UseVisualStyleBackColor = true;
             OpenButton.Click += OpenButton_Click;
             // 
+            // ConfigSortButton
+            // 
+            ConfigSortButton.Location = new Point(130, 178);
+            ConfigSortButton.Name = "ConfigSortButton";
+            ConfigSortButton.Size = new Size(272, 40);
+            ConfigSortButton.TabIndex = 2;
+            ConfigSortButton.Text = "Sort Using a Configuration";
+            ConfigSortButton.UseVisualStyleBackColor = true;
+            ConfigSortButton.Click += ConfigSortButton_Click;
+            // 
+            // OpenConfig
+            // 
+            OpenConfig.DefaultExt = "json";
+            OpenConfig.FileName = "openFileDialog1";
+            OpenConfig.Filter = "JSON files|*.json";
+            OpenConfig.Title = "Open JSON of configuration";
+            OpenConfig.FileOk += OpenConfig_FileOk;
+            // 
             // TitleWindow
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 219);
+            ClientSize = new Size(549, 266);
+            Controls.Add(ConfigSortButton);
             Controls.Add(OpenButton);
             Controls.Add(TitleLabel);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -73,5 +94,7 @@
 
         private Label TitleLabel;
         private Button OpenButton;
+        private Button ConfigSortButton;
+        private OpenFileDialog OpenConfig;
     }
 }
