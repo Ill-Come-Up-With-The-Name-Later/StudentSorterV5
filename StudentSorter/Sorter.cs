@@ -9,7 +9,7 @@
 
         private readonly static Sorter Instance = new();
 
-        public Sort SortConfig = new("", "", "");
+        public List<Sort> SortConfigs = new();
 
         public static Sorter GlobalInstance() => Instance;
 

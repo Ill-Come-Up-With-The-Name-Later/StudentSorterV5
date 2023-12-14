@@ -30,7 +30,9 @@ namespace StudentSorter
         /// </summary>
         private void OpenConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Sort sort = Sorter.GlobalInstance().SortConfig;
+            Importer.Import<Sort>(OpenConfig.FileName);
+
+            Sort sort = Sorter.GlobalInstance().SortConfigs[0];
             
             if(sort.StudentFile.Length > 0)
             {

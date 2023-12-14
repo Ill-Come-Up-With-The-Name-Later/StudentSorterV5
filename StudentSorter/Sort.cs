@@ -15,7 +15,8 @@ namespace StudentSorter
             GroupFile = groupFile;
             IllegalPairsFile = illegalPairFile;
 
-            Sorter.GlobalInstance().SortConfig = this;
+            Sorter.GlobalInstance().SortConfigs.Clear();
+            Sorter.GlobalInstance().SortConfigs.Add(this);
         }
 
         /// <summary>
