@@ -48,10 +48,10 @@
             // 
             // OpenButton
             // 
-            OpenButton.Location = new Point(168, 107);
+            OpenButton.Location = new Point(125, 107);
             OpenButton.Margin = new Padding(4);
             OpenButton.Name = "OpenButton";
-            OpenButton.Size = new Size(181, 43);
+            OpenButton.Size = new Size(272, 43);
             OpenButton.TabIndex = 1;
             OpenButton.Text = "Open";
             OpenButton.UseVisualStyleBackColor = true;
@@ -76,9 +76,9 @@
             // 
             // CreateConfigButton
             // 
-            CreateConfigButton.Location = new Point(156, 167);
+            CreateConfigButton.Location = new Point(125, 167);
             CreateConfigButton.Name = "CreateConfigButton";
-            CreateConfigButton.Size = new Size(218, 42);
+            CreateConfigButton.Size = new Size(272, 42);
             CreateConfigButton.TabIndex = 3;
             CreateConfigButton.Text = "Create New Configuration";
             CreateConfigButton.UseVisualStyleBackColor = true;
