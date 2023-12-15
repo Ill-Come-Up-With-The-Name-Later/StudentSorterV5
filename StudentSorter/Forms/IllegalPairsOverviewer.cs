@@ -31,12 +31,7 @@ namespace StudentSorter
         {
             string file = SerializePairs.FileName;
 
-            List<string> pairs = new();
-
-            foreach (IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
-                pairs.Add(pair.SerializeJSON());
-
-            Exporter.Export(file, pairs);
+            Exporter.ExportObjects(Sorter.GlobalInstance().IllegalPairs, file);
             FormParent.IllegalPairFile = file;
             FormParent.DisallowedPairsSource.Text = $"Disallowed Pairs File Source: {file}";
         }

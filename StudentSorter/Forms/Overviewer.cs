@@ -69,12 +69,8 @@ namespace StudentSorter
         private void GroupSerialize_FileOk(object sender, CancelEventArgs e)
         {
             string file = GroupSerialize.FileName;
-            List<string> groups = new();
 
-            foreach (Group group in Sorter.GlobalInstance().AllGroups)
-                groups.Add(group.SerializeJSON());
-
-            Exporter.Export(file, groups);
+            Exporter.ExportObjects(Sorter.GlobalInstance().AllGroups, file);
             GroupFile = file;
             GroupSource.Text = $"Group File Source: {file}";
         }
@@ -85,14 +81,8 @@ namespace StudentSorter
         private void StudentSerialize_FileOk(object sender, CancelEventArgs e)
         {
             string file = StudentSerialize.FileName;
-            List<string> students = new();
 
-            foreach (Student student in Sorter.GlobalInstance().AllStudents)
-                students.Add(student.SerializeJSON());
-
-            Console.WriteLine(students.Count);
-
-            Exporter.Export(file, students);
+            Exporter.ExportObjects(Sorter.GlobalInstance().AllStudents, file);
 
             StudentFile = file;
             StudentSource.Text = $"Student File Source: {file}";
@@ -206,12 +196,7 @@ namespace StudentSorter
         {
             Sort sort = new(StudentFile, GroupFile, IllegalPairFile);
 
-            List<string> lines = new()
-            {
-                sort.SerializeJSON()
-            };
-
-            Exporter.Export(ConfigSaver.FileName, lines);
+            Exporter.ExportObject(sort, ConfigSaver.FileName);
         }
     }
 }

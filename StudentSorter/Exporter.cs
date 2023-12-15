@@ -11,7 +11,7 @@
         /// <param name="lines">
         /// The text to write to the file
         /// </param>
-        public static void Export(string fileName, List<string> lines)
+        public static void WriteFile(string fileName, List<string> lines)
         {
             try
             {
@@ -35,6 +35,12 @@
         /// </param>
         public static void ExportObject<T>(T obj, string fileName) where T : Serializeable
         {
+            List<string> lines = new()
+            {
+                obj.SerializeJSON()
+            };
+
+            WriteFile(fileName, lines);
         }
 
         /// <summary>
@@ -48,6 +54,12 @@
         /// </param>
         public static void ExportObjects<T>(List<T> obj, string fileName) where T : Serializeable
         {
+            List<string> lines = new();
+
+            foreach(T objItem in obj)
+                lines.Add(objItem.SerializeJSON());
+
+            WriteFile(fileName, lines);
         }
     }
 }

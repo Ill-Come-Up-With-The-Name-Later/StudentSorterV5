@@ -97,12 +97,8 @@
         {
             Sort sort = new(StudentFile, GroupFile, PairsFile);
 
-            List<string> lines = new()
-            {
-                sort.SerializeJSON()
-            };
 
-            Exporter.Export(SaveConfig.FileName, lines);
+            Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
         }
     }
