@@ -37,9 +37,9 @@ namespace StudentSorter
             Sorter.GlobalInstance().IllegalPairs.Clear();
             Sorter.GlobalInstance().SortConfigs.Clear();
 
-            Importer.Import<Sort>(OpenConfig.FileName);
+            Importer.Import<SorterConfig>(OpenConfig.FileName);
 
-            Sort sort = Sorter.GlobalInstance().SortConfigs[0];
+            SorterConfig sort = Sorter.GlobalInstance().SortConfigs[0];
 
             if (sort.StudentFile.Length > 0)
             {

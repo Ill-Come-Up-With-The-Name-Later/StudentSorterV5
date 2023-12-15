@@ -194,7 +194,7 @@ namespace StudentSorter
         /// </summary>
         private void ConfigSaver_FileOk(object sender, CancelEventArgs e)
         {
-            Sort sort = new(StudentFile, GroupFile, IllegalPairFile);
+            SorterConfig sort = new(StudentFile, GroupFile, IllegalPairFile);
 
             Exporter.ExportObject(sort, ConfigSaver.FileName);
         }

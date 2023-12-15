@@ -95,7 +95,7 @@
         /// </summary>
         private void SaveConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            Sort sort = new(StudentFile, GroupFile, PairsFile);
+            SorterConfig sort = new(StudentFile, GroupFile, PairsFile);
 
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();

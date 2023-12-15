@@ -2,7 +2,7 @@
 
 namespace StudentSorter
 {
-    public class Sort : Serializeable
+    public class SorterConfig : Serializeable
     {
         public string StudentFile { get; set; }
         public string GroupFile { get; set; }
@@ -23,7 +23,7 @@ namespace StudentSorter
         /// illegal pairs
         /// </param>
         [JsonConstructor]
-        public Sort(string studentFile, string groupFile, string illegalPairFile) 
+        public SorterConfig(string studentFile, string groupFile, string illegalPairFile) 
         {
             StudentFile = studentFile;
             GroupFile = groupFile;
