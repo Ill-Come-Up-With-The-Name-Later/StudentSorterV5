@@ -97,7 +97,6 @@
         {
             Sort sort = new(StudentFile, GroupFile, PairsFile);
 
-
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
         }

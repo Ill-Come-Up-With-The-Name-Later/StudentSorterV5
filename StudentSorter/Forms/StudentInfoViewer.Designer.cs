@@ -104,9 +104,9 @@
             // 
             // CopyIDButton
             // 
-            CopyIDButton.Location = new Point(261, 128);
+            CopyIDButton.Location = new Point(261, 127);
             CopyIDButton.Name = "CopyIDButton";
-            CopyIDButton.Size = new Size(122, 33);
+            CopyIDButton.Size = new Size(122, 41);
             CopyIDButton.TabIndex = 7;
             CopyIDButton.Text = "Copy ID";
             CopyIDButton.UseVisualStyleBackColor = true;

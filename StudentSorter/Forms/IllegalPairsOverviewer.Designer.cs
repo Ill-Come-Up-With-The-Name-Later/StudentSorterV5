@@ -71,9 +71,9 @@
             Title.AutoSize = true;
             Title.Location = new Point(299, 9);
             Title.Name = "Title";
-            Title.Size = new Size(109, 28);
+            Title.Size = new Size(152, 28);
             Title.TabIndex = 1;
-            Title.Text = "Illegal Pairs";
+            Title.Text = "Disallowed Pairs";
             // 
             // SerializePairsButton
             // 
@@ -101,7 +101,7 @@
             AddPairButton.Name = "AddPairButton";
             AddPairButton.Size = new Size(243, 45);
             AddPairButton.TabIndex = 4;
-            AddPairButton.Text = "Add new Illegal Pair";
+            AddPairButton.Text = "Add new Disallowed Pair";
             AddPairButton.UseVisualStyleBackColor = true;
             AddPairButton.Click += AddPairButton_Click;
             // 
@@ -118,7 +118,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "IllegalPairsOverviewer";
-            Text = "Illegal Pairs Overviewer";
+            Text = "Disallowed Pairs Overviewer";
             Load += IllegalPairsOverviewer_Load;
             ((System.ComponentModel.ISupportInitialize)IllegalPairList).EndInit();
             ResumeLayout(false);

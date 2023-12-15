@@ -39,10 +39,10 @@
             // 
             TitleLabel.AutoSize = true;
             TitleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TitleLabel.Location = new Point(168, 30);
+            TitleLabel.Location = new Point(146, 27);
             TitleLabel.Margin = new Padding(4, 0, 4, 0);
             TitleLabel.Name = "TitleLabel";
-            TitleLabel.Size = new Size(199, 21);
+            TitleLabel.Size = new Size(251, 28);
             TitleLabel.TabIndex = 0;
             TitleLabel.Text = "Student Group Randomizer";
             // 
@@ -86,7 +86,7 @@
             // 
             // TitleWindow
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(549, 290);
             Controls.Add(CreateConfigButton);

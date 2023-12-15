@@ -60,11 +60,11 @@
             // Title
             // 
             Title.AutoSize = true;
-            Title.Location = new Point(170, 9);
+            Title.Location = new Point(133, 20);
             Title.Name = "Title";
-            Title.Size = new Size(143, 28);
+            Title.Size = new Size(191, 28);
             Title.TabIndex = 2;
-            Title.Text = "Add Illegal Pair";
+            Title.Text = "Add Disallowedl Pair";
             // 
             // Student1Label
             // 
@@ -112,7 +112,7 @@
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "IllegalPairCreator";
-            Text = "Illegal Pair Creator";
+            Text = "Disallowedl Pair Creator";
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();

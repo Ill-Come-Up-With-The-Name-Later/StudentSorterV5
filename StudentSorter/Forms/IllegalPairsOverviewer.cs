@@ -7,7 +7,7 @@ namespace StudentSorter
     {
         private readonly DataTable Pairs = new();
         private readonly Overviewer FormParent;
-        
+
         public IllegalPairsOverviewer(Overviewer formParent)
         {
             InitializeComponent();
@@ -87,7 +87,7 @@ namespace StudentSorter
         /// </summary>
         public void RefreshPairList()
         {
-            if(Pairs.Rows.Count > 0)
+            if (Pairs.Rows.Count > 0)
                 Pairs.Rows.Clear();
 
             foreach (IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
