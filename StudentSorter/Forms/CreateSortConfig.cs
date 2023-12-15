@@ -103,6 +103,7 @@
             };
 
             Exporter.Export(SaveConfig.FileName, lines);
+            Close();
         }
     }
 }
