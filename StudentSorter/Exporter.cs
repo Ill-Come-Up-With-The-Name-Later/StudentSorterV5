@@ -23,5 +23,9 @@
                 Console.WriteLine(ex);
             }
         }
+
+        public static void ExportObjects<T>() where T : class 
+        {
+        }
     }
 }

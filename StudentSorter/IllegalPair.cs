@@ -2,7 +2,7 @@
 
 namespace StudentSorter
 {
-    public class IllegalPair
+    public class IllegalPair : Serializeable
     {
         [JsonIgnore]
         public Student Student1 { get; set; }
@@ -113,14 +113,6 @@ namespace StudentSorter
         {
             return !a.Equals(b);
         }
-
-        /// <summary>
-        /// Serializes the IllegalPair into JSON
-        /// </summary>
-        /// <returns>
-        /// JSON string of the IllegalPair's information
-        /// </returns>
-        public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
         public override int GetHashCode()
         {

@@ -2,7 +2,7 @@
 
 namespace StudentSorter
 {
-    public class Group
+    public class Group : Serializeable
     {
         public string Name { get; set; }
         public int MinDeterminant { get; set; }
@@ -177,14 +177,6 @@ namespace StudentSorter
         {
             return !a.Equals(b);
         }
-
-        /// <summary>
-        /// Serializes the group into JSON
-        /// </summary>
-        /// <returns>
-        /// JSON string of the group's information
-        /// </returns>
-        public string SerializeJSON() => JsonConvert.SerializeObject(this, Formatting.Indented);
 
         public override int GetHashCode()
         {
