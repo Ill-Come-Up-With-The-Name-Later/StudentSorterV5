@@ -24,7 +24,29 @@
             }
         }
 
-        public static void ExportObjects<T>() where T : class 
+        /// <summary>
+        /// Exports a single object to a JSON file
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the object to export
+        /// </typeparam>
+        /// <param name="obj">
+        /// The object to export
+        /// </param>
+        public static void ExportObject<T>(T obj, string fileName) where T : Serializeable
+        {
+        }
+
+        /// <summary>
+        /// Exports a list of objects to a JSON file
+        /// </summary>
+        /// <typeparam name="T">
+        /// The type of the objects to export
+        /// </typeparam>
+        /// <param name="obj">
+        /// A list of objects to export
+        /// </param>
+        public static void ExportObjects<T>(List<T> obj, string fileName) where T : Serializeable
         {
         }
     }
