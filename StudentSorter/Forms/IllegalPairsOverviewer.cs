@@ -38,6 +38,7 @@ namespace StudentSorter
 
             Exporter.Export(file, pairs);
             FormParent.IllegalPairFile = file;
+            FormParent.DisallowedPairsSource.Text = $"Disallowed Pairs File Source: {file}";
         }
 
         /// <summary>
@@ -47,6 +48,7 @@ namespace StudentSorter
         {
             Importer.Import<IllegalPair>(OpenPairsFile.FileName);
             FormParent.IllegalPairFile = OpenPairsFile.FileName;
+            FormParent.DisallowedPairsSource.Text = $"Disallowed Pairs File Source: {OpenPairsFile.FileName}";
 
             RefreshPairList();
         }

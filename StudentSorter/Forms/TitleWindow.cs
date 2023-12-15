@@ -1,3 +1,5 @@
+using StudentSorter.Forms;
+
 namespace StudentSorter
 {
     public partial class TitleWindow : Form
@@ -57,6 +59,16 @@ namespace StudentSorter
 
             SortDisplay display = new(overviewer);
             display.Show();
+        }
+
+        /// <summary>
+        /// Opens window to create a new sorter
+        /// configuration
+        /// </summary>
+        private void CreateConfigButton_Click(object sender, EventArgs e)
+        {
+            CreateSortConfig createSort = new();
+            createSort.Show();
         }
     }
 }

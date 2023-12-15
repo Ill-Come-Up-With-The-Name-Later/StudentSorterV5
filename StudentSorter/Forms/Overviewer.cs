@@ -76,6 +76,7 @@ namespace StudentSorter
 
             Exporter.Export(file, groups);
             GroupFile = file;
+            GroupSource.Text = $"Group File Source: {file}";
         }
 
         /// <summary>
@@ -94,6 +95,7 @@ namespace StudentSorter
             Exporter.Export(file, students);
 
             StudentFile = file;
+            StudentSource.Text = $"Student File Source: {file}";
         }
 
         /// <summary>

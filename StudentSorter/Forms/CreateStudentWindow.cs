@@ -21,6 +21,7 @@ namespace StudentSorter
             FormParent.StudentFile = JsonUploader.FileName;
 
             FormParent.RefreshLists();
+            FormParent.StudentSource.Text = $"Student File Source: {JsonUploader.FileName}";
 
             Close();
         }

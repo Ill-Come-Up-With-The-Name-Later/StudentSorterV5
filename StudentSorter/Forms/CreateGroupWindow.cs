@@ -21,6 +21,7 @@ namespace StudentSorter
             FormParent.GroupFile = JsonUploader.FileName;
 
             FormParent.RefreshLists();
+            FormParent.GroupSource.Text = $"Group File Source: {JsonUploader.FileName}";
 
             Close();
         }

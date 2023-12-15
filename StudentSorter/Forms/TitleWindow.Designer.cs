@@ -32,6 +32,7 @@
             OpenButton = new Button();
             ConfigSortButton = new Button();
             OpenConfig = new OpenFileDialog();
+            CreateConfigButton = new Button();
             SuspendLayout();
             // 
             // TitleLabel
@@ -58,7 +59,7 @@
             // 
             // ConfigSortButton
             // 
-            ConfigSortButton.Location = new Point(130, 178);
+            ConfigSortButton.Location = new Point(125, 227);
             ConfigSortButton.Name = "ConfigSortButton";
             ConfigSortButton.Size = new Size(272, 40);
             ConfigSortButton.TabIndex = 2;
@@ -73,11 +74,22 @@
             OpenConfig.Title = "Open JSON of configuration";
             OpenConfig.FileOk += OpenConfig_FileOk;
             // 
+            // CreateConfigButton
+            // 
+            CreateConfigButton.Location = new Point(149, 167);
+            CreateConfigButton.Name = "CreateConfigButton";
+            CreateConfigButton.Size = new Size(218, 40);
+            CreateConfigButton.TabIndex = 3;
+            CreateConfigButton.Text = "Create New Configuration";
+            CreateConfigButton.UseVisualStyleBackColor = true;
+            CreateConfigButton.Click += CreateConfigButton_Click;
+            // 
             // TitleWindow
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 266);
+            ClientSize = new Size(549, 290);
+            Controls.Add(CreateConfigButton);
             Controls.Add(ConfigSortButton);
             Controls.Add(OpenButton);
             Controls.Add(TitleLabel);
@@ -95,5 +107,6 @@
         private Button OpenButton;
         private Button ConfigSortButton;
         private OpenFileDialog OpenConfig;
+        private Button CreateConfigButton;
     }
 }

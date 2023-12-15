@@ -45,6 +45,9 @@
             ErrorProvider = new ErrorProvider(components);
             SaveConfigButton = new Button();
             ConfigSaver = new SaveFileDialog();
+            StudentSource = new Label();
+            GroupSource = new Label();
+            DisallowedPairsSource = new Label();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
@@ -215,11 +218,41 @@
             ConfigSaver.Title = "Save Sorter Configuration";
             ConfigSaver.FileOk += ConfigSaver_FileOk;
             // 
+            // StudentSource
+            // 
+            StudentSource.AutoSize = true;
+            StudentSource.Location = new Point(12, 548);
+            StudentSource.Name = "StudentSource";
+            StudentSource.Size = new Size(182, 21);
+            StudentSource.TabIndex = 12;
+            StudentSource.Text = "Student File Souce: None";
+            // 
+            // GroupSource
+            // 
+            GroupSource.AutoSize = true;
+            GroupSource.Location = new Point(12, 579);
+            GroupSource.Name = "GroupSource";
+            GroupSource.Size = new Size(179, 21);
+            GroupSource.TabIndex = 13;
+            GroupSource.Text = "Group File Source: None";
+            // 
+            // DisallowedPairsSource
+            // 
+            DisallowedPairsSource.AutoSize = true;
+            DisallowedPairsSource.Location = new Point(12, 612);
+            DisallowedPairsSource.Name = "DisallowedPairsSource";
+            DisallowedPairsSource.Size = new Size(242, 21);
+            DisallowedPairsSource.TabIndex = 14;
+            DisallowedPairsSource.Text = "Disallowed Pairs File Souce: None";
+            // 
             // Overviewer
             // 
             AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1161, 532);
+            ClientSize = new Size(1161, 661);
+            Controls.Add(DisallowedPairsSource);
+            Controls.Add(GroupSource);
+            Controls.Add(StudentSource);
             Controls.Add(SaveConfigButton);
             Controls.Add(DisallowedPairButton);
             Controls.Add(SerializeGroupsButton);
@@ -261,5 +294,8 @@
         private ErrorProvider ErrorProvider;
         private Button SaveConfigButton;
         private SaveFileDialog ConfigSaver;
+        public Label DisallowedPairsSource;
+        public Label GroupSource;
+        public Label StudentSource;
     }
 }
