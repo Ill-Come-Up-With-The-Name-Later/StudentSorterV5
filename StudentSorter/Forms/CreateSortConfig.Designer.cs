@@ -117,6 +117,7 @@
             SaveConfig.DefaultExt = "json";
             SaveConfig.FileName = "SorterConfiguration.json";
             SaveConfig.Title = "Save Sorter Configuration";
+            SaveConfig.FileOk += SaveConfig_FileOk;
             // 
             // CreateSortConfig
             // 

@@ -21,6 +21,7 @@
         private void AddStudentFile_Click(object sender, EventArgs e)
         {
             SelectFile.Title = StudentTitle;
+            SelectFile.ShowDialog();
         }
 
         /// <summary>
@@ -29,6 +30,7 @@
         private void AddGroupFile_Click(object sender, EventArgs e)
         {
             SelectFile.Title = GroupTitle;
+            SelectFile.ShowDialog();
         }
 
         /// <summary>
@@ -37,6 +39,7 @@
         private void AddPairsFile_Click(object sender, EventArgs e)
         {
             SelectFile.Title = PairFile;
+            SelectFile.ShowDialog();
         }
 
         /// <summary>
@@ -45,7 +48,7 @@
         /// </summary>
         private void SelectFile_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            switch(SelectFile.Title)
+            switch (SelectFile.Title)
             {
                 case StudentTitle:
                     StudentFile = SelectFile.FileName;
@@ -62,10 +65,35 @@
         }
 
         /// <summary>
-        /// Creates the sort configuration and opens
-        /// save dialog
+        /// Opens save dialog for the sort
+        /// config
         /// </summary>
         private void CreateConfigButton_Click(object sender, EventArgs e)
+        {
+           SaveConfig.ShowDialog();
+        }
+
+        /// <summary>
+        /// Updates the display for the
+        /// student, group, and pairs file names
+        /// </summary>
+        private void UpdateFileDisplay()
+        {
+            if (StudentFile.Length > 0)
+                StudentFileName.Text = $"Student File: {StudentFile}";
+
+            if (GroupFile.Length > 0)
+                GroupFileName.Text = $"Group File: {GroupFile}";
+
+            if (PairsFile.Length > 0)
+                DisallowedPairsFileName.Text = $"Disallowed Pairs File: {PairsFile}";
+        }
+
+        /// <summary>
+        /// Creates the sorter configuration
+        /// and exports it to JSON
+        /// </summary>
+        private void SaveConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
             Sort sort = new(StudentFile, GroupFile, PairsFile);
 
@@ -75,22 +103,6 @@
             };
 
             Exporter.Export(SaveConfig.FileName, lines);
-        }
-
-        /// <summary>
-        /// Updates the display for the
-        /// student, group, and pairs file names
-        /// </summary>
-        private void UpdateFileDisplay()
-        {
-            if(StudentFile.Length > 0)
-                StudentFileName.Text = $"Student File: {StudentFile}";
-
-            if(GroupFile.Length > 0)
-                GroupFileName.Text = $"Group File: {GroupFile}";
-
-            if(PairsFile.Length > 0)
-                DisallowedPairsFileName.Text = $"Disallowed Pairs File: {PairsFile}";
         }
     }
 }
