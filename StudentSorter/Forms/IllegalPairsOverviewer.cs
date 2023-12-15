@@ -70,6 +70,14 @@ namespace StudentSorter
         /// </summary>
         private void AddPairButton_Click(object sender, EventArgs e)
         {
+            ErrorProvider.Clear();
+
+            if(Sorter.GlobalInstance().AllStudents.Count < 2)
+            {
+                ErrorProvider.SetError(AddPairButton, "At least two students are required for a pair");
+                return;
+            }
+
             IllegalPairCreator creator = new(this);
             creator.Show();
         }

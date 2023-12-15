@@ -31,13 +31,15 @@ namespace StudentSorter
         /// </summary>
         private void CreateGroupButton_Click(object sender, EventArgs e)
         {
+            ErrorProvider.Clear();
             if (GroupNameInput.Text.Equals("") || GroupNameInput.Text == null)
             {
                 ErrorProvider.SetError(GroupNameInput, "A name is required");
-                throw new ArgumentException("No name entered!");
+                //throw new ArgumentException("No name entered!");
+                return;
             }
 
-            if (ErrorProvider.HasErrors)
+            if(ErrorProvider.HasErrors)
             {
                 return;
             }

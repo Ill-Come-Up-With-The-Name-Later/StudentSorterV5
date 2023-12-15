@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             SerializePairs = new SaveFileDialog();
             OpenPairsFile = new OpenFileDialog();
             IllegalPairList = new DataGridView();
@@ -35,7 +36,9 @@
             SerializePairsButton = new Button();
             DeserializePairsButton = new Button();
             AddPairButton = new Button();
+            ErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)IllegalPairList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // SerializePairs
@@ -105,6 +108,10 @@
             AddPairButton.UseVisualStyleBackColor = true;
             AddPairButton.Click += AddPairButton_Click;
             // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
             // IllegalPairsOverviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
@@ -121,6 +128,7 @@
             Text = "Disallowed Pairs Overviewer";
             Load += IllegalPairsOverviewer_Load;
             ((System.ComponentModel.ISupportInitialize)IllegalPairList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -134,5 +142,6 @@
         private Button SerializePairsButton;
         private Button DeserializePairsButton;
         private Button AddPairButton;
+        private ErrorProvider ErrorProvider;
     }
 }
