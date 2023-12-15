@@ -259,5 +259,42 @@
             Console.WriteLine($"No student exists with the HashCode {code}!");
             return null;
         }
+
+        /// <summary>
+        /// Gets a student by their name
+        /// </summary>
+        /// <param name="name">
+        /// The name to search for
+        /// </param>
+        /// <returns>
+        /// The student with the searched name, or
+        /// null if they don't exist
+        /// </returns>
+        public Student? GetStudentByName(string name)
+        {
+            foreach (Student student in AllStudents)
+                if (student.Name.Equals(name))
+                    return student;
+
+            return null;
+        }
+
+        /// <summary>
+        /// Gets a group by its name
+        /// </summary>
+        /// <param name="name">
+        /// The name of the group to search for
+        /// </param>
+        /// <returns>
+        /// The group or null if a group with the
+        /// searched name doesn't exist
+        /// </returns>
+        public Group? GetGroupByName(string name)
+        {
+            foreach(Group group in AllGroups)
+                if(group.Name.Equals(name))
+                    return group;
+            return null;
+        }
     }
 }

@@ -29,6 +29,10 @@ namespace StudentSorter
             {
                 column.Width = GroupList.Width;
             }
+
+            StudentDropDown.Items.Add("");
+
+            Sorter.GlobalInstance().AllStudents.ForEach(student => { StudentDropDown.Items.Add(student.Name); });
         }
 
         /// <summary>
@@ -37,10 +41,18 @@ namespace StudentSorter
         private void GroupList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = GroupList.CurrentCell.RowIndex; if (index < 0) return;
-            Group SelectedGroup = Sorter.GlobalInstance().AllGroups[index];
+            try
+            {
+                Group SelectedGroup = Sorter.GlobalInstance()
+                    .GetGroupByName(GroupList.Rows[index].Cells[0].Value.ToString());
 
-            GroupStudentList groupStudentList = new(SelectedGroup);
-            groupStudentList.Show();
+                GroupStudentList groupStudentList = new(SelectedGroup);
+                groupStudentList.Show();
+            } 
+            catch(Exception)
+            {
+                Console.WriteLine("Group couldn't be found.");
+            }
         }
 
         /// <summary>
@@ -106,6 +118,36 @@ namespace StudentSorter
             Sorter.GlobalInstance().SortConfigs.Clear();
 
             FormParent.RefreshLists();
+        }
+
+        /// <summary>
+        /// Searches groups for the selected
+        /// student
+        /// </summary>
+        private void StudentDropDown_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(StudentDropDown.SelectedIndex <= 0) 
+            {
+                Groups.Rows.Clear();
+
+                foreach (Group group in Sorter.GlobalInstance().AllGroups)
+                    Groups.Rows.Add(group.Name);
+                return;
+            }
+
+            try
+            {
+                Student student = Sorter.GlobalInstance().
+                    GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());
+
+                Groups.Rows.Clear();
+
+                Groups.Rows.Add(Sorter.GlobalInstance().FindStudent(student).Name);
+            } 
+            catch (Exception)
+            {
+                Console.WriteLine("Couldn't find student");
+            }
         }
     }
 }
