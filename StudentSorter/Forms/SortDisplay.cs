@@ -8,13 +8,16 @@ namespace StudentSorter
         private readonly DataTable Groups = new();
         private readonly Overviewer FormParent;
 
-        public SortDisplay(Overviewer formParent)
+        private SorterConfig Config { get; set; }
+
+        public SortDisplay(Overviewer formParent, SorterConfig config)
         {
             InitializeComponent();
 
             GroupList.DataSource = Groups;
             Groups.Columns.Add("Name", typeof(string));
             FormParent = formParent;
+            Config = config;
         }
 
         /// <summary>
@@ -33,6 +36,8 @@ namespace StudentSorter
             StudentDropDown.Items.Add("");
 
             Sorter.GlobalInstance().AllStudents.ForEach(student => { StudentDropDown.Items.Add(student.Name); });
+
+            ConfigUsedLabel.Text = $"Configuration used: {Config.Name}";
         }
 
         /// <summary>
@@ -48,8 +53,8 @@ namespace StudentSorter
 
                 GroupStudentList groupStudentList = new(SelectedGroup);
                 groupStudentList.Show();
-            } 
-            catch(Exception)
+            }
+            catch (Exception)
             {
                 Console.WriteLine("Group couldn't be found.");
             }
@@ -126,7 +131,7 @@ namespace StudentSorter
         /// </summary>
         private void StudentDropDown_SelectedIndexChanged(object sender, EventArgs e)
         {
-            if(StudentDropDown.SelectedIndex <= 0) 
+            if (StudentDropDown.SelectedIndex <= 0)
             {
                 Groups.Rows.Clear();
 
@@ -143,7 +148,7 @@ namespace StudentSorter
                 Groups.Rows.Clear();
 
                 Groups.Rows.Add(Sorter.GlobalInstance().FindStudent(student).Name);
-            } 
+            }
             catch (Exception)
             {
                 Console.WriteLine("Couldn't find student");

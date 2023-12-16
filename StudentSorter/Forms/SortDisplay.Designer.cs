@@ -36,6 +36,7 @@
             ResetSorterButton = new Button();
             FindPersonLabel = new Label();
             StudentDropDown = new ComboBox();
+            ConfigUsedLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)GroupList).BeginInit();
             SuspendLayout();
             // 
@@ -47,7 +48,7 @@
             GroupList.AllowUserToResizeRows = false;
             GroupList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             GroupList.ColumnHeadersVisible = false;
-            GroupList.Location = new Point(146, 145);
+            GroupList.Location = new Point(146, 156);
             GroupList.MultiSelect = false;
             GroupList.Name = "GroupList";
             GroupList.ReadOnly = true;
@@ -69,7 +70,7 @@
             // 
             // ReshuffleButton
             // 
-            ReshuffleButton.Location = new Point(55, 436);
+            ReshuffleButton.Location = new Point(54, 453);
             ReshuffleButton.Name = "ReshuffleButton";
             ReshuffleButton.Size = new Size(219, 50);
             ReshuffleButton.TabIndex = 2;
@@ -79,7 +80,7 @@
             // 
             // ExportSort
             // 
-            ExportSort.Location = new Point(338, 436);
+            ExportSort.Location = new Point(337, 453);
             ExportSort.Name = "ExportSort";
             ExportSort.Size = new Size(237, 50);
             ExportSort.TabIndex = 3;
@@ -96,9 +97,9 @@
             // 
             // ResetSorterButton
             // 
-            ResetSorterButton.Location = new Point(241, 492);
+            ResetSorterButton.Location = new Point(241, 509);
             ResetSorterButton.Name = "ResetSorterButton";
-            ResetSorterButton.Size = new Size(147, 43);
+            ResetSorterButton.Size = new Size(147, 42);
             ResetSorterButton.TabIndex = 4;
             ResetSorterButton.Text = "Reset Sorter";
             ResetSorterButton.UseVisualStyleBackColor = true;
@@ -122,11 +123,21 @@
             StudentDropDown.TabIndex = 6;
             StudentDropDown.SelectedIndexChanged += StudentDropDown_SelectedIndexChanged;
             // 
+            // ConfigUsedLabel
+            // 
+            ConfigUsedLabel.AutoSize = true;
+            ConfigUsedLabel.Location = new Point(54, 568);
+            ConfigUsedLabel.Name = "ConfigUsedLabel";
+            ConfigUsedLabel.Size = new Size(239, 28);
+            ConfigUsedLabel.TabIndex = 7;
+            ConfigUsedLabel.Text = "Configuration Used: None";
+            // 
             // SortDisplay
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(653, 577);
+            ClientSize = new Size(653, 614);
+            Controls.Add(ConfigUsedLabel);
             Controls.Add(StudentDropDown);
             Controls.Add(FindPersonLabel);
             Controls.Add(ResetSorterButton);
@@ -154,5 +165,6 @@
         private Button ResetSorterButton;
         private Label FindPersonLabel;
         private ComboBox StudentDropDown;
+        private Label ConfigUsedLabel;
     }
 }

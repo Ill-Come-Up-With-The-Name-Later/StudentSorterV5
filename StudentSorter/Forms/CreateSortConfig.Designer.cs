@@ -37,13 +37,15 @@
             AddGroupFile = new Button();
             AddPairsFile = new Button();
             SaveConfig = new SaveFileDialog();
+            ConfigNameLabel = new Label();
+            ConfigNameInput = new TextBox();
             SuspendLayout();
             // 
             // CreateConfigButton
             // 
-            CreateConfigButton.Location = new Point(266, 181);
+            CreateConfigButton.Location = new Point(241, 212);
             CreateConfigButton.Name = "CreateConfigButton";
-            CreateConfigButton.Size = new Size(228, 35);
+            CreateConfigButton.Size = new Size(279, 49);
             CreateConfigButton.TabIndex = 0;
             CreateConfigButton.Text = "Create Sort Configuration";
             CreateConfigButton.UseVisualStyleBackColor = true;
@@ -54,7 +56,7 @@
             StudentFileName.AutoSize = true;
             StudentFileName.Location = new Point(162, 24);
             StudentFileName.Name = "StudentFileName";
-            StudentFileName.Size = new Size(136, 21);
+            StudentFileName.Size = new Size(172, 28);
             StudentFileName.TabIndex = 1;
             StudentFileName.Text = "Student File: None";
             // 
@@ -63,7 +65,7 @@
             GroupFileName.AutoSize = true;
             GroupFileName.Location = new Point(162, 65);
             GroupFileName.Name = "GroupFileName";
-            GroupFileName.Size = new Size(127, 21);
+            GroupFileName.Size = new Size(160, 28);
             GroupFileName.TabIndex = 2;
             GroupFileName.Text = "Group File: None";
             // 
@@ -72,7 +74,7 @@
             DisallowedPairsFileName.AutoSize = true;
             DisallowedPairsFileName.Location = new Point(162, 105);
             DisallowedPairsFileName.Name = "DisallowedPairsFileName";
-            DisallowedPairsFileName.Size = new Size(196, 21);
+            DisallowedPairsFileName.Size = new Size(244, 28);
             DisallowedPairsFileName.TabIndex = 3;
             DisallowedPairsFileName.Text = "Disallowed Pairs File: None";
             // 
@@ -119,11 +121,30 @@
             SaveConfig.Title = "Save Sorter Configuration";
             SaveConfig.FileOk += SaveConfig_FileOk;
             // 
+            // ConfigNameLabel
+            // 
+            ConfigNameLabel.AutoSize = true;
+            ConfigNameLabel.Location = new Point(41, 161);
+            ConfigNameLabel.Name = "ConfigNameLabel";
+            ConfigNameLabel.Size = new Size(194, 28);
+            ConfigNameLabel.TabIndex = 7;
+            ConfigNameLabel.Text = "Configuration Name:";
+            // 
+            // ConfigNameInput
+            // 
+            ConfigNameInput.Location = new Point(255, 158);
+            ConfigNameInput.Name = "ConfigNameInput";
+            ConfigNameInput.Size = new Size(253, 34);
+            ConfigNameInput.TabIndex = 8;
+            ConfigNameInput.Text = "Configuration";
+            // 
             // CreateSortConfig
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(777, 233);
+            ClientSize = new Size(777, 273);
+            Controls.Add(ConfigNameInput);
+            Controls.Add(ConfigNameLabel);
             Controls.Add(AddPairsFile);
             Controls.Add(AddGroupFile);
             Controls.Add(AddStudentFile);
@@ -150,5 +171,7 @@
         private Button AddGroupFile;
         private Button AddPairsFile;
         private SaveFileDialog SaveConfig;
+        private Label ConfigNameLabel;
+        private TextBox ConfigNameInput;
     }
 }

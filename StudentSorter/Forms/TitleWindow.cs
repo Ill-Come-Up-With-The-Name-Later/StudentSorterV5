@@ -62,7 +62,7 @@ namespace StudentSorter
 
             Overviewer overviewer = new();
 
-            SortDisplay display = new(overviewer);
+            SortDisplay display = new(overviewer, sort);
             display.Show();
         }
 

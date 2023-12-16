@@ -115,7 +115,7 @@ namespace StudentSorter
             Sorter.GlobalInstance().RandomizeDeterminants();
             Sorter.GlobalInstance().ShuffleGroups();
 
-            SortDisplay display = new(this);
+            SortDisplay display = new(this, new SorterConfig("None", "", "", ""));
             display.Show();
         }
 
@@ -194,7 +194,7 @@ namespace StudentSorter
         /// </summary>
         private void ConfigSaver_FileOk(object sender, CancelEventArgs e)
         {
-            SorterConfig sort = new(StudentFile, GroupFile, IllegalPairFile);
+            SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile);
 
             Exporter.ExportObject(sort, ConfigSaver.FileName);
         }

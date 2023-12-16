@@ -70,7 +70,7 @@
         /// </summary>
         private void CreateConfigButton_Click(object sender, EventArgs e)
         {
-           SaveConfig.ShowDialog();
+            SaveConfig.ShowDialog();
         }
 
         /// <summary>
@@ -95,7 +95,7 @@
         /// </summary>
         private void SaveConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SorterConfig sort = new(StudentFile, GroupFile, PairsFile);
+            SorterConfig sort = new(ConfigNameInput.Text, StudentFile, GroupFile, PairsFile);
 
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
