@@ -80,13 +80,13 @@
         private void UpdateFileDisplay()
         {
             if (StudentFile.Length > 0)
-                StudentFileName.Text = $"Student File: {StudentFile}";
+                StudentFileName.Text = $"Student File: {StudentFile.Split("\\").Last()}";
 
             if (GroupFile.Length > 0)
-                GroupFileName.Text = $"Group File: {GroupFile}";
+                GroupFileName.Text = $"Group File: {GroupFile.Split("\\").Last()}";
 
             if (PairsFile.Length > 0)
-                DisallowedPairsFileName.Text = $"Disallowed Pairs File: {PairsFile}";
+                DisallowedPairsFileName.Text = $"Disallowed Pairs File: {PairsFile.Split("\\").Last()}";
         }
 
         /// <summary>

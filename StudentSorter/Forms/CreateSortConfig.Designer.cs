@@ -54,7 +54,7 @@
             // StudentFileName
             // 
             StudentFileName.AutoSize = true;
-            StudentFileName.Location = new Point(162, 24);
+            StudentFileName.Location = new Point(162, 17);
             StudentFileName.Name = "StudentFileName";
             StudentFileName.Size = new Size(172, 28);
             StudentFileName.TabIndex = 1;
@@ -63,7 +63,7 @@
             // GroupFileName
             // 
             GroupFileName.AutoSize = true;
-            GroupFileName.Location = new Point(162, 65);
+            GroupFileName.Location = new Point(162, 66);
             GroupFileName.Name = "GroupFileName";
             GroupFileName.Size = new Size(160, 28);
             GroupFileName.TabIndex = 2;
@@ -72,7 +72,7 @@
             // DisallowedPairsFileName
             // 
             DisallowedPairsFileName.AutoSize = true;
-            DisallowedPairsFileName.Location = new Point(162, 105);
+            DisallowedPairsFileName.Location = new Point(162, 112);
             DisallowedPairsFileName.Name = "DisallowedPairsFileName";
             DisallowedPairsFileName.Size = new Size(244, 28);
             DisallowedPairsFileName.TabIndex = 3;
@@ -86,9 +86,9 @@
             // 
             // AddStudentFile
             // 
-            AddStudentFile.Location = new Point(41, 19);
+            AddStudentFile.Location = new Point(41, 10);
             AddStudentFile.Name = "AddStudentFile";
-            AddStudentFile.Size = new Size(93, 31);
+            AddStudentFile.Size = new Size(93, 42);
             AddStudentFile.TabIndex = 4;
             AddStudentFile.Text = "Add File";
             AddStudentFile.UseVisualStyleBackColor = true;
@@ -98,7 +98,7 @@
             // 
             AddGroupFile.Location = new Point(41, 60);
             AddGroupFile.Name = "AddGroupFile";
-            AddGroupFile.Size = new Size(93, 31);
+            AddGroupFile.Size = new Size(93, 40);
             AddGroupFile.TabIndex = 5;
             AddGroupFile.Text = "Add File";
             AddGroupFile.UseVisualStyleBackColor = true;
@@ -106,9 +106,9 @@
             // 
             // AddPairsFile
             // 
-            AddPairsFile.Location = new Point(41, 100);
+            AddPairsFile.Location = new Point(41, 106);
             AddPairsFile.Name = "AddPairsFile";
-            AddPairsFile.Size = new Size(93, 31);
+            AddPairsFile.Size = new Size(93, 41);
             AddPairsFile.TabIndex = 6;
             AddPairsFile.Text = "Add File";
             AddPairsFile.UseVisualStyleBackColor = true;
