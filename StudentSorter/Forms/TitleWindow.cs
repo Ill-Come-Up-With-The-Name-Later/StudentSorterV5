@@ -88,7 +88,7 @@ namespace StudentSorter
         /// </summary>
         private void UserManualLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("explorer", $"{ManualDocument}");
+            Process.Start("explorer.exe", "\"" + $"{ManualDocument}" + "\"");
         }
     }
 }
