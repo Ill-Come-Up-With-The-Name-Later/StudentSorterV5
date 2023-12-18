@@ -64,7 +64,7 @@
             GroupCreateTitle.Location = new Point(246, 21);
             GroupCreateTitle.Margin = new Padding(4, 0, 4, 0);
             GroupCreateTitle.Name = "GroupCreateTitle";
-            GroupCreateTitle.Size = new Size(103, 21);
+            GroupCreateTitle.Size = new Size(129, 28);
             GroupCreateTitle.TabIndex = 0;
             GroupCreateTitle.Text = "Create Group";
             // 
@@ -73,7 +73,7 @@
             GroupNameLabel.AutoSize = true;
             GroupNameLabel.Location = new Point(19, 71);
             GroupNameLabel.Name = "GroupNameLabel";
-            GroupNameLabel.Size = new Size(103, 21);
+            GroupNameLabel.Size = new Size(129, 28);
             GroupNameLabel.TabIndex = 1;
             GroupNameLabel.Text = "Group Name:";
             // 
@@ -81,23 +81,25 @@
             // 
             GroupNameInput.Location = new Point(28, 112);
             GroupNameInput.Name = "GroupNameInput";
-            GroupNameInput.Size = new Size(224, 29);
+            GroupNameInput.Size = new Size(224, 34);
             GroupNameInput.TabIndex = 2;
             // 
             // CapacityInput
             // 
             CapacityInput.Location = new Point(28, 209);
             CapacityInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            CapacityInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             CapacityInput.Name = "CapacityInput";
-            CapacityInput.Size = new Size(150, 29);
+            CapacityInput.Size = new Size(150, 34);
             CapacityInput.TabIndex = 3;
+            CapacityInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // CapacityLabel
             // 
             CapacityLabel.AutoSize = true;
             CapacityLabel.Location = new Point(19, 169);
             CapacityLabel.Name = "CapacityLabel";
-            CapacityLabel.Size = new Size(72, 21);
+            CapacityLabel.Size = new Size(91, 28);
             CapacityLabel.TabIndex = 4;
             CapacityLabel.Text = "Capacity:";
             // 
@@ -106,7 +108,7 @@
             MinAcceptDeterminant.AutoSize = true;
             MinAcceptDeterminant.Location = new Point(325, 71);
             MinAcceptDeterminant.Name = "MinAcceptDeterminant";
-            MinAcceptDeterminant.Size = new Size(201, 21);
+            MinAcceptDeterminant.Size = new Size(255, 28);
             MinAcceptDeterminant.TabIndex = 5;
             MinAcceptDeterminant.Text = "Min. Accepted Determinant:";
             // 
@@ -115,7 +117,7 @@
             MaxAcceptDeterminant.AutoSize = true;
             MaxAcceptDeterminant.Location = new Point(325, 169);
             MaxAcceptDeterminant.Name = "MaxAcceptDeterminant";
-            MaxAcceptDeterminant.Size = new Size(203, 21);
+            MaxAcceptDeterminant.Size = new Size(258, 28);
             MaxAcceptDeterminant.TabIndex = 6;
             MaxAcceptDeterminant.Text = "Max. Accepted Determinant:";
             // 
@@ -124,16 +126,18 @@
             MinDeterminantInput.Location = new Point(325, 113);
             MinDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
             MinDeterminantInput.Name = "MinDeterminantInput";
-            MinDeterminantInput.Size = new Size(150, 29);
+            MinDeterminantInput.Size = new Size(150, 34);
             MinDeterminantInput.TabIndex = 7;
             // 
             // MaxDeterminantInput
             // 
             MaxDeterminantInput.Location = new Point(325, 209);
             MaxDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            MaxDeterminantInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             MaxDeterminantInput.Name = "MaxDeterminantInput";
-            MaxDeterminantInput.Size = new Size(150, 29);
+            MaxDeterminantInput.Size = new Size(150, 34);
             MaxDeterminantInput.TabIndex = 8;
+            MaxDeterminantInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // CreateGroupButton
             // 
@@ -174,7 +178,7 @@
             StudentsPerGroup.Location = new Point(490, 339);
             StudentsPerGroup.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             StudentsPerGroup.Name = "StudentsPerGroup";
-            StudentsPerGroup.Size = new Size(150, 29);
+            StudentsPerGroup.Size = new Size(150, 34);
             StudentsPerGroup.TabIndex = 12;
             StudentsPerGroup.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
@@ -183,7 +187,7 @@
             AutoCreateLabel.AutoSize = true;
             AutoCreateLabel.Location = new Point(377, 295);
             AutoCreateLabel.Name = "AutoCreateLabel";
-            AutoCreateLabel.Size = new Size(209, 21);
+            AutoCreateLabel.Size = new Size(263, 28);
             AutoCreateLabel.TabIndex = 13;
             AutoCreateLabel.Text = "Create Groups Automatically";
             // 
@@ -192,13 +196,13 @@
             StudentsPerGroupLabel.AutoSize = true;
             StudentsPerGroupLabel.Location = new Point(351, 341);
             StudentsPerGroupLabel.Name = "StudentsPerGroupLabel";
-            StudentsPerGroupLabel.Size = new Size(99, 21);
+            StudentsPerGroupLabel.Size = new Size(124, 28);
             StudentsPerGroupLabel.TabIndex = 14;
             StudentsPerGroupLabel.Text = "Students Per:";
             // 
             // CreateGroupWindow
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(679, 439);
             Controls.Add(StudentsPerGroupLabel);

@@ -296,5 +296,25 @@
                     return group;
             return null;
         }
+        
+        /// <summary>
+        /// Checks if a group already has
+        /// a given name
+        /// </summary>
+        /// <param name="name">
+        /// The name to check
+        /// </param>
+        /// <returns>
+        /// If a group with the name of
+        /// name exists
+        /// </returns>
+        public Boolean IsNameDuplicate(string name)
+        {
+            foreach(Group group in AllGroups)
+                if(group.Name.Equals(name))
+                    return true;
+
+            return false;
+        }
     }
 }

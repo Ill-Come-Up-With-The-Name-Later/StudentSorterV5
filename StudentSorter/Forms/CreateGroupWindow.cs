@@ -32,14 +32,34 @@ namespace StudentSorter
         private void CreateGroupButton_Click(object sender, EventArgs e)
         {
             ErrorProvider.Clear();
+
             if (GroupNameInput.Text.Equals("") || GroupNameInput.Text == null)
             {
                 ErrorProvider.SetError(GroupNameInput, "A name is required");
                 //throw new ArgumentException("No name entered!");
-                return;
             }
 
-            if(ErrorProvider.HasErrors)
+            if (Sorter.GlobalInstance().IsNameDuplicate(GroupNameInput.Text))
+            {
+                ErrorProvider.SetError(GroupNameInput, "A group of this name already exists.");
+            }
+
+            if(MinDeterminantInput.Value > MaxDeterminantInput.Value)
+            {
+                ErrorProvider.SetError(MinDeterminantInput, "Min. determinant must be less than maximum");
+            }
+
+            if(MaxDeterminantInput.Value < MinDeterminantInput.Value)
+            {
+                ErrorProvider.SetError(MaxDeterminantInput, "Max. determinant must be greater than minimum");
+            }
+
+            if(CapacityInput.Value <= 0)
+            {
+                ErrorProvider.SetError(CapacityInput, "Capacity must be greater than 0");
+            }
+
+            if (ErrorProvider.HasErrors)
             {
                 return;
             }
@@ -48,19 +68,6 @@ namespace StudentSorter
             int capacity = (int)CapacityInput.Value;
             int minDeterminant = (int)MinDeterminantInput.Value;
             int maxDeterminant = (int)MaxDeterminantInput.Value;
-
-            if (maxDeterminant <= minDeterminant)
-            {
-                ErrorProvider.SetError(MinDeterminantInput, "The minimum determinant cannot be greater than the maximum");
-                ErrorProvider.SetError(MaxDeterminantInput, "The maximum determinant cannot be less than the minimum");
-                throw new ArgumentException("Max determinant must be greater than min determinant");
-            }
-
-            if (capacity <= 0)
-            {
-                ErrorProvider.SetError(CapacityInput, "The capacity cannot be less than or equal to zero");
-                throw new ArgumentException("Capacity must be greater than 0");
-            }
 
             if (ErrorProvider.HasErrors)
             {
