@@ -5,6 +5,8 @@ namespace StudentSorter
 {
     public partial class TitleWindow : Form
     {
+        const string ManualDocument = "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing";
+
         public TitleWindow()
         {
             InitializeComponent();
@@ -86,8 +88,7 @@ namespace StudentSorter
         /// </summary>
         private void UserManualLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
         {
-            Process.Start("explorer", 
-                "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing");
+            Process.Start("explorer", ManualDocument);
         }
     }
 }
