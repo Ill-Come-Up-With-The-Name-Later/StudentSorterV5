@@ -1,6 +1,6 @@
 ﻿namespace StudentSorter
 {
-    internal class StudentComparer : IComparer<Student>
+    public class StudentComparer : IComparer<Student>
     {
         /// <summary>
         /// Used to randomize the student list
