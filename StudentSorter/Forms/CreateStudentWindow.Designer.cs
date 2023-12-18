@@ -160,7 +160,6 @@
             // PDFOpener
             // 
             PDFOpener.DefaultExt = "pdf";
-            PDFOpener.FileName = "openFileDialog1";
             PDFOpener.Filter = "PDF files|*.pdf";
             PDFOpener.Title = "Upload PDF Roster";
             PDFOpener.FileOk += PDFOpener_FileOk;
