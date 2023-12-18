@@ -261,6 +261,7 @@
             // 
             // ManualAssignmentButton
             // 
+            ManualAssignmentButton.Enabled = false;
             ManualAssignmentButton.Location = new Point(19, 475);
             ManualAssignmentButton.Name = "ManualAssignmentButton";
             ManualAssignmentButton.Size = new Size(369, 45);

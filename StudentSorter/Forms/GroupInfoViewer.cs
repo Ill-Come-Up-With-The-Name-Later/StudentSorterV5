@@ -32,5 +32,32 @@
             SelectedGroup.MinDeterminant = (int)MinDeterminantInput.Value;
             SelectedGroup.MaxDeterminant = (int)MaxDeterminantInput.Value;
         }
+
+        /// <summary>
+        /// Closes the window
+        /// </summary>
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Deletes the group and all manual
+        /// assignments associated with it
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void DeleteGroupButton_Click(object sender, EventArgs e)
+        {
+            Sorter.GlobalInstance().AllGroups.Remove(SelectedGroup);
+
+            foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
+            {
+                if(Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode) == SelectedGroup)
+                {
+                    Sorter.GlobalInstance().Assignments.Remove(assignment);
+                }
+            }
+        }
     }
 }

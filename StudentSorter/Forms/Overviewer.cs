@@ -183,6 +183,15 @@ namespace StudentSorter
             }
 
             GroupLabel.Text = $"Groups: {groups.Rows.Count}";
+
+            if(groups.Rows.Count > 0 && students.Rows.Count > 0) 
+            {
+                ManualAssignmentButton.Enabled = true;
+            }
+            else
+            {
+                ManualAssignmentButton.Enabled = false;
+            }
         }
 
         /// <summary>

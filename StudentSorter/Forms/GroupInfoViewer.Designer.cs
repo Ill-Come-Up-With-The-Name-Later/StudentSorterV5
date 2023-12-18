@@ -36,6 +36,8 @@
             MinDeterminantInput = new NumericUpDown();
             MaxDeterminantInput = new NumericUpDown();
             label1 = new Label();
+            CloseButton = new Button();
+            DeleteGroupButton = new Button();
             ((System.ComponentModel.ISupportInitialize)GroupCapacityInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).BeginInit();
@@ -110,11 +112,33 @@
             label1.TabIndex = 7;
             label1.Text = "Group Info will update on closing.";
             // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(13, 443);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(133, 40);
+            CloseButton.TabIndex = 8;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
+            // DeleteGroupButton
+            // 
+            DeleteGroupButton.Location = new Point(163, 443);
+            DeleteGroupButton.Name = "DeleteGroupButton";
+            DeleteGroupButton.Size = new Size(173, 41);
+            DeleteGroupButton.TabIndex = 9;
+            DeleteGroupButton.Text = "Delete Group";
+            DeleteGroupButton.UseVisualStyleBackColor = true;
+            DeleteGroupButton.Click += DeleteGroupButton_Click;
+            // 
             // GroupInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(357, 468);
+            ClientSize = new Size(357, 495);
+            Controls.Add(DeleteGroupButton);
+            Controls.Add(CloseButton);
             Controls.Add(label1);
             Controls.Add(MaxDeterminantInput);
             Controls.Add(MinDeterminantInput);
@@ -146,5 +170,7 @@
         private NumericUpDown MinDeterminantInput;
         private NumericUpDown MaxDeterminantInput;
         private Label label1;
+        private Button CloseButton;
+        private Button DeleteGroupButton;
     }
 }

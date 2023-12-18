@@ -33,7 +33,7 @@
             GroupList.Items.Add("");
             Sorter.GlobalInstance().AllGroups.ForEach(group => { GroupList.Items.Add(group.Name); });
 
-            if(Student.HasAssignment())
+            if (Student.HasAssignment())
             {
                 ManualAssignment assignment = Student.GetAssignment();
                 AssignGroupCheck.Checked = true;
@@ -68,7 +68,7 @@
                 }
                 else
                 {
-                    if(!Student.HasAssignment())
+                    if (!Student.HasAssignment())
                     {
                         ManualAssignment assignment = new(
                                 Sorter.GlobalInstance().GetStudentByName(Student.Name).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
@@ -114,6 +114,29 @@
         private void AssignGroupCheck_CheckedChanged(object sender, EventArgs e)
         {
             GroupList.Enabled = AssignGroupCheck.Checked;
+        }
+
+        /// <summary>
+        /// Deletes the student as well as all
+        /// associated manual assignments and illegal
+        /// pairs
+        /// </summary>
+        private void DeleteStudentButton_Click(object sender, EventArgs e)
+        {
+            Sorter.GlobalInstance().AllStudents.Remove(Student);
+
+            if(Student.HasAssignment())
+            {
+                Sorter.GlobalInstance().Assignments.Remove(Student.GetAssignment());
+            }
+
+            foreach(IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
+            {
+                if(pair.Contains(Student))
+                {
+                    Sorter.GlobalInstance().IllegalPairs.Remove(pair);
+                }
+            }
         }
     }
 }

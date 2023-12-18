@@ -41,6 +41,7 @@
             GroupList = new ComboBox();
             CloseButton = new Button();
             ErrorProvider = new ErrorProvider(components);
+            DeleteStudentButton = new Button();
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
@@ -141,7 +142,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(144, 418);
+            CloseButton.Location = new Point(28, 423);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(165, 40);
             CloseButton.TabIndex = 10;
@@ -153,11 +154,22 @@
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // DeleteStudentButton
+            // 
+            DeleteStudentButton.Location = new Point(235, 423);
+            DeleteStudentButton.Name = "DeleteStudentButton";
+            DeleteStudentButton.Size = new Size(161, 40);
+            DeleteStudentButton.TabIndex = 11;
+            DeleteStudentButton.Text = "Delete Student";
+            DeleteStudentButton.UseVisualStyleBackColor = true;
+            DeleteStudentButton.Click += DeleteStudentButton_Click;
+            // 
             // StudentInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 470);
+            ClientSize = new Size(476, 485);
+            Controls.Add(DeleteStudentButton);
             Controls.Add(CloseButton);
             Controls.Add(GroupList);
             Controls.Add(AssignGroupCheck);
@@ -195,5 +207,6 @@
         private ComboBox GroupList;
         private Button CloseButton;
         private ErrorProvider ErrorProvider;
+        private Button DeleteStudentButton;
     }
 }
