@@ -124,7 +124,8 @@ namespace StudentSorter
         /// </summary>
         private void StudentViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = StudentViewer.CurrentCell.RowIndex;
+            int index = Sorter.GlobalInstance().AllStudents.IndexOf(
+                Sorter.GlobalInstance().GetStudentByName(StudentViewer.CurrentCell.Value.ToString()));
 
             StudentInfoViewer viewer = new(index);
             viewer.Show();
@@ -135,7 +136,9 @@ namespace StudentSorter
         /// </summary>
         private void GroupViewer_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = GroupViewer.CurrentCell.RowIndex;
+            int index = Sorter.GlobalInstance().AllGroups.IndexOf(
+                Sorter.GlobalInstance().GetGroupByName(GroupViewer.CurrentCell.Value.ToString()));
+
             GroupInfoViewer viewer = new(index);
             viewer.Show();
         }

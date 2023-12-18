@@ -37,6 +37,8 @@
 
             AllStudents.Sort(new StudentComparer());
 
+            ManuallyAssign(); // Do all manual assignments first
+
             foreach (Group AnalysisGroup in AllGroups)
             {
                 foreach (Student AnalysisStudent in AllStudents)
