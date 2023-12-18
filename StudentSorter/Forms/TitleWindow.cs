@@ -53,6 +53,10 @@ namespace StudentSorter
             {
                 Importer.Import<IllegalPair>(sort.IllegalPairsFile);
             }
+            if(sort.ManualAssignmentsFile.Length > 0)
+            {
+                Importer.Import<ManualAssignment>(sort.ManualAssignmentsFile);
+            }
 
             Sorter.GlobalInstance().DeterminantRange =
                     Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
