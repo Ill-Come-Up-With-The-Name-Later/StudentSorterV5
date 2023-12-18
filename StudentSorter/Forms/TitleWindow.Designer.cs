@@ -33,6 +33,7 @@
             ConfigSortButton = new Button();
             OpenConfig = new OpenFileDialog();
             CreateConfigButton = new Button();
+            UserManualLink = new LinkLabel();
             SuspendLayout();
             // 
             // TitleLabel
@@ -59,7 +60,7 @@
             // 
             // ConfigSortButton
             // 
-            ConfigSortButton.Location = new Point(125, 225);
+            ConfigSortButton.Location = new Point(125, 215);
             ConfigSortButton.Name = "ConfigSortButton";
             ConfigSortButton.Size = new Size(272, 43);
             ConfigSortButton.TabIndex = 2;
@@ -84,11 +85,23 @@
             CreateConfigButton.UseVisualStyleBackColor = true;
             CreateConfigButton.Click += CreateConfigButton_Click;
             // 
+            // UserManualLink
+            // 
+            UserManualLink.AutoSize = true;
+            UserManualLink.Location = new Point(196, 276);
+            UserManualLink.Name = "UserManualLink";
+            UserManualLink.Size = new Size(121, 28);
+            UserManualLink.TabIndex = 4;
+            UserManualLink.TabStop = true;
+            UserManualLink.Text = "User Manual";
+            UserManualLink.LinkClicked += UserManualLink_LinkClicked;
+            // 
             // TitleWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 290);
+            ClientSize = new Size(549, 344);
+            Controls.Add(UserManualLink);
             Controls.Add(CreateConfigButton);
             Controls.Add(ConfigSortButton);
             Controls.Add(OpenButton);
@@ -108,5 +121,6 @@
         private Button ConfigSortButton;
         private OpenFileDialog OpenConfig;
         private Button CreateConfigButton;
+        private LinkLabel UserManualLink;
     }
 }

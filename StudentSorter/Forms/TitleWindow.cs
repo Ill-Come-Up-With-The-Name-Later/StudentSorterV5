@@ -1,4 +1,5 @@
 using StudentSorter.Forms;
+using System.Diagnostics;
 
 namespace StudentSorter
 {
@@ -53,7 +54,7 @@ namespace StudentSorter
             {
                 Importer.Import<IllegalPair>(sort.IllegalPairsFile);
             }
-            if(sort.ManualAssignmentsFile.Length > 0)
+            if (sort.ManualAssignmentsFile.Length > 0)
             {
                 Importer.Import<ManualAssignment>(sort.ManualAssignmentsFile);
             }
@@ -78,6 +79,15 @@ namespace StudentSorter
         {
             CreateSortConfig createSort = new();
             createSort.Show();
+        }
+
+        /// <summary>
+        /// Opens the user manual link
+        /// </summary>
+        private void UserManualLink_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+            Process.Start("explorer", 
+                "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing");
         }
     }
 }
