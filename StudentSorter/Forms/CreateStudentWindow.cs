@@ -132,7 +132,7 @@ namespace StudentSorter
         {
             string file = PDFOpener.FileName;
             int startPage = (int)PageStartInput.Value - 1;
-            int endPage = (int)PageEndInput.Value;
+            int endPage = (int)PageEndInput.Value - 1;
 
             List<string> names = Sorter.GetNamesFromPDF(file, startPage, endPage);
 
