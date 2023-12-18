@@ -366,8 +366,13 @@ namespace StudentSorter
         /// Returns names of students out of
         /// an uploaded pdf
         /// </summary>
-        /// <param name="filePath"></param>
-        /// <returns></returns>
+        /// <param name="filePath">
+        /// The path to the PDF roster
+        /// </param>
+        /// <returns>
+        /// A list of names in the format
+        /// last, first
+        /// </returns>
         public static List<string> GetNamesFromPDF(string filePath, int startPage, int pageLimit)
         {
             using var file = File.OpenRead($@"{filePath}");
@@ -379,7 +384,7 @@ namespace StudentSorter
             pageLimit = Math.Min(pageLimit, document.Pages.Count);
             startPage = Math.Min(Math.Max(startPage, 0), document.Pages.Count);
 
-            for (int i = startPage; i < pageLimit; i++)
+            for (int i = startPage; i <= pageLimit; i++)
             {
                 var PageText = document.Pages[i].GetText();
 
@@ -389,14 +394,11 @@ namespace StudentSorter
                 {
                     if (splitTxt[j].Contains(',') && splitTxt[j].Split(new char[] { ' ' }).Length == 2)
                     {
+                        if (splitTxt[j].Split(' ')[0].ToUpper().Equals(splitTxt[j].Split(' ')[0]))
+                            continue;
                         names.Add(splitTxt[j]);
                     }
                 }
-            }
-
-            if (names.Count > 0)
-            {
-                names.Remove(names[0]);
             }
 
             return names;

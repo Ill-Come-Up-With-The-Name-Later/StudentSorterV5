@@ -168,9 +168,11 @@
             // PageStartInput
             // 
             PageStartInput.Location = new Point(412, 430);
+            PageStartInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             PageStartInput.Name = "PageStartInput";
             PageStartInput.Size = new Size(94, 34);
             PageStartInput.TabIndex = 10;
+            PageStartInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
             // FromLabl
             // 

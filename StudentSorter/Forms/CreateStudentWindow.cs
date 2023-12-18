@@ -124,12 +124,12 @@ namespace StudentSorter
         private void PDFOpener_FileOk(object sender, CancelEventArgs e)
         {
             string file = PDFOpener.FileName;
-            int startPage = (int)PageStartInput.Value;
+            int startPage = (int)PageStartInput.Value - 1;
             int endPage = (int)PageEndInput.Value;
 
             List<string> names = Sorter.GetNamesFromPDF(file, startPage, endPage);
 
-            foreach(string name in names)
+            foreach (string name in names)
             {
                 Student student = new(name);
             }
