@@ -38,9 +38,7 @@
                 ManualAssignment assignment = Student.GetAssignment();
                 AssignGroupCheck.Checked = true;
 
-                Group group = Sorter.GlobalInstance().GetGroupByHashCode(assignment.GetHashCode());
-
-                GroupList.SelectedIndex = GroupList.Items.IndexOf(group.Name);
+                GroupList.SelectedIndex = GroupList.Items.IndexOf(Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode).Name);
             }
         }
 

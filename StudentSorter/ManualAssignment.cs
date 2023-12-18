@@ -21,6 +21,8 @@ namespace StudentSorter
         {
             StudentHashCode = studentHashCode;
             GroupHashCode = groupHashCode;
+
+            Sorter.GlobalInstance().Assignments.Add(this);
         }
     }
 }
