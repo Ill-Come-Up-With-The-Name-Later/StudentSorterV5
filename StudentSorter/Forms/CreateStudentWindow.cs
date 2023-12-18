@@ -96,7 +96,14 @@ namespace StudentSorter
         /// </summary>
         private void ManualGroupAssignCheck_CheckedChanged(object sender, EventArgs e)
         {
-            GroupList.Enabled = ManualGroupAssignCheck.Checked;
+            if(Sorter.GlobalInstance().AllGroups.Count > 0)
+                GroupList.Enabled = ManualGroupAssignCheck.Checked;
+            else
+            {
+                GroupList.Enabled = false;
+                ManualGroupAssignCheck.Checked = false;
+                return;
+            }
         }
 
         /// <summary>

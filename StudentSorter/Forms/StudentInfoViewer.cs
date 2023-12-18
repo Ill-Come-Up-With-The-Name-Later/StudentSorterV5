@@ -115,7 +115,14 @@
         /// </summary>
         private void AssignGroupCheck_CheckedChanged(object sender, EventArgs e)
         {
-            GroupList.Enabled = AssignGroupCheck.Checked;
+            if (Sorter.GlobalInstance().AllGroups.Count > 0)
+                GroupList.Enabled = AssignGroupCheck.Checked;
+            else
+            {
+                GroupList.Enabled = false;
+                AssignGroupCheck.Checked = false;
+                return;
+            }
         }
 
         /// <summary>
