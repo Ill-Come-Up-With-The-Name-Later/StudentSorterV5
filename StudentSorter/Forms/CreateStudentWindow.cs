@@ -61,7 +61,7 @@ namespace StudentSorter
                 Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
             }
 
-            if(ManualGroupAssignCheck.Checked)
+            if (ManualGroupAssignCheck.Checked)
             {
                 if (GroupList.SelectedIndex < 0)
                 {
@@ -108,6 +108,34 @@ namespace StudentSorter
             GroupList.Enabled = false;
             GroupList.Items.Add("");
             Sorter.GlobalInstance().AllGroups.ForEach(group => { GroupList.Items.Add(group.Name); });
+        }
+
+        /// <summary>
+        /// Opens dialog to upload roster PDF
+        /// </summary>
+        private void PDFUploadButton_Click(object sender, EventArgs e)
+        {
+            PDFOpener.ShowDialog();
+        }
+
+        /// <summary>
+        /// Uploads students through a PDF
+        /// </summary>
+        private void PDFOpener_FileOk(object sender, CancelEventArgs e)
+        {
+            string file = PDFOpener.FileName;
+            int startPage = (int)PageStartInput.Value;
+            int endPage = (int)PageEndInput.Value;
+
+            List<string> names = Sorter.GetNamesFromPDF(file, startPage, endPage);
+
+            foreach(string name in names)
+            {
+                Student student = new(name);
+            }
+
+            Close();
+            FormParent.RefreshLists();
         }
     }
 }

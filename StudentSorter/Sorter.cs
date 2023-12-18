@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using GrapeCity.Documents.Pdf;
+
+namespace StudentSorter
 {
     public class Sorter
     {
@@ -358,6 +360,46 @@
                     return true;
 
             return false;
+        }
+
+        /// <summary>
+        /// Returns names of students out of
+        /// an uploaded pdf
+        /// </summary>
+        /// <param name="filePath"></param>
+        /// <returns></returns>
+        public static List<string> GetNamesFromPDF(string filePath, int startPage, int pageLimit)
+        {
+            using var file = File.OpenRead($@"{filePath}");
+            GcPdfDocument document = new();
+            document.Load(file);
+
+            List<string> names = new();
+
+            pageLimit = Math.Min(pageLimit, document.Pages.Count);
+            startPage = Math.Min(Math.Max(startPage, 0), document.Pages.Count);
+
+            for (int i = startPage; i < pageLimit; i++)
+            {
+                var PageText = document.Pages[i].GetText();
+
+                string[] splitTxt = PageText.Split(new char[] { '\n' });
+
+                for (int j = 0; j < splitTxt.Length; j++)
+                {
+                    if (splitTxt[j].Contains(',') && splitTxt[j].Split(new char[] { ' ' }).Length == 2)
+                    {
+                        names.Add(splitTxt[j]);
+                    }
+                }
+            }
+
+            if (names.Count > 0)
+            {
+                names.Remove(names[0]);
+            }
+
+            return names;
         }
     }
 }

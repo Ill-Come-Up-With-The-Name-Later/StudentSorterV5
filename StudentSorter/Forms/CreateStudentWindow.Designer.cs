@@ -40,8 +40,16 @@
             ErrorProvider = new ErrorProvider(components);
             ManualGroupAssignCheck = new CheckBox();
             GroupList = new ComboBox();
+            PDFUploadButton = new Button();
+            PDFOpener = new OpenFileDialog();
+            PageStartInput = new NumericUpDown();
+            FromLabl = new Label();
+            ToLabel = new Label();
+            PageEndInput = new NumericUpDown();
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PageStartInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PageEndInput).BeginInit();
             SuspendLayout();
             // 
             // label1
@@ -139,11 +147,68 @@
             GroupList.Size = new Size(238, 36);
             GroupList.TabIndex = 8;
             // 
+            // PDFUploadButton
+            // 
+            PDFUploadButton.Location = new Point(376, 360);
+            PDFUploadButton.Name = "PDFUploadButton";
+            PDFUploadButton.Size = new Size(256, 49);
+            PDFUploadButton.TabIndex = 9;
+            PDFUploadButton.Text = "Upload From Roster PDF";
+            PDFUploadButton.UseVisualStyleBackColor = true;
+            PDFUploadButton.Click += PDFUploadButton_Click;
+            // 
+            // PDFOpener
+            // 
+            PDFOpener.DefaultExt = "pdf";
+            PDFOpener.FileName = "openFileDialog1";
+            PDFOpener.Filter = "PDF files|*.pdf";
+            PDFOpener.Title = "Upload PDF Roster";
+            PDFOpener.FileOk += PDFOpener_FileOk;
+            // 
+            // PageStartInput
+            // 
+            PageStartInput.Location = new Point(412, 430);
+            PageStartInput.Name = "PageStartInput";
+            PageStartInput.Size = new Size(94, 34);
+            PageStartInput.TabIndex = 10;
+            // 
+            // FromLabl
+            // 
+            FromLabl.AutoSize = true;
+            FromLabl.Location = new Point(348, 432);
+            FromLabl.Name = "FromLabl";
+            FromLabl.Size = new Size(58, 28);
+            FromLabl.TabIndex = 11;
+            FromLabl.Text = "Page:";
+            // 
+            // ToLabel
+            // 
+            ToLabel.AutoSize = true;
+            ToLabel.Location = new Point(512, 432);
+            ToLabel.Name = "ToLabel";
+            ToLabel.Size = new Size(35, 28);
+            ToLabel.TabIndex = 12;
+            ToLabel.Text = "to:";
+            // 
+            // PageEndInput
+            // 
+            PageEndInput.Location = new Point(553, 430);
+            PageEndInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            PageEndInput.Name = "PageEndInput";
+            PageEndInput.Size = new Size(110, 34);
+            PageEndInput.TabIndex = 13;
+            PageEndInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            // 
             // CreateStudentWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(782, 456);
+            ClientSize = new Size(782, 485);
+            Controls.Add(PageEndInput);
+            Controls.Add(ToLabel);
+            Controls.Add(FromLabl);
+            Controls.Add(PageStartInput);
+            Controls.Add(PDFUploadButton);
             Controls.Add(GroupList);
             Controls.Add(ManualGroupAssignCheck);
             Controls.Add(JsonUploadButton);
@@ -160,6 +225,8 @@
             Load += CreateStudentWindow_Load;
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PageStartInput).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PageEndInput).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -177,5 +244,11 @@
         private ErrorProvider ErrorProvider;
         private ComboBox GroupList;
         private CheckBox ManualGroupAssignCheck;
+        private Button PDFUploadButton;
+        private OpenFileDialog PDFOpener;
+        private NumericUpDown PageEndInput;
+        private Label ToLabel;
+        private Label FromLabl;
+        private NumericUpDown PageStartInput;
     }
 }
