@@ -69,8 +69,9 @@ namespace StudentSorter
                     return;
                 }
 
-                Sorter.GlobalInstance().ManualAssignments[Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text)] = 
-                    Sorter.GlobalInstance().GetGroupByName(GroupList.Items[GroupList.SelectedIndex].ToString());
+                ManualAssignment assignment = new(
+                    Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
+                        GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
             }
 
             StudentNameInput.Text = "";

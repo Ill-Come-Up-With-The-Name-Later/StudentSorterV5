@@ -5,10 +5,12 @@
         private string StudentFile = "";
         private string GroupFile = "";
         private string PairsFile = "";
+        private string AssignmentsFile = "";
 
         const string StudentTitle = "Select Student File";
         const string GroupTitle = "Select Group File";
         const string PairFile = "Select Pair File";
+        const string AssignFile = "Select Manual Assignments File";
 
         public CreateSortConfig()
         {
@@ -59,6 +61,9 @@
                 case PairFile:
                     PairsFile = SelectFile.FileName;
                     break;
+                case AssignFile:
+                    AssignmentsFile = SelectFile.FileName;
+                    break;
             }
 
             UpdateFileDisplay();
@@ -87,6 +92,9 @@
 
             if (PairsFile.Length > 0)
                 DisallowedPairsFileName.Text = $"Disallowed Pairs File: {PairsFile.Split("\\").Last()}";
+
+            if (AssignmentsFile.Length > 0)
+                DisallowedPairsFileName.Text = $"Manual Assignment File: {AssignmentsFile.Split("\\").Last()}";
         }
 
         /// <summary>
@@ -95,10 +103,19 @@
         /// </summary>
         private void SaveConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SorterConfig sort = new(ConfigNameInput.Text, StudentFile, GroupFile, PairsFile);
+            SorterConfig sort = new(ConfigNameInput.Text, StudentFile, GroupFile, PairsFile, AssignmentsFile);
 
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
+        }
+
+        /// <summary>
+        /// Opens dialog to upload manual assignment file
+        /// </summary>
+        private void AddAssignmentFileButton_Click(object sender, EventArgs e)
+        {
+            SelectFile.Title = AssignFile;
+            SelectFile.ShowDialog();
         }
     }
 }

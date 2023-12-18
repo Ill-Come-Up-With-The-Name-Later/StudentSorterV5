@@ -33,10 +33,14 @@
             GroupList.Items.Add("");
             Sorter.GlobalInstance().AllGroups.ForEach(group => { GroupList.Items.Add(group.Name); });
 
-            if (Sorter.GlobalInstance().ManualAssignments.Keys.Contains(Student))
+            if(Student.HasAssignment())
             {
+                ManualAssignment assignment = Student.GetAssignment();
                 AssignGroupCheck.Checked = true;
-                GroupList.SelectedIndex = GroupList.Items.IndexOf(Sorter.GlobalInstance().ManualAssignments[Student].Name);
+
+                Group group = Sorter.GlobalInstance().GetGroupByHashCode(assignment.GetHashCode());
+
+                GroupList.SelectedIndex = GroupList.Items.IndexOf(group.Name);
             }
         }
 
@@ -66,8 +70,12 @@
                 }
                 else
                 {
-                    Sorter.GlobalInstance().ManualAssignments[Sorter.GlobalInstance().GetStudentByName(Student.Name)] =
-                    Sorter.GlobalInstance().GetGroupByName(GroupList.Items[GroupList.SelectedIndex].ToString());
+                    if(!Student.HasAssignment())
+                    {
+                        ManualAssignment assignment = new(
+                                Sorter.GlobalInstance().GetStudentByName(Student.Name).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
+                                    GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
+                    }
                 }
             }
 

@@ -11,6 +11,7 @@ namespace StudentSorter
         public string StudentFile = "";
         public string GroupFile = "";
         public string IllegalPairFile = "";
+        public string ManualAssignmentsFile = "";
 
         public Overviewer()
         {
@@ -115,7 +116,7 @@ namespace StudentSorter
             Sorter.GlobalInstance().RandomizeDeterminants();
             Sorter.GlobalInstance().ShuffleGroups();
 
-            SortDisplay display = new(this, new SorterConfig("None", "", "", ""));
+            SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""));
             display.Show();
         }
 
@@ -197,9 +198,46 @@ namespace StudentSorter
         /// </summary>
         private void ConfigSaver_FileOk(object sender, CancelEventArgs e)
         {
-            SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile);
+            SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile, ManualAssignmentsFile);
 
             Exporter.ExportObject(sort, ConfigSaver.FileName);
+        }
+
+        /// <summary>
+        /// Open dialog to upload manual assignments
+        /// </summary>
+        private void ManualAssignmentButton_Click(object sender, EventArgs e)
+        {
+            OpenAssignments.ShowDialog();
+        }
+
+        /// <summary>
+        /// Uploads manual assignments
+        /// </summary>
+        private void OpenAssignments_FileOk(object sender, CancelEventArgs e)
+        {
+            Importer.Import<ManualAssignment>(OpenAssignments.FileName);
+
+            ManualAssignmentFile.Text = $"Manual Assignment File Source: {OpenAssignments.FileName}";
+        }
+
+        /// <summary>
+        /// Opens dialog to save all manual assignments
+        /// </summary>
+        private void SaveAssignmentsButton_Click(object sender, EventArgs e)
+        {
+            SaveAssignmentDialog.ShowDialog();
+        }
+
+        /// <summary>
+        /// Exports manual assignments to
+        /// JSON
+        /// </summary>
+        private void SaveAssignmentDialog_FileOk(object sender, CancelEventArgs e)
+        {
+            Exporter.ExportObjects(Sorter.GlobalInstance().Assignments, SaveAssignmentDialog.FileName);
+
+            ManualAssignmentFile.Text = $"Manual Assignment File Source: {SaveAssignmentDialog.FileName}";
         }
     }
 }

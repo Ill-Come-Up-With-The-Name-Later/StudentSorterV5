@@ -39,11 +39,13 @@
             SaveConfig = new SaveFileDialog();
             ConfigNameLabel = new Label();
             ConfigNameInput = new TextBox();
+            AddAssignmentFileButton = new Button();
+            ManualAssignmentFile = new Label();
             SuspendLayout();
             // 
             // CreateConfigButton
             // 
-            CreateConfigButton.Location = new Point(241, 212);
+            CreateConfigButton.Location = new Point(239, 254);
             CreateConfigButton.Name = "CreateConfigButton";
             CreateConfigButton.Size = new Size(279, 49);
             CreateConfigButton.TabIndex = 0;
@@ -124,7 +126,7 @@
             // ConfigNameLabel
             // 
             ConfigNameLabel.AutoSize = true;
-            ConfigNameLabel.Location = new Point(41, 161);
+            ConfigNameLabel.Location = new Point(41, 211);
             ConfigNameLabel.Name = "ConfigNameLabel";
             ConfigNameLabel.Size = new Size(194, 28);
             ConfigNameLabel.TabIndex = 7;
@@ -132,17 +134,38 @@
             // 
             // ConfigNameInput
             // 
-            ConfigNameInput.Location = new Point(255, 158);
+            ConfigNameInput.Location = new Point(250, 208);
             ConfigNameInput.Name = "ConfigNameInput";
             ConfigNameInput.Size = new Size(253, 34);
             ConfigNameInput.TabIndex = 8;
             ConfigNameInput.Text = "Configuration";
             // 
+            // AddAssignmentFileButton
+            // 
+            AddAssignmentFileButton.Location = new Point(41, 153);
+            AddAssignmentFileButton.Name = "AddAssignmentFileButton";
+            AddAssignmentFileButton.Size = new Size(94, 41);
+            AddAssignmentFileButton.TabIndex = 9;
+            AddAssignmentFileButton.Text = "Add File";
+            AddAssignmentFileButton.UseVisualStyleBackColor = true;
+            AddAssignmentFileButton.Click += AddAssignmentFileButton_Click;
+            // 
+            // ManualAssignmentFile
+            // 
+            ManualAssignmentFile.AutoSize = true;
+            ManualAssignmentFile.Location = new Point(162, 159);
+            ManualAssignmentFile.Name = "ManualAssignmentFile";
+            ManualAssignmentFile.Size = new Size(276, 28);
+            ManualAssignmentFile.TabIndex = 10;
+            ManualAssignmentFile.Text = "Manual Assignment File: None";
+            // 
             // CreateSortConfig
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(777, 273);
+            ClientSize = new Size(777, 315);
+            Controls.Add(ManualAssignmentFile);
+            Controls.Add(AddAssignmentFileButton);
             Controls.Add(ConfigNameInput);
             Controls.Add(ConfigNameLabel);
             Controls.Add(AddPairsFile);
@@ -173,5 +196,7 @@
         private SaveFileDialog SaveConfig;
         private Label ConfigNameLabel;
         private TextBox ConfigNameInput;
+        private Button AddAssignmentFileButton;
+        private Label ManualAssignmentFile;
     }
 }

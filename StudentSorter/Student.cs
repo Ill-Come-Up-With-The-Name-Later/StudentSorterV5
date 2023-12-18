@@ -150,6 +150,48 @@ namespace StudentSorter
             return new IllegalPair(s1, s2);
         }
 
+        /// <summary>
+        /// Finds if this student has a
+        /// manual group assignment
+        /// </summary>
+        /// <returns>
+        /// If the student has a manual
+        /// assignment
+        /// </returns>
+        public bool HasAssignment()
+        {
+            foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments) 
+            {
+                if(Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        /// <summary>
+        /// Gets the manual assignment the
+        /// student is in
+        /// </summary>
+        /// <returns>
+        /// The manual assignment the student has
+        /// </returns>
+        public ManualAssignment? GetAssignment()
+        {
+            if(HasAssignment())
+            {
+                foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
+                {
+                    if(Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this) 
+                        return assignment;
+                }
+            }
+
+            return null;
+        }
+
         public override int GetHashCode()
         {
             return HashCode;

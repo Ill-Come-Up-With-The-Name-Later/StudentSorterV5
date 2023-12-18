@@ -48,6 +48,11 @@
             StudentSource = new Label();
             GroupSource = new Label();
             DisallowedPairsSource = new Label();
+            ManualAssignmentFile = new Label();
+            ManualAssignmentButton = new Button();
+            OpenAssignments = new OpenFileDialog();
+            SaveAssignmentsButton = new Button();
+            SaveAssignmentDialog = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
@@ -102,7 +107,7 @@
             StudentLabel.Location = new Point(167, 53);
             StudentLabel.Margin = new Padding(4, 0, 4, 0);
             StudentLabel.Name = "StudentLabel";
-            StudentLabel.Size = new Size(70, 21);
+            StudentLabel.Size = new Size(88, 28);
             StudentLabel.TabIndex = 2;
             StudentLabel.Text = "Students";
             // 
@@ -111,7 +116,7 @@
             GroupLabel.AutoSize = true;
             GroupLabel.Location = new Point(870, 53);
             GroupLabel.Name = "GroupLabel";
-            GroupLabel.Size = new Size(61, 21);
+            GroupLabel.Size = new Size(76, 28);
             GroupLabel.TabIndex = 3;
             GroupLabel.Text = "Groups";
             // 
@@ -221,35 +226,82 @@
             // StudentSource
             // 
             StudentSource.AutoSize = true;
-            StudentSource.Location = new Point(12, 548);
+            StudentSource.Location = new Point(12, 608);
             StudentSource.Name = "StudentSource";
-            StudentSource.Size = new Size(182, 21);
+            StudentSource.Size = new Size(230, 28);
             StudentSource.TabIndex = 12;
             StudentSource.Text = "Student File Souce: None";
             // 
             // GroupSource
             // 
             GroupSource.AutoSize = true;
-            GroupSource.Location = new Point(12, 579);
+            GroupSource.Location = new Point(12, 636);
             GroupSource.Name = "GroupSource";
-            GroupSource.Size = new Size(179, 21);
+            GroupSource.Size = new Size(225, 28);
             GroupSource.TabIndex = 13;
             GroupSource.Text = "Group File Source: None";
             // 
             // DisallowedPairsSource
             // 
             DisallowedPairsSource.AutoSize = true;
-            DisallowedPairsSource.Location = new Point(12, 612);
+            DisallowedPairsSource.Location = new Point(12, 664);
             DisallowedPairsSource.Name = "DisallowedPairsSource";
-            DisallowedPairsSource.Size = new Size(242, 21);
+            DisallowedPairsSource.Size = new Size(302, 28);
             DisallowedPairsSource.TabIndex = 14;
             DisallowedPairsSource.Text = "Disallowed Pairs File Souce: None";
             // 
+            // ManualAssignmentFile
+            // 
+            ManualAssignmentFile.AutoSize = true;
+            ManualAssignmentFile.Location = new Point(12, 692);
+            ManualAssignmentFile.Name = "ManualAssignmentFile";
+            ManualAssignmentFile.Size = new Size(341, 28);
+            ManualAssignmentFile.TabIndex = 15;
+            ManualAssignmentFile.Text = "Manual Assignment File Source: None";
+            // 
+            // ManualAssignmentButton
+            // 
+            ManualAssignmentButton.Location = new Point(19, 475);
+            ManualAssignmentButton.Name = "ManualAssignmentButton";
+            ManualAssignmentButton.Size = new Size(369, 45);
+            ManualAssignmentButton.TabIndex = 16;
+            ManualAssignmentButton.Text = "Upload Manual Assignment File";
+            ManualAssignmentButton.UseVisualStyleBackColor = true;
+            ManualAssignmentButton.Click += ManualAssignmentButton_Click;
+            // 
+            // OpenAssignments
+            // 
+            OpenAssignments.DefaultExt = "json";
+            OpenAssignments.FileName = "openFileDialog1";
+            OpenAssignments.Filter = "JSON files|*.json";
+            OpenAssignments.Title = "Upload Manual Assignments File";
+            OpenAssignments.FileOk += OpenAssignments_FileOk;
+            // 
+            // SaveAssignmentsButton
+            // 
+            SaveAssignmentsButton.Location = new Point(19, 526);
+            SaveAssignmentsButton.Name = "SaveAssignmentsButton";
+            SaveAssignmentsButton.Size = new Size(369, 45);
+            SaveAssignmentsButton.TabIndex = 17;
+            SaveAssignmentsButton.Text = "Save Manual Assignments";
+            SaveAssignmentsButton.UseVisualStyleBackColor = true;
+            SaveAssignmentsButton.Click += SaveAssignmentsButton_Click;
+            // 
+            // SaveAssignmentDialog
+            // 
+            SaveAssignmentDialog.DefaultExt = "json";
+            SaveAssignmentDialog.FileName = "Assignments.json";
+            SaveAssignmentDialog.Title = "Save Manual Assignments to JSON";
+            SaveAssignmentDialog.FileOk += SaveAssignmentDialog_FileOk;
+            // 
             // Overviewer
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1161, 661);
+            ClientSize = new Size(1161, 744);
+            Controls.Add(SaveAssignmentsButton);
+            Controls.Add(ManualAssignmentButton);
+            Controls.Add(ManualAssignmentFile);
             Controls.Add(DisallowedPairsSource);
             Controls.Add(GroupSource);
             Controls.Add(StudentSource);
@@ -297,5 +349,10 @@
         public Label DisallowedPairsSource;
         public Label GroupSource;
         public Label StudentSource;
+        private Button ManualAssignmentButton;
+        private Label ManualAssignmentFile;
+        private OpenFileDialog OpenAssignments;
+        private Button SaveAssignmentsButton;
+        private SaveFileDialog SaveAssignmentDialog;
     }
 }

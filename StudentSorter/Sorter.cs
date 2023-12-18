@@ -11,7 +11,7 @@
 
         public List<SorterConfig> SortConfigs = new();
 
-        public Dictionary<Student, Group> ManualAssignments = new();
+        public List<ManualAssignment> Assignments = new();
 
         public static Sorter GlobalInstance() => Instance;
 
@@ -81,9 +81,12 @@
         /// </summary>
         public void ManuallyAssign()
         {
-            foreach (Student student in ManualAssignments.Keys)
+            foreach(ManualAssignment assignment in Assignments)
             {
-                ManualAssignments[student].AddStudent(student);
+                Student student = GetStudentByHashCode(assignment.StudentHashCode);
+                Group group = GetGroupByHashCode(assignment.GroupHashCode);
+
+                group.AddStudent(student);
             }
         }
 
@@ -273,6 +276,30 @@
             }
 
             Console.WriteLine($"No student exists with the HashCode {code}!");
+            return null;
+        }
+
+        /// <summary>
+        /// Finds a group by its hashcode
+        /// </summary>
+        /// <param name="code">
+        /// The code to look for
+        /// </param>
+        /// <returns>
+        /// The group with a matching hashcode or nul
+        /// if it doesn't exist
+        /// </returns>
+        public Group? GetGroupByHashCode(int code)
+        {
+            foreach (Group group in AllGroups)
+            {
+                if(group.GetHashCode() == code) 
+                {
+                    return group;
+                } 
+            }
+
+            Console.WriteLine($"No group exists with the HashCode {code}");
             return null;
         }
 
