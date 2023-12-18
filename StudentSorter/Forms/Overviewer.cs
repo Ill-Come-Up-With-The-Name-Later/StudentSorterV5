@@ -128,7 +128,7 @@ namespace StudentSorter
             int index = Sorter.GlobalInstance().AllStudents.IndexOf(
                 Sorter.GlobalInstance().GetStudentByName(StudentViewer.CurrentCell.Value.ToString()));
 
-            StudentInfoViewer viewer = new(index);
+            StudentInfoViewer viewer = new(index, this);
             viewer.Show();
         }
 
@@ -140,7 +140,7 @@ namespace StudentSorter
             int index = Sorter.GlobalInstance().AllGroups.IndexOf(
                 Sorter.GlobalInstance().GetGroupByName(GroupViewer.CurrentCell.Value.ToString()));
 
-            GroupInfoViewer viewer = new(index);
+            GroupInfoViewer viewer = new(index, this);
             viewer.Show();
         }
 

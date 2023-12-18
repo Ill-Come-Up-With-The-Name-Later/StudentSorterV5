@@ -4,12 +4,14 @@
     {
         private readonly int GroupIndex;
         private readonly Group SelectedGroup;
+        private Overviewer FormParent;
 
-        public GroupInfoViewer(int groupIndex)
+        public GroupInfoViewer(int groupIndex, Overviewer formParent)
         {
             GroupIndex = groupIndex;
             SelectedGroup = Sorter.GlobalInstance().AllGroups[GroupIndex];
             InitializeComponent();
+            FormParent = formParent;
         }
 
         /// <summary>
@@ -45,8 +47,6 @@
         /// Deletes the group and all manual
         /// assignments associated with it
         /// </summary>
-        /// <param name="sender"></param>
-        /// <param name="e"></param>
         private void DeleteGroupButton_Click(object sender, EventArgs e)
         {
             Sorter.GlobalInstance().AllGroups.Remove(SelectedGroup);
@@ -58,6 +58,9 @@
                     Sorter.GlobalInstance().Assignments.Remove(assignment);
                 }
             }
+
+            FormParent.RefreshLists();
+            Close();
         }
     }
 }
