@@ -208,9 +208,9 @@
             // 
             // SaveConfigButton
             // 
-            SaveConfigButton.Location = new Point(475, 475);
+            SaveConfigButton.Location = new Point(446, 475);
             SaveConfigButton.Name = "SaveConfigButton";
-            SaveConfigButton.Size = new Size(227, 45);
+            SaveConfigButton.Size = new Size(274, 45);
             SaveConfigButton.TabIndex = 11;
             SaveConfigButton.Text = "Save Sorter Configuration";
             SaveConfigButton.UseVisualStyleBackColor = true;
@@ -290,7 +290,7 @@
             // SaveAssignmentDialog
             // 
             SaveAssignmentDialog.DefaultExt = "json";
-            SaveAssignmentDialog.FileName = "Assignments.json";
+            SaveAssignmentDialog.FileName = "ManualAssignments.json";
             SaveAssignmentDialog.Title = "Save Manual Assignments to JSON";
             SaveAssignmentDialog.FileOk += SaveAssignmentDialog_FileOk;
             // 
