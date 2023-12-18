@@ -29,6 +29,15 @@
             {
                 DeterminantInput.Value = Student.Determinant;
             }
+
+            GroupList.Items.Add("");
+            Sorter.GlobalInstance().AllGroups.ForEach(group => { GroupList.Items.Add(group.Name); });
+
+            if (Sorter.GlobalInstance().ManualAssignments.Keys.Contains(Student))
+            {
+                AssignGroupCheck.Checked = true;
+                GroupList.SelectedIndex = GroupList.Items.IndexOf(Sorter.GlobalInstance().ManualAssignments[Student].Name);
+            }
         }
 
         /// <summary>
@@ -36,6 +45,8 @@
         /// </summary>
         private void StudentInfoViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
+            ErrorProvider.Clear();
+
             if (DeterminantSetCheck.Checked)
             {
                 Student.Determinant = (int)DeterminantInput.Value;
@@ -45,6 +56,24 @@
             {
                 Student.Determinant = int.MinValue;
                 Student.DeterminiantSet = false;
+            }
+
+            if (AssignGroupCheck.Checked)
+            {
+                if (GroupList.SelectedIndex < 0)
+                {
+                    ErrorProvider.SetError(GroupList, "Select a group");
+                }
+                else
+                {
+                    Sorter.GlobalInstance().ManualAssignments[Sorter.GlobalInstance().GetStudentByName(Student.Name)] =
+                    Sorter.GlobalInstance().GetGroupByName(GroupList.Items[GroupList.SelectedIndex].ToString());
+                }
+            }
+
+            if (ErrorProvider.HasErrors)
+            {
+                return;
             }
         }
 
@@ -63,6 +92,22 @@
         private void CopyIDButton_Click(object sender, EventArgs e)
         {
             Clipboard.SetText(IDVal.Text);
+        }
+
+        /// <summary>
+        /// Closes the window
+        /// </summary>
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Enables/disables group dropdown
+        /// </summary>
+        private void AssignGroupCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            GroupList.Enabled = AssignGroupCheck.Checked;
         }
     }
 }

@@ -74,6 +74,18 @@
         }
 
         /// <summary>
+        /// Assigns students to groups manually if
+        /// selected
+        /// </summary>
+        public void ManuallyAssign()
+        {
+            foreach (Student student in ManualAssignments.Keys)
+            {
+                ManualAssignments[student].AddStudent(student);
+            }
+        }
+
+        /// <summary>
         /// Revises the sort by attempting to fix illegal pairs
         /// </summary>
         public void ReviseSort()

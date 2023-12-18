@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             StudentNameTitle = new Label();
             DeterminantSetCheck = new CheckBox();
             DeterminantInput = new NumericUpDown();
@@ -36,7 +37,12 @@
             IDLabel = new Label();
             IDVal = new Label();
             CopyIDButton = new Button();
+            AssignGroupCheck = new CheckBox();
+            GroupList = new ComboBox();
+            CloseButton = new Button();
+            ErrorProvider = new ErrorProvider(components);
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // StudentNameTitle
@@ -62,6 +68,7 @@
             // DeterminantInput
             // 
             DeterminantInput.Location = new Point(28, 182);
+            DeterminantInput.Maximum = new decimal(new int[] { 700, 0, 0, 0 });
             DeterminantInput.Name = "DeterminantInput";
             DeterminantInput.Size = new Size(150, 34);
             DeterminantInput.TabIndex = 2;
@@ -78,11 +85,11 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(42, 275);
+            label1.Location = new Point(42, 240);
             label1.Name = "label1";
-            label1.Size = new Size(392, 28);
+            label1.Size = new Size(343, 28);
             label1.TabIndex = 4;
-            label1.Text = "Student determinant will update on closing.";
+            label1.Text = "All information will update on closing.";
             // 
             // IDLabel
             // 
@@ -112,11 +119,48 @@
             CopyIDButton.UseVisualStyleBackColor = true;
             CopyIDButton.Click += CopyIDButton_Click;
             // 
+            // AssignGroupCheck
+            // 
+            AssignGroupCheck.AutoSize = true;
+            AssignGroupCheck.Location = new Point(28, 296);
+            AssignGroupCheck.Name = "AssignGroupCheck";
+            AssignGroupCheck.Size = new Size(241, 32);
+            AssignGroupCheck.TabIndex = 8;
+            AssignGroupCheck.Text = "Manually assign group?";
+            AssignGroupCheck.UseVisualStyleBackColor = true;
+            AssignGroupCheck.CheckedChanged += AssignGroupCheck_CheckedChanged;
+            // 
+            // GroupList
+            // 
+            GroupList.Enabled = false;
+            GroupList.FormattingEnabled = true;
+            GroupList.Location = new Point(28, 344);
+            GroupList.Name = "GroupList";
+            GroupList.Size = new Size(259, 36);
+            GroupList.TabIndex = 9;
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(144, 418);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(165, 40);
+            CloseButton.TabIndex = 10;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
+            // 
             // StudentInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(476, 370);
+            ClientSize = new Size(476, 470);
+            Controls.Add(CloseButton);
+            Controls.Add(GroupList);
+            Controls.Add(AssignGroupCheck);
             Controls.Add(CopyIDButton);
             Controls.Add(IDVal);
             Controls.Add(IDLabel);
@@ -132,6 +176,7 @@
             FormClosing += StudentInfoViewer_FormClosing;
             Load += StudentInfoViewer_Load;
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -146,5 +191,9 @@
         private Label IDLabel;
         private Label IDVal;
         private Button CopyIDButton;
+        private CheckBox AssignGroupCheck;
+        private ComboBox GroupList;
+        private Button CloseButton;
+        private ErrorProvider ErrorProvider;
     }
 }

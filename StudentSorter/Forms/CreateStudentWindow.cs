@@ -75,6 +75,9 @@ namespace StudentSorter
 
             StudentNameInput.Text = "";
             DeterminantInput.Value = 0;
+            ManualAssignCheck.Checked = false;
+            GroupList.Enabled = false;
+            GroupList.SelectedIndex = -1;
 
             FormParent.RefreshLists();
         }
