@@ -11,6 +11,8 @@
 
         public List<SorterConfig> SortConfigs = new();
 
+        public Dictionary<Student, Group> ManualAssignments = new();
+
         public static Sorter GlobalInstance() => Instance;
 
         public int DeterminantRange { get; set; }

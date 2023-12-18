@@ -38,6 +38,8 @@
             JsonUploadButton = new Button();
             JsonUploader = new OpenFileDialog();
             ErrorProvider = new ErrorProvider(components);
+            ManualGroupAssignCheck = new CheckBox();
+            GroupList = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
@@ -118,11 +120,32 @@
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // ManualGroupAssignCheck
+            // 
+            ManualGroupAssignCheck.AutoSize = true;
+            ManualGroupAssignCheck.Location = new Point(376, 180);
+            ManualGroupAssignCheck.Name = "ManualGroupAssignCheck";
+            ManualGroupAssignCheck.Size = new Size(241, 32);
+            ManualGroupAssignCheck.TabIndex = 7;
+            ManualGroupAssignCheck.Text = "Manually assign group?";
+            ManualGroupAssignCheck.UseVisualStyleBackColor = true;
+            ManualGroupAssignCheck.CheckedChanged += ManualGroupAssignCheck_CheckedChanged;
+            // 
+            // GroupList
+            // 
+            GroupList.FormattingEnabled = true;
+            GroupList.Location = new Point(376, 226);
+            GroupList.Name = "GroupList";
+            GroupList.Size = new Size(238, 36);
+            GroupList.TabIndex = 8;
+            // 
             // CreateStudentWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(782, 456);
+            Controls.Add(GroupList);
+            Controls.Add(ManualGroupAssignCheck);
             Controls.Add(JsonUploadButton);
             Controls.Add(CreateStudentButton);
             Controls.Add(DeterminantInput);
@@ -134,6 +157,7 @@
             Margin = new Padding(4);
             Name = "CreateStudentWindow";
             Text = "Create Student";
+            Load += CreateStudentWindow_Load;
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
@@ -151,5 +175,7 @@
         private Button JsonUploadButton;
         private OpenFileDialog JsonUploader;
         private ErrorProvider ErrorProvider;
+        private ComboBox GroupList;
+        private CheckBox ManualGroupAssignCheck;
     }
 }

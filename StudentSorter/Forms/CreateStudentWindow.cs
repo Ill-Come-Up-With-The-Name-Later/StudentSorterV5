@@ -45,9 +45,13 @@ namespace StudentSorter
             if (StudentNameInput.Text == null || StudentNameInput.Text.Equals(""))
             {
                 ErrorProvider.SetError(StudentNameInput, "A name is required");
-                return;
-                throw new ArgumentNullException("Student name was null");
             }
+
+            if (ErrorProvider.HasErrors)
+            {
+                return;
+            }
+
             if (!ManualAssignCheck.Checked)
             {
                 Student student = new(StudentNameInput.Text);
@@ -55,6 +59,18 @@ namespace StudentSorter
             else
             {
                 Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
+            }
+
+            if(ManualGroupAssignCheck.Checked)
+            {
+                if (GroupList.SelectedIndex < 0)
+                {
+                    ErrorProvider.SetError(GroupList, "A group must be selected");
+                    return;
+                }
+
+                Sorter.GlobalInstance().ManualAssignments[Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text)] = 
+                    Sorter.GlobalInstance().GetGroupByName(GroupList.Items[GroupList.SelectedIndex].ToString());
             }
 
             StudentNameInput.Text = "";
@@ -69,6 +85,25 @@ namespace StudentSorter
         private void JsonUploadButton_Click(object sender, EventArgs e)
         {
             JsonUploader.ShowDialog();
+        }
+
+        /// <summary>
+        /// Enables/disables manual group assignment
+        /// </summary>
+        private void ManualGroupAssignCheck_CheckedChanged(object sender, EventArgs e)
+        {
+            GroupList.Enabled = ManualGroupAssignCheck.Checked;
+        }
+
+        /// <summary>
+        /// Adds all groups to manual assignment group
+        /// list
+        /// </summary>
+        private void CreateStudentWindow_Load(object sender, EventArgs e)
+        {
+            GroupList.Enabled = false;
+            GroupList.Items.Add("");
+            Sorter.GlobalInstance().AllGroups.ForEach(group => { GroupList.Items.Add(group.Name); });
         }
     }
 }
