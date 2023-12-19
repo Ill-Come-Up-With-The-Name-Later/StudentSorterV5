@@ -37,6 +37,7 @@
             DeserializePairsButton = new Button();
             AddPairButton = new Button();
             ErrorProvider = new ErrorProvider(components);
+            RemovalInstruction = new Label();
             ((System.ComponentModel.ISupportInitialize)IllegalPairList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
@@ -63,11 +64,13 @@
             IllegalPairList.ColumnHeadersVisible = false;
             IllegalPairList.Location = new Point(109, 59);
             IllegalPairList.Name = "IllegalPairList";
+            IllegalPairList.ReadOnly = true;
             IllegalPairList.RowHeadersVisible = false;
             IllegalPairList.RowHeadersWidth = 51;
             IllegalPairList.RowTemplate.Height = 29;
             IllegalPairList.Size = new Size(502, 247);
             IllegalPairList.TabIndex = 0;
+            IllegalPairList.CellDoubleClick += IllegalPairList_CellDoubleClick;
             // 
             // Title
             // 
@@ -112,11 +115,21 @@
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // RemovalInstruction
+            // 
+            RemovalInstruction.AutoSize = true;
+            RemovalInstruction.Location = new Point(37, 475);
+            RemovalInstruction.Name = "RemovalInstruction";
+            RemovalInstruction.Size = new Size(295, 28);
+            RemovalInstruction.TabIndex = 5;
+            RemovalInstruction.Text = "Double-Click a pair to remove it.";
+            // 
             // IllegalPairsOverviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(715, 481);
+            ClientSize = new Size(715, 523);
+            Controls.Add(RemovalInstruction);
             Controls.Add(AddPairButton);
             Controls.Add(DeserializePairsButton);
             Controls.Add(SerializePairsButton);
@@ -143,5 +156,6 @@
         private Button DeserializePairsButton;
         private Button AddPairButton;
         private ErrorProvider ErrorProvider;
+        private Label RemovalInstruction;
     }
 }

@@ -72,7 +72,7 @@ namespace StudentSorter
         {
             ErrorProvider.Clear();
 
-            if(Sorter.GlobalInstance().AllStudents.Count < 2)
+            if (Sorter.GlobalInstance().AllStudents.Count < 2)
             {
                 ErrorProvider.SetError(AddPairButton, "At least two students are required for a pair");
                 return;
@@ -102,6 +102,17 @@ namespace StudentSorter
             {
                 Pairs.Rows.Add($"{pair.Student1.Name} and {pair.Student2.Name}");
             }
+        }
+
+        /// <summary>
+        /// Removes an illegal pair
+        /// </summary>
+        private void IllegalPairList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = IllegalPairList.CurrentCell.RowIndex;
+
+            Sorter.GlobalInstance().IllegalPairs.RemoveAt(index);
+            RefreshPairList();
         }
     }
 }
