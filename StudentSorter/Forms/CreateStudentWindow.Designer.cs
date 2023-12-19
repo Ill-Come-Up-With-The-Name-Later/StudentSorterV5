@@ -172,6 +172,7 @@
             PageStartInput.Size = new Size(94, 34);
             PageStartInput.TabIndex = 10;
             PageStartInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            PageStartInput.ValueChanged += PageStartInput_ValueChanged;
             // 
             // FromLabl
             // 
@@ -199,6 +200,7 @@
             PageEndInput.Size = new Size(110, 34);
             PageEndInput.TabIndex = 13;
             PageEndInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            PageEndInput.ValueChanged += PageEndInput_ValueChanged;
             // 
             // CreateStudentWindow
             // 

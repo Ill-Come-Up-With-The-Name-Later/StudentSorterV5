@@ -96,7 +96,7 @@ namespace StudentSorter
         /// </summary>
         private void ManualGroupAssignCheck_CheckedChanged(object sender, EventArgs e)
         {
-            if(Sorter.GlobalInstance().AllGroups.Count > 0)
+            if (Sorter.GlobalInstance().AllGroups.Count > 0)
                 GroupList.Enabled = ManualGroupAssignCheck.Checked;
             else
             {
@@ -143,6 +143,42 @@ namespace StudentSorter
 
             Close();
             FormParent.RefreshLists();
+        }
+
+        /// <summary>
+        /// Prevent minmum from being greater
+        /// than maximum and vice versa
+        /// </summary>
+        private void PageStartInput_ValueChanged(object sender, EventArgs e)
+        {
+            ErrorProvider.Clear();
+
+            if(PageStartInput.Value > PageEndInput.Value)
+            {
+                ErrorProvider.SetError(PageStartInput, "Start page must be before end page.");
+            }
+            if(PageEndInput.Value < PageStartInput.Value)
+            {
+                ErrorProvider.SetError(PageEndInput, "Ending page must be after starting page.");
+            }
+        }
+
+        /// <summary>
+        /// Prevent minmum from being greater
+        /// than maximum and vice versa
+        /// </summary>
+        private void PageEndInput_ValueChanged(object sender, EventArgs e)
+        {
+            ErrorProvider.Clear();
+
+            if (PageStartInput.Value > PageEndInput.Value)
+            {
+                ErrorProvider.SetError(PageStartInput, "Start page must be before end page.");
+            }
+            if (PageEndInput.Value < PageStartInput.Value)
+            {
+                ErrorProvider.SetError(PageEndInput, "Ending page must be after starting page.");
+            }
         }
     }
 }
