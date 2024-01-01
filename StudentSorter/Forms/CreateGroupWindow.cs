@@ -39,7 +39,7 @@ namespace StudentSorter
                 //throw new ArgumentException("No name entered!");
             }
 
-            if (Sorter.GlobalInstance().IsNameDuplicate(GroupNameInput.Text))
+            if (Sorter.GlobalInstance().IsGroupNameDuplicate(GroupNameInput.Text))
             {
                 ErrorProvider.SetError(GroupNameInput, "A group of this name already exists.");
             }

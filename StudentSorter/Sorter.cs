@@ -353,11 +353,75 @@ namespace StudentSorter
         /// If a group with the name of
         /// name exists
         /// </returns>
-        public Boolean IsNameDuplicate(string name)
+        public bool IsGroupNameDuplicate(string name)
         {
             foreach(Group group in AllGroups)
                 if(group.Name.Equals(name))
                     return true;
+
+            return false;
+        }
+
+        /// <summary>
+        /// Finds if a student's name is a duplicate
+        /// </summary>
+        /// <param name="name">
+        /// The name to search
+        /// </param>
+        /// <returns>
+        /// If name is a duplicate
+        /// </returns>
+        public bool IsStudentNameDuplicate(string name)
+        {
+            int occurences = 0;
+
+            foreach(Student student in AllStudents)
+                if(student.Name.Equals(name))
+                    occurences++;
+
+            return occurences > 1;
+        }
+
+        /// <summary>
+        /// Returns if there is a student already
+        /// that has a certain name
+        /// </summary>
+        /// <param name="name">
+        /// A name
+        /// </param>
+        /// <returns>
+        /// If the name already belongs to someone
+        /// </returns>
+        public bool StudentNameExists(string name)
+        {
+            foreach(Student student in AllStudents)
+                if(student.Name.Equals(name)) 
+                    return true;
+            return false;
+        }
+
+        /// <summary>
+        /// Finds if two students are already in a
+        /// pair together
+        /// </summary>
+        /// <param name="s1">
+        /// The first student
+        /// </param>
+        /// <param name="s2">
+        /// The second student
+        /// </param>
+        /// <returns>
+        /// If the students have an illegal pair already
+        /// </returns>
+        public bool IllegalPairExists(Student s1, Student s2)
+        {
+            foreach(IllegalPair pair in IllegalPairs)
+            {
+                if(pair.Student1 ==  s1 && pair.Student2 == s2) 
+                    return true;
+                else if(pair.Student2 == s1 && pair.Student1 == s2)
+                    return true;
+            }
 
             return false;
         }

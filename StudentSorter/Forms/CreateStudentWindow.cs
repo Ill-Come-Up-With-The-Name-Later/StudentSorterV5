@@ -47,6 +47,11 @@ namespace StudentSorter
                 ErrorProvider.SetError(StudentNameInput, "A name is required");
             }
 
+            if(Sorter.GlobalInstance().StudentNameExists(StudentNameInput.Text))
+            {
+                ErrorProvider.SetError(StudentNameInput, "A student with this name already exists");
+            }
+
             if (ErrorProvider.HasErrors)
             {
                 return;
