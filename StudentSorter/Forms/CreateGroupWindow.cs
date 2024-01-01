@@ -44,17 +44,17 @@ namespace StudentSorter
                 ErrorProvider.SetError(GroupNameInput, "A group of this name already exists.");
             }
 
-            if(MinDeterminantInput.Value > MaxDeterminantInput.Value)
+            if (MinDeterminantInput.Value > MaxDeterminantInput.Value)
             {
                 ErrorProvider.SetError(MinDeterminantInput, "Min. determinant must be less than maximum");
             }
 
-            if(MaxDeterminantInput.Value < MinDeterminantInput.Value)
+            if (MaxDeterminantInput.Value < MinDeterminantInput.Value)
             {
                 ErrorProvider.SetError(MaxDeterminantInput, "Max. determinant must be greater than minimum");
             }
 
-            if(CapacityInput.Value <= 0)
+            if (CapacityInput.Value <= 0)
             {
                 ErrorProvider.SetError(CapacityInput, "Capacity must be greater than 0");
             }

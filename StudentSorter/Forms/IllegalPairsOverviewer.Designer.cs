@@ -50,7 +50,8 @@
             // 
             // OpenPairsFile
             // 
-            OpenPairsFile.FileName = "OpenPairFile";
+            OpenPairsFile.DefaultExt = "json";
+            OpenPairsFile.Filter = "JSON files|*.json";
             OpenPairsFile.Title = "Deserialize Pairs";
             OpenPairsFile.FileOk += OpenPairsFile_FileOk;
             // 

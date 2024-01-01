@@ -153,11 +153,11 @@ namespace StudentSorter
         {
             ErrorProvider.Clear();
 
-            if(PageStartInput.Value > PageEndInput.Value)
+            if (PageStartInput.Value > PageEndInput.Value)
             {
                 ErrorProvider.SetError(PageStartInput, "Start page must be before end page.");
             }
-            if(PageEndInput.Value < PageStartInput.Value)
+            if (PageEndInput.Value < PageStartInput.Value)
             {
                 ErrorProvider.SetError(PageEndInput, "Ending page must be after starting page.");
             }

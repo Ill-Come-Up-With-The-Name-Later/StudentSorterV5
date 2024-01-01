@@ -107,18 +107,18 @@
             StudentLabel.Location = new Point(167, 53);
             StudentLabel.Margin = new Padding(4, 0, 4, 0);
             StudentLabel.Name = "StudentLabel";
-            StudentLabel.Size = new Size(88, 28);
+            StudentLabel.Size = new Size(108, 28);
             StudentLabel.TabIndex = 2;
-            StudentLabel.Text = "Students";
+            StudentLabel.Text = "Students: 0";
             // 
             // GroupLabel
             // 
             GroupLabel.AutoSize = true;
             GroupLabel.Location = new Point(870, 53);
             GroupLabel.Name = "GroupLabel";
-            GroupLabel.Size = new Size(76, 28);
+            GroupLabel.Size = new Size(96, 28);
             GroupLabel.TabIndex = 3;
-            GroupLabel.Text = "Groups";
+            GroupLabel.Text = "Groups: 0";
             // 
             // RefreshButton
             // 

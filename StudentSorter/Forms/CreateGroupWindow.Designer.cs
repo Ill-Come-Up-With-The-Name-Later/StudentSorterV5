@@ -55,6 +55,8 @@
             // 
             // JsonUploader
             // 
+            JsonUploader.DefaultExt = "json";
+            JsonUploader.Filter = "JSON files|*.json";
             JsonUploader.Title = "Upload Group JSON";
             JsonUploader.FileOk += JsonUploader_FileOk;
             // 

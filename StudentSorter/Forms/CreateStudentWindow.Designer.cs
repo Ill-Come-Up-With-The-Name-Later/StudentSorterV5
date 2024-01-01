@@ -121,6 +121,8 @@
             // 
             // JsonUploader
             // 
+            JsonUploader.DefaultExt = "json";
+            JsonUploader.Filter = "JSON files|*.json";
             JsonUploader.Title = "Upload JSON File";
             JsonUploader.FileOk += JsonUploader_FileOk;
             // 
