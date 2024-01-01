@@ -40,6 +40,8 @@
         /// </summary>
         private void AddPairButton_Click(object sender, EventArgs e)
         {
+            ErrorProvider.Clear();
+
             if (SelectStudent1.SelectedIndex == -1)
             {
                 ErrorProvider.SetError(SelectStudent1, "Two students are required");
@@ -61,6 +63,8 @@
                 ErrorProvider.SetError(SelectStudent1, "The two students are already in a pair.");
                 ErrorProvider.SetError(SelectStudent2, "The two students are already in a pair.");
             }
+
+            if (ErrorProvider.HasErrors) return;
 
             IllegalPair pair = new(Student1, Student2);
 
