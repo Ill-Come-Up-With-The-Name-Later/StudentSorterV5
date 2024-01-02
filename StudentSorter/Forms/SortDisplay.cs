@@ -1,5 +1,4 @@
 ﻿using System.Data;
-using System.Diagnostics;
 
 namespace StudentSorter
 {
@@ -8,7 +7,7 @@ namespace StudentSorter
         private readonly DataTable Groups = new();
         private readonly Overviewer FormParent;
 
-        private List<GroupStudentList> ChildForms = new();
+        private readonly List<GroupStudentList> ChildForms = new();
 
         private SorterConfig Config { get; set; }
 

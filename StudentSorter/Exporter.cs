@@ -56,8 +56,7 @@
         {
             List<string> lines = new();
 
-            foreach(T objItem in obj)
-                lines.Add(objItem.SerializeJSON());
+            obj.ForEach(x => { lines.Add(x.SerializeJSON()); });
 
             WriteFile(fileName, lines);
         }

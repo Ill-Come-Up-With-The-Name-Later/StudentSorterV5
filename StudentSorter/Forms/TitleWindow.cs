@@ -35,6 +35,7 @@ namespace StudentSorter
         /// </summary>
         private void OpenConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
+            // Reset the Sorter
             Sorter.GlobalInstance().AllStudents.Clear();
             Sorter.GlobalInstance().AllGroups.Clear();
             Sorter.GlobalInstance().IllegalPairs.Clear();
@@ -42,6 +43,7 @@ namespace StudentSorter
 
             Importer.Import<SorterConfig>(OpenConfig.FileName);
 
+            // Load data and sort
             SorterConfig sort = Sorter.GlobalInstance().SortConfigs[0];
 
             if (sort.StudentFile.Length > 0)

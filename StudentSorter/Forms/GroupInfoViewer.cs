@@ -4,7 +4,7 @@
     {
         private readonly int GroupIndex;
         private readonly Group SelectedGroup;
-        private Overviewer FormParent;
+        private readonly Overviewer FormParent;
 
         public GroupInfoViewer(int groupIndex, Overviewer formParent)
         {

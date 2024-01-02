@@ -4,7 +4,7 @@ namespace StudentSorter
 {
     public partial class CreateGroupWindow : Form
     {
-        private Overviewer FormParent;
+        private readonly Overviewer FormParent;
 
         public CreateGroupWindow(Overviewer formParent)
         {

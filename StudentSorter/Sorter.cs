@@ -41,8 +41,8 @@ namespace StudentSorter
 
             ManuallyAssign(); // Do all manual assignments first
 
-            foreach (Group AnalysisGroup in AllGroups)
-            {
+            foreach (Group AnalysisGroup in AllGroups) // Loop over groups and sort by determinant
+            {                                          // and group capacity
                 foreach (Student AnalysisStudent in AllStudents)
                 {
                     if (AnalysisStudent.CanJoinGroup(AnalysisGroup))
@@ -53,7 +53,7 @@ namespace StudentSorter
                 }
             }
 
-            foreach (Group AnalysisGroup in AllGroups)
+            foreach (Group AnalysisGroup in AllGroups) // sort by capacity
             {
                 if(AnalysisGroup.IsFull())
                 {
@@ -270,12 +270,8 @@ namespace StudentSorter
         public Student? GetStudentByHashCode(int code)
         {
             foreach(Student student in AllStudents)
-            {
                 if(student.GetHashCode() == code)
-                {
                     return student;
-                }
-            }
 
             Console.WriteLine($"No student exists with the HashCode {code}!");
             return null;
@@ -294,12 +290,8 @@ namespace StudentSorter
         public Group? GetGroupByHashCode(int code)
         {
             foreach (Group group in AllGroups)
-            {
                 if(group.GetHashCode() == code) 
-                {
                     return group;
-                } 
-            }
 
             Console.WriteLine($"No group exists with the HashCode {code}");
             return null;
@@ -339,6 +331,7 @@ namespace StudentSorter
             foreach(Group group in AllGroups)
                 if(group.Name.Equals(name))
                     return group;
+
             return null;
         }
         
@@ -397,6 +390,7 @@ namespace StudentSorter
             foreach(Student student in AllStudents)
                 if(student.Name.Equals(name)) 
                     return true;
+
             return false;
         }
 
@@ -441,14 +435,14 @@ namespace StudentSorter
         {
             using var file = File.OpenRead($@"{filePath}");
             GcPdfDocument document = new();
-            document.Load(file);
+            document.Load(file); // open the PDF document
 
             List<string> names = new();
 
             pageLimit = Math.Min(pageLimit, document.Pages.Count);
             startPage = Math.Min(Math.Max(startPage, 0), document.Pages.Count);
 
-            for (int i = startPage; i <= pageLimit; i++)
+            for (int i = startPage; i <= pageLimit; i++) // read all pages from startPage to pageLimit
             {
                 var PageText = document.Pages[i].GetText();
 
@@ -456,6 +450,7 @@ namespace StudentSorter
 
                 for (int j = 0; j < splitTxt.Length; j++)
                 {
+                    // Remove teacher's name and filter for only names
                     if (splitTxt[j].Contains(',') && splitTxt[j].Split(new char[] { ' ' }).Length == 2)
                     {
                         if (splitTxt[j].Split(' ')[0].ToUpper().Equals(splitTxt[j].Split(' ')[0]))

@@ -2,15 +2,17 @@
 {
     public partial class StudentInfoViewer : Form
     {
-        private Student Student;
+        private readonly Student Student;
         private readonly int StudentIndex;
-        private Overviewer FormParent;
+        private readonly Overviewer FormParent;
 
         public StudentInfoViewer(int index, Overviewer formParent)
         {
             StudentIndex = index;
             Student = Sorter.GlobalInstance().AllStudents[StudentIndex];
+
             InitializeComponent();
+
             FormParent = formParent;
         }
 
