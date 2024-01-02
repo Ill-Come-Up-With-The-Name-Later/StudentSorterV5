@@ -77,6 +77,14 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
+
+            if(StudentDropDown.SelectedIndex > 0)
+            {
+                Student student = Sorter.GlobalInstance().
+                    GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());
+
+                ShowStudentGroup(student);
+            }
         }
 
         /// <summary>
@@ -145,14 +153,26 @@ namespace StudentSorter
                 Student student = Sorter.GlobalInstance().
                     GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());
 
-                Groups.Rows.Clear();
-
-                Groups.Rows.Add(Sorter.GlobalInstance().FindStudent(student).Name);
+                ShowStudentGroup(student);
             }
             catch (Exception)
             {
                 Console.WriteLine("Couldn't find student");
             }
+        }
+
+        /// <summary>
+        /// Sets the group list to display
+        /// only the group that a student is in
+        /// </summary>
+        /// <param name="student">
+        /// The student whose group to show
+        /// </param>
+        private void ShowStudentGroup(Student student)
+        {
+            Groups.Rows.Clear();
+
+            Groups.Rows.Add(Sorter.GlobalInstance().FindStudent(student).Name);
         }
     }
 }
