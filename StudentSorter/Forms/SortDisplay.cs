@@ -8,6 +8,8 @@ namespace StudentSorter
         private readonly DataTable Groups = new();
         private readonly Overviewer FormParent;
 
+        private List<GroupStudentList> ChildForms = new();
+
         private SorterConfig Config { get; set; }
 
         public SortDisplay(Overviewer formParent, SorterConfig config)
@@ -53,6 +55,8 @@ namespace StudentSorter
 
                 GroupStudentList groupStudentList = new(SelectedGroup);
                 groupStudentList.Show();
+
+                ChildForms.Add(groupStudentList);
             }
             catch (Exception)
             {
@@ -65,16 +69,6 @@ namespace StudentSorter
         /// </summary>
         private void ReshuffleButton_Click(object sender, EventArgs e)
         {
-            Process[] processes = Process.GetProcesses();
-
-            foreach (Process process in processes)
-            {
-                if (process.MainWindowTitle.Equals("Group Student List"))
-                {
-                    process.Kill();
-                }
-            }
-
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
 
@@ -85,6 +79,8 @@ namespace StudentSorter
 
                 ShowStudentGroup(student);
             }
+
+            ChildForms.ForEach(e => { e.Close(); });
         }
 
         /// <summary>
