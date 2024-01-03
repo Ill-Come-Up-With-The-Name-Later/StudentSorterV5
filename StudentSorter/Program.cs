@@ -1,7 +1,9 @@
 namespace StudentSorter
 {
-    internal static class Program
+    static class Program
     {
+        public const string Version = "0.4.7";
+
         /// <summary>
         ///  The main entry point for the application.
         /// </summary>

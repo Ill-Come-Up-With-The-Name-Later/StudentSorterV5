@@ -92,5 +92,13 @@ namespace StudentSorter
         {
             Process.Start("explorer.exe", "\"" + $"{ManualDocument}" + "\"");
         }
+
+        /// <summary>
+        /// Sets the version text
+        /// </summary>
+        private void TitleWindow_Load(object sender, EventArgs e)
+        {
+            VersionLabel.Text = $"Version: {Program.Version}";
+        }
     }
 }

@@ -34,6 +34,7 @@
             OpenConfig = new OpenFileDialog();
             CreateConfigButton = new Button();
             UserManualLink = new LinkLabel();
+            VersionLabel = new Label();
             SuspendLayout();
             // 
             // TitleLabel
@@ -96,11 +97,21 @@
             UserManualLink.Text = "User Manual";
             UserManualLink.LinkClicked += UserManualLink_LinkClicked;
             // 
+            // VersionLabel
+            // 
+            VersionLabel.AutoSize = true;
+            VersionLabel.Location = new Point(12, 346);
+            VersionLabel.Name = "VersionLabel";
+            VersionLabel.Size = new Size(85, 28);
+            VersionLabel.TabIndex = 5;
+            VersionLabel.Text = "Version: ";
+            // 
             // TitleWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(549, 344);
+            ClientSize = new Size(549, 383);
+            Controls.Add(VersionLabel);
             Controls.Add(UserManualLink);
             Controls.Add(CreateConfigButton);
             Controls.Add(ConfigSortButton);
@@ -110,6 +121,7 @@
             Margin = new Padding(4);
             Name = "TitleWindow";
             Text = "Random Group Creator";
+            Load += TitleWindow_Load;
             ResumeLayout(false);
             PerformLayout();
         }
@@ -122,5 +134,6 @@
         private OpenFileDialog OpenConfig;
         private Button CreateConfigButton;
         private LinkLabel UserManualLink;
+        private Label VersionLabel;
     }
 }
