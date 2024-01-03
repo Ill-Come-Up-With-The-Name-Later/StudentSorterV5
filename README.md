@@ -25,5 +25,5 @@ iteration and add students based on what groups have space left.
 # Upcoming Features
 
 <ul>
-  <li> None </li>
+  <li> Ability to rename groups and student after creation </li>
 </ul>
