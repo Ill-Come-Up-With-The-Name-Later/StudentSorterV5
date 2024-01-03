@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            GroupNameTitle = new Label();
             CapacityLabel = new Label();
             GroupCapacityInput = new NumericUpDown();
             MinDeterLabel = new Label();
@@ -38,19 +37,11 @@
             label1 = new Label();
             CloseButton = new Button();
             DeleteGroupButton = new Button();
+            GroupNameInput = new TextBox();
             ((System.ComponentModel.ISupportInitialize)GroupCapacityInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)MaxDeterminantInput).BeginInit();
             SuspendLayout();
-            // 
-            // GroupNameTitle
-            // 
-            GroupNameTitle.AutoSize = true;
-            GroupNameTitle.Location = new Point(119, 22);
-            GroupNameTitle.Name = "GroupNameTitle";
-            GroupNameTitle.Size = new Size(120, 28);
-            GroupNameTitle.TabIndex = 0;
-            GroupNameTitle.Text = "GroupName";
             // 
             // CapacityLabel
             // 
@@ -132,11 +123,19 @@
             DeleteGroupButton.UseVisualStyleBackColor = true;
             DeleteGroupButton.Click += DeleteGroupButton_Click;
             // 
+            // GroupNameInput
+            // 
+            GroupNameInput.Location = new Point(36, 22);
+            GroupNameInput.Name = "GroupNameInput";
+            GroupNameInput.Size = new Size(284, 34);
+            GroupNameInput.TabIndex = 10;
+            // 
             // GroupInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(357, 495);
+            Controls.Add(GroupNameInput);
             Controls.Add(DeleteGroupButton);
             Controls.Add(CloseButton);
             Controls.Add(label1);
@@ -146,7 +145,6 @@
             Controls.Add(MinDeterLabel);
             Controls.Add(GroupCapacityInput);
             Controls.Add(CapacityLabel);
-            Controls.Add(GroupNameTitle);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "GroupInfoViewer";
@@ -161,8 +159,6 @@
         }
 
         #endregion
-
-        private Label GroupNameTitle;
         private Label CapacityLabel;
         private NumericUpDown GroupCapacityInput;
         private Label MinDeterLabel;
@@ -172,5 +168,6 @@
         private Label label1;
         private Button CloseButton;
         private Button DeleteGroupButton;
+        private TextBox GroupNameInput;
     }
 }

@@ -19,7 +19,7 @@
         /// </summary>
         private void GroupInfoViewer_Load(object sender, EventArgs e)
         {
-            GroupNameTitle.Text = SelectedGroup.Name;
+            GroupNameInput.Text = SelectedGroup.Name;
             MaxDeterminantInput.Value = SelectedGroup.MaxDeterminant;
             MinDeterminantInput.Value = SelectedGroup.MinDeterminant;
             GroupCapacityInput.Value = SelectedGroup.Capacity;
@@ -33,6 +33,9 @@
             SelectedGroup.Capacity = (int)GroupCapacityInput.Value;
             SelectedGroup.MinDeterminant = (int)MinDeterminantInput.Value;
             SelectedGroup.MaxDeterminant = (int)MaxDeterminantInput.Value;
+            SelectedGroup.Name = GroupNameInput.Text.Length > 0 ? GroupNameInput.Text : "Group";
+
+            FormParent.RefreshLists();
         }
 
         /// <summary>
@@ -51,9 +54,9 @@
         {
             Sorter.GlobalInstance().AllGroups.Remove(SelectedGroup);
 
-            foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
+            foreach (ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
             {
-                if(Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode) == SelectedGroup)
+                if (Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode) == SelectedGroup)
                 {
                     Sorter.GlobalInstance().Assignments.Remove(assignment);
                 }

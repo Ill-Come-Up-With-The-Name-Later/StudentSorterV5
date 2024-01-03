@@ -29,7 +29,6 @@
         private void InitializeComponent()
         {
             components = new System.ComponentModel.Container();
-            StudentNameTitle = new Label();
             DeterminantSetCheck = new CheckBox();
             DeterminantInput = new NumericUpDown();
             DeterminantLabel = new Label();
@@ -42,18 +41,10 @@
             CloseButton = new Button();
             ErrorProvider = new ErrorProvider(components);
             DeleteStudentButton = new Button();
+            StudentNameInput = new TextBox();
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
-            // 
-            // StudentNameTitle
-            // 
-            StudentNameTitle.AutoSize = true;
-            StudentNameTitle.Location = new Point(177, 22);
-            StudentNameTitle.Name = "StudentNameTitle";
-            StudentNameTitle.Size = new Size(132, 28);
-            StudentNameTitle.TabIndex = 0;
-            StudentNameTitle.Text = "StudentName";
             // 
             // DeterminantSetCheck
             // 
@@ -164,11 +155,19 @@
             DeleteStudentButton.UseVisualStyleBackColor = true;
             DeleteStudentButton.Click += DeleteStudentButton_Click;
             // 
+            // StudentNameInput
+            // 
+            StudentNameInput.Location = new Point(74, 21);
+            StudentNameInput.Name = "StudentNameInput";
+            StudentNameInput.Size = new Size(336, 34);
+            StudentNameInput.TabIndex = 12;
+            // 
             // StudentInfoViewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(476, 485);
+            Controls.Add(StudentNameInput);
             Controls.Add(DeleteStudentButton);
             Controls.Add(CloseButton);
             Controls.Add(GroupList);
@@ -180,7 +179,6 @@
             Controls.Add(DeterminantLabel);
             Controls.Add(DeterminantInput);
             Controls.Add(DeterminantSetCheck);
-            Controls.Add(StudentNameTitle);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
             Name = "StudentInfoViewer";
@@ -194,8 +192,6 @@
         }
 
         #endregion
-
-        private Label StudentNameTitle;
         private CheckBox DeterminantSetCheck;
         private NumericUpDown DeterminantInput;
         private Label DeterminantLabel;
@@ -208,5 +204,6 @@
         private Button CloseButton;
         private ErrorProvider ErrorProvider;
         private Button DeleteStudentButton;
+        private TextBox StudentNameInput;
     }
 }

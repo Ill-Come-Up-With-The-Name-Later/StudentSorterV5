@@ -21,7 +21,7 @@
         /// </summary>
         private void StudentInfoViewer_Load(object sender, EventArgs e)
         {
-            StudentNameTitle.Text = Student.Name;
+            StudentNameInput.Text = Student.Name;
             DeterminantSetCheck.Checked = Student.DeterminiantSet;
 
             DeterminantInput.Enabled = DeterminantSetCheck.Checked;
@@ -52,6 +52,11 @@
         private void StudentInfoViewer_FormClosing(object sender, FormClosingEventArgs e)
         {
             ErrorProvider.Clear();
+
+            if(StudentNameInput.Text.Length == 0)
+            {
+                ErrorProvider.SetError(StudentNameInput, "A name is required");
+            }
 
             if (DeterminantSetCheck.Checked)
             {
@@ -85,6 +90,10 @@
             {
                 return;
             }
+
+            Student.Name = StudentNameInput.Text;
+
+            FormParent.RefreshLists();
         }
 
         /// <summary>
@@ -136,14 +145,14 @@
         {
             Sorter.GlobalInstance().AllStudents.Remove(Student);
 
-            if(Student.HasAssignment())
+            if (Student.HasAssignment())
             {
                 Sorter.GlobalInstance().Assignments.Remove(Student.GetAssignment());
             }
 
-            foreach(IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
+            foreach (IllegalPair pair in Sorter.GlobalInstance().IllegalPairs)
             {
-                if(pair.Contains(Student))
+                if (pair.Contains(Student))
                 {
                     Sorter.GlobalInstance().IllegalPairs.Remove(pair);
                 }
