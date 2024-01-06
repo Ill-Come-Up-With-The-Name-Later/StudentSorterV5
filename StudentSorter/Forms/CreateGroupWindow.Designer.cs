@@ -127,19 +127,23 @@
             // 
             MinDeterminantInput.Location = new Point(325, 113);
             MinDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
+            MinDeterminantInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             MinDeterminantInput.Name = "MinDeterminantInput";
             MinDeterminantInput.Size = new Size(150, 34);
             MinDeterminantInput.TabIndex = 7;
+            MinDeterminantInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            MinDeterminantInput.ValueChanged += MinDeterminantInput_ValueChanged;
             // 
             // MaxDeterminantInput
             // 
             MaxDeterminantInput.Location = new Point(325, 209);
             MaxDeterminantInput.Maximum = new decimal(new int[] { 500, 0, 0, 0 });
-            MaxDeterminantInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
+            MaxDeterminantInput.Minimum = new decimal(new int[] { 2, 0, 0, 0 });
             MaxDeterminantInput.Name = "MaxDeterminantInput";
             MaxDeterminantInput.Size = new Size(150, 34);
             MaxDeterminantInput.TabIndex = 8;
-            MaxDeterminantInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
+            MaxDeterminantInput.Value = new decimal(new int[] { 2, 0, 0, 0 });
+            MaxDeterminantInput.ValueChanged += MaxDeterminantInput_ValueChanged;
             // 
             // CreateGroupButton
             // 

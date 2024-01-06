@@ -77,9 +77,9 @@ namespace StudentSorter
             Group group = new(name, minDeterminant, maxDeterminant, capacity);
 
             GroupNameInput.Text = "";
-            CapacityInput.Value = 0;
-            MinDeterminantInput.Value = 0;
-            MaxDeterminantInput.Value = 0;
+            CapacityInput.Value = 1;
+            MinDeterminantInput.Value = 1;
+            MaxDeterminantInput.Value = 2;
 
             FormParent.RefreshLists();
         }
@@ -117,6 +117,26 @@ namespace StudentSorter
             FormParent.RefreshLists();
 
             Close();
+        }
+
+        /// <summary>
+        /// Warns if this value is above MaximumDeterminantInput's value
+        /// </summary>
+        private void MinDeterminantInput_ValueChanged(object sender, EventArgs e)
+        {
+            ErrorProvider.Clear();
+            if (MinDeterminantInput.Value >= MaxDeterminantInput.Value)
+                ErrorProvider.SetError(MinDeterminantInput, "Value must be less than maximum determinant's value.");
+        }
+
+        /// <summary>
+        /// Warns if this value is below MinDeterminantInput's value
+        /// </summary>
+        private void MaxDeterminantInput_ValueChanged(object sender, EventArgs e)
+        {
+            ErrorProvider.Clear();
+            if (MaxDeterminantInput.Value <= MinDeterminantInput.Value)
+                ErrorProvider.SetError(MaxDeterminantInput, "Value must be greater than minimum determinant's value.");
         }
     }
 }
