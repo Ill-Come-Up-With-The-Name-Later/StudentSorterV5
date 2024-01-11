@@ -25,6 +25,8 @@ namespace StudentSorter
             MaxDeterminantInput.Value = SelectedGroup.MaxDeterminant;
             MinDeterminantInput.Value = SelectedGroup.MinDeterminant;
             GroupCapacityInput.Value = SelectedGroup.Capacity;
+
+            Debugger.Log($"Showing info for {SelectedGroup}");
         }
 
         /// <summary>

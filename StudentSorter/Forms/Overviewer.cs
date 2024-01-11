@@ -136,6 +136,8 @@ namespace StudentSorter
 
             StudentInfoViewer viewer = new(index, this);
             viewer.Show();
+
+            Debugger.Log($"Showing info for a student");
         }
 
         /// <summary>
@@ -148,6 +150,8 @@ namespace StudentSorter
 
             GroupInfoViewer viewer = new(index, this);
             viewer.Show();
+
+            Debugger.Log("Showing info for a group");
         }
 
         /// <summary>

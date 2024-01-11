@@ -46,6 +46,8 @@ namespace StudentSorter
 
                 GroupList.SelectedIndex = GroupList.Items.IndexOf(Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode).Name);
             }
+
+            Debugger.Log($"Showing info for {Student.Name}");
         }
 
         /// <summary>
