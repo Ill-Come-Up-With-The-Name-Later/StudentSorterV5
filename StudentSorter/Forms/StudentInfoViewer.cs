@@ -99,7 +99,7 @@ namespace StudentSorter
 
             FormParent.RefreshLists();
             
-            Debugger.Log($"Updated student: {Student}");
+            Debugger.Log($"Updated student: {Student.ToString()}");
         }
 
         /// <summary>
@@ -166,6 +166,8 @@ namespace StudentSorter
 
             FormParent.RefreshLists();
             Close();
+
+            Debugger.Log($"Deleted student {Student.Name}");
         }
     }
 }

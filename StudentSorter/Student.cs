@@ -196,5 +196,10 @@ namespace StudentSorter
         {
             return HashCode;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}\nHashCode: {HashCode}";
+        }
     }
 }

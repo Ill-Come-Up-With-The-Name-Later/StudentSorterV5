@@ -112,6 +112,7 @@ namespace StudentSorter
         private void IllegalPairList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = IllegalPairList.CurrentCell.RowIndex;
+            Debugger.Log($"Deleted pair: {Sorter.GlobalInstance().IllegalPairs[index]}");
 
             Sorter.GlobalInstance().IllegalPairs.RemoveAt(index);
             RefreshPairList();

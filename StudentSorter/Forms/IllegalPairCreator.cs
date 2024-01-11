@@ -71,7 +71,7 @@ namespace StudentSorter
             IllegalPair pair = new(Student1, Student2);
 
             FormParent.RefreshPairList();
-            Debugger.Log($"Created disallowed pair: {pair}");
+            Debugger.Log($"Created disallowed pair: {pair.ToString()}");
         }
     }
 }

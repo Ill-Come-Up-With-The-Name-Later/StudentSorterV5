@@ -26,7 +26,7 @@ namespace StudentSorter
             MinDeterminantInput.Value = SelectedGroup.MinDeterminant;
             GroupCapacityInput.Value = SelectedGroup.Capacity;
 
-            Debugger.Log($"Showing info for {SelectedGroup}");
+            Debugger.Log($"Showing info for {SelectedGroup.Name}");
         }
 
         /// <summary>
@@ -48,7 +48,7 @@ namespace StudentSorter
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
-            Debugger.Log($"Updated group: {SelectedGroup}");
+            Debugger.Log($"Updated group: {SelectedGroup.ToString()}");
         }
 
         /// <summary>
@@ -69,6 +69,8 @@ namespace StudentSorter
 
             FormParent.RefreshLists();
             Close();
+
+            Debugger.Log($"Deleted group {SelectedGroup.ToString()}");
         }
     }
 }
