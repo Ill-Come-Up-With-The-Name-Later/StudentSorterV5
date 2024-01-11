@@ -65,6 +65,8 @@ namespace StudentSorter
                 Importer.Import<ManualAssignment>(sort.ManualAssignmentsFile);
             }
 
+            Debugger.Log("Sorting begun");
+
             Sorter.GlobalInstance().DeterminantRange =
                     Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 

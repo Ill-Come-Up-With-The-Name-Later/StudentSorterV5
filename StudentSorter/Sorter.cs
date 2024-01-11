@@ -72,7 +72,7 @@ namespace StudentSorter
                     }
                 }
             }
-            Debugger.Log($"\nSorted {sortedStudents}/{AllStudents.Count} students!");
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
 
             if (IllegalPairs.Count > 0)
             {
