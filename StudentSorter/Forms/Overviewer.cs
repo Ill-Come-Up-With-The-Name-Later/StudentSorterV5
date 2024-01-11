@@ -106,6 +106,8 @@ namespace StudentSorter
         /// </summary>
         private void SortButton_Click(object sender, EventArgs e)
         {
+            Debugger.Log("Sort begun");
+
             ErrorProvider.Clear();
 
             if (Sorter.GlobalInstance().AllGroups.Count == 0 || Sorter.GlobalInstance().AllGroups.Count == 0)
@@ -122,8 +124,6 @@ namespace StudentSorter
 
             SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""));
             display.Show();
-
-            Debugger.Log("Sort begun");
         }
 
         /// <summary>

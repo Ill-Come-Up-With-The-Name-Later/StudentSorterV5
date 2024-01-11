@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -39,6 +40,8 @@ namespace StudentSorter
             Sorter.GlobalInstance().AllStudents.ForEach(student => { StudentDropDown.Items.Add(student.Name); });
 
             ConfigUsedLabel.Text = $"Configuration used: {Config.Name}";
+
+            Debugger.Log($"Used configuration: {Config.Name}");
         }
 
         /// <summary>
