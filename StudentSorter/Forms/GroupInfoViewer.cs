@@ -40,6 +40,8 @@ namespace StudentSorter
             SelectedGroup.Name = GroupNameInput.Text.Length > 0 ? GroupNameInput.Text : "Group";
 
             FormParent.RefreshLists();
+
+            Debugger.Log($"Updated group: {SelectedGroup.ToString()}");
         }
 
         /// <summary>
@@ -48,7 +50,6 @@ namespace StudentSorter
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
-            Debugger.Log($"Updated group: {SelectedGroup.ToString()}");
         }
 
         /// <summary>
