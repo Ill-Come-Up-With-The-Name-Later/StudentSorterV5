@@ -1,4 +1,5 @@
 ﻿using GrapeCity.Documents.Pdf;
+using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -48,6 +49,7 @@ namespace StudentSorter
                     if (AnalysisStudent.CanJoinGroup(AnalysisGroup))
                     {
                         AnalysisGroup.AddStudent(AnalysisStudent);
+                        Debugger.Log($"(Round 1) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
                         sortedStudents++;
                     }
                 }
@@ -65,11 +67,12 @@ namespace StudentSorter
                     if (!AnalysisGroup.IsFull() && !AnalysisStudent.InGroup())
                     {
                         AnalysisGroup.AddStudent(AnalysisStudent);
+                        Debugger.Log($"(Round 2) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
                         sortedStudents++;
                     }
                 }
             }
-            Console.WriteLine($"\nSorted {sortedStudents}/{AllStudents.Count} students!");
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
 
             if (IllegalPairs.Count > 0)
             {
@@ -89,6 +92,7 @@ namespace StudentSorter
                 Group group = GetGroupByHashCode(assignment.GroupHashCode);
 
                 group.AddStudent(student);
+                Debugger.Log($"Assigned {student.Name} to {group.Name}");
             }
         }
 
@@ -129,6 +133,7 @@ namespace StudentSorter
 
                         // Swap the student from the pair with the other
                         SwapStudents(student1, other);
+                        Debugger.Log($"Swapped {student1.Name} and {other.Name}");
                     }
                 }
             }

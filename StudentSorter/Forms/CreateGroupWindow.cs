@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using StudentSorter.Debug;
+using System.ComponentModel;
 
 namespace StudentSorter
 {
@@ -24,6 +25,7 @@ namespace StudentSorter
             FormParent.GroupSource.Text = $"Group File Source: {JsonUploader.FileName}";
 
             Close();
+            Debugger.Log($"Created numerous groups from {JsonUploader.FileName}");
         }
 
         /// <summary>
@@ -82,6 +84,8 @@ namespace StudentSorter
             MaxDeterminantInput.Value = 2;
 
             FormParent.RefreshLists();
+
+            Debugger.Log($"Group Created: {group}");
         }
 
         /// <summary>
@@ -117,6 +121,7 @@ namespace StudentSorter
             FormParent.RefreshLists();
 
             Close();
+            Debugger.Log($"Created numerous groups with capacity {studentsPerGroup}");
         }
 
         /// <summary>

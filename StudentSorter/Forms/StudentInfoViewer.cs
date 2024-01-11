@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public partial class StudentInfoViewer : Form
     {
@@ -44,6 +46,8 @@
 
                 GroupList.SelectedIndex = GroupList.Items.IndexOf(Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode).Name);
             }
+
+            Debugger.Log($"Showing info for {Student.Name}");
         }
 
         /// <summary>
@@ -94,6 +98,8 @@
             Student.Name = StudentNameInput.Text;
 
             FormParent.RefreshLists();
+            
+            Debugger.Log($"Updated student: {Student.ToString()}");
         }
 
         /// <summary>
@@ -160,6 +166,8 @@
 
             FormParent.RefreshLists();
             Close();
+
+            Debugger.Log($"Deleted student {Student.Name}");
         }
     }
 }

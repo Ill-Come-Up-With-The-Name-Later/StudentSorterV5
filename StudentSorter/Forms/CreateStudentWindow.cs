@@ -1,4 +1,5 @@
 ﻿using System.ComponentModel;
+using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -24,6 +25,7 @@ namespace StudentSorter
             FormParent.StudentSource.Text = $"Student File Source: {JsonUploader.FileName}";
 
             Close();
+            Debugger.Log($"Created numerous students from {JsonUploader.FileName}");
         }
 
         /// <summary>
@@ -60,10 +62,13 @@ namespace StudentSorter
             if (!ManualAssignCheck.Checked)
             {
                 Student student = new(StudentNameInput.Text);
+                Debugger.Log($"Created student {StudentNameInput.Text}");
             }
             else
             {
                 Student student = new(StudentNameInput.Text, (int)DeterminantInput.Value);
+                Debugger.Log($"Created student {StudentNameInput.Text}");
+                Debugger.Log($"{StudentNameInput.Text} has determinant {DeterminantInput.Value}");
             }
 
             if (ManualGroupAssignCheck.Checked)
@@ -77,6 +82,8 @@ namespace StudentSorter
                 ManualAssignment assignment = new(
                     Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
                         GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
+                
+                Debugger.Log($"Manually assigned {StudentNameInput.Text} to {assignment}");
             }
 
             StudentNameInput.Text = "";
@@ -148,6 +155,8 @@ namespace StudentSorter
 
             Close();
             FormParent.RefreshLists();
+
+            Debugger.Log($"Created numerous students from {PDFOpener.FileName}");
         }
 
         /// <summary>

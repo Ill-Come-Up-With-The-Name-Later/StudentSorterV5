@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public partial class GroupInfoViewer : Form
     {
@@ -23,6 +25,8 @@
             MaxDeterminantInput.Value = SelectedGroup.MaxDeterminant;
             MinDeterminantInput.Value = SelectedGroup.MinDeterminant;
             GroupCapacityInput.Value = SelectedGroup.Capacity;
+
+            Debugger.Log($"Showing info for {SelectedGroup.Name}");
         }
 
         /// <summary>
@@ -36,6 +40,8 @@
             SelectedGroup.Name = GroupNameInput.Text.Length > 0 ? GroupNameInput.Text : "Group";
 
             FormParent.RefreshLists();
+
+            Debugger.Log($"Updated group: {SelectedGroup.ToString()}");
         }
 
         /// <summary>
@@ -64,6 +70,8 @@
 
             FormParent.RefreshLists();
             Close();
+
+            Debugger.Log($"Deleted group {SelectedGroup.ToString()}");
         }
     }
 }

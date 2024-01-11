@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using StudentSorter.Debug;
+using System.ComponentModel;
 using System.Data;
 
 namespace StudentSorter
@@ -74,6 +75,8 @@ namespace StudentSorter
             Exporter.ExportObjects(Sorter.GlobalInstance().AllGroups, file);
             GroupFile = file;
             GroupSource.Text = $"Group File Source: {file}";
+
+            Debugger.Log($"Saved groups to: {file}");
         }
 
         /// <summary>
@@ -87,6 +90,7 @@ namespace StudentSorter
 
             StudentFile = file;
             StudentSource.Text = $"Student File Source: {file}";
+            Debugger.Log($"Saved students to: {file}");
         }
 
         /// <summary>
@@ -102,6 +106,8 @@ namespace StudentSorter
         /// </summary>
         private void SortButton_Click(object sender, EventArgs e)
         {
+            Debugger.Log("Sort begun");
+
             ErrorProvider.Clear();
 
             if (Sorter.GlobalInstance().AllGroups.Count == 0 || Sorter.GlobalInstance().AllGroups.Count == 0)
@@ -130,6 +136,8 @@ namespace StudentSorter
 
             StudentInfoViewer viewer = new(index, this);
             viewer.Show();
+
+            Debugger.Log($"Showing info for a student");
         }
 
         /// <summary>
@@ -142,6 +150,8 @@ namespace StudentSorter
 
             GroupInfoViewer viewer = new(index, this);
             viewer.Show();
+
+            Debugger.Log("Showing info for a group");
         }
 
         /// <summary>
@@ -210,6 +220,7 @@ namespace StudentSorter
             SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile, ManualAssignmentsFile);
 
             Exporter.ExportObject(sort, ConfigSaver.FileName);
+            Debugger.Log($"Created configuration: {ConfigSaver.FileName}");
         }
 
         /// <summary>
@@ -228,6 +239,7 @@ namespace StudentSorter
             Importer.Import<ManualAssignment>(OpenAssignments.FileName);
 
             ManualAssignmentFile.Text = $"Manual Assignment File Source: {OpenAssignments.FileName}";
+            Debugger.Log($"Created numerous assignments from {OpenAssignments.FileName}");
         }
 
         /// <summary>
@@ -247,6 +259,7 @@ namespace StudentSorter
             Exporter.ExportObjects(Sorter.GlobalInstance().Assignments, SaveAssignmentDialog.FileName);
 
             ManualAssignmentFile.Text = $"Manual Assignment File Source: {SaveAssignmentDialog.FileName}";
+            Debugger.Log($"Created configuration: {SaveAssignmentDialog.FileName}");
         }
     }
 }

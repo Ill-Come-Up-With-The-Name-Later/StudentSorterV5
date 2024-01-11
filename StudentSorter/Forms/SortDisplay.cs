@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -39,6 +40,8 @@ namespace StudentSorter
             Sorter.GlobalInstance().AllStudents.ForEach(student => { StudentDropDown.Items.Add(student.Name); });
 
             ConfigUsedLabel.Text = $"Configuration used: {Config.Name}";
+
+            Debugger.Log($"Used configuration: {Config.Name}");
         }
 
         /// <summary>
@@ -56,10 +59,11 @@ namespace StudentSorter
                 groupStudentList.Show();
 
                 ChildForms.Add(groupStudentList);
+                Debugger.Log($"Showing information for {SelectedGroup.Name}");
             }
             catch (Exception)
             {
-                Console.WriteLine("Group couldn't be found.");
+                Debugger.Log("Group couldn't be found.");
             }
         }
 
@@ -68,6 +72,8 @@ namespace StudentSorter
         /// </summary>
         private void ReshuffleButton_Click(object sender, EventArgs e)
         {
+            Debugger.Log("Reshuffling begun");
+
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
 
@@ -76,6 +82,7 @@ namespace StudentSorter
                 Student student = Sorter.GlobalInstance().
                     GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());
 
+                Debugger.Log($"Searching for {student.Name}");
                 ShowStudentGroup(student);
             }
 
@@ -110,6 +117,7 @@ namespace StudentSorter
             }
 
             File.WriteAllLines(file, lines);
+            Debugger.Log($"Saved sort to {file}");
         }
 
         /// <summary>
@@ -126,6 +134,7 @@ namespace StudentSorter
             Sorter.GlobalInstance().SortConfigs.Clear();
 
             FormParent.RefreshLists();
+            Debugger.Log("Wiped the sorter.");
         }
 
         /// <summary>
@@ -149,10 +158,11 @@ namespace StudentSorter
                     GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());
 
                 ShowStudentGroup(student);
+                Debugger.Log($"Searching for {student.Name}");
             }
             catch (Exception)
             {
-                Console.WriteLine("Couldn't find student");
+                Debugger.Log("Couldn't find student");
             }
         }
 

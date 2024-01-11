@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using StudentSorter.Debug;
+using System.ComponentModel;
 using System.Data;
 
 namespace StudentSorter
@@ -46,6 +47,7 @@ namespace StudentSorter
             FormParent.DisallowedPairsSource.Text = $"Disallowed Pairs File Source: {OpenPairsFile.FileName}";
 
             RefreshPairList();
+            Debugger.Log($"Created numerous disallowed pairs from {OpenPairsFile.FileName}");
         }
 
         /// <summary>
@@ -110,6 +112,7 @@ namespace StudentSorter
         private void IllegalPairList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = IllegalPairList.CurrentCell.RowIndex;
+            Debugger.Log($"Deleted pair: {Sorter.GlobalInstance().IllegalPairs[index]}");
 
             Sorter.GlobalInstance().IllegalPairs.RemoveAt(index);
             RefreshPairList();

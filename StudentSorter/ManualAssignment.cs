@@ -24,5 +24,10 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().Assignments.Add(this);
         }
+
+        public override string ToString()
+        {
+            return $"{StudentHashCode} to {GroupHashCode}";
+        }
     }
 }
