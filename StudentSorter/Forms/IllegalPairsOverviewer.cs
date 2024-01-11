@@ -1,4 +1,5 @@
-﻿using System.ComponentModel;
+﻿using StudentSorter.Debug;
+using System.ComponentModel;
 using System.Data;
 
 namespace StudentSorter
@@ -46,6 +47,7 @@ namespace StudentSorter
             FormParent.DisallowedPairsSource.Text = $"Disallowed Pairs File Source: {OpenPairsFile.FileName}";
 
             RefreshPairList();
+            Debugger.Log($"Created numerous disallowed pairs from {OpenPairsFile.FileName}");
         }
 
         /// <summary>

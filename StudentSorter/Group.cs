@@ -182,5 +182,10 @@ namespace StudentSorter
         {
             return HashCode;
         }
+
+        public override string ToString()
+        {
+            return $"{Name}\nCapacity: {Capacity}\nDeter. Min.: {MinDeterminant}\nDeter. Max.: {MaxDeterminant}\nHash: {HashCode}";
+        }
     }
 }

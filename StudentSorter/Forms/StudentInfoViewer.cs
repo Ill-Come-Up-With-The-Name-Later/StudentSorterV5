@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public partial class StudentInfoViewer : Form
     {
@@ -94,6 +96,8 @@
             Student.Name = StudentNameInput.Text;
 
             FormParent.RefreshLists();
+            
+            Debugger.Log($"Updated student: {Student}");
         }
 
         /// <summary>

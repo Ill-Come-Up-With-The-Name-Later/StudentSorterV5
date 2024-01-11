@@ -36,5 +36,11 @@ namespace StudentSorter
             Sorter.GlobalInstance().SortConfigs.Clear();
             Sorter.GlobalInstance().SortConfigs.Add(this);
         }
+
+        public override string ToString()
+        {
+            return $"{Name}\nStudent File: {StudentFile}\nGroup File: {GroupFile}\nDisallowed Pair File: {IllegalPairsFile}\n" +
+                $"Assignment File: {ManualAssignmentsFile}";
+        }
     }
 }

@@ -1,4 +1,6 @@
-﻿namespace StudentSorter.Forms
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter.Forms
 {
     public partial class CreateSortConfig : Form
     {
@@ -107,6 +109,8 @@
 
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
+
+            Debugger.Log($"Created Sorter Config: {sort}");
         }
 
         /// <summary>

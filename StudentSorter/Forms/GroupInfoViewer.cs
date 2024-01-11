@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public partial class GroupInfoViewer : Form
     {
@@ -44,6 +46,7 @@
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
+            Debugger.Log($"Updated group: {SelectedGroup}");
         }
 
         /// <summary>

@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public partial class IllegalPairCreator : Form
     {
@@ -69,6 +71,7 @@
             IllegalPair pair = new(Student1, Student2);
 
             FormParent.RefreshPairList();
+            Debugger.Log($"Created disallowed pair: {pair}");
         }
     }
 }
