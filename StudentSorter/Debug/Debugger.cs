@@ -1,14 +1,11 @@
 ﻿namespace StudentSorter.Debug
 {
     public class Debugger
-    { 
-        public static Debugger GlobalInstance() => new();
-
-        public Debugger() { }
-
-        public void Log(string message)
+    {
+        public static void Log(string message)
         {
-
+            DateTime now = DateTime.Now;
+            Program.Debugger.DebugLog.Text += $"\n[{now.Hour}:{now.Minute}]: {message}";
         }
     }
 }

@@ -1,5 +1,7 @@
+using StudentSorter.Debug;
 using StudentSorter.Forms;
 using System.Diagnostics;
+using Debugger = StudentSorter.Debug.Debugger;
 
 namespace StudentSorter
 {
@@ -99,6 +101,19 @@ namespace StudentSorter
         private void TitleWindow_Load(object sender, EventArgs e)
         {
             VersionLabel.Text = $"Version: {Program.Version}";
+        }
+
+        /// <summary>
+        /// Opens the debug log window
+        /// </summary>
+        private void OpenDebugButton_Click(object sender, EventArgs e)
+        {
+            DebugWindow window = new();
+            window.Show();
+            Program.Debugger = window;
+
+            Debugger.Log("Application opened");
+            Debugger.Log($"Version: {Program.Version}");
         }
     }
 }

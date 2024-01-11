@@ -35,6 +35,7 @@
             CreateConfigButton = new Button();
             UserManualLink = new LinkLabel();
             VersionLabel = new Label();
+            OpenDebugButton = new Button();
             SuspendLayout();
             // 
             // TitleLabel
@@ -106,11 +107,22 @@
             VersionLabel.TabIndex = 5;
             VersionLabel.Text = "Version: ";
             // 
+            // OpenDebugButton
+            // 
+            OpenDebugButton.Location = new Point(311, 341);
+            OpenDebugButton.Name = "OpenDebugButton";
+            OpenDebugButton.Size = new Size(226, 39);
+            OpenDebugButton.TabIndex = 6;
+            OpenDebugButton.Text = "Open Debug Window";
+            OpenDebugButton.UseVisualStyleBackColor = true;
+            OpenDebugButton.Click += OpenDebugButton_Click;
+            // 
             // TitleWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(549, 383);
+            Controls.Add(OpenDebugButton);
             Controls.Add(VersionLabel);
             Controls.Add(UserManualLink);
             Controls.Add(CreateConfigButton);
@@ -135,5 +147,6 @@
         private Button CreateConfigButton;
         private LinkLabel UserManualLink;
         private Label VersionLabel;
+        private Button OpenDebugButton;
     }
 }
