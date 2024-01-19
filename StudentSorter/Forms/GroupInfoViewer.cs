@@ -41,7 +41,7 @@ namespace StudentSorter
 
             FormParent.RefreshLists();
 
-            Debugger.Log($"Updated group: {SelectedGroup.ToString()}");
+            Debugger.Log($"Updated group: {SelectedGroup}");
         }
 
         /// <summary>
@@ -62,16 +62,23 @@ namespace StudentSorter
 
             foreach (ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
             {
-                if (Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode) == SelectedGroup)
+                try
                 {
-                    Sorter.GlobalInstance().Assignments.Remove(assignment);
+                    if (Sorter.GlobalInstance().GetGroupByHashCode(assignment.GroupHashCode) == SelectedGroup)
+                    {
+                        Sorter.GlobalInstance().Assignments.Remove(assignment);
+                    }
+                }
+                catch(NullReferenceException)
+                {
+                    Debugger.Log("Group couldn't be found");
                 }
             }
 
             FormParent.RefreshLists();
             Close();
 
-            Debugger.Log($"Deleted group {SelectedGroup.ToString()}");
+            Debugger.Log($"Deleted group: {SelectedGroup}");
         }
     }
 }

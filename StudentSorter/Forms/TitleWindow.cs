@@ -114,7 +114,7 @@ namespace StudentSorter
             window.Show();
             Program.Debugger = window;
 
-            Debugger.Log("Application opened");
+            Debugger.Log("Application debugger opened");
             Debugger.Log($"Version: {Program.Version}");
         }
     }

@@ -83,9 +83,16 @@ namespace StudentSorter
                 {
                     if (!Student.HasAssignment())
                     {
-                        ManualAssignment assignment = new(
-                                Sorter.GlobalInstance().GetStudentByName(Student.Name).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
-                                    GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
+                        try
+                        {
+                            ManualAssignment assignment = new(
+                                    Sorter.GlobalInstance().GetStudentByName(Student.Name).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
+                                        GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
+                        } 
+                        catch(NullReferenceException)
+                        {
+                            Debugger.Log("Assignment targets couldn't be found");
+                        }
                     }
                 }
             }
@@ -99,7 +106,7 @@ namespace StudentSorter
 
             FormParent.RefreshLists();
             
-            Debugger.Log($"Updated student: {Student.ToString()}");
+            Debugger.Log($"Updated student: {Student}");
         }
 
         /// <summary>
@@ -167,7 +174,7 @@ namespace StudentSorter
             FormParent.RefreshLists();
             Close();
 
-            Debugger.Log($"Deleted student {Student.Name}");
+            Debugger.Log($"Deleted student: {Student.Name}");
         }
     }
 }

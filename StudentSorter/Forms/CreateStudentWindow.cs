@@ -79,11 +79,18 @@ namespace StudentSorter
                     return;
                 }
 
-                ManualAssignment assignment = new(
-                    Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
-                        GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
-                
-                Debugger.Log($"Manually assigned {StudentNameInput.Text} to {assignment}");
+                try
+                {
+                    ManualAssignment assignment = new(
+                        Sorter.GlobalInstance().GetStudentByName(StudentNameInput.Text).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
+                            GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
+
+                    Debugger.Log($"Manually assigned {StudentNameInput.Text} to {assignment}");
+                } 
+                catch(NullReferenceException)
+                {
+                    Debugger.Log("Assignment targets couldn't be found");
+                }
             }
 
             StudentNameInput.Text = "";

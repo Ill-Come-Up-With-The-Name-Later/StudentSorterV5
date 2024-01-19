@@ -29,23 +29,39 @@
         private void InitializeComponent()
         {
             DebugLog = new RichTextBox();
+            CloseButton = new Button();
             SuspendLayout();
             // 
             // DebugLog
             // 
-            DebugLog.Location = new Point(25, 12);
+            DebugLog.Location = new Point(16, 17);
+            DebugLog.Margin = new Padding(4);
             DebugLog.Name = "DebugLog";
             DebugLog.ReadOnly = true;
-            DebugLog.Size = new Size(763, 426);
+            DebugLog.Size = new Size(1145, 656);
             DebugLog.TabIndex = 0;
             DebugLog.Text = "";
             // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(517, 700);
+            CloseButton.Margin = new Padding(4);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(197, 41);
+            CloseButton.TabIndex = 1;
+            CloseButton.Text = "Close Debugger";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
             // DebugWindow
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1180, 767);
+            Controls.Add(CloseButton);
             Controls.Add(DebugLog);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
             Name = "DebugWindow";
             Text = "Debug Window";
             ResumeLayout(false);
@@ -54,5 +70,6 @@
         #endregion
 
         public RichTextBox DebugLog;
+        private Button CloseButton;
     }
 }

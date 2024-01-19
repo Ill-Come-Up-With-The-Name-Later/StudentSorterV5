@@ -179,14 +179,14 @@ namespace StudentSorter
 
             if(firstGroup is null || secondGroup is null) 
             {
+                Debugger.Log("At least one of the students is not in a group");
                 return;
-                throw new NullReferenceException("At least one of the students is not in a group");
             }
 
             if (firstGroup == secondGroup)
             {
+                Debugger.Log("Students were in the same group");
                 return;
-                throw new AbandonedMutexException("Students were in the same group");
             }
 
             secondGroup.RemoveStudent(student2);
@@ -214,7 +214,7 @@ namespace StudentSorter
                     return group;
                 }
             }
-            Console.WriteLine("Couldn't find student anywhere!");
+            Debugger.Log("Couldn't find student anywhere!");
             return null;
         }
 
@@ -278,7 +278,7 @@ namespace StudentSorter
                 if(student.GetHashCode() == code)
                     return student;
 
-            Console.WriteLine($"No student exists with the HashCode {code}!");
+            Debugger.Log($"No student exists with the HashCode {code}!");
             return null;
         }
 
@@ -298,7 +298,7 @@ namespace StudentSorter
                 if(group.GetHashCode() == code) 
                     return group;
 
-            Console.WriteLine($"No group exists with the HashCode {code}");
+            Debugger.Log($"No group exists with the HashCode {code}");
             return null;
         }
 
@@ -461,6 +461,7 @@ namespace StudentSorter
                         if (splitTxt[j].Split(' ')[0].ToUpper().Equals(splitTxt[j].Split(' ')[0]))
                             continue;
                         names.Add(splitTxt[j]);
+                        Debugger.Log($"{splitTxt[j]} added from ${filePath}");
                     }
                 }
             }
