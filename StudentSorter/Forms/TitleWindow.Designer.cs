@@ -121,6 +121,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(549, 383);
             Controls.Add(OpenDebugButton);
             Controls.Add(VersionLabel);
@@ -131,7 +133,9 @@
             Controls.Add(TitleLabel);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "TitleWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Random Group Creator";
             Load += TitleWindow_Load;
             ResumeLayout(false);

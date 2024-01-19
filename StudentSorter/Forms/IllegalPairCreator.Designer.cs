@@ -102,6 +102,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(450, 430);
             Controls.Add(AddPairButton);
             Controls.Add(Student2Label);
@@ -111,7 +113,9 @@
             Controls.Add(SelectStudent1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "IllegalPairCreator";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Disallowedl Pair Creator";
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);

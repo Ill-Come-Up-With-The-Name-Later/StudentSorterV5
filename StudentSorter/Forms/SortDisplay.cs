@@ -77,7 +77,7 @@ namespace StudentSorter
             Sorter.GlobalInstance().Reset();
             Sorter.GlobalInstance().ShuffleGroups();
 
-            if(StudentDropDown.SelectedIndex > 0)
+            if (StudentDropDown.SelectedIndex > 0)
             {
                 Student student = Sorter.GlobalInstance().
                     GetStudentByName(StudentDropDown.Items[StudentDropDown.SelectedIndex].ToString());

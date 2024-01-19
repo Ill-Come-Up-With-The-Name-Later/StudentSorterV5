@@ -57,7 +57,7 @@ namespace StudentSorter
         {
             ErrorProvider.Clear();
 
-            if(StudentNameInput.Text.Length == 0)
+            if (StudentNameInput.Text.Length == 0)
             {
                 ErrorProvider.SetError(StudentNameInput, "A name is required");
             }
@@ -88,8 +88,8 @@ namespace StudentSorter
                             ManualAssignment assignment = new(
                                     Sorter.GlobalInstance().GetStudentByName(Student.Name).GetHashCode(), Sorter.GlobalInstance().GetGroupByName(
                                         GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
-                        } 
-                        catch(NullReferenceException)
+                        }
+                        catch (NullReferenceException)
                         {
                             Debugger.Log("Assignment targets couldn't be found");
                         }
@@ -105,7 +105,7 @@ namespace StudentSorter
             Student.Name = StudentNameInput.Text;
 
             FormParent.RefreshLists();
-            
+
             Debugger.Log($"Updated student: {Student}");
         }
 

@@ -299,6 +299,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1161, 744);
             Controls.Add(SaveAssignmentsButton);
             Controls.Add(ManualAssignmentButton);
@@ -320,7 +322,9 @@
             Controls.Add(StudentViewer);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "Overviewer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Overviewer";
             ((System.ComponentModel.ISupportInitialize)StudentViewer).EndInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).EndInit();

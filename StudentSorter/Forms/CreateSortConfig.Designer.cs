@@ -163,6 +163,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(777, 315);
             Controls.Add(ManualAssignmentFile);
             Controls.Add(AddAssignmentFileButton);
@@ -177,7 +179,9 @@
             Controls.Add(CreateConfigButton);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "CreateSortConfig";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Sort Configuration";
             ResumeLayout(false);
             PerformLayout();

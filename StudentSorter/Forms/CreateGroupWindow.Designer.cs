@@ -210,6 +210,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(679, 439);
             Controls.Add(StudentsPerGroupLabel);
             Controls.Add(AutoCreateLabel);
@@ -228,7 +230,9 @@
             Controls.Add(GroupCreateTitle);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "CreateGroupWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Group";
             ((System.ComponentModel.ISupportInitialize)CapacityInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)MinDeterminantInput).EndInit();

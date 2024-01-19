@@ -49,7 +49,7 @@ namespace StudentSorter
                 ErrorProvider.SetError(StudentNameInput, "A name is required");
             }
 
-            if(Sorter.GlobalInstance().StudentNameExists(StudentNameInput.Text))
+            if (Sorter.GlobalInstance().StudentNameExists(StudentNameInput.Text))
             {
                 ErrorProvider.SetError(StudentNameInput, "A student with this name already exists");
             }
@@ -86,8 +86,8 @@ namespace StudentSorter
                             GroupList.Items[GroupList.SelectedIndex].ToString()).GetHashCode());
 
                     Debugger.Log($"Manually assigned {StudentNameInput.Text} to {assignment}");
-                } 
-                catch(NullReferenceException)
+                }
+                catch (NullReferenceException)
                 {
                     Debugger.Log("Assignment targets couldn't be found");
                 }

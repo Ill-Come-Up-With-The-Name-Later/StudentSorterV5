@@ -60,7 +60,7 @@ namespace StudentSorter
                 ErrorProvider.SetError(SelectStudent2, "Cannot select the same student twice");
             }
 
-            if(Sorter.GlobalInstance().IllegalPairExists(Student1, Student2))
+            if (Sorter.GlobalInstance().IllegalPairExists(Student1, Student2))
             {
                 ErrorProvider.SetError(SelectStudent1, "The two students are already in a pair.");
                 ErrorProvider.SetError(SelectStudent2, "The two students are already in a pair.");

@@ -69,7 +69,7 @@ namespace StudentSorter
                         Sorter.GlobalInstance().Assignments.Remove(assignment);
                     }
                 }
-                catch(NullReferenceException)
+                catch (NullReferenceException)
                 {
                     Debugger.Log("Group couldn't be found");
                 }

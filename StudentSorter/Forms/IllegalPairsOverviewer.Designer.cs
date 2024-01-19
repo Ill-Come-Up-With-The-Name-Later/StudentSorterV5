@@ -129,6 +129,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(715, 523);
             Controls.Add(RemovalInstruction);
             Controls.Add(AddPairButton);
@@ -138,7 +140,9 @@
             Controls.Add(IllegalPairList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "IllegalPairsOverviewer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Disallowed Pairs Overviewer";
             Load += IllegalPairsOverviewer_Load;
             ((System.ComponentModel.ISupportInitialize)IllegalPairList).EndInit();

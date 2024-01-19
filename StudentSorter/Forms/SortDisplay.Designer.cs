@@ -136,6 +136,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(653, 614);
             Controls.Add(ConfigUsedLabel);
             Controls.Add(StudentDropDown);
@@ -147,7 +149,9 @@
             Controls.Add(GroupList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "SortDisplay";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Sort Result Display";
             Load += SortDisplay_Load;
             ((System.ComponentModel.ISupportInitialize)GroupList).EndInit();

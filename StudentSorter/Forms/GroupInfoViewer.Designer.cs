@@ -134,6 +134,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(357, 495);
             Controls.Add(GroupNameInput);
             Controls.Add(DeleteGroupButton);
@@ -147,7 +149,9 @@
             Controls.Add(CapacityLabel);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "GroupInfoViewer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Group Info Viewer";
             FormClosing += GroupInfoViewer_FormClosing;
             Load += GroupInfoViewer_Load;

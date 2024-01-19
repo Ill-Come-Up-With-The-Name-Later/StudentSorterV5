@@ -208,6 +208,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(782, 485);
             Controls.Add(PageEndInput);
             Controls.Add(ToLabel);
@@ -225,7 +227,9 @@
             Controls.Add(label1);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "CreateStudentWindow";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Student";
             Load += CreateStudentWindow_Load;
             ((System.ComponentModel.ISupportInitialize)DeterminantInput).EndInit();

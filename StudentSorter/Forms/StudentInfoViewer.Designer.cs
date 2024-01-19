@@ -166,6 +166,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(476, 485);
             Controls.Add(StudentNameInput);
             Controls.Add(DeleteStudentButton);
@@ -181,7 +183,9 @@
             Controls.Add(DeterminantSetCheck);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "StudentInfoViewer";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Student Info Viewer";
             FormClosing += StudentInfoViewer_FormClosing;
             Load += StudentInfoViewer_Load;

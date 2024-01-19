@@ -57,13 +57,18 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(1180, 767);
             Controls.Add(CloseButton);
             Controls.Add(DebugLog);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            FormBorderStyle = FormBorderStyle.FixedSingle;
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "DebugWindow";
             Text = "Debug Window";
+            WindowState = FormWindowState.Minimized;
             ResumeLayout(false);
         }
 

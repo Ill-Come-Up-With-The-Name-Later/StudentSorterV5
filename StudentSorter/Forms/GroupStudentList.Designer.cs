@@ -65,12 +65,16 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoSize = true;
+            AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(651, 465);
             Controls.Add(Title);
             Controls.Add(StudentList);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
             Margin = new Padding(4);
+            MaximizeBox = false;
             Name = "GroupStudentList";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Group Student List";
             Load += GroupStudentList_Load;
             ((System.ComponentModel.ISupportInitialize)StudentList).EndInit();
