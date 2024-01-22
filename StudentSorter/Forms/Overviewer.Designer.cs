@@ -299,9 +299,8 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1161, 744);
+            ClientSize = new Size(1155, 761);
             Controls.Add(SaveAssignmentsButton);
             Controls.Add(ManualAssignmentButton);
             Controls.Add(ManualAssignmentFile);
