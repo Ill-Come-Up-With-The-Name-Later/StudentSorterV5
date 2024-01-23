@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -160,14 +161,21 @@ namespace StudentSorter
         /// </returns>
         public bool HasAssignment()
         {
-            foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments) 
+            foreach (ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
             {
-                if(Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
+                try
                 {
-                    return true;
+                    if (Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
+                    {
+                        return true;
+                    }
+                }
+                catch (NullReferenceException)
+                {
+                    Debugger.Log("Couldnt find the student.");
+                    return false;
                 }
             }
-
             return false;
         }
 
@@ -184,8 +192,15 @@ namespace StudentSorter
             {
                 foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
                 {
-                    if(Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this) 
-                        return assignment;
+                    try
+                    {
+                        if (Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
+                            return assignment;
+                    }
+                    catch(NullReferenceException)
+                    {
+                        Debugger.Log("Couldn't find the student.");
+                    }
                 }
             }
 

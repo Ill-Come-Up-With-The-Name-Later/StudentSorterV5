@@ -38,7 +38,7 @@ namespace StudentSorter
         {
             int sortedStudents = 0;
 
-            AllStudents.Sort(new StudentComparer());
+            AllStudents.Sort(new StudentComparer()); // Shuffle master list
 
             ManuallyAssign(); // Do all manual assignments first
 
@@ -49,8 +49,9 @@ namespace StudentSorter
                     if (AnalysisStudent.CanJoinGroup(AnalysisGroup))
                     {
                         AnalysisGroup.AddStudent(AnalysisStudent);
-                        Debugger.Log($"(Round 1) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
                         sortedStudents++;
+                        Debugger.Log($"(Round 1) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
+                        Debugger.Log($"Sorted Students: {sortedStudents}");
                     }
                 }
             }
@@ -67,8 +68,9 @@ namespace StudentSorter
                     if (!AnalysisGroup.IsFull() && !AnalysisStudent.InGroup())
                     {
                         AnalysisGroup.AddStudent(AnalysisStudent);
-                        Debugger.Log($"(Round 2) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
                         sortedStudents++;
+                        Debugger.Log($"(Round 2) Added {AnalysisStudent.Name} to {AnalysisGroup.Name}");
+                        Debugger.Log($"Sorted Students: {sortedStudents}");
                     }
                 }
             }
@@ -88,11 +90,18 @@ namespace StudentSorter
         {
             foreach(ManualAssignment assignment in Assignments)
             {
-                Student student = GetStudentByHashCode(assignment.StudentHashCode);
-                Group group = GetGroupByHashCode(assignment.GroupHashCode);
+                try
+                {
+                    Student student = GetStudentByHashCode(assignment.StudentHashCode);
+                    Group group = GetGroupByHashCode(assignment.GroupHashCode);
 
-                group.AddStudent(student);
-                Debugger.Log($"Assigned {student.Name} to {group.Name}");
+                    group.AddStudent(student);
+                    Debugger.Log($"Assigned {student.Name} to {group.Name}");
+                }
+                catch(Exception) 
+                {
+                    Debugger.Log("Couldn't find student or group.");
+                }
             }
         }
 

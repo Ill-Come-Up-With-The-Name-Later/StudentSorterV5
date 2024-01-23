@@ -1,4 +1,6 @@
-﻿namespace StudentSorter
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter
 {
     public static class Exporter
     {
@@ -19,8 +21,8 @@
             }
             catch (Exception ex)
             {
-                Console.WriteLine("File Export error!");
-                Console.WriteLine(ex);
+                Debugger.Log("File Export error!");
+                Debugger.Log(ex.ToString());
             }
         }
 

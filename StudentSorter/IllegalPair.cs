@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using Debugger = StudentSorter.Debug.Debugger;
 
 namespace StudentSorter
 {
@@ -60,8 +61,15 @@ namespace StudentSorter
             Student2Hash = student2Hash; 
             HashCode = hashCode;
 
-            Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
-            Student2 = Sorter.GlobalInstance().GetStudentByHashCode(Student2Hash);
+            try
+            {
+                Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
+                Student2 = Sorter.GlobalInstance().GetStudentByHashCode(Student2Hash);
+            } 
+            catch(NullReferenceException)
+            {
+                Debugger.Log("A student couldn't be found.");
+            }
 
             Sorter.GlobalInstance().AddIllegalPair(this);
         }
