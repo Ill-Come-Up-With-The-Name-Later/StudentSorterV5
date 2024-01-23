@@ -107,6 +107,7 @@ namespace StudentSorter
                 {
                     if(group.Contains(pair.AsList()))
                     {
+                        Debugger.Log($"{pair} found in {group.Name}");
                         int groupIndex = new Random().Next(0, AllGroups.Count);
 
                         // Ensure the picked group isn't the group currently being looked at
@@ -129,6 +130,7 @@ namespace StudentSorter
                         while(pair.Contains(other) && PairExists(other, pair.Student2))
                         {
                             other = AllGroups[groupIndex].Students[studentIndex];
+                            Debugger.Log($"New group also has disallowed pair.");
                         }
 
                         // Swap the student from the pair with the other
@@ -225,6 +227,7 @@ namespace StudentSorter
         {
             foreach (Group g in AllGroups) g.Clear();
             RandomizeDeterminants();
+            Debugger.Log("Reset Sorter");
         }
 
         /// <summary>
