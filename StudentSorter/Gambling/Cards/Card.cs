@@ -2,6 +2,15 @@
 {
     public class Card
     {
+        // All four suits in a standard deck
+        public static List<Suit> Suits = new()
+        {
+            Suit.Hearts,
+            Suit.Spades,
+            Suit.Clubs,
+            Suit.Diamonds
+        };
+
         public string Name { get; set; }
         public int Value { get; set; }
         public Suit CardSuit { get; set; }
