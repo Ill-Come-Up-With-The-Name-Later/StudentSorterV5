@@ -1,4 +1,4 @@
-﻿namespace StudentSorter.BlackJack.Cards
+﻿namespace StudentSorter.Gambling.Cards
 {
     public enum CardType
     {
