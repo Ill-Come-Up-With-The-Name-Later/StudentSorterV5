@@ -31,6 +31,9 @@
             WinnerTitle = new Label();
             ReplayButton = new Button();
             CloseButton = new Button();
+            DealerCardLabel = new Label();
+            DealerCardList = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)DealerCardList).BeginInit();
             SuspendLayout();
             // 
             // WinnerTitle
@@ -45,7 +48,7 @@
             // 
             // ReplayButton
             // 
-            ReplayButton.Location = new Point(175, 185);
+            ReplayButton.Location = new Point(12, 334);
             ReplayButton.Name = "ReplayButton";
             ReplayButton.Size = new Size(111, 39);
             ReplayButton.TabIndex = 1;
@@ -55,7 +58,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(308, 185);
+            CloseButton.Location = new Point(148, 334);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(113, 39);
             CloseButton.TabIndex = 2;
@@ -63,11 +66,39 @@
             CloseButton.UseVisualStyleBackColor = true;
             CloseButton.Click += CloseButton_Click;
             // 
+            // DealerCardLabel
+            // 
+            DealerCardLabel.AutoSize = true;
+            DealerCardLabel.Location = new Point(25, 83);
+            DealerCardLabel.Name = "DealerCardLabel";
+            DealerCardLabel.Size = new Size(259, 28);
+            DealerCardLabel.TabIndex = 3;
+            DealerCardLabel.Text = "Dealer Cards - Hand Value: 0";
+            // 
+            // DealerCardList
+            // 
+            DealerCardList.AllowUserToAddRows = false;
+            DealerCardList.AllowUserToDeleteRows = false;
+            DealerCardList.AllowUserToResizeColumns = false;
+            DealerCardList.AllowUserToResizeRows = false;
+            DealerCardList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DealerCardList.ColumnHeadersVisible = false;
+            DealerCardList.Location = new Point(25, 125);
+            DealerCardList.Name = "DealerCardList";
+            DealerCardList.ReadOnly = true;
+            DealerCardList.RowHeadersVisible = false;
+            DealerCardList.RowHeadersWidth = 51;
+            DealerCardList.RowTemplate.Height = 29;
+            DealerCardList.Size = new Size(300, 188);
+            DealerCardList.TabIndex = 4;
+            // 
             // WinnerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 236);
+            ClientSize = new Size(567, 385);
+            Controls.Add(DealerCardList);
+            Controls.Add(DealerCardLabel);
             Controls.Add(CloseButton);
             Controls.Add(ReplayButton);
             Controls.Add(WinnerTitle);
@@ -77,6 +108,7 @@
             Name = "WinnerWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Winner";
+            ((System.ComponentModel.ISupportInitialize)DealerCardList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -86,5 +118,7 @@
         private Label WinnerTitle;
         private Button ReplayButton;
         private Button CloseButton;
+        private Label DealerCardLabel;
+        private DataGridView DealerCardList;
     }
 }

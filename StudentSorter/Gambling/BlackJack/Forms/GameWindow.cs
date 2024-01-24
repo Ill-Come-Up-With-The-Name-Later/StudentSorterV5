@@ -5,8 +5,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
     public partial class GameWindow : Form
     {
         public GameManager Manager;
-        private readonly DataTable Player1Cards = new();
-        private readonly DataTable Player2Cards = new();
+        public DataTable Player1Cards = new();
+        public DataTable Player2Cards = new();
         private int Turn;
 
         public GameWindow()
@@ -57,6 +57,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// </summary>
         private void PassButton_Click(object sender, EventArgs e)
         {
+            Manager.AddCard(Manager.Player2);
+            GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
             Turn++;
             CheckWin(true);
         }
@@ -75,6 +77,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
                 Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn);
                 WinnerWindow winWindow = new(winner, this);
                 winWindow.Show();
+                winWindow.BringToFront();
 
                 DrawCardButton.Enabled = false;
                 PassButton.Enabled = false;

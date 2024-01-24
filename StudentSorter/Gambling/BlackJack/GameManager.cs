@@ -125,39 +125,42 @@ namespace StudentSorter.Gambling.BlackJack
         public Player? Winner(Player player1, Player player2, int turn, bool pStand = false)
         {
             if (player1.CardValue == 21 && player2.CardValue == 21)
-            {
                 return null;
-            }
+
             if (player1.CardValue == 21)
-            {
                 return player1;
-            }
+
             if (player2.CardValue == 21)
-            {
                 return player2;
-            }
 
             if (player1.CardValue > 21)
-            {
                 return player2;
-            }
+            
             if(player2.CardValue > 21)
-            {
                 return player1;
-            }
+
+            if (player1.CardValue == player2.CardValue)
+                return null;
 
             if(pStand)
             {
-                if(player1.CardValue < player2.CardValue && player2.CardValue <= 21) 
-                {
+                if (player1.CardValue == 21 && player2.CardValue == 21)
+                    return null;
+
+                if (player1.CardValue == 21) return player1;
+                if (player2.CardValue == 21) return player2;
+
+                if(player1.CardValue > 21)
                     return player2;
-                } 
-                else
-                {
+
+                if(player2.CardValue > 21)
                     return player1;
-                }
+
+                if (player1.CardValue == 21)
+                    return player1;
             }
 
+            Debugger.Log("No winner");
             return null;
         }
     }
