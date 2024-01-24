@@ -29,9 +29,16 @@ namespace StudentSorter.Gambling.BlackJack
         /// </param>
         public void AddCard(Card card)
         {
+            Cards.Add(card);
+
             CardValue += card.Value;
             Debugger.Log($"Addedd {card} to player's cards.");
             Debugger.Log($"{Name}'s cards' value: {CardValue}");
+        }
+
+        public override string ToString()
+        {
+            return Name;
         }
     }
 }

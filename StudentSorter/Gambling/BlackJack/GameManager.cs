@@ -45,13 +45,14 @@ namespace StudentSorter.Gambling.BlackJack
                 Deck.Add(queen);
             }
 
-            AddCard(Player1);
-            AddCard(Player1);
-            AddCard(Player2);
-            AddCard(Player2);
+            for(int i = 0; i < 2; i++)
+            {
+                AddCard(Player1);
+                AddCard(Player2);
+            }
 
             Debugger.Log($"Deck Size: {Deck.Count}/52");
-            Debugger.Log("Set up game.");
+            Debugger.Log("Setup game.");
         }
 
         /// <summary>
@@ -62,7 +63,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// </param>
         public void AddCard(Player player)
         {
-            Card card = Deck[new Random().Next(0, Deck.Count - 1)];
+            Card card = Deck[new Random().Next(0, Deck.Count)];
             player.AddCard(card);
             Deck.Remove(card);
 
@@ -75,16 +76,25 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="player">
         /// The player whose cards to update
         /// </param>
-        /// <param name="view">
+        /// <param name="table">
         /// The data grid containing the player's cards
         /// </param>
-        public void UpdatePlayerCardList(Player player, DataTable view)
+        /// <param name="dataGrid">
+        /// The data grid to update
+        /// </param>
+        public static void UpdatePlayerCardList(Player player, DataTable table, DataGridView dataGrid)
         {
-            if(view.Rows.Count > 0)
-                view.Rows.Clear();
+            if(table.Rows.Count > 0)
+                table.Rows.Clear();
 
             foreach(Card card in player.Cards)
-                view.Rows.Add(card);
+                table.Rows.Add(card.ToString());
+
+            foreach (DataGridViewColumn column in dataGrid.Columns)
+                column.Width = dataGrid.Width;
+
+            Debugger.Log($"Player Cards: {player.Cards.Count} | Table Rows: {table.Rows.Count}");
+            Debugger.Log($"Updated cards for {player}");
         }
         
         /// <summary>

@@ -45,9 +45,10 @@
             Player1Hand.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             Player1Hand.ColumnHeadersVisible = false;
             Player1Hand.Location = new Point(37, 76);
-            Player1Hand.Margin = new Padding(4, 4, 4, 4);
+            Player1Hand.Margin = new Padding(4);
             Player1Hand.Name = "Player1Hand";
             Player1Hand.ReadOnly = true;
+            Player1Hand.RowHeadersVisible = false;
             Player1Hand.RowHeadersWidth = 51;
             Player1Hand.RowTemplate.Height = 29;
             Player1Hand.Size = new Size(412, 263);
@@ -62,7 +63,7 @@
             Player2Hand.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             Player2Hand.ColumnHeadersVisible = false;
             Player2Hand.Location = new Point(717, 76);
-            Player2Hand.Margin = new Padding(4, 4, 4, 4);
+            Player2Hand.Margin = new Padding(4);
             Player2Hand.Name = "Player2Hand";
             Player2Hand.ReadOnly = true;
             Player2Hand.RowHeadersVisible = false;
@@ -99,12 +100,11 @@
             Controls.Add(Player2Hand);
             Controls.Add(Player1Hand);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "GameWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Game Window";
-            Load += GameWindow_Load;
             ((System.ComponentModel.ISupportInitialize)Player1Hand).EndInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).EndInit();
             ResumeLayout(false);
