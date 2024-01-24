@@ -28,21 +28,94 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Player1Hand = new DataGridView();
+            Player2Hand = new DataGridView();
+            Player1Title = new Label();
+            Player2Title = new Label();
+            ((System.ComponentModel.ISupportInitialize)Player1Hand).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             SuspendLayout();
+            // 
+            // Player1Hand
+            // 
+            Player1Hand.AllowUserToAddRows = false;
+            Player1Hand.AllowUserToDeleteRows = false;
+            Player1Hand.AllowUserToResizeColumns = false;
+            Player1Hand.AllowUserToResizeRows = false;
+            Player1Hand.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Player1Hand.ColumnHeadersVisible = false;
+            Player1Hand.Location = new Point(37, 76);
+            Player1Hand.Margin = new Padding(4, 4, 4, 4);
+            Player1Hand.Name = "Player1Hand";
+            Player1Hand.ReadOnly = true;
+            Player1Hand.RowHeadersWidth = 51;
+            Player1Hand.RowTemplate.Height = 29;
+            Player1Hand.Size = new Size(412, 263);
+            Player1Hand.TabIndex = 0;
+            // 
+            // Player2Hand
+            // 
+            Player2Hand.AllowUserToAddRows = false;
+            Player2Hand.AllowUserToDeleteRows = false;
+            Player2Hand.AllowUserToResizeColumns = false;
+            Player2Hand.AllowUserToResizeRows = false;
+            Player2Hand.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            Player2Hand.ColumnHeadersVisible = false;
+            Player2Hand.Location = new Point(717, 76);
+            Player2Hand.Margin = new Padding(4, 4, 4, 4);
+            Player2Hand.Name = "Player2Hand";
+            Player2Hand.ReadOnly = true;
+            Player2Hand.RowHeadersVisible = false;
+            Player2Hand.RowHeadersWidth = 51;
+            Player2Hand.RowTemplate.Height = 29;
+            Player2Hand.Size = new Size(412, 263);
+            Player2Hand.TabIndex = 1;
+            // 
+            // Player1Title
+            // 
+            Player1Title.AutoSize = true;
+            Player1Title.Location = new Point(37, 29);
+            Player1Title.Name = "Player1Title";
+            Player1Title.Size = new Size(141, 28);
+            Player1Title.TabIndex = 2;
+            Player1Title.Text = "Player1's Hand";
+            // 
+            // Player2Title
+            // 
+            Player2Title.AutoSize = true;
+            Player2Title.Location = new Point(717, 29);
+            Player2Title.Name = "Player2Title";
+            Player2Title.Size = new Size(143, 28);
+            Player2Title.TabIndex = 3;
+            Player2Title.Text = "Player2's Cards";
             // 
             // GameWindow
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(863, 499);
+            ClientSize = new Size(1187, 478);
+            Controls.Add(Player2Title);
+            Controls.Add(Player1Title);
+            Controls.Add(Player2Hand);
+            Controls.Add(Player1Hand);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4, 4, 4, 4);
             MaximizeBox = false;
             Name = "GameWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Game Window";
             Load += GameWindow_Load;
+            ((System.ComponentModel.ISupportInitialize)Player1Hand).EndInit();
+            ((System.ComponentModel.ISupportInitialize)Player2Hand).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DataGridView Player1Hand;
+        private DataGridView Player2Hand;
+        private Label Player1Title;
+        private Label Player2Title;
     }
 }
