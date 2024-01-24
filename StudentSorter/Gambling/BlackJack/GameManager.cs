@@ -82,18 +82,30 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="dataGrid">
         /// The data grid to update
         /// </param>
-        public static void UpdatePlayerCardList(Player player, DataTable table, DataGridView dataGrid)
+        public static void UpdatePlayerCardList(Player player, DataTable table, DataGridView dataGrid, Label handVal, bool obfuscate = false)
         {
             if(table.Rows.Count > 0)
                 table.Rows.Clear();
 
-            foreach(Card card in player.Cards)
-                table.Rows.Add(card.ToString());
+            for (int i = 0; i < player.Cards.Count; i++) {
+                if (i == 0 || !obfuscate)
+                {
+                    table.Rows.Add(player.Cards[i].ToString());
+                }
+
+                if(i > 0 && obfuscate)
+                {
+                    table.Rows.Add("???");
+                }
+            }
 
             foreach (DataGridViewColumn column in dataGrid.Columns)
                 column.Width = dataGrid.Width;
 
+            handVal.Text = $"Hand Value: {player.CardValue}";
+
             Debugger.Log($"Player Cards: {player.Cards.Count} | Table Rows: {table.Rows.Count}");
+            Debugger.Log($"Player hand value: {player.CardValue}");
             Debugger.Log($"Updated cards for {player}");
         }
         

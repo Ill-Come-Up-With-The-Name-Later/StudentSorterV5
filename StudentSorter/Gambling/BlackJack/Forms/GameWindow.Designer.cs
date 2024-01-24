@@ -32,6 +32,7 @@
             Player2Hand = new DataGridView();
             Player1Title = new Label();
             Player2Title = new Label();
+            HandValue = new Label();
             ((System.ComponentModel.ISupportInitialize)Player1Hand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             SuspendLayout();
@@ -90,11 +91,21 @@
             Player2Title.TabIndex = 3;
             Player2Title.Text = "Player2's Cards";
             // 
+            // HandValue
+            // 
+            HandValue.AutoSize = true;
+            HandValue.Location = new Point(318, 29);
+            HandValue.Name = "HandValue";
+            HandValue.Size = new Size(131, 28);
+            HandValue.TabIndex = 4;
+            HandValue.Text = "Hand Value: 0";
+            // 
             // GameWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1187, 478);
+            Controls.Add(HandValue);
             Controls.Add(Player2Title);
             Controls.Add(Player1Title);
             Controls.Add(Player2Hand);
@@ -117,5 +128,6 @@
         private DataGridView Player2Hand;
         private Label Player1Title;
         private Label Player2Title;
+        private Label HandValue;
     }
 }

@@ -34,8 +34,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         public void StartGame()
         {
             Manager.SetupGame();
-            GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand);
-            GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand);
+            GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
+            GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
         }
     }
 }
