@@ -36,6 +36,8 @@
             UserManualLink = new LinkLabel();
             VersionLabel = new Label();
             OpenDebugButton = new Button();
+            BlackJackLabel = new Label();
+            BlackjackButton = new Button();
             SuspendLayout();
             // 
             // TitleLabel
@@ -117,13 +119,34 @@
             OpenDebugButton.UseVisualStyleBackColor = true;
             OpenDebugButton.Click += OpenDebugButton_Click;
             // 
+            // BlackJackLabel
+            // 
+            BlackJackLabel.AutoSize = true;
+            BlackJackLabel.Location = new Point(12, 416);
+            BlackJackLabel.Name = "BlackJackLabel";
+            BlackJackLabel.Size = new Size(69, 28);
+            BlackJackLabel.TabIndex = 7;
+            BlackJackLabel.Text = "Bonus:";
+            // 
+            // BlackjackButton
+            // 
+            BlackjackButton.Location = new Point(87, 409);
+            BlackjackButton.Name = "BlackjackButton";
+            BlackjackButton.Size = new Size(141, 43);
+            BlackjackButton.TabIndex = 8;
+            BlackjackButton.Text = "Blackjack";
+            BlackjackButton.UseVisualStyleBackColor = true;
+            BlackjackButton.Click += BlackjackButton_Click;
+            // 
             // TitleWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(549, 383);
+            ClientSize = new Size(549, 457);
+            Controls.Add(BlackjackButton);
+            Controls.Add(BlackJackLabel);
             Controls.Add(OpenDebugButton);
             Controls.Add(VersionLabel);
             Controls.Add(UserManualLink);
@@ -152,5 +175,7 @@
         private LinkLabel UserManualLink;
         private Label VersionLabel;
         private Button OpenDebugButton;
+        private Label BlackJackLabel;
+        private Button BlackjackButton;
     }
 }

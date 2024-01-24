@@ -1,5 +1,6 @@
 using StudentSorter.Debug;
 using StudentSorter.Forms;
+using StudentSorter.Gambling.BlackJack.Forms;
 using System.Diagnostics;
 using Debugger = StudentSorter.Debug.Debugger;
 
@@ -116,6 +117,15 @@ namespace StudentSorter
 
             Debugger.Log("Application debugger opened");
             Debugger.Log($"Version: {Program.Version}");
+        }
+
+        /// <summary>
+        /// Opens a blackjack game
+        /// </summary>
+        private void BlackjackButton_Click(object sender, EventArgs e)
+        {
+            GameWindow window = new();
+            window.Show();
         }
     }
 }

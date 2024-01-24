@@ -4,7 +4,7 @@ namespace StudentSorter
 {
     static class Program
     {
-        public const string Version = "0.5.1";
+        public const string Version = "0.6";
 
         public static DebugWindow Debugger = new();
 
