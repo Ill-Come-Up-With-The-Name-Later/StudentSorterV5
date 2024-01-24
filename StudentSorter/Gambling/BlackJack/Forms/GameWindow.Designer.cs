@@ -33,6 +33,8 @@
             Player1Title = new Label();
             Player2Title = new Label();
             HandValue = new Label();
+            DrawCardButton = new Button();
+            PassButton = new Button();
             ((System.ComponentModel.ISupportInitialize)Player1Hand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             SuspendLayout();
@@ -100,11 +102,33 @@
             HandValue.TabIndex = 4;
             HandValue.Text = "Hand Value: 0";
             // 
+            // DrawCardButton
+            // 
+            DrawCardButton.Location = new Point(37, 360);
+            DrawCardButton.Name = "DrawCardButton";
+            DrawCardButton.Size = new Size(158, 41);
+            DrawCardButton.TabIndex = 5;
+            DrawCardButton.Text = "Draw Card";
+            DrawCardButton.UseVisualStyleBackColor = true;
+            DrawCardButton.Click += DrawCardButton_Click;
+            // 
+            // PassButton
+            // 
+            PassButton.Location = new Point(272, 360);
+            PassButton.Name = "PassButton";
+            PassButton.Size = new Size(177, 41);
+            PassButton.TabIndex = 6;
+            PassButton.Text = "Pass";
+            PassButton.UseVisualStyleBackColor = true;
+            PassButton.Click += PassButton_Click;
+            // 
             // GameWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1187, 478);
+            Controls.Add(PassButton);
+            Controls.Add(DrawCardButton);
             Controls.Add(HandValue);
             Controls.Add(Player2Title);
             Controls.Add(Player1Title);
@@ -129,5 +153,7 @@
         private Label Player1Title;
         private Label Player2Title;
         private Label HandValue;
+        private Button DrawCardButton;
+        private Button PassButton;
     }
 }

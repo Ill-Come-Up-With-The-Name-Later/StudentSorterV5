@@ -7,6 +7,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         public GameManager Manager;
         private readonly DataTable Player1Cards = new();
         private readonly DataTable Player2Cards = new();
+        private int Turn;
 
         public GameWindow()
         {
@@ -36,6 +37,48 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Manager.SetupGame();
             GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
             GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+            CheckWin(false);
+            Turn = 1;
+        }
+
+        /// <summary>
+        /// Draws a card
+        /// </summary>
+        private void DrawCardButton_Click(object sender, EventArgs e)
+        {
+            Manager.AddCard(Manager.Player1);
+            GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
+            Turn++;
+            CheckWin(false);
+        }
+
+        /// <summary>
+        /// Dealer draws a card
+        /// </summary>
+        private void PassButton_Click(object sender, EventArgs e)
+        {
+            Turn++;
+            CheckWin(true);
+        }
+
+        /// <summary>
+        /// Checks for a winner and will show
+        /// the winner if there is one
+        /// </summary>
+        /// <param name="pStand">
+        /// If the player stood (didn't take a card)
+        /// </param>
+        public void CheckWin(bool pStand)
+        {
+            if(Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
+            {
+                Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn);
+                WinnerWindow winWindow = new(winner, this);
+                winWindow.Show();
+
+                DrawCardButton.Enabled = false;
+                PassButton.Enabled = false;
+            }
         }
     }
 }

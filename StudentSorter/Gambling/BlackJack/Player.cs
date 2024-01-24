@@ -31,6 +31,18 @@ namespace StudentSorter.Gambling.BlackJack
         {
             Cards.Add(card);
 
+            if(card.Name.Contains('A'))
+            {
+                if(CardValue <= 10)
+                {
+                    card.Value = 11;
+                } 
+                else
+                {
+                    card.Value = 1;
+                }
+            }
+
             CardValue += card.Value;
             Debugger.Log($"Addedd {card} to player's cards.");
             Debugger.Log($"{Name}'s cards' value: {CardValue}");
