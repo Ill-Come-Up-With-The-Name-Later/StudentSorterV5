@@ -35,6 +35,7 @@
             HandValue = new Label();
             DrawCardButton = new Button();
             PassButton = new Button();
+            InProgLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)Player1Hand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             SuspendLayout();
@@ -122,11 +123,21 @@
             PassButton.UseVisualStyleBackColor = true;
             PassButton.Click += PassButton_Click;
             // 
+            // InProgLabel
+            // 
+            InProgLabel.AutoSize = true;
+            InProgLabel.Location = new Point(37, 441);
+            InProgLabel.Name = "InProgLabel";
+            InProgLabel.Size = new Size(164, 28);
+            InProgLabel.TabIndex = 7;
+            InProgLabel.Text = "Game In Progress";
+            // 
             // GameWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1187, 478);
+            Controls.Add(InProgLabel);
             Controls.Add(PassButton);
             Controls.Add(DrawCardButton);
             Controls.Add(HandValue);
@@ -155,5 +166,6 @@
         private Label HandValue;
         private Button DrawCardButton;
         private Button PassButton;
+        public Label InProgLabel;
     }
 }

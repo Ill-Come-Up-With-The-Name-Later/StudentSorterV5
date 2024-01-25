@@ -145,6 +145,28 @@ namespace StudentSorter.Gambling.BlackJack
             {
                 Debugger.Log($"{player1.Name} stood");
 
+                if(player1.CardValue < 21 && player2.CardValue < 21)
+                {
+                    Debugger.Log("Both player have less than 21.");
+                    if (player1.CardValue == player2.CardValue)
+                    {
+                        Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");
+                        return new Player("No One");
+                    }
+
+                    if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
+                    {
+                        Debugger.Log($"{player1.Name} wins with a higher value than {player2.Name}");
+                        return player1;
+                    }
+
+                    if ((player2.CardValue > player1.CardValue) && (player2.CardValue <= 21))
+                    {
+                        Debugger.Log($"{player2.Name} wins with a higher value than {player1.Name}");
+                        return player2;
+                    }
+                }
+                
                 if (player1.CardValue == player2.CardValue)
                 {
                     Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");

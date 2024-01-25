@@ -38,7 +38,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Manager.SetupGame();
             GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
             GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
-            CheckWin(false);
+            CheckWin();
             Turn = 1;
         }
 
@@ -77,12 +77,14 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// </param>
         public void CheckWin(bool pStand = false)
         {
-            if(Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
+            if (Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
             {
-                Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn);
+                Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
                 WinnerWindow winWindow = new(winner, this);
                 winWindow.Show();
                 winWindow.BringToFront();
+
+                InProgLabel.Text = "Game Over";
 
                 DrawCardButton.Enabled = false;
                 PassButton.Enabled = false;
