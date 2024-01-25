@@ -10,6 +10,7 @@ namespace StudentSorter
     {
         const string ManualDocument = "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing";
         private const string SecretPassKey = "ilikegambling";
+
         public TitleWindow()
         {
             InitializeComponent();
