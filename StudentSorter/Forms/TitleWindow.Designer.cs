@@ -38,6 +38,7 @@
             OpenDebugButton = new Button();
             BlackJackLabel = new Label();
             BlackjackButton = new Button();
+            SecretPassInput = new TextBox();
             SuspendLayout();
             // 
             // TitleLabel
@@ -130,13 +131,21 @@
             // 
             // BlackjackButton
             // 
-            BlackjackButton.Location = new Point(87, 409);
+            BlackjackButton.Location = new Point(382, 409);
             BlackjackButton.Name = "BlackjackButton";
             BlackjackButton.Size = new Size(141, 43);
             BlackjackButton.TabIndex = 8;
-            BlackjackButton.Text = "Blackjack";
+            BlackjackButton.Text = "???";
             BlackjackButton.UseVisualStyleBackColor = true;
             BlackjackButton.Click += BlackjackButton_Click;
+            // 
+            // SecretPassInput
+            // 
+            SecretPassInput.Location = new Point(87, 413);
+            SecretPassInput.Name = "SecretPassInput";
+            SecretPassInput.PlaceholderText = "Enter the secret key.";
+            SecretPassInput.Size = new Size(230, 34);
+            SecretPassInput.TabIndex = 9;
             // 
             // TitleWindow
             // 
@@ -145,6 +154,7 @@
             AutoSize = true;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
             ClientSize = new Size(549, 457);
+            Controls.Add(SecretPassInput);
             Controls.Add(BlackjackButton);
             Controls.Add(BlackJackLabel);
             Controls.Add(OpenDebugButton);
@@ -177,5 +187,6 @@
         private Button OpenDebugButton;
         private Label BlackJackLabel;
         private Button BlackjackButton;
+        private TextBox SecretPassInput;
     }
 }

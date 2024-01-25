@@ -59,6 +59,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         {
             Manager.AddCard(Manager.Player2);
             GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+
             Turn++;
             CheckWin(true);
         }
