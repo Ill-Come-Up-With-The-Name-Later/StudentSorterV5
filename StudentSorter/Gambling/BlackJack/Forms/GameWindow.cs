@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using System.Reflection;
 
 namespace StudentSorter.Gambling.BlackJack.Forms
 {
@@ -23,8 +24,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Player p2 = new("Dealer");
             Manager = new(p1, p2);
 
-            Player1Title.Text = $"{Manager.Player1}'s Hand";
-            Player2Title.Text = $"{Manager.Player2}'s Hand";
+            Player1Title.Text = $"{Manager.Player1.Name}'s Hand";
+            Player2Title.Text = $"{Manager.Player2.Name}'s Hand";
 
             StartGame();
         }
@@ -49,7 +50,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Manager.AddCard(Manager.Player1);
             GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
             Turn++;
-            CheckWin(false);
+            CheckWin();
         }
 
         /// <summary>
@@ -57,10 +58,13 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// </summary>
         private void PassButton_Click(object sender, EventArgs e)
         {
-            Manager.AddCard(Manager.Player2);
-            GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+            while (Manager.Player2.CardValue <= 17)
+            {
+                Manager.AddCard(Manager.Player2);
+                GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+                Turn++;
+            }
 
-            Turn++;
             CheckWin(true);
         }
 
@@ -71,7 +75,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// <param name="pStand">
         /// If the player stood (didn't take a card)
         /// </param>
-        public void CheckWin(bool pStand)
+        public void CheckWin(bool pStand = false)
         {
             if(Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
             {

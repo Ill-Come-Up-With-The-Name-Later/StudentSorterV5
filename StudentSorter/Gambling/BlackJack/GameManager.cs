@@ -102,11 +102,10 @@ namespace StudentSorter.Gambling.BlackJack
             foreach (DataGridViewColumn column in dataGrid.Columns)
                 column.Width = dataGrid.Width;
 
-            handVal.Text = $"Hand Value: {player.CardValue}";
-
-            Debugger.Log($"Player Cards: {player.Cards.Count} | Table Rows: {table.Rows.Count}");
-            Debugger.Log($"Player hand value: {player.CardValue}");
-            Debugger.Log($"Updated cards for {player}");
+            handVal.Text = $"Player Hand Value: {player.CardValue}";
+            Debugger.Log($"{player.Name}'s Cards: {player.Cards.Count} | Table Rows: {table.Rows.Count}");
+            Debugger.Log($"{player.Name}'s Hand's Value: {player.CardValue}");
+            Debugger.Log($"Updated cards for {player.Name}");
         }
         
         /// <summary>
@@ -125,39 +124,44 @@ namespace StudentSorter.Gambling.BlackJack
         public Player? Winner(Player player1, Player player2, int turn, bool pStand = false)
         {
             if (player1.CardValue == 21 && player2.CardValue == 21)
-                return null;
+            {
+                Debugger.Log("Tie.");
+                return new Player("No One");
+            }
 
-            if (player1.CardValue == 21)
+            if(player1.CardValue == 21)
                 return player1;
 
-            if (player2.CardValue == 21)
+            if(player2.CardValue == 21)
                 return player2;
 
             if (player1.CardValue > 21)
                 return player2;
-            
-            if(player2.CardValue > 21)
-                return player1;
 
-            if (player1.CardValue == player2.CardValue)
-                return null;
+            if (player2.CardValue > 21) 
+                return player1;
 
             if(pStand)
             {
-                if (player1.CardValue == 21 && player2.CardValue == 21)
-                    return null;
+                Debugger.Log($"{player1.Name} stood");
 
-                if (player1.CardValue == 21) return player1;
-                if (player2.CardValue == 21) return player2;
+                if (player1.CardValue == player2.CardValue)
+                {
+                    Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");
+                    return new Player("No One");
+                }
 
-                if(player1.CardValue > 21)
+                if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
+                {
+                    Debugger.Log($"{player1.Name} wins with a higher value than {player2.Name}");
+                    return player1;
+                }
+
+                if ((player2.CardValue > player1.CardValue) && (player2.CardValue <= 21))
+                {
+                    Debugger.Log($"{player2.Name} wins with a higher value than {player1.Name}");
                     return player2;
-
-                if(player2.CardValue > 21)
-                    return player1;
-
-                if (player1.CardValue == 21)
-                    return player1;
+                }
             }
 
             Debugger.Log("No winner");

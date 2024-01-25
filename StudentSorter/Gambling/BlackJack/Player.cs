@@ -44,13 +44,13 @@ namespace StudentSorter.Gambling.BlackJack
             }
 
             CardValue += card.Value;
-            Debugger.Log($"Addedd {card} to player's cards.");
+            Debugger.Log($"Addedd {card} to {Name}'s cards.");
             Debugger.Log($"{Name}'s cards' value: {CardValue}");
         }
 
         public override string ToString()
         {
-            return Name;
+            return $"{Name} - Card Value: {CardValue}";
         }
     }
 }

@@ -27,7 +27,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             foreach (DataGridViewColumn column in DealerCardList.Columns)
                 column.Width = DealerCardList.Width;
 
-            if (Winner == null)
+            if (Winner == null || Winner.Name.Equals("No One"))
             {
                 WinnerTitle.Text = "Tie.";
                 Debugger.Log("Game was a tie.");
@@ -48,6 +48,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             FormParent.Close();
             GameWindow game = new();
             game.Show();
+
             Debugger.Log("Replaying Blackjack");
         }
 
@@ -58,6 +59,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         {
             FormParent.Close();
             Close();
+
+            Debugger.Log("Closed Blackjack");
         }
     }
 }
