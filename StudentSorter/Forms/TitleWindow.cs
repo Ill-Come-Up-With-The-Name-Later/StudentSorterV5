@@ -9,7 +9,7 @@ namespace StudentSorter
     public partial class TitleWindow : Form
     {
         const string ManualDocument = "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing";
-
+        private const string SecretPassKey = "ilikegambling";
         public TitleWindow()
         {
             InitializeComponent();
@@ -124,8 +124,11 @@ namespace StudentSorter
         /// </summary>
         private void BlackjackButton_Click(object sender, EventArgs e)
         {
-            GameWindow window = new();
-            window.Show();
+            if (SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
+            {
+                GameWindow window = new();
+                window.Show();
+            }
         }
     }
 }
