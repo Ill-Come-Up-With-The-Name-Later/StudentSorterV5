@@ -34,7 +34,7 @@ namespace StudentSorter.Gambling.BlackJack
             {
                 foreach (Suit suit in Card.Suits)
                 {
-                    for (int j = 2; j <= 10; i++)
+                    for (int j = 2; j <= 10; j++)
                     {
                         Card card = new($"{j}", j, suit);
                         Deck.Add(card);
@@ -54,7 +54,7 @@ namespace StudentSorter.Gambling.BlackJack
                 }
             }
 
-            for(int i = 0; i < 2; i++)
+            for(int k = 0; k < 2; k++)
             {
                 AddCard(Player1);
                 AddCard(Player2);
