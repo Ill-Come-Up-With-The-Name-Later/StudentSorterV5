@@ -57,8 +57,23 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// </summary>
         private void PassButton_Click(object sender, EventArgs e)
         {
-            while (Manager.Player2.CardValue <= 17)
+            // Instantly end if Dealer beat Player
+            if (Manager.Player2.CardValue > Manager.Player1.CardValue && Manager.Player2.CardValue <= 21)
             {
+                Player winner = Manager.Player2;
+                WinnerWindow winWindow = new(winner, this);
+                winWindow.Show();
+                winWindow.BringToFront();
+
+                InProgLabel.Text = "Game Over";
+
+                DrawCardButton.Enabled = false;
+                PassButton.Enabled = false;
+            }
+
+            // Dealer keeps drawing to try to beat Player
+            while (Manager.Player2.CardValue <= 17)
+            {   
                 Manager.AddCard(Manager.Player2);
                 GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
                 Turn++;
