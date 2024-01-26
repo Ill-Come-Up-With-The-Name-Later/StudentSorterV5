@@ -67,7 +67,7 @@ namespace StudentSorter.Gambling.BlackJack
             player.AddCard(card);
             Deck.Remove(card);
 
-            Debugger.Log($"Gave {player} a random card.");
+            Debugger.Log($"Gave {player.Name} a random card.");
         }
 
         /// <summary>

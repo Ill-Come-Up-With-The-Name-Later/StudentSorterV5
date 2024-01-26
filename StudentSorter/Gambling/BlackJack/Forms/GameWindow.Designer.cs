@@ -109,7 +109,7 @@
             DrawCardButton.Name = "DrawCardButton";
             DrawCardButton.Size = new Size(158, 41);
             DrawCardButton.TabIndex = 5;
-            DrawCardButton.Text = "Draw Card";
+            DrawCardButton.Text = "Hit (Take Card)";
             DrawCardButton.UseVisualStyleBackColor = true;
             DrawCardButton.Click += DrawCardButton_Click;
             // 
@@ -119,7 +119,7 @@
             PassButton.Name = "PassButton";
             PassButton.Size = new Size(177, 41);
             PassButton.TabIndex = 6;
-            PassButton.Text = "Pass";
+            PassButton.Text = "Stand (End Turn)";
             PassButton.UseVisualStyleBackColor = true;
             PassButton.Click += PassButton_Click;
             // 
