@@ -18,6 +18,12 @@ namespace StudentSorter.Gambling.BlackJack
             AceValue = 11;
         }
 
+        /// <summary>
+        /// Sets up the game
+        /// 
+        /// Creates the deck and gives
+        /// both players 2 cards
+        /// </summary>
         public void SetupGame()
         {
             Deck.Clear();

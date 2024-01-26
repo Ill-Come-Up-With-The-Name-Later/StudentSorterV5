@@ -69,6 +69,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
 
                 DrawCardButton.Enabled = false;
                 PassButton.Enabled = false;
+
+                return;
             }
 
             // Dealer keeps drawing to try to beat Player
