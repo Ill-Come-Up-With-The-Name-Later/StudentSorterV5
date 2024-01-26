@@ -21,7 +21,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// <summary>
         /// Sets up the game
         /// 
-        /// Creates the deck and gives
+        /// Creates 3 decks and gives
         /// both players 2 cards
         /// </summary>
         public void SetupGame()
@@ -30,25 +30,28 @@ namespace StudentSorter.Gambling.BlackJack
             Player1.Cards.Clear();
             Player2.Cards.Clear();
 
-            foreach(Suit suit in Card.Suits)
+            for (int i = 0; i < 3; i++)
             {
-                for(int i = 2; i <= 10; i++)
+                foreach (Suit suit in Card.Suits)
                 {
-                    Card card = new($"{i}", i, suit);
-                    Deck.Add(card);
+                    for (int i = 2; i <= 10; i++)
+                    {
+                        Card card = new($"{i}", i, suit);
+                        Deck.Add(card);
+                    }
+
+                    Card ace = new("A", AceValue, suit);
+                    Deck.Add(ace);
+
+                    Card jack = new("J", 10, suit);
+                    Deck.Add(jack);
+
+                    Card king = new("K", 10, suit);
+                    Deck.Add(king);
+
+                    Card queen = new("Q", 10, suit);
+                    Deck.Add(queen);
                 }
-
-                Card ace = new("A", AceValue, suit);
-                Deck.Add(ace);
-
-                Card jack = new("J", 10, suit);
-                Deck.Add(jack);
-
-                Card king = new("K", 10, suit);
-                Deck.Add(king);
-
-                Card queen = new("Q", 10, suit);
-                Deck.Add(queen);
             }
 
             for(int i = 0; i < 2; i++)
