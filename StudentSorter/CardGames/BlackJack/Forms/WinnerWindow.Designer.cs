@@ -109,7 +109,7 @@
             PlayerCardList.RowHeadersVisible = false;
             PlayerCardList.RowHeadersWidth = 51;
             PlayerCardList.RowTemplate.Height = 29;
-            PlayerCardList.Size = new Size(353, 188);
+            PlayerCardList.Size = new Size(327, 188);
             PlayerCardList.TabIndex = 5;
             // 
             // PlayerCardLabel
@@ -125,7 +125,7 @@
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(948, 385);
+            ClientSize = new Size(916, 385);
             Controls.Add(PlayerCardLabel);
             Controls.Add(PlayerCardList);
             Controls.Add(DealerCardList);
