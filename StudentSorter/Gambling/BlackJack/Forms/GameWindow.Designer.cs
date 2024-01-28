@@ -90,9 +90,9 @@
             Player2Title.AutoSize = true;
             Player2Title.Location = new Point(717, 29);
             Player2Title.Name = "Player2Title";
-            Player2Title.Size = new Size(143, 28);
+            Player2Title.Size = new Size(141, 28);
             Player2Title.TabIndex = 3;
-            Player2Title.Text = "Player2's Cards";
+            Player2Title.Text = "Player2's Hand";
             // 
             // HandValue
             // 
@@ -150,7 +150,7 @@
             MaximizeBox = false;
             Name = "GameWindow";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Game Window";
+            Text = "Blackjack Game Window";
             ((System.ComponentModel.ISupportInitialize)Player1Hand).EndInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).EndInit();
             ResumeLayout(false);

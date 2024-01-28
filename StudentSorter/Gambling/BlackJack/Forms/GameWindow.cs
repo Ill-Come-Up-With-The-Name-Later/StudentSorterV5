@@ -75,7 +75,10 @@ namespace StudentSorter.Gambling.BlackJack.Forms
 
             // Dealer keeps drawing to try to beat Player
             while (Manager.Player2.CardValue <= 17)
-            {   
+            {
+                if (Manager.Player2.CardValue > Manager.Player1.CardValue)
+                    break;
+
                 Manager.AddCard(Manager.Player2);
                 GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
                 Turn++;
