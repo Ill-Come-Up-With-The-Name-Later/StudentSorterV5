@@ -62,8 +62,10 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             {
                 Player winner = Manager.Player2;
                 WinnerWindow winWindow = new(winner, this);
+                winWindow.WindowState = FormWindowState.Minimized;
                 winWindow.Show();
-                winWindow.BringToFront();
+                winWindow.WindowState = FormWindowState.Normal;
+                WindowState = FormWindowState.Minimized;
 
                 InProgLabel.Text = "Game Over";
 
@@ -100,8 +102,11 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             {
                 Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
                 WinnerWindow winWindow = new(winner, this);
+
+                winWindow.WindowState = FormWindowState.Minimized;
                 winWindow.Show();
-                winWindow.BringToFront();
+                winWindow.WindowState = FormWindowState.Normal;
+                WindowState = FormWindowState.Minimized;
 
                 InProgLabel.Text = "Game Over";
 
