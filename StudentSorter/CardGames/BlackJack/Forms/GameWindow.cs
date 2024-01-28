@@ -61,8 +61,11 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             if (Manager.Player2.CardValue > Manager.Player1.CardValue && Manager.Player2.CardValue <= 21)
             {
                 Player winner = Manager.Player2;
-                WinnerWindow winWindow = new(winner, this);
-                winWindow.WindowState = FormWindowState.Minimized;
+                WinnerWindow winWindow = new(winner, this)
+                {
+                    WindowState = FormWindowState.Minimized
+                };
+
                 winWindow.Show();
                 winWindow.WindowState = FormWindowState.Normal;
                 WindowState = FormWindowState.Minimized;
@@ -101,9 +104,11 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             if (Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
             {
                 Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
-                WinnerWindow winWindow = new(winner, this);
+                WinnerWindow winWindow = new(winner, this)
+                {
+                    WindowState = FormWindowState.Minimized
+                };
 
-                winWindow.WindowState = FormWindowState.Minimized;
                 winWindow.Show();
                 winWindow.WindowState = FormWindowState.Normal;
                 WindowState = FormWindowState.Minimized;

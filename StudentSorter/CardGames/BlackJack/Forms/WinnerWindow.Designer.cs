@@ -33,13 +33,16 @@
             CloseButton = new Button();
             DealerCardLabel = new Label();
             DealerCardList = new DataGridView();
+            PlayerCardList = new DataGridView();
+            PlayerCardLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)DealerCardList).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PlayerCardList).BeginInit();
             SuspendLayout();
             // 
             // WinnerTitle
             // 
             WinnerTitle.AutoSize = true;
-            WinnerTitle.Location = new Point(219, 31);
+            WinnerTitle.Location = new Point(345, 32);
             WinnerTitle.Margin = new Padding(4, 0, 4, 0);
             WinnerTitle.Name = "WinnerTitle";
             WinnerTitle.Size = new Size(42, 28);
@@ -48,7 +51,7 @@
             // 
             // ReplayButton
             // 
-            ReplayButton.Location = new Point(12, 334);
+            ReplayButton.Location = new Point(319, 334);
             ReplayButton.Name = "ReplayButton";
             ReplayButton.Size = new Size(111, 39);
             ReplayButton.TabIndex = 1;
@@ -58,7 +61,7 @@
             // 
             // CloseButton
             // 
-            CloseButton.Location = new Point(148, 334);
+            CloseButton.Location = new Point(448, 334);
             CloseButton.Name = "CloseButton";
             CloseButton.Size = new Size(113, 39);
             CloseButton.TabIndex = 2;
@@ -71,9 +74,9 @@
             DealerCardLabel.AutoSize = true;
             DealerCardLabel.Location = new Point(25, 83);
             DealerCardLabel.Name = "DealerCardLabel";
-            DealerCardLabel.Size = new Size(259, 28);
+            DealerCardLabel.Size = new Size(272, 28);
             DealerCardLabel.TabIndex = 3;
-            DealerCardLabel.Text = "Dealer Cards - Hand Value: 0";
+            DealerCardLabel.Text = "Dealer's Cards - Hand Value: 0";
             // 
             // DealerCardList
             // 
@@ -92,11 +95,39 @@
             DealerCardList.Size = new Size(300, 188);
             DealerCardList.TabIndex = 4;
             // 
+            // PlayerCardList
+            // 
+            PlayerCardList.AllowUserToAddRows = false;
+            PlayerCardList.AllowUserToDeleteRows = false;
+            PlayerCardList.AllowUserToResizeColumns = false;
+            PlayerCardList.AllowUserToResizeRows = false;
+            PlayerCardList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PlayerCardList.ColumnHeadersVisible = false;
+            PlayerCardList.Location = new Point(564, 125);
+            PlayerCardList.Name = "PlayerCardList";
+            PlayerCardList.ReadOnly = true;
+            PlayerCardList.RowHeadersVisible = false;
+            PlayerCardList.RowHeadersWidth = 51;
+            PlayerCardList.RowTemplate.Height = 29;
+            PlayerCardList.Size = new Size(353, 188);
+            PlayerCardList.TabIndex = 5;
+            // 
+            // PlayerCardLabel
+            // 
+            PlayerCardLabel.AutoSize = true;
+            PlayerCardLabel.Location = new Point(564, 83);
+            PlayerCardLabel.Name = "PlayerCardLabel";
+            PlayerCardLabel.Size = new Size(280, 28);
+            PlayerCardLabel.TabIndex = 6;
+            PlayerCardLabel.Text = "Player1's Cards - Hand Value: 0";
+            // 
             // WinnerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(567, 385);
+            ClientSize = new Size(948, 385);
+            Controls.Add(PlayerCardLabel);
+            Controls.Add(PlayerCardList);
             Controls.Add(DealerCardList);
             Controls.Add(DealerCardLabel);
             Controls.Add(CloseButton);
@@ -109,6 +140,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Winner";
             ((System.ComponentModel.ISupportInitialize)DealerCardList).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PlayerCardList).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -120,5 +152,7 @@
         private Button CloseButton;
         private Label DealerCardLabel;
         private DataGridView DealerCardList;
+        private DataGridView PlayerCardList;
+        private Label PlayerCardLabel;
     }
 }
