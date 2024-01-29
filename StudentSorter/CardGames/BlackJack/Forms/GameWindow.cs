@@ -79,7 +79,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             }
 
             // Dealer keeps drawing to try to beat Player
-            while (Manager.Player2.CardValue <= 17)
+            while (Manager.Player2.CardValue <= 17 || (Manager.Player2.CardValue <= Manager.Player1.CardValue && Manager.Player2.CardValue <= 21))
             {
                 if (Manager.Player2.CardValue > Manager.Player1.CardValue)
                     break;
