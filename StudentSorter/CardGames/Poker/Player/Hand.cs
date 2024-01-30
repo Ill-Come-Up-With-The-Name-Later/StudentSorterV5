@@ -1,10 +1,10 @@
 ﻿using StudentSorter.Gambling.Cards;
 
-namespace StudentSorter.CardGames.Poker
+namespace StudentSorter.CardGames.Poker.Player
 {
     public class Hand
     {
-        public List<Card> cards = new();
+        public List<Card> Cards = new();
 
         /// <summary>
         /// A hand of cards
@@ -21,9 +21,9 @@ namespace StudentSorter.CardGames.Poker
         {
             int value = 0;
 
-            foreach(Card card in cards)
+            foreach (Card card in Cards)
             {
-                switch(card.Name[0])
+                switch (card.Name[0])
                 {
                     case 'A':
                         value += 14;
@@ -44,6 +44,17 @@ namespace StudentSorter.CardGames.Poker
             }
 
             return value;
+        }
+
+        /// <summary>
+        /// Adds a card to this hand
+        /// </summary>
+        /// <param name="card">
+        /// The card to add
+        /// </param>
+        public void AddCard(Card card)
+        {
+            Cards.Add(card);
         }
     }
 }
