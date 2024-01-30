@@ -48,7 +48,7 @@
             PokerButton.Name = "PokerButton";
             PokerButton.Size = new Size(251, 53);
             PokerButton.TabIndex = 1;
-            PokerButton.Text = "Poker (Texas Hold 'em)";
+            PokerButton.Text = "Poker (Texas Hold'em)";
             PokerButton.UseVisualStyleBackColor = true;
             PokerButton.Click += PokerButton_Click;
             // 

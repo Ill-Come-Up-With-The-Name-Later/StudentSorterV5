@@ -21,7 +21,7 @@ namespace StudentSorter.CardGames
         /// <summary>
         /// Opens Poker
         /// 
-        /// Texas Hold 'em variant
+        /// Texas Hold'em variant
         /// </summary>
         private void PokerButton_Click(object sender, EventArgs e)
         {
