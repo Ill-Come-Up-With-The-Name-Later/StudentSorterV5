@@ -4,14 +4,14 @@ using System.Data;
 
 namespace StudentSorter.Gambling.BlackJack
 {
-    public class GameManager
+    public class BlackjackManager
     {
         public Player Player1 { get; set; }
         public Player Player2 { get; set; }
         public int AceValue { get; set; }
         public List<Card> Deck = new();
 
-        public GameManager(Player p1, Player p2)
+        public BlackjackManager(Player p1, Player p2)
         {
             Player1 = p1;
             Player2 = p2;

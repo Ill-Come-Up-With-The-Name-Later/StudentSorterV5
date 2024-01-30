@@ -4,7 +4,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
 {
     public partial class BlackjackWindow : Form
     {
-        public GameManager Manager;
+        public BlackjackManager Manager;
         public DataTable Player1Cards = new();
         public DataTable Player2Cards = new();
         private int Turn;
@@ -35,8 +35,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         public void StartGame()
         {
             Manager.SetupGame();
-            GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
-            GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+            BlackjackManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
+            BlackjackManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
             CheckWin();
             Turn = 1;
         }
@@ -47,7 +47,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         private void DrawCardButton_Click(object sender, EventArgs e)
         {
             Manager.AddCard(Manager.Player1);
-            GameManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
+            BlackjackManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
             Turn++;
             CheckWin();
         }
@@ -85,7 +85,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
                     break;
 
                 Manager.AddCard(Manager.Player2);
-                GameManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+                BlackjackManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
                 Turn++;
             }
 
