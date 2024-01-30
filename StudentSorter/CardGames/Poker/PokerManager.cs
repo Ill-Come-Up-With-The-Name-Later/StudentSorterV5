@@ -20,7 +20,13 @@ namespace StudentSorter.CardGames.Poker
             "Charlie Sheen",
             "Lucy",
             "Prudence",
-            "Bobby McGee"
+            "Bobby McGee",
+            "Maxwell Edison",
+            "Joan",
+            "P.C. 31",
+            "Rosie",
+            "Vallerie",
+            "Polythene Pam"
         };
 
         public List<Card> CommunityCards = new();
@@ -32,11 +38,13 @@ namespace StudentSorter.CardGames.Poker
 
         public int BetRound { get; set; }
         public int Pot {  get; set; }
+        public int MinBet {  get; set; }
 
         public PokerManager() 
         {
             Pot = 0;
             BetRound = 1;
+            MinBet = 0;
         }
 
         /// <summary>
@@ -147,9 +155,6 @@ namespace StudentSorter.CardGames.Poker
 
             BettingRound(BetRound);
 
-            Deck.Remove(Deck[0]);
-            BetRound++;
-
             for (int i = 0; i < 3; i++)
             {
                 Card card = Deck[0];
@@ -158,6 +163,8 @@ namespace StudentSorter.CardGames.Poker
 
                 Debugger.Log($"Added {card} to the community cards");
             }
+
+            MinBet = BigBlind.Bet;
         }
 
         /// <summary>
@@ -191,19 +198,31 @@ namespace StudentSorter.CardGames.Poker
 
                 if (bettingRound == 1)
                 {
-                    if (action == 0) player.SetBet(BigBlind.Bet, this); // Match Big Blind
-                    if (action == 1) player.SetBet(BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
-                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? Players[playerIndex].Bet : BigBlind.Bet, this);
+                    if (action == 0) player.SetBet(player.Bet + BigBlind.Bet, this); // Match Big Blind
+                    if (action == 1) player.SetBet(player.Bet + BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
+                    if (action == 2) player.SetBet(player.Bet + Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet 
+                        : player.Bet + BigBlind.Bet, this);
                 } 
                 else
                 {
                     if (action == 0) continue; // Don't make an additional bet
-                    if (action == 1) player.SetBet(BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
-                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? Players[playerIndex].Bet : BigBlind.Bet, this);
+                    if (action == 1) player.SetBet(player.Bet + BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
+                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet 
+                        : player.Bet + BigBlind.Bet, this);
                 }
             }
 
             BetRound++;
+            Deck.Remove(Deck[0]);
+
+            if(BetRound > 1)
+            {
+                Card card = Deck[0];
+                CommunityCards.Add(card);
+                Deck.Remove(card);
+
+                Debugger.Log($"Added {card} to the community cards");
+            }
         }
     }
 }
