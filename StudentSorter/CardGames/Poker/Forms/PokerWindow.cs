@@ -34,9 +34,9 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             Manager.SetupGame();
 
-            Player2Label.Text = $"{Manager.Players[1]}'s Cards";
-            Player3Label.Text = $"{Manager.Players[2]}'s Cards";
-            Player4Label.Text = $"{Manager.Players[3]}'s Cards";
+            Player2Label.Text = $"{Manager.Players[1].Name}'s Cards";
+            Player3Label.Text = $"{Manager.Players[2].Name}'s Cards";
+            Player4Label.Text = $"{Manager.Players[3].Name}'s Cards";
         }
 
         /// <summary>
@@ -102,9 +102,9 @@ namespace StudentSorter.CardGames.Poker.Forms
         public void UpdateBets()
         {
             Player1BetLabel.Text = $"Bet: {Manager.Players[0].Bet}";
-            Player2BetLabel.Text = $"Bet {Manager.Players[1].Bet}";
-            Player3BetLabel.Text = $"Bet {Manager.Players[2].Bet}";
-            Player4BetLabel.Text = $"Bet {Manager.Players[3].Bet}";
+            Player2BetLabel.Text = $"Bet: {Manager.Players[1].Bet}";
+            Player3BetLabel.Text = $"Bet: {Manager.Players[2].Bet}";
+            Player4BetLabel.Text = $"Bet: {Manager.Players[3].Bet}";
 
             PotLabel.Text = $"Pot: {Manager.Players[0].Bet + Manager.Players[1].Bet + Manager.Players[2].Bet + Manager.Players[3].Bet}";
         }
