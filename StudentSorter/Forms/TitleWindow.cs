@@ -1,3 +1,4 @@
+using StudentSorter.CardGames;
 using StudentSorter.Debug;
 using StudentSorter.Forms;
 using StudentSorter.Gambling.BlackJack.Forms;
@@ -9,7 +10,7 @@ namespace StudentSorter
     public partial class TitleWindow : Form
     {
         const string ManualDocument = "https://docs.google.com/document/d/1syxgtfrCE8VfrcJqYIb23z9Q5IooypA6DdlntWSYfoY/edit?usp=sharing";
-        private const string SecretPassKey = "ilikegambling";
+        private const string SecretPassKey = "notacasino";
 
         public TitleWindow()
         {
@@ -127,8 +128,8 @@ namespace StudentSorter
         {
             if (SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
             {
-                GameWindow window = new();
-                window.Show();
+                CardGameMenu menu = new();
+                menu.Show();
             }
         }
     }

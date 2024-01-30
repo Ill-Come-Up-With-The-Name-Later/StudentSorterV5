@@ -1,6 +1,6 @@
 ﻿namespace StudentSorter.Gambling.BlackJack.Forms
 {
-    partial class GameWindow
+    partial class BlackjackWindow
     {
         /// <summary>
         /// Required designer variable.

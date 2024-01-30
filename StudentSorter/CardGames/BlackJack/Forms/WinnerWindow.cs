@@ -7,11 +7,11 @@ namespace StudentSorter.Gambling.BlackJack.Forms
     public partial class WinnerWindow : Form
     {
         private readonly Player? Winner;
-        private readonly GameWindow FormParent;
+        private readonly BlackjackWindow FormParent;
         private readonly DataTable DealerCardsRevealed = new();
         private readonly DataTable PlayerCards = new();
 
-        public WinnerWindow(Player player, GameWindow formParent)
+        public WinnerWindow(Player player, BlackjackWindow formParent)
         {
             InitializeComponent();
             FormParent = formParent;
@@ -60,7 +60,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         {
             Close();
             FormParent.Close();
-            GameWindow game = new();
+            BlackjackWindow game = new();
             game.Show();
 
             Debugger.Log("Replaying Blackjack");

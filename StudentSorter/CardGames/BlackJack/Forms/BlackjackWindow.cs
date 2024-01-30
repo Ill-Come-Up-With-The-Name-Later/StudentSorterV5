@@ -2,14 +2,14 @@
 
 namespace StudentSorter.Gambling.BlackJack.Forms
 {
-    public partial class GameWindow : Form
+    public partial class BlackjackWindow : Form
     {
         public GameManager Manager;
         public DataTable Player1Cards = new();
         public DataTable Player2Cards = new();
         private int Turn;
 
-        public GameWindow()
+        public BlackjackWindow()
         {
             InitializeComponent();
 
