@@ -73,7 +73,7 @@ namespace StudentSorter.CardGames.Poker.Forms
                 cardSource.Rows.Add(card);
             }
 
-            foreach(DataGridViewColumn col in cards.Columns)
+            foreach (DataGridViewColumn col in cards.Columns)
                 col.Width = cards.Width;
 
             Debugger.Log($"Updated card display of {player.Name}");
@@ -84,15 +84,29 @@ namespace StudentSorter.CardGames.Poker.Forms
         /// </summary>
         public void UpdateCommunityCards()
         {
-            if(CommunityCardTable.Rows.Count > 0) CommunityCardTable.Rows.Clear();
+            if (CommunityCardTable.Rows.Count > 0) CommunityCardTable.Rows.Clear();
 
             foreach (Card card in Manager.CommunityCards)
                 CommunityCardTable.Rows.Add(card);
 
-            foreach(DataGridViewColumn col in CommunityCards.Columns)
+            foreach (DataGridViewColumn col in CommunityCards.Columns)
                 col.Width = CommunityCards.Width;
 
             Debugger.Log("Updated community card display");
+        }
+
+        /// <summary>
+        /// Updates the bets for each player and the
+        /// full betting pool
+        /// </summary>
+        public void UpdateBets()
+        {
+            Player1BetLabel.Text = $"Bet: {Manager.Players[0].Bet}";
+            Player2BetLabel.Text = $"Bet {Manager.Players[1].Bet}";
+            Player3BetLabel.Text = $"Bet {Manager.Players[2].Bet}";
+            Player4BetLabel.Text = $"Bet {Manager.Players[3].Bet}";
+
+            PotLabel.Text = $"Pot: {Manager.Players[0].Bet + Manager.Players[1].Bet + Manager.Players[2].Bet + Manager.Players[3].Bet}";
         }
     }
 }

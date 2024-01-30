@@ -31,7 +31,7 @@
             StartButton = new Button();
             PlayerCards = new DataGridView();
             PlayerCardTitle = new Label();
-            BetLabel = new Label();
+            Player1BetLabel = new Label();
             Player2Cards = new DataGridView();
             Player3Cards = new DataGridView();
             Player4Cards = new DataGridView();
@@ -40,6 +40,10 @@
             Player4Label = new Label();
             CommunityCards = new DataGridView();
             CommunityCardLabel = new Label();
+            Player2BetLabel = new Label();
+            Player3BetLabel = new Label();
+            Player4BetLabel = new Label();
+            PotLabel = new Label();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Cards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player3Cards).BeginInit();
@@ -83,14 +87,14 @@
             PlayerCardTitle.TabIndex = 2;
             PlayerCardTitle.Text = "Player's Cards";
             // 
-            // BetLabel
+            // Player1BetLabel
             // 
-            BetLabel.AutoSize = true;
-            BetLabel.Location = new Point(152, 668);
-            BetLabel.Name = "BetLabel";
-            BetLabel.Size = new Size(60, 28);
-            BetLabel.TabIndex = 3;
-            BetLabel.Text = "Bet: 0";
+            Player1BetLabel.AutoSize = true;
+            Player1BetLabel.Location = new Point(152, 668);
+            Player1BetLabel.Name = "Player1BetLabel";
+            Player1BetLabel.Size = new Size(60, 28);
+            Player1BetLabel.TabIndex = 3;
+            Player1BetLabel.Text = "Bet: 0";
             // 
             // Player2Cards
             // 
@@ -196,11 +200,51 @@
             CommunityCardLabel.TabIndex = 11;
             CommunityCardLabel.Text = "Community Cards";
             // 
+            // Player2BetLabel
+            // 
+            Player2BetLabel.AutoSize = true;
+            Player2BetLabel.Location = new Point(404, 668);
+            Player2BetLabel.Name = "Player2BetLabel";
+            Player2BetLabel.Size = new Size(60, 28);
+            Player2BetLabel.TabIndex = 12;
+            Player2BetLabel.Text = "Bet: 0";
+            // 
+            // Player3BetLabel
+            // 
+            Player3BetLabel.AutoSize = true;
+            Player3BetLabel.Location = new Point(668, 668);
+            Player3BetLabel.Name = "Player3BetLabel";
+            Player3BetLabel.Size = new Size(60, 28);
+            Player3BetLabel.TabIndex = 13;
+            Player3BetLabel.Text = "Bet: 0";
+            // 
+            // Player4BetLabel
+            // 
+            Player4BetLabel.AutoSize = true;
+            Player4BetLabel.Location = new Point(915, 668);
+            Player4BetLabel.Name = "Player4BetLabel";
+            Player4BetLabel.Size = new Size(60, 28);
+            Player4BetLabel.TabIndex = 14;
+            Player4BetLabel.Text = "Bet: 0";
+            // 
+            // PotLabel
+            // 
+            PotLabel.AutoSize = true;
+            PotLabel.Location = new Point(534, 749);
+            PotLabel.Name = "PotLabel";
+            PotLabel.Size = new Size(61, 28);
+            PotLabel.TabIndex = 15;
+            PotLabel.Text = "Pot: 0";
+            // 
             // PokerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1229, 789);
+            Controls.Add(PotLabel);
+            Controls.Add(Player4BetLabel);
+            Controls.Add(Player3BetLabel);
+            Controls.Add(Player2BetLabel);
             Controls.Add(CommunityCardLabel);
             Controls.Add(CommunityCards);
             Controls.Add(Player4Label);
@@ -209,7 +253,7 @@
             Controls.Add(Player4Cards);
             Controls.Add(Player3Cards);
             Controls.Add(Player2Cards);
-            Controls.Add(BetLabel);
+            Controls.Add(Player1BetLabel);
             Controls.Add(PlayerCardTitle);
             Controls.Add(PlayerCards);
             Controls.Add(StartButton);
@@ -233,7 +277,7 @@
         private Button StartButton;
         private DataGridView PlayerCards;
         private Label PlayerCardTitle;
-        private Label BetLabel;
+        private Label Player1BetLabel;
         private DataGridView Player2Cards;
         private DataGridView Player3Cards;
         private DataGridView Player4Cards;
@@ -242,5 +286,9 @@
         private Label Player4Label;
         private DataGridView CommunityCards;
         private Label CommunityCardLabel;
+        private Label Player2BetLabel;
+        private Label Player3BetLabel;
+        private Label Player4BetLabel;
+        private Label PotLabel;
     }
 }
