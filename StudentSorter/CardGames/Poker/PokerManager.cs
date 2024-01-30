@@ -132,7 +132,8 @@ namespace StudentSorter.CardGames.Poker
         /// </returns>
         public PokerPlayer LeftOf(PokerPlayer pokerPlayer)
         {
-            if(Players.IndexOf(pokerPlayer) == Players.Count - 1) return Players[^1];
+            if(Players.IndexOf(pokerPlayer) == 0) return Players[^1];
+            if(Players.IndexOf(pokerPlayer) == Players.Count - 1) return Players[0];
             return Players[Players.IndexOf(pokerPlayer) - 1];
         }
 
@@ -141,44 +142,68 @@ namespace StudentSorter.CardGames.Poker
         /// </summary>
         public void FirstTurn()
         {
-            BigBlind.Bet = BigBlind.PlayerHand.GetHandValue() + new Random().Next(5, 51);
-            
+            BigBlind.Bet = 100;
+            SmallBlind.Bet = 50;
+
+            BettingRound(BetRound);
+
+            Deck.Remove(Deck[0]);
+            BetRound++;
+
+            for (int i = 0; i < 3; i++)
+            {
+                Card card = Deck[0];
+                CommunityCards.Add(card);
+                Deck.Remove(card);
+
+                Debugger.Log($"Added {card} to the community cards");
+            }
+        }
+
+        /// <summary>
+        /// Play a betting round
+        /// </summary>
+        /// <param name="bettingRound">
+        /// The current round
+        /// </param>
+        public void BettingRound(int bettingRound)
+        {
             // Everyone bets or folds
-            foreach(PokerPlayer player in Players)
+            foreach (PokerPlayer player in Players)
             {
                 if (player.Folded) continue;
-                if(player.Name.Equals("Player")) continue;
-                if (player.BigBlind) continue;
+                if (player.Name.Equals("Player")) continue;
+
+                if(bettingRound == 1 && (player.BigBlind || player.SmallBlind)) continue;
 
                 int action = new Random().Next(0, 3);
                 int playerIndex = new Random().Next(0, Players.Count);
-                
+
                 // Fold on low hand
-                if(player.PlayerHand.GetHandValue() < 20)
+                if (player.PlayerHand.GetHandValue() < 20)
                 {
-                    if(new Random().Next(0, 3) == 2)
+                    if (new Random().Next(0, 3) == 2)
                     {
                         player.Fold();
                         continue;
                     }
                 }
 
-                if(action == 0) player.SetBet(BigBlind.Bet, this); // Match Big Blind
-                if(action == 1) player.SetBet(BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
-                if(action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? Players[playerIndex].Bet : BigBlind.Bet, this);
-
-                Deck.Remove(Deck[0]);
-                BetRound++;
-
-                for(int i = 0; i < 3; i++)
+                if (bettingRound == 1)
                 {
-                    Card card = Deck[0];
-                    CommunityCards.Add(card);
-                    Deck.Remove(card);
-
-                    Debugger.Log($"Added {card} to the community cards");
+                    if (action == 0) player.SetBet(BigBlind.Bet, this); // Match Big Blind
+                    if (action == 1) player.SetBet(BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
+                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? Players[playerIndex].Bet : BigBlind.Bet, this);
+                } 
+                else
+                {
+                    if (action == 0) continue; // Don't make an additional bet
+                    if (action == 1) player.SetBet(BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
+                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? Players[playerIndex].Bet : BigBlind.Bet, this);
                 }
             }
+
+            BetRound++;
         }
     }
 }

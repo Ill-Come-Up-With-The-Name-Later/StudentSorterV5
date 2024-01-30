@@ -1,4 +1,5 @@
-﻿using StudentSorter.Gambling.BlackJack.Forms;
+﻿using StudentSorter.CardGames.Poker.Forms;
+using StudentSorter.Gambling.BlackJack.Forms;
 
 namespace StudentSorter.CardGames
 {
@@ -25,7 +26,8 @@ namespace StudentSorter.CardGames
         /// </summary>
         private void PokerButton_Click(object sender, EventArgs e)
         {
-
+            PokerWindow pokerWindow = new();
+            pokerWindow.Show();
         }
     }
 }
