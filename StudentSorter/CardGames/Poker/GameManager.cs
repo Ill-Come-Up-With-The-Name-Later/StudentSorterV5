@@ -26,6 +26,10 @@ namespace StudentSorter.CardGames.Poker
         public List<Card> CommunityCards = new();
         public List<Card> Deck = new();
 
+        public PokerPlayer Dealer = new();
+        public PokerPlayer BigBlind = new();
+        public PokerPlayer SmallBlind = new();
+
         public GameManager() { }
 
         /// <summary>
@@ -36,7 +40,7 @@ namespace StudentSorter.CardGames.Poker
             PokerPlayer player = new();
             Players.Add(player);
 
-            for(int i = 0; i < 4; i++)
+            for(int i = 0; i < 7; i++)
             {
                 string name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
                 PokerPlayer botPlayer = new(name);
@@ -70,7 +74,7 @@ namespace StudentSorter.CardGames.Poker
             Deck.Sort(new CardComparer());
 
             Debugger.Log($"Deck Size: {Deck.Count}/52");
-            Debugger.Log("Setup Poker.");
+            Debugger.Log("Setup Poker deck");
 
             // Deal first card to players, pick dealer, small blind, and big blind
             foreach(PokerPlayer pokerPlayer in Players)
@@ -78,7 +82,46 @@ namespace StudentSorter.CardGames.Poker
                 Card card = Deck[0];
                 pokerPlayer.PlayerHand.AddCard(card);
                 Deck.Remove(card);
+
+                Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
             }
+
+            List<PokerPlayer> sortedPlayers = new(Players);
+            sortedPlayers.Sort(new PokerPlayerComparer());
+
+            Dealer = sortedPlayers[0];
+            SmallBlind = LeftOf(Dealer);
+            BigBlind = LeftOf(SmallBlind);
+
+            Debugger.Log("Dealer, Big Blind, and Small Blind chosen");
+
+            // Deal second card to players
+            foreach (PokerPlayer pokerPlayer in Players)
+            {
+                Card card = Deck[0];
+                pokerPlayer.PlayerHand.AddCard(card);
+                Deck.Remove(card);
+
+                Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
+            }
+
+            Debugger.Log("Two cards have been dealt to all players");
+            Debugger.Log("Set up Poker (Texas Hold'em");
+        }
+
+        /// <summary>
+        /// Gets the player to the left of a player
+        /// </summary>
+        /// <param name="pokerPlayer">
+        /// The player to start at
+        /// </param>
+        /// <returns>
+        /// The player to the left
+        /// </returns>
+        public PokerPlayer LeftOf(PokerPlayer pokerPlayer)
+        {
+            if (Players.IndexOf(pokerPlayer) == Players.Count - 1) return Players[^1];
+            return Players[Players.IndexOf(pokerPlayer) - 1];
         }
     }
 }
