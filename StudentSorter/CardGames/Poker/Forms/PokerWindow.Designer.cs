@@ -44,6 +44,9 @@
             Player3BetLabel = new Label();
             Player4BetLabel = new Label();
             PotLabel = new Label();
+            BettingRoundLabel = new Label();
+            Round2Button = new Button();
+            Round3Button = new Button();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Cards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player3Cards).BeginInit();
@@ -230,17 +233,51 @@
             // PotLabel
             // 
             PotLabel.AutoSize = true;
-            PotLabel.Location = new Point(534, 749);
+            PotLabel.Location = new Point(534, 706);
             PotLabel.Name = "PotLabel";
             PotLabel.Size = new Size(61, 28);
             PotLabel.TabIndex = 15;
             PotLabel.Text = "Pot: 0";
+            // 
+            // BettingRoundLabel
+            // 
+            BettingRoundLabel.AutoSize = true;
+            BettingRoundLabel.Location = new Point(1051, 752);
+            BettingRoundLabel.Name = "BettingRoundLabel";
+            BettingRoundLabel.Size = new Size(157, 28);
+            BettingRoundLabel.TabIndex = 16;
+            BettingRoundLabel.Text = "Betting Round: 1";
+            // 
+            // Round2Button
+            // 
+            Round2Button.Enabled = false;
+            Round2Button.Location = new Point(173, 731);
+            Round2Button.Name = "Round2Button";
+            Round2Button.Size = new Size(143, 46);
+            Round2Button.TabIndex = 17;
+            Round2Button.Text = "Round 2 Bet";
+            Round2Button.UseVisualStyleBackColor = true;
+            Round2Button.Click += Round2Button_Click;
+            // 
+            // Round3Button
+            // 
+            Round3Button.Enabled = false;
+            Round3Button.Location = new Point(348, 731);
+            Round3Button.Name = "Round3Button";
+            Round3Button.Size = new Size(139, 46);
+            Round3Button.TabIndex = 18;
+            Round3Button.Text = "Round 3 Bet";
+            Round3Button.UseVisualStyleBackColor = true;
+            Round3Button.Click += Round3Button_Click;
             // 
             // PokerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1229, 789);
+            Controls.Add(Round3Button);
+            Controls.Add(Round2Button);
+            Controls.Add(BettingRoundLabel);
             Controls.Add(PotLabel);
             Controls.Add(Player4BetLabel);
             Controls.Add(Player3BetLabel);
@@ -290,5 +327,8 @@
         private Label Player3BetLabel;
         private Label Player4BetLabel;
         private Label PotLabel;
+        private Label BettingRoundLabel;
+        private Button Round2Button;
+        private Button Round3Button;
     }
 }

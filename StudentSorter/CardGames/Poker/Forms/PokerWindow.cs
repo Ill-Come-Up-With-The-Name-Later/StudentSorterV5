@@ -49,8 +49,18 @@ namespace StudentSorter.CardGames.Poker.Forms
             UpdatePlayerCards(Manager.Players[2], Player3CardTable, Player3Cards, true);
             UpdatePlayerCards(Manager.Players[3], Player4CardTable, Player4Cards, true);
 
-            BetWindow betWindow = new(this);
-            betWindow.Show();
+            // If player has big blind or small blind
+            if (Manager.Players[0].BigBlind || Manager.Players[0].SmallBlind)
+            {
+                EndTurn(Manager.BetRound);
+                Debugger.Log($"{Manager.Players[0].Name} has the big blind or small blind button");
+            }
+
+            if (!(Manager.Players[0].BigBlind || Manager.Players[0].SmallBlind))
+            {
+                BetWindow betWindow = new(this);
+                betWindow.Show();
+            }
 
             StartButton.Enabled = false;
         }
@@ -64,7 +74,7 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             foreach (Card card in player.PlayerHand.Cards)
             {
-                if (player.PlayerHand.Cards.IndexOf(card) > 0 && obfuscate)
+                if(player.PlayerHand.Cards.IndexOf(card) > 0 && obfuscate)
                 {
                     cardSource.Rows.Add("???");
                     continue;
@@ -107,6 +117,79 @@ namespace StudentSorter.CardGames.Poker.Forms
             Player4BetLabel.Text = $"Bet: {Manager.Players[3].Bet}";
 
             PotLabel.Text = $"Pot: {Manager.Players[0].Bet + Manager.Players[1].Bet + Manager.Players[2].Bet + Manager.Players[3].Bet}";
+        }
+
+        /// <summary>
+        /// Checks to see if the bots folded
+        /// </summary>
+        public void CheckFolds()
+        {
+            if (Manager.Players[1].Folded)
+                Player2Label.Text = $"{Manager.Players[1].Name} (Folded)";
+
+            if (Manager.Players[2].Folded)
+                Player3Label.Text = $"{Manager.Players[2].Name} (Folded)";
+
+            if (Manager.Players[3].Folded)
+                Player4Label.Text = $"{Manager.Players[3].Name} (Folded)";
+        }
+
+        /// <summary>
+        /// Ends a turn
+        /// </summary>
+        /// <param name="turnNum">
+        /// The current turn
+        /// </param>
+        public void EndTurn(int turnNum)
+        {
+            Debugger.Log($"Turn {Manager.BetRound} ended");
+
+            if (turnNum == 1)
+            {
+                Manager.FirstTurn();
+                UpdateBets();
+                UpdateCommunityCards();
+                CheckFolds();
+            }
+            else
+            {
+                Manager.BettingRound(Manager.BetRound);
+                UpdateBets();
+                UpdateCommunityCards();
+                CheckFolds();
+            }
+
+            if (Manager.BetRound == 2)
+                Round2Button.Enabled = true;
+
+            if (Manager.BetRound == 3)
+                Round3Button.Enabled = true;
+
+            Debugger.Log($"Started turn {Manager.BetRound}");
+            BettingRoundLabel.Text = $"Betting Round: {Manager.BetRound}";
+        }
+        
+        /// <summary>
+        /// Goes to round 2 of betting
+        /// </summary>
+        private void Round2Button_Click(object sender, EventArgs e)
+        {
+            Round2Button.Enabled = false;
+
+            BetWindow betWindow = new(this);
+            betWindow.Show();
+        }
+
+        /// <summary>
+        /// Goes to third, technically fourth and
+        /// final round of bets
+        /// </summary>
+        private void Round3Button_Click(object sender, EventArgs e)
+        {
+            Round3Button.Enabled = false;
+
+            BetWindow betWindow = new(this);
+            betWindow.Show();
         }
     }
 }

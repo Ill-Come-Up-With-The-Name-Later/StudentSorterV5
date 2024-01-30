@@ -102,7 +102,7 @@ namespace StudentSorter.CardGames.Poker
             }
 
             List<PokerPlayer> sortedPlayers = new(Players);
-            sortedPlayers.Sort(new PokerPlayerComparer());
+            sortedPlayers.Sort(new FirstCardComparer());
 
             Dealer = sortedPlayers[0];
             sortedPlayers[0].Dealer = true;
@@ -187,9 +187,9 @@ namespace StudentSorter.CardGames.Poker
                 int playerIndex = new Random().Next(0, Players.Count);
 
                 // Fold on low hand
-                if (player.PlayerHand.GetHandValue() < 20)
+                if (player.PlayerHand.GetHandValue() < 30)
                 {
-                    if (new Random().Next(0, 3) == 2)
+                    if (new Random().Next(0, 10) == 2)
                     {
                         player.Fold();
                         continue;
@@ -212,9 +212,6 @@ namespace StudentSorter.CardGames.Poker
                 }
             }
 
-            BetRound++;
-            Deck.Remove(Deck[0]);
-
             if(BetRound > 1)
             {
                 Card card = Deck[0];
@@ -223,6 +220,9 @@ namespace StudentSorter.CardGames.Poker
 
                 Debugger.Log($"Added {card} to the community cards");
             }
+
+            BetRound++;
+            Deck.Remove(Deck[0]);
         }
     }
 }

@@ -28,22 +28,63 @@
         /// </summary>
         private void InitializeComponent()
         {
+            Title = new Label();
+            BetInput = new NumericUpDown();
+            BetButton = new Button();
+            ((System.ComponentModel.ISupportInitialize)BetInput).BeginInit();
             SuspendLayout();
+            // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.Location = new Point(163, 30);
+            Title.Name = "Title";
+            Title.Size = new Size(140, 28);
+            Title.TabIndex = 0;
+            Title.Text = "Enter your bet:";
+            // 
+            // BetInput
+            // 
+            BetInput.Location = new Point(146, 103);
+            BetInput.Maximum = new decimal(new int[] { 1000000000, 0, 0, 0 });
+            BetInput.Name = "BetInput";
+            BetInput.Size = new Size(189, 34);
+            BetInput.TabIndex = 1;
+            BetInput.ThousandsSeparator = true;
+            // 
+            // BetButton
+            // 
+            BetButton.Location = new Point(163, 179);
+            BetButton.Name = "BetButton";
+            BetButton.Size = new Size(140, 37);
+            BetButton.TabIndex = 2;
+            BetButton.Text = "Submit Bet";
+            BetButton.UseVisualStyleBackColor = true;
+            BetButton.Click += BetButton_Click;
             // 
             // BetWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(608, 299);
+            ClientSize = new Size(479, 252);
+            Controls.Add(BetButton);
+            Controls.Add(BetInput);
+            Controls.Add(Title);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "BetWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Bet Window";
+            ((System.ComponentModel.ISupportInitialize)BetInput).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private Label Title;
+        private NumericUpDown BetInput;
+        private Button BetButton;
     }
 }
