@@ -1,4 +1,6 @@
-﻿namespace StudentSorter.CardGames.Poker.Player
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter.CardGames.Poker.Player
 {
     public class PokerPlayer
     {
@@ -32,7 +34,11 @@
         /// Folds, surrenders all cards and leaves
         /// game
         /// </summary>
-        public void Fold() { Folded = true; }
+        public void Fold() 
+        { 
+            Folded = true;
+            Debugger.Log($"{Name} folded");
+        }
 
         /// <summary>
         /// Adds a bet
@@ -44,6 +50,7 @@
         {
             Bet = bet;
             manager.Pot += Bet;
+            Debugger.Log($"{Name} bets {Bet}");
         }
 
         public override string ToString()

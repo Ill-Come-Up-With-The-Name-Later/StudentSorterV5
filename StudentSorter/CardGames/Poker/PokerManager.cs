@@ -17,7 +17,7 @@ namespace StudentSorter.CardGames.Poker
             "Mr. Mustard",
             "Desmond Jones",
             "Molly Jones",
-            "Charlie Sheen",
+            "Billy Shears",
             "Lucy",
             "Prudence",
             "Bobby McGee",
@@ -26,7 +26,8 @@ namespace StudentSorter.CardGames.Poker
             "P.C. 31",
             "Rosie",
             "Vallerie",
-            "Polythene Pam"
+            "Polythene Pam",
+            "Billy Bayou"
         };
 
         public List<Card> CommunityCards = new();
@@ -37,8 +38,8 @@ namespace StudentSorter.CardGames.Poker
         public PokerPlayer SmallBlind = new();
 
         public int BetRound { get; set; }
-        public int Pot {  get; set; }
-        public int MinBet {  get; set; }
+        public int Pot { get; set; }
+        public int MinBet { get; set; }
 
         public PokerManager() 
         {
@@ -61,6 +62,7 @@ namespace StudentSorter.CardGames.Poker
                 PokerPlayer botPlayer = new(name);
 
                 Players.Add(botPlayer);
+                Debugger.Log($"Added {botPlayer.Name} to the table");
             }
 
             // Set up the deck
@@ -86,7 +88,7 @@ namespace StudentSorter.CardGames.Poker
             }
 
             // Shuffles the deck
-            Deck.Sort(new CardComparer());
+            Deck.Sort(new CardShuffler());
 
             Debugger.Log($"Deck Size: {Deck.Count}/52");
             Debugger.Log("Setup Poker deck");
@@ -187,9 +189,9 @@ namespace StudentSorter.CardGames.Poker
                 int playerIndex = new Random().Next(0, Players.Count);
 
                 // Fold on low hand
-                if (player.PlayerHand.GetHandValue() < 30)
+                if (player.PlayerHand.GetHandValue() < 12)
                 {
-                    if (new Random().Next(0, 10) == 2)
+                    if (new Random().Next(0, 8) == 2)
                     {
                         player.Fold();
                         continue;

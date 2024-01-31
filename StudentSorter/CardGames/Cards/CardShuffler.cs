@@ -2,29 +2,24 @@
 
 namespace StudentSorter.CardGames.Cards
 {
-    public class CardComparer : IComparer<Card>
+    class CardShuffler : IComparer<Card>
     {
         /// <summary>
-        /// Compares two cards by their value
+        /// Used to shuffle a deck of cards
         /// </summary>
         /// <param name="x">
-        /// A card
+        /// The first card
         /// </param>
         /// <param name="y">
-        /// A card
+        /// The second card
         /// </param>
         /// <returns>
-        /// If the cards are the same value, greater than, or less than
-        /// each other
+        /// -1, 0, or 1 if neither card is null
         /// </returns>
         public int Compare(Card? x, Card? y)
         {
             if (x == null || y == null) return 0;
-            if(x.Value == y.Value) return 0;
-            if(x.Value < y.Value) return 1;
-            if(x.Value > y.Value) return -1;
-
-            return 0;
+            return new Random().Next(-1, 2);
         }
     }
 }
