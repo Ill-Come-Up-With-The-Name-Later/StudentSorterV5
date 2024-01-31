@@ -36,6 +36,7 @@
             PlayerBestHandTitle = new Label();
             Instructions = new Label();
             EndRoundButton = new Button();
+            BestHandInstructions = new Label();
             ((System.ComponentModel.ISupportInitialize)CommunityCardList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerCardList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BestHandList).BeginInit();
@@ -141,11 +142,21 @@
             EndRoundButton.Text = "Done";
             EndRoundButton.UseVisualStyleBackColor = true;
             // 
+            // BestHandInstructions
+            // 
+            BestHandInstructions.AutoSize = true;
+            BestHandInstructions.Location = new Point(234, 282);
+            BestHandInstructions.Name = "BestHandInstructions";
+            BestHandInstructions.Size = new Size(457, 28);
+            BestHandInstructions.TabIndex = 10;
+            BestHandInstructions.Text = "Double-Click a card in Your Best Hand to remove it.";
+            // 
             // FinalRoundWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(930, 468);
+            Controls.Add(BestHandInstructions);
             Controls.Add(EndRoundButton);
             Controls.Add(Instructions);
             Controls.Add(PlayerBestHandTitle);
@@ -177,5 +188,6 @@
         private Label PlayerBestHandTitle;
         private Label Instructions;
         private Button EndRoundButton;
+        private Label BestHandInstructions;
     }
 }

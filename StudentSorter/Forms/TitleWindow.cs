@@ -1,7 +1,6 @@
 using StudentSorter.CardGames;
 using StudentSorter.Debug;
 using StudentSorter.Forms;
-using StudentSorter.Gambling.BlackJack.Forms;
 using System.Diagnostics;
 using Debugger = StudentSorter.Debug.Debugger;
 
@@ -128,14 +127,21 @@ namespace StudentSorter
         {
             ErrorProvider.Clear();
 
-            if(!SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
-                ErrorProvider.SetError(SecretPassInput, "Incorrect passkey");
+            if (!SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
+            {
+                ErrorProvider.SetError(SecretPassInput, "Incorrect pass key");
+                Debugger.Log("An incorrect pass key was entered");
+            }
 
             if(SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase) && !ErrorProvider.HasErrors)
             {
                 CardGameMenu menu = new();
                 menu.Show();
+
+                Debugger.Log("The correct pass key was entered");
             }
+
+            SecretPassInput.Clear();
         }
     }
 }
