@@ -49,7 +49,22 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Manager.AddCard(Manager.Player1);
             BlackjackManager.UpdatePlayerCardList(Manager.Player1, Player1Cards, Player1Hand, HandValue);
             Turn++;
-            CheckWin();
+
+            if(Manager.Player1.CardValue > 21)
+            {
+                ShowWinWindow(Manager.Player2);
+            }
+
+            // Stop getting cards
+            if(Manager.Player1.CardValue == 21)
+            {
+                DrawCardButton.Enabled = false;
+                PassButton.Enabled = false;
+
+                DealerTurn();
+            }
+
+            //CheckWin();
         }
 
         /// <summary>
@@ -61,35 +76,13 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             if (Manager.Player2.CardValue > Manager.Player1.CardValue && Manager.Player2.CardValue <= 21)
             {
                 Player winner = Manager.Player2;
-                WinnerWindow winWindow = new(winner, this)
-                {
-                    WindowState = FormWindowState.Minimized
-                };
 
-                winWindow.Show();
-                winWindow.WindowState = FormWindowState.Normal;
-                WindowState = FormWindowState.Minimized;
-
-                InProgLabel.Text = "Game Over";
-
-                DrawCardButton.Enabled = false;
-                PassButton.Enabled = false;
-
+                ShowWinWindow(winner);
                 return;
             }
 
             // Dealer keeps drawing to try to beat Player
-            while (Manager.Player2.CardValue <= 17 || (Manager.Player2.CardValue <= Manager.Player1.CardValue && Manager.Player2.CardValue <= 21))
-            {
-                if (Manager.Player2.CardValue > Manager.Player1.CardValue)
-                    break;
-
-                Manager.AddCard(Manager.Player2);
-                BlackjackManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
-                Turn++;
-            }
-
-            CheckWin(true);
+            DealerTurn();
         }
 
         /// <summary>
@@ -104,20 +97,52 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             if (Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
             {
                 Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
-                WinnerWindow winWindow = new(winner, this)
-                {
-                    WindowState = FormWindowState.Minimized
-                };
-
-                winWindow.Show();
-                winWindow.WindowState = FormWindowState.Normal;
-                WindowState = FormWindowState.Minimized;
-
-                InProgLabel.Text = "Game Over";
-
-                DrawCardButton.Enabled = false;
-                PassButton.Enabled = false;
+                
+                ShowWinWindow(winner);
             }
+        }
+
+        /// <summary>
+        /// Displays the winner window
+        /// </summary>
+        /// <param name="winner">
+        /// The winner
+        /// </param>
+        public void ShowWinWindow(Player winner)
+        {
+            WinnerWindow winWindow = new(winner, this)
+            {
+                WindowState = FormWindowState.Minimized
+            };
+
+            winWindow.Show();
+            winWindow.WindowState = FormWindowState.Normal;
+            WindowState = FormWindowState.Minimized;
+
+            InProgLabel.Text = "Game Over";
+
+            DrawCardButton.Enabled = false;
+            PassButton.Enabled = false;
+        }
+
+        /// <summary>
+        /// Dealer plays and draws cards to try
+        /// to beat the player
+        /// </summary>
+        public void DealerTurn()
+        {
+            while (Manager.Player2.CardValue <= 17 || (Manager.Player2.CardValue <= Manager.Player1.CardValue && Manager.Player2.CardValue <= 21))
+            {
+                if (Manager.Player2.CardValue > Manager.Player1.CardValue)
+                    break;
+
+                Manager.AddCard(Manager.Player2);
+                BlackjackManager.UpdatePlayerCardList(Manager.Player2, Player2Cards, Player2Hand, new Label(), true);
+              
+                Turn++;
+            }
+
+            CheckWin(true);
         }
     }
 }
