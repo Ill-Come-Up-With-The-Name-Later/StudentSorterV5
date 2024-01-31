@@ -77,13 +77,13 @@ namespace StudentSorter.CardGames.Poker
                 Card ace = new("A", 14, suit);
                 Deck.Add(ace);
 
-                Card jack = new("J", 10, suit);
+                Card jack = new("J", 11, suit);
                 Deck.Add(jack);
 
-                Card king = new("K", 10, suit);
+                Card king = new("K", 13, suit);
                 Deck.Add(king);
 
-                Card queen = new("Q", 10, suit);
+                Card queen = new("Q", 12, suit);
                 Deck.Add(queen);
             }
 
