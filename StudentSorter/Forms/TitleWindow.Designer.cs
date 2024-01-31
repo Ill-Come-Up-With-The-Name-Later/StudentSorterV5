@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
             TitleLabel = new Label();
             OpenButton = new Button();
             ConfigSortButton = new Button();
@@ -39,6 +40,8 @@
             BlackJackLabel = new Label();
             BlackjackButton = new Button();
             SecretPassInput = new TextBox();
+            ErrorProvider = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
             SuspendLayout();
             // 
             // TitleLabel
@@ -143,9 +146,14 @@
             // 
             SecretPassInput.Location = new Point(87, 413);
             SecretPassInput.Name = "SecretPassInput";
+            SecretPassInput.PasswordChar = '*';
             SecretPassInput.PlaceholderText = "Enter the secret key.";
             SecretPassInput.Size = new Size(230, 34);
             SecretPassInput.TabIndex = 9;
+            // 
+            // ErrorProvider
+            // 
+            ErrorProvider.ContainerControl = this;
             // 
             // TitleWindow
             // 
@@ -171,6 +179,7 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Random Group Creator";
             Load += TitleWindow_Load;
+            ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -188,5 +197,6 @@
         private Label BlackJackLabel;
         private Button BlackjackButton;
         private TextBox SecretPassInput;
+        private ErrorProvider ErrorProvider;
     }
 }

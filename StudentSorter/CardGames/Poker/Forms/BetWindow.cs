@@ -29,7 +29,7 @@
             {
                 FormParent.Close();
 
-                FinalRoundWindow finalRound = new();
+                FinalRoundWindow finalRound = new(FormParent.Manager);
                 finalRound.Show();
             }
         }

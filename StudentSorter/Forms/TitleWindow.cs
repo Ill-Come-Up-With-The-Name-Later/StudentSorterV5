@@ -126,7 +126,12 @@ namespace StudentSorter
         /// </summary>
         private void BlackjackButton_Click(object sender, EventArgs e)
         {
-            if (SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
+            ErrorProvider.Clear();
+
+            if(!SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
+                ErrorProvider.SetError(SecretPassInput, "Incorrect passkey");
+
+            if(SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase) && !ErrorProvider.HasErrors)
             {
                 CardGameMenu menu = new();
                 menu.Show();
