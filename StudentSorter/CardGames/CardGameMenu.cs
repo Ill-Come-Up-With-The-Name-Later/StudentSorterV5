@@ -1,4 +1,5 @@
 ﻿using StudentSorter.CardGames.Poker.Forms;
+using StudentSorter.Debug;
 using StudentSorter.Gambling.BlackJack.Forms;
 
 namespace StudentSorter.CardGames
@@ -17,6 +18,8 @@ namespace StudentSorter.CardGames
         {
             BlackjackWindow window = new();
             window.Show();
+
+            Debugger.Log("Opened Blackjack");
         }
 
         /// <summary>
@@ -28,6 +31,8 @@ namespace StudentSorter.CardGames
         {
             PokerWindow pokerWindow = new();
             pokerWindow.Show();
+
+            Debugger.Log("Opened Poker (Texas Hold'em)");
         }
     }
 }

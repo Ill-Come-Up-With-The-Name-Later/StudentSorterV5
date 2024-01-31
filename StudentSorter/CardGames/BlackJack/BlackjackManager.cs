@@ -61,7 +61,7 @@ namespace StudentSorter.Gambling.BlackJack
             }
 
             Debugger.Log($"Deck Size: {Deck.Count}/52");
-            Debugger.Log("Setup game.");
+            Debugger.Log("Setup Blackjack.");
         }
 
         /// <summary>
