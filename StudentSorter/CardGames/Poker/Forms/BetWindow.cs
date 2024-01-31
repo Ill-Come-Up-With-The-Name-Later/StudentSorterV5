@@ -27,7 +27,10 @@
             // Go to final showdown, highest hand wins
             if(FormParent.Manager.BetRound - 1 == 3)
             {
-                FormParent.WindowState = FormWindowState.Minimized;
+                FormParent.Close();
+
+                FinalRoundWindow finalRound = new();
+                finalRound.Show();
             }
         }
     }

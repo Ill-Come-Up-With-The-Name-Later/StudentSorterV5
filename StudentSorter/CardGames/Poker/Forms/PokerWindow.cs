@@ -74,7 +74,7 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             foreach (Card card in player.PlayerHand.Cards)
             {
-                if(player.PlayerHand.Cards.IndexOf(card) > 0 && obfuscate)
+                if (player.PlayerHand.Cards.IndexOf(card) > 0 && obfuscate)
                 {
                     cardSource.Rows.Add("???");
                     continue;
@@ -166,9 +166,9 @@ namespace StudentSorter.CardGames.Poker.Forms
                 Round3Button.Enabled = true;
 
             Debugger.Log($"Started turn {Manager.BetRound}");
-            BettingRoundLabel.Text = $"Betting Round: {Manager.BetRound}";
+            BettingRoundLabel.Text = $"Betting Round: {(Manager.BetRound <= 3 ? Manager.BetRound : "Betting Over")}";
         }
-        
+
         /// <summary>
         /// Goes to round 2 of betting
         /// </summary>

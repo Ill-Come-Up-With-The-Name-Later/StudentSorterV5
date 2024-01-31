@@ -242,7 +242,7 @@
             // BettingRoundLabel
             // 
             BettingRoundLabel.AutoSize = true;
-            BettingRoundLabel.Location = new Point(1051, 752);
+            BettingRoundLabel.Location = new Point(977, 749);
             BettingRoundLabel.Name = "BettingRoundLabel";
             BettingRoundLabel.Size = new Size(157, 28);
             BettingRoundLabel.TabIndex = 16;
