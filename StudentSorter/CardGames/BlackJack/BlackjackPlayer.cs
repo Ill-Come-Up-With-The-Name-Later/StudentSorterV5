@@ -44,6 +44,20 @@ namespace StudentSorter.Gambling.BlackJack
             }
 
             CardValue += card.Value;
+
+            if(CardValue > 21)
+            {
+                foreach(Card pCard in Cards)
+                {
+                    if (pCard.Name.StartsWith('A'))
+                    {
+                        pCard.Value = 1;
+                        CardValue -= 10;
+                        break;
+                    }
+                }
+            }
+
             Debugger.Log($"Addedd {card} to {Name}'s cards.");
             Debugger.Log($"{Name}'s cards' value: {CardValue}");
         }
