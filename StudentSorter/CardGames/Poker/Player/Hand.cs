@@ -7,11 +7,14 @@ namespace StudentSorter.CardGames.Poker.Player
     public class Hand
     {
         public List<Card> Cards = new();
+        public PokerPlayer Owner;
 
         /// <summary>
         /// A hand of cards
         /// </summary>
-        public Hand() { }
+        public Hand()
+        {
+        }
 
         /// <summary>
         /// Gets the value of this hand

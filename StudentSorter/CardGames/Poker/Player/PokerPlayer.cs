@@ -27,6 +27,8 @@ namespace StudentSorter.CardGames.Poker.Player
             SmallBlind = false;
             Folded = false;
 
+            PlayerHand.Owner = this;
+
             Bet = 0;
         }
 

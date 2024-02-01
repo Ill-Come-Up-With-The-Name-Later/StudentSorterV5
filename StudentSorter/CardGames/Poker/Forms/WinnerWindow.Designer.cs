@@ -36,6 +36,9 @@
             Player2BestHandLabel = new Label();
             Player3BestHandLabel = new Label();
             Player4BestHandLabel = new Label();
+            WinnerLabel = new Label();
+            ReplayButton = new Button();
+            CloseButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PlayerHand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player3Hand).BeginInit();
@@ -150,11 +153,43 @@
             Player4BestHandLabel.TabIndex = 18;
             Player4BestHandLabel.Text = "Player 4's Best Hand";
             // 
+            // WinnerLabel
+            // 
+            WinnerLabel.AutoSize = true;
+            WinnerLabel.Location = new Point(263, 437);
+            WinnerLabel.Name = "WinnerLabel";
+            WinnerLabel.Size = new Size(79, 28);
+            WinnerLabel.TabIndex = 19;
+            WinnerLabel.Text = "Winner:";
+            // 
+            // ReplayButton
+            // 
+            ReplayButton.Location = new Point(704, 422);
+            ReplayButton.Name = "ReplayButton";
+            ReplayButton.Size = new Size(129, 43);
+            ReplayButton.TabIndex = 20;
+            ReplayButton.Text = "Replay";
+            ReplayButton.UseVisualStyleBackColor = true;
+            ReplayButton.Click += ReplayButton_Click;
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(853, 423);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(95, 42);
+            CloseButton.TabIndex = 21;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
             // WinnerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1302, 760);
+            ClientSize = new Size(1302, 497);
+            Controls.Add(CloseButton);
+            Controls.Add(ReplayButton);
+            Controls.Add(WinnerLabel);
             Controls.Add(Player4BestHandLabel);
             Controls.Add(Player3BestHandLabel);
             Controls.Add(Player2BestHandLabel);
@@ -187,5 +222,8 @@
         private Label Player2BestHandLabel;
         private Label Player3BestHandLabel;
         private Label Player4BestHandLabel;
+        private Label WinnerLabel;
+        private Button ReplayButton;
+        private Button CloseButton;
     }
 }

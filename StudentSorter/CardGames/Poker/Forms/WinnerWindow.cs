@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.CardGames.Poker.Player;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
 
@@ -51,6 +52,39 @@ namespace StudentSorter.CardGames.Poker.Forms
             PokerWindow.UpdatePlayerCards(Manager.Players[3], Player4Cards, Player4Hand);
 
             Debugger.Log("Displaying all players' best hands");
+
+            List<Hand> playerHands = new();
+
+            foreach (PokerPlayer player in Manager.Players)
+            {
+                if (player.Folded) continue;
+
+                playerHands.Add(player.PlayerHand);
+            }
+
+            playerHands.Sort(new HandComparer());
+            PokerPlayer winner = playerHands[0].Owner;
+
+            WinnerLabel.Text = $"Winner: {winner.Name}";
+            Debugger.Log($"{winner.Name} wins");
+        }
+
+        /// <summary>
+        /// Closes the Texas Hold'em game
+        /// </summary>
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+        }
+
+        /// <summary>
+        /// Replays Texas Hold'em Poker
+        /// </summary>
+        private void ReplayButton_Click(object sender, EventArgs e)
+        {
+            Close();
+            PokerWindow window = new();
+            window.Show();
         }
     }
 }
