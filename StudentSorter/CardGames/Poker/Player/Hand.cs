@@ -24,24 +24,14 @@ namespace StudentSorter.CardGames.Poker.Player
 
             foreach (Card card in Cards)
             {
-                switch (card.Name[0])
+                value += card.Name[0] switch
                 {
-                    case 'A':
-                        value += 14;
-                        break;
-                    case 'K':
-                        value += 13;
-                        break;
-                    case 'Q':
-                        value += 12;
-                        break;
-                    case 'J':
-                        value += 11;
-                        break;
-                    default:
-                        value += card.Value;
-                        break;
-                }
+                    'A' => 14,
+                    'K' => 13,
+                    'Q' => 12,
+                    'J' => 11,
+                    _ => card.Value,
+                };
             }
 
             return value;
@@ -154,7 +144,7 @@ namespace StudentSorter.CardGames.Poker.Player
 
             foreach(Card card in Cards)
             {
-                if (cardAmounts.ContainsKey(card.Name[..^1])
+                if (cardAmounts.ContainsKey(card.Name[..^1]))
                 {
                     cardAmounts[card.Name[..^1]]++;
                 } 
@@ -361,6 +351,18 @@ namespace StudentSorter.CardGames.Poker.Player
         public bool TwoPairs()
         {
             return NumPairs() == 2;
+        }
+
+        /// <summary>
+        /// FInds if the hand has only one
+        /// pair in it
+        /// </summary>
+        /// <returns>
+        /// If the hand has one pair
+        /// </returns>
+        public bool OnePair()
+        {
+            return NumPairs() == 1;
         }
     }
 }
