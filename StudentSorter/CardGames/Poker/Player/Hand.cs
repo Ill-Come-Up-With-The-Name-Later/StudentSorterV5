@@ -149,22 +149,22 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int NumPairs()
         {
-            Dictionary<char, int> cardAmounts = new();
+            Dictionary<string, int> cardAmounts = new();
             int pairs = 0;
 
             foreach(Card card in Cards)
             {
-                if (cardAmounts.ContainsKey(card.Name[0]))
+                if (cardAmounts.ContainsKey(card.Name[..^1])
                 {
-                    cardAmounts[card.Name[0]]++;
+                    cardAmounts[card.Name[..^1]]++;
                 } 
                 else
                 {
-                    cardAmounts[card.Name[0]] = 1;
+                    cardAmounts[card.Name[..^1]] = 1;
                 }
             }
 
-            foreach(char key in cardAmounts.Keys)
+            foreach(string key in cardAmounts.Keys)
             {
                 if (cardAmounts[key] >= 2)
                     pairs++;
