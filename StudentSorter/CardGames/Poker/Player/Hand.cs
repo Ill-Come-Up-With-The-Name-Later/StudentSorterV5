@@ -1,4 +1,5 @@
-﻿using StudentSorter.Debug;
+﻿using StudentSorter.CardGames.Cards;
+using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
 
 namespace StudentSorter.CardGames.Poker.Player
@@ -46,6 +47,22 @@ namespace StudentSorter.CardGames.Poker.Player
         public void AddCard(Card card)
         {
             Cards.Add(card);
+        }
+
+        /// <summary>
+        /// Finds the highest value card in
+        /// the hand
+        /// </summary>
+        /// <returns>
+        /// The highest value card in the
+        /// hand
+        /// </returns>
+        public Card GetHighestCard()
+        {
+            List<Card> cards = Cards;
+            cards.Sort(new CardComparer());
+
+            return cards[0];
         }
 
         /// <summary>
