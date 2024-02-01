@@ -250,7 +250,7 @@ namespace StudentSorter.CardGames.Poker
             foreach(PokerPlayer pokerPlayer in Players)
                 if(pokerPlayer.Name.Equals(name)) occurences++;
 
-            return occurences > 1;
+            return occurences > 0;
         }
     }
 }
