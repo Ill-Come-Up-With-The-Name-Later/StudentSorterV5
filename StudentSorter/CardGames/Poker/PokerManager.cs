@@ -131,7 +131,7 @@ namespace StudentSorter.CardGames.Poker
             }
 
             Debugger.Log("Two cards have been dealt to all players");
-            Debugger.Log("Set up Poker (Texas Hold'em");
+            Debugger.Log("Set up Poker (Texas Hold'em)");
         }
 
         /// <summary>
