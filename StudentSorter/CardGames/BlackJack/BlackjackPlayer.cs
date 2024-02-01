@@ -49,7 +49,7 @@ namespace StudentSorter.Gambling.BlackJack
             {
                 foreach(Card pCard in Cards)
                 {
-                    if (pCard.Name.StartsWith('A'))
+                    if (pCard.Name.StartsWith('A') && pCard.Value == 11)
                     {
                         pCard.Value = 1;
                         CardValue -= 10;
