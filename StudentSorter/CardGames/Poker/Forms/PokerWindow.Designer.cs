@@ -47,6 +47,7 @@
             BettingRoundLabel = new Label();
             Round2Button = new Button();
             Round3Button = new Button();
+            FoldButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Cards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player3Cards).BeginInit();
@@ -270,11 +271,23 @@
             Round3Button.UseVisualStyleBackColor = true;
             Round3Button.Click += Round3Button_Click;
             // 
+            // FoldButton
+            // 
+            FoldButton.Enabled = false;
+            FoldButton.Location = new Point(615, 731);
+            FoldButton.Name = "FoldButton";
+            FoldButton.Size = new Size(123, 46);
+            FoldButton.TabIndex = 19;
+            FoldButton.Text = "Fold";
+            FoldButton.UseVisualStyleBackColor = true;
+            FoldButton.Click += FoldButton_Click;
+            // 
             // PokerWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1229, 789);
+            Controls.Add(FoldButton);
             Controls.Add(Round3Button);
             Controls.Add(Round2Button);
             Controls.Add(BettingRoundLabel);
@@ -330,5 +343,6 @@
         private Label BettingRoundLabel;
         private Button Round2Button;
         private Button Round3Button;
+        private Button FoldButton;
     }
 }

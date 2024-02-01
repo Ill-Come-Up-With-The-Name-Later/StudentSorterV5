@@ -63,6 +63,7 @@ namespace StudentSorter.CardGames.Poker.Forms
             }
 
             StartButton.Enabled = false;
+            FoldButton.Enabled = true;
         }
 
         /// <summary>
@@ -190,6 +191,15 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             BetWindow betWindow = new(this);
             betWindow.Show();
+        }
+
+        /// <summary>
+        /// Folds the player's hand and
+        /// forfeits
+        /// </summary>
+        private void FoldButton_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
