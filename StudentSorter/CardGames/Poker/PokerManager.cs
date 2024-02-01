@@ -62,6 +62,10 @@ namespace StudentSorter.CardGames.Poker
             for(int i = 0; i < 3; i++)
             {
                 string name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
+                
+                while(NameDuplicate(name))
+                    name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
+
                 PokerPlayer botPlayer = new(name);
 
                 Players.Add(botPlayer);
@@ -228,6 +232,25 @@ namespace StudentSorter.CardGames.Poker
 
             BetRound++;
             Deck.Remove(Deck[0]);
+        }
+
+        /// <summary>
+        /// Checks if a name is a duplicate
+        /// </summary>
+        /// <param name="name">
+        /// The name to check
+        /// </param>
+        /// <returns>
+        /// If the name is a duplicate
+        /// </returns>
+        public bool NameDuplicate(string name)
+        {
+            int occurences = 0;
+
+            foreach(PokerPlayer pokerPlayer in Players)
+                if(pokerPlayer.Name.Equals(name)) occurences++;
+
+            return occurences > 1;
         }
     }
 }
