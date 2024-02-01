@@ -30,9 +30,12 @@ namespace StudentSorter.CardGames.Poker.Forms
             Player4Cards.Columns.Add("Card", typeof(string));
 
             Player1BestHandLabel.Text = $"{Manager.Players[0].Name}'s Best Hand";
-            Player2BestHandLabel.Text = $"{Manager.Players[1].Name}'s Best Hand";
-            Player3BestHandLabel.Text = $"{Manager.Players[2].Name}'s Best Hand";
-            Player4BestHandLabel.Text = $"{Manager.Players[3].Name}'s Best Hand";
+            Player2BestHandLabel.Text = $"{(Manager.Players[1].Folded ? $"{Manager.Players[1].Name} (Folded)" 
+                : Manager.Players[1].Name)}'s Best Hand";
+            Player3BestHandLabel.Text = $"{(Manager.Players[2].Folded ? $"{Manager.Players[2].Name} (Folded)" 
+                : Manager.Players[2].Name)}'s Best Hand";
+            Player4BestHandLabel.Text = $"{(Manager.Players[3].Folded ? $"{Manager.Players[3].Name} (Folded)" 
+                : Manager.Players[3].Name)}'s Best Hand";
 
             foreach (Card card in Manager.Players[0].PlayerHand.Cards)
                 PlayerCards.Rows.Add(card);
