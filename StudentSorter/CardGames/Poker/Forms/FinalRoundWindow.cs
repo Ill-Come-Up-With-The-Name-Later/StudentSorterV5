@@ -76,6 +76,7 @@ namespace StudentSorter.CardGames.Poker.Forms
             if (!BestPlayerHand.Contains(card))
                 BestPlayerHand.Add(card);
 
+            Debugger.Log($"Added {card} to Player's hand");
             UpdateTables();
         }
 
@@ -93,6 +94,7 @@ namespace StudentSorter.CardGames.Poker.Forms
             if (!BestPlayerHand.Contains(card))
                 BestPlayerHand.Add(card);
 
+            Debugger.Log($"Added {card} to Player's hand");
             UpdateTables();
         }
 
@@ -108,6 +110,7 @@ namespace StudentSorter.CardGames.Poker.Forms
             BestPlayerHand.Remove(card);
             EndRoundButton.Enabled = false;
 
+            Debugger.Log($"Removed {card} from Player's hand");
             UpdateTables();
         }
 

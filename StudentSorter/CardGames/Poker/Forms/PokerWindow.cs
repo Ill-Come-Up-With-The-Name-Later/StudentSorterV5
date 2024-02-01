@@ -118,6 +118,8 @@ namespace StudentSorter.CardGames.Poker.Forms
             Player4BetLabel.Text = $"Bet: {Manager.Players[3].Bet}";
 
             PotLabel.Text = $"Pot: {Manager.Players[0].Bet + Manager.Players[1].Bet + Manager.Players[2].Bet + Manager.Players[3].Bet}";
+
+            Debugger.Log("Bets updated");
         }
 
         /// <summary>
@@ -200,6 +202,7 @@ namespace StudentSorter.CardGames.Poker.Forms
         private void FoldButton_Click(object sender, EventArgs e)
         {
             Close();
+            Debugger.Log($"{Manager.Players[0]} Folded");
         }
     }
 }

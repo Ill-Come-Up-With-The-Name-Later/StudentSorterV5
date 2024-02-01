@@ -78,6 +78,8 @@ namespace StudentSorter.CardGames.Poker.Forms
         private void CloseButton_Click(object sender, EventArgs e)
         {
             Close();
+
+            Debugger.Log("Closed Poker");
         }
 
         /// <summary>
@@ -86,6 +88,8 @@ namespace StudentSorter.CardGames.Poker.Forms
         private void ReplayButton_Click(object sender, EventArgs e)
         {
             Close();
+
+            Debugger.Log("Replaying Poker");
             PokerWindow window = new();
             window.Show();
         }
