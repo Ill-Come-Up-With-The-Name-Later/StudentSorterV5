@@ -68,7 +68,7 @@ namespace StudentSorter.CardGames.Poker.Forms
         /// <summary>
         /// Updates the player's cards
         /// </summary>
-        public void UpdatePlayerCards(PokerPlayer player, DataTable cardSource, DataGridView cards, bool obfuscate = false)
+        public static void UpdatePlayerCards(PokerPlayer player, DataTable cardSource, DataGridView cards, bool obfuscate = false)
         {
             if (cardSource.Rows.Count > 0) cardSource.Rows.Clear();
 

@@ -3,7 +3,7 @@ using StudentSorter.Debug;
 
 namespace StudentSorter.Gambling.BlackJack
 {
-    public class Player
+    public class BlackjackPlayer
     {
         public string Name { get; set; }
         public List<Card> Cards = new();
@@ -15,7 +15,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="name">
         /// The player's name
         /// </param>
-        public Player(string name = "Player") 
+        public BlackjackPlayer(string name = "Player") 
         {
             Name = name;
             CardValue = 0;

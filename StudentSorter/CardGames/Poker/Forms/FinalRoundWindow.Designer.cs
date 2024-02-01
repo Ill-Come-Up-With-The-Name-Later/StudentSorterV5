@@ -141,6 +141,7 @@
             EndRoundButton.TabIndex = 9;
             EndRoundButton.Text = "Done";
             EndRoundButton.UseVisualStyleBackColor = true;
+            EndRoundButton.Click += EndRoundButton_Click;
             // 
             // BestHandInstructions
             // 

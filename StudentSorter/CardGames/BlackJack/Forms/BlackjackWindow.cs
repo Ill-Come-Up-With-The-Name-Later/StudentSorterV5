@@ -19,8 +19,8 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             Player1Cards.Columns.Add("Cards", typeof(string));
             Player2Cards.Columns.Add("Cards", typeof(string));
 
-            Player p1 = new("Player");
-            Player p2 = new("Dealer");
+            BlackjackPlayer p1 = new("Player");
+            BlackjackPlayer p2 = new("Dealer");
             Manager = new(p1, p2);
 
             Player1Title.Text = $"{Manager.Player1.Name}'s Hand";
@@ -75,7 +75,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
             // Instantly end if Dealer beat Player
             if (Manager.Player2.CardValue > Manager.Player1.CardValue && Manager.Player2.CardValue <= 21)
             {
-                Player winner = Manager.Player2;
+                BlackjackPlayer winner = Manager.Player2;
 
                 ShowWinWindow(winner);
                 return;
@@ -96,7 +96,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         {
             if (Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand) != null)
             {
-                Player winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
+                BlackjackPlayer winner = Manager.Winner(Manager.Player1, Manager.Player2, Turn, pStand);
                 
                 ShowWinWindow(winner);
             }
@@ -108,7 +108,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// <param name="winner">
         /// The winner
         /// </param>
-        public void ShowWinWindow(Player winner)
+        public void ShowWinWindow(BlackjackPlayer winner)
         {
             WinnerWindow winWindow = new(winner, this)
             {

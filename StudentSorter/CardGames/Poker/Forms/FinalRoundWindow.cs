@@ -1,6 +1,8 @@
 ﻿using StudentSorter.Gambling.Cards;
 using System.Data;
 using StudentSorter.Debug;
+using StudentSorter.CardGames.Poker.Player;
+using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.CardGames.Poker.Forms
 {
@@ -107,6 +109,44 @@ namespace StudentSorter.CardGames.Poker.Forms
             EndRoundButton.Enabled = false;
 
             UpdateTables();
+        }
+
+        /// <summary>
+        /// Goes to final winner declaration window
+        /// </summary>
+        private void EndRoundButton_Click(object sender, EventArgs e)
+        {
+            Close();
+            Manager.Players[0].PlayerHand.Cards.Clear();
+
+            foreach(Card card in BestPlayerHand)
+                Manager.Players[0].PlayerHand.AddCard(card);
+
+            // All bots pick their 5 best cards
+            foreach(PokerPlayer player in Manager.Players)
+            {
+                if (player.Folded || player.Name.Equals("Player")) continue;
+
+                List<Card> BestFive = new(Manager.CommunityCards);
+
+                foreach(Card card in player.PlayerHand.Cards)
+                    BestFive.Add(card);
+
+                BestFive.Sort(new CardComparer());
+
+                BestFive.Remove(BestFive[^1]);
+                BestFive.Remove(BestFive[^1]);
+
+                player.PlayerHand.Cards.Clear();
+
+                foreach(Card card in BestFive)
+                    player.PlayerHand.AddCard(card);
+
+                Debugger.Log($"{player.Name} has chosen their best hand");
+            }
+
+            WinnerWindow winnerWindow = new(Manager);
+            winnerWindow.Show();
         }
     }
 }

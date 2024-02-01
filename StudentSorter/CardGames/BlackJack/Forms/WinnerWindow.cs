@@ -6,12 +6,12 @@ namespace StudentSorter.Gambling.BlackJack.Forms
 {
     public partial class WinnerWindow : Form
     {
-        private readonly Player? Winner;
+        private readonly BlackjackPlayer? Winner;
         private readonly BlackjackWindow FormParent;
         private readonly DataTable DealerCardsRevealed = new();
         private readonly DataTable PlayerCards = new();
 
-        public WinnerWindow(Player player, BlackjackWindow formParent)
+        public WinnerWindow(BlackjackPlayer player, BlackjackWindow formParent)
         {
             InitializeComponent();
             FormParent = formParent;

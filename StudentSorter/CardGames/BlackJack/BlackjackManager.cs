@@ -6,12 +6,12 @@ namespace StudentSorter.Gambling.BlackJack
 {
     public class BlackjackManager
     {
-        public Player Player1 { get; set; }
-        public Player Player2 { get; set; }
+        public BlackjackPlayer Player1 { get; set; }
+        public BlackjackPlayer Player2 { get; set; }
         public int AceValue { get; set; }
         public List<Card> Deck = new();
 
-        public BlackjackManager(Player p1, Player p2)
+        public BlackjackManager(BlackjackPlayer p1, BlackjackPlayer p2)
         {
             Player1 = p1;
             Player2 = p2;
@@ -70,7 +70,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="player">
         /// The player to give a card to
         /// </param>
-        public void AddCard(Player player)
+        public void AddCard(BlackjackPlayer player)
         {
             Card card = Deck[new Random().Next(0, Deck.Count)];
             player.AddCard(card);
@@ -91,7 +91,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="dataGrid">
         /// The data grid to update
         /// </param>
-        public static void UpdatePlayerCardList(Player player, DataTable table, DataGridView dataGrid, Label handVal, bool obfuscate = false)
+        public static void UpdatePlayerCardList(BlackjackPlayer player, DataTable table, DataGridView dataGrid, Label handVal, bool obfuscate = false)
         {
             if(table.Rows.Count > 0)
                 table.Rows.Clear();
@@ -130,12 +130,12 @@ namespace StudentSorter.Gambling.BlackJack
         /// The winner, or No One if the players
         /// tie
         /// </returns>
-        public Player? Winner(Player player1, Player player2, int turn, bool pStand = false)
+        public BlackjackPlayer? Winner(BlackjackPlayer player1, BlackjackPlayer player2, int turn, bool pStand = false)
         {
             if (player1.CardValue == 21 && player2.CardValue == 21)
             {
                 Debugger.Log("Tie.");
-                return new Player("No One");
+                return new BlackjackPlayer("No One");
             }
 
             if(player1.CardValue == 21)
@@ -160,7 +160,7 @@ namespace StudentSorter.Gambling.BlackJack
                     if (player1.CardValue == player2.CardValue)
                     {
                         Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");
-                        return new Player("No One");
+                        return new BlackjackPlayer("No One");
                     }
 
                     if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
@@ -179,7 +179,7 @@ namespace StudentSorter.Gambling.BlackJack
                 if (player1.CardValue == player2.CardValue)
                 {
                     Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");
-                    return new Player("No One");
+                    return new BlackjackPlayer("No One");
                 }
 
                 if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
