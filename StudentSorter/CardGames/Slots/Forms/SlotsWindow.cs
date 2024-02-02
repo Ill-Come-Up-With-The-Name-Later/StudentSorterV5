@@ -65,6 +65,7 @@ namespace StudentSorter.CardGames.Slots
             if (tick >= NumSpins)
             {
                 SlotMachineTimer.Stop();
+                return;
             }
 
             tick += 1;

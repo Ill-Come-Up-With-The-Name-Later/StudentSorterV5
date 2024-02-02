@@ -63,7 +63,7 @@
             // SlotMachineTimer
             // 
             SlotMachineTimer.Enabled = true;
-            SlotMachineTimer.Interval = 45;
+            SlotMachineTimer.Interval = 120;
             SlotMachineTimer.Tick += SlotMachineTimer_Tick;
             // 
             // Symbol1
@@ -96,7 +96,7 @@
             // SymbolTitle
             // 
             SymbolTitle.AutoSize = true;
-            SymbolTitle.Location = new Point(71, 207);
+            SymbolTitle.Location = new Point(51, 207);
             SymbolTitle.Name = "SymbolTitle";
             SymbolTitle.Size = new Size(26, 28);
             SymbolTitle.TabIndex = 5;
@@ -105,7 +105,7 @@
             // Symbol2Title
             // 
             Symbol2Title.AutoSize = true;
-            Symbol2Title.Location = new Point(281, 207);
+            Symbol2Title.Location = new Point(262, 207);
             Symbol2Title.Name = "Symbol2Title";
             Symbol2Title.Size = new Size(26, 28);
             Symbol2Title.TabIndex = 6;
