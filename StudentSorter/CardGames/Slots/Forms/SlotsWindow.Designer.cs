@@ -63,7 +63,7 @@
             // SlotMachineTimer
             // 
             SlotMachineTimer.Enabled = true;
-            SlotMachineTimer.Interval = 120;
+            SlotMachineTimer.Interval = 80;
             SlotMachineTimer.Tick += SlotMachineTimer_Tick;
             // 
             // Symbol1

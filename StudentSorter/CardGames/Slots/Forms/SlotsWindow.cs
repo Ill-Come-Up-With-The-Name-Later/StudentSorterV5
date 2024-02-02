@@ -1,4 +1,5 @@
-﻿using StudentSorter.Debug;
+﻿using StudentSorter.CardGames.Slots.Forms;
+using StudentSorter.Debug;
 
 namespace StudentSorter.CardGames.Slots
 {
@@ -65,6 +66,13 @@ namespace StudentSorter.CardGames.Slots
             if (tick >= NumSpins)
             {
                 SlotMachineTimer.Stop();
+
+                if(Win())
+                {
+                    WinWindow winWindow = new(this, Win(), Jackpot());
+                    winWindow.Show();
+                }
+
                 return;
             }
 
@@ -102,6 +110,36 @@ namespace StudentSorter.CardGames.Slots
             Symbol3.Text = thirdSymbol.ToString();
 
             Debugger.Log("Updated slot symbols");
+        }
+
+        /// <summary>
+        /// Returns if the player won.
+        /// 
+        /// The player wins if all their
+        /// symbols matched.
+        /// </summary>
+        /// <returns>
+        /// If the player's symbols matched
+        /// </returns>
+        public bool Win()
+        {
+            return Symbol1.Text.Equals(Symbol2.Text) && Symbol2.Text.Equals(Symbol3.Text) && Symbol1.Text.Equals(Symbol3.Text);
+        }
+
+        /// <summary>
+        /// Finds if the player won the jackpot.
+        /// 
+        /// The player wins the jackpot if all of their
+        /// symbols match the jackpot symbol
+        /// </summary>
+        /// <returns>
+        /// If the player got the jackpot
+        /// </returns>
+        public bool Jackpot()
+        {
+            return Symbol1.Text.Equals(JackpotSymbol.ToString()) &&
+                Symbol2.Text.Equals(JackpotSymbol.ToString()) &&
+                Symbol3.Text.Equals(JackpotSymbol.ToString());
         }
     }
 }
