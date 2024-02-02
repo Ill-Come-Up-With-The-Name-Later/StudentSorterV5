@@ -33,8 +33,8 @@
             Subtitle = new Label();
             SlotMachineTimer = new System.Windows.Forms.Timer(components);
             Symbol1 = new TextBox();
-            textBox1 = new TextBox();
-            textBox2 = new TextBox();
+            Symbol2 = new TextBox();
+            Symbol3 = new TextBox();
             SymbolTitle = new Label();
             Symbol2Title = new Label();
             Symbol3Title = new Label();
@@ -62,32 +62,36 @@
             // 
             // SlotMachineTimer
             // 
-            SlotMachineTimer.Interval = 10;
+            SlotMachineTimer.Enabled = true;
+            SlotMachineTimer.Interval = 45;
             SlotMachineTimer.Tick += SlotMachineTimer_Tick;
             // 
             // Symbol1
             // 
+            Symbol1.Enabled = false;
             Symbol1.Location = new Point(51, 160);
             Symbol1.Name = "Symbol1";
             Symbol1.ReadOnly = true;
             Symbol1.Size = new Size(67, 34);
             Symbol1.TabIndex = 2;
             // 
-            // textBox1
+            // Symbol2
             // 
-            textBox1.Location = new Point(262, 160);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(67, 34);
-            textBox1.TabIndex = 3;
+            Symbol2.Enabled = false;
+            Symbol2.Location = new Point(262, 160);
+            Symbol2.Name = "Symbol2";
+            Symbol2.ReadOnly = true;
+            Symbol2.Size = new Size(67, 34);
+            Symbol2.TabIndex = 3;
             // 
-            // textBox2
+            // Symbol3
             // 
-            textBox2.Location = new Point(474, 160);
-            textBox2.Name = "textBox2";
-            textBox2.ReadOnly = true;
-            textBox2.Size = new Size(67, 34);
-            textBox2.TabIndex = 4;
+            Symbol3.Enabled = false;
+            Symbol3.Location = new Point(474, 160);
+            Symbol3.Name = "Symbol3";
+            Symbol3.ReadOnly = true;
+            Symbol3.Size = new Size(67, 34);
+            Symbol3.TabIndex = 4;
             // 
             // SymbolTitle
             // 
@@ -137,8 +141,8 @@
             Controls.Add(Symbol3Title);
             Controls.Add(Symbol2Title);
             Controls.Add(SymbolTitle);
-            Controls.Add(textBox2);
-            Controls.Add(textBox1);
+            Controls.Add(Symbol3);
+            Controls.Add(Symbol2);
             Controls.Add(Symbol1);
             Controls.Add(Subtitle);
             Controls.Add(Title);
@@ -158,8 +162,8 @@
         private Label Subtitle;
         private System.Windows.Forms.Timer SlotMachineTimer;
         private TextBox Symbol1;
-        private TextBox textBox1;
-        private TextBox textBox2;
+        private TextBox Symbol2;
+        private TextBox Symbol3;
         private Label SymbolTitle;
         private Label Symbol2Title;
         private Label Symbol3Title;
