@@ -67,7 +67,7 @@ namespace StudentSorter.CardGames.Slots
             {
                 SlotMachineTimer.Stop();
 
-                if(Win())
+                if (Win())
                 {
                     WinWindow winWindow = new(this, Win(), Jackpot());
                     winWindow.Show();

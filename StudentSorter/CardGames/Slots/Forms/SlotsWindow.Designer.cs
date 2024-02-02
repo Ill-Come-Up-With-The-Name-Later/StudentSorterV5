@@ -114,7 +114,7 @@
             // Symbol3Title
             // 
             Symbol3Title.AutoSize = true;
-            Symbol3Title.Location = new Point(493, 207);
+            Symbol3Title.Location = new Point(474, 207);
             Symbol3Title.Name = "Symbol3Title";
             Symbol3Title.Size = new Size(26, 28);
             Symbol3Title.TabIndex = 7;
