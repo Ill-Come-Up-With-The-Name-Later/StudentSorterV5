@@ -1,4 +1,5 @@
 ﻿using StudentSorter.CardGames.Poker.Forms;
+using StudentSorter.CardGames.Slots;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.BlackJack.Forms;
 
@@ -33,6 +34,16 @@ namespace StudentSorter.CardGames
             pokerWindow.Show();
 
             Debugger.Log("Opened Poker (Texas Hold'em)");
+        }
+
+        /// <summary>
+        /// Opens the slot machine emulation
+        /// window
+        /// </summary>
+        private void SlotsButton_Click(object sender, EventArgs e)
+        {
+            SlotsWindow slotsWindow = new();
+            slotsWindow.Show();
         }
     }
 }

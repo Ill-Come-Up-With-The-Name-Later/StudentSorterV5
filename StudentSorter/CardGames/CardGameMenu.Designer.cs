@@ -30,11 +30,13 @@
         {
             BlackjackButton = new Button();
             PokerButton = new Button();
+            SlotsButton = new Button();
+            Title = new Label();
             SuspendLayout();
             // 
             // BlackjackButton
             // 
-            BlackjackButton.Location = new Point(70, 76);
+            BlackjackButton.Location = new Point(100, 99);
             BlackjackButton.Name = "BlackjackButton";
             BlackjackButton.Size = new Size(191, 56);
             BlackjackButton.TabIndex = 0;
@@ -44,7 +46,7 @@
             // 
             // PokerButton
             // 
-            PokerButton.Location = new Point(41, 172);
+            PokerButton.Location = new Point(70, 175);
             PokerButton.Name = "PokerButton";
             PokerButton.Size = new Size(251, 53);
             PokerButton.TabIndex = 1;
@@ -52,11 +54,32 @@
             PokerButton.UseVisualStyleBackColor = true;
             PokerButton.Click += PokerButton_Click;
             // 
+            // SlotsButton
+            // 
+            SlotsButton.Location = new Point(92, 250);
+            SlotsButton.Name = "SlotsButton";
+            SlotsButton.Size = new Size(199, 47);
+            SlotsButton.TabIndex = 2;
+            SlotsButton.Text = "(Lucky) Slots";
+            SlotsButton.UseVisualStyleBackColor = true;
+            SlotsButton.Click += SlotsButton_Click;
+            // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.Location = new Point(57, 31);
+            Title.Name = "Title";
+            Title.Size = new Size(264, 28);
+            Title.TabIndex = 3;
+            Title.Text = "Definitely not a Vegas Casino";
+            // 
             // CardGameMenu
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(325, 446);
+            ClientSize = new Size(395, 446);
+            Controls.Add(Title);
+            Controls.Add(SlotsButton);
             Controls.Add(PokerButton);
             Controls.Add(BlackjackButton);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
@@ -66,11 +89,14 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Card Game Menu";
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
         private Button BlackjackButton;
         private Button PokerButton;
+        private Button SlotsButton;
+        private Label Title;
     }
 }
