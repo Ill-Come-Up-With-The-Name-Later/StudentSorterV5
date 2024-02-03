@@ -1,6 +1,7 @@
-﻿using StudentSorter.Gambling.Cards;
+﻿using StudentSorter.CardGames.Poker.Player;
+using StudentSorter.Gambling.Cards;
 
-namespace StudentSorter.CardGames.Poker.Player
+namespace StudentSorter.CardGames.Poker
 {
     public class HandComparer : IComparer<Hand>
     {
@@ -19,7 +20,7 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int Compare(Hand? x, Hand? y)
         {
-            if(x == null || y == null) return 0;
+            if (x == null || y == null) return 0;
 
             // Royal flush
             if (x.RoyalFlush() && !y.RoyalFlush()) return -1;
@@ -101,13 +102,13 @@ namespace StudentSorter.CardGames.Poker.Player
 
             // Two pairs
             if (x.TwoPairs() && !y.TwoPairs()) return -1;
-            else if(x.TwoPairs() && y.TwoPairs())
+            else if (x.TwoPairs() && y.TwoPairs())
             {
                 if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if(x.GetHandValue() > y.GetHandValue()) return -1;
+                else if (x.GetHandValue() > y.GetHandValue()) return -1;
                 else if (x.GetHandValue() == y.GetHandValue()) return 0;
             }
-            else if(!x.TwoPairs() && y.TwoPairs()) return 1;
+            else if (!x.TwoPairs() && y.TwoPairs()) return 1;
 
             // One Pair
             if (x.OnePair() && !y.OnePair()) return -1;

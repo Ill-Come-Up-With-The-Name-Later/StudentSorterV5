@@ -1,7 +1,8 @@
-﻿using StudentSorter.Gambling.Cards;
+﻿using StudentSorter.CardGames.Poker.Player;
+using StudentSorter.Gambling.Cards;
 using System.Collections;
 
-namespace StudentSorter.CardGames.Poker.Player
+namespace StudentSorter.CardGames.Poker
 {
     public class FirstCardComparer : IComparer<PokerPlayer>
     {
@@ -19,7 +20,7 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int Compare(PokerPlayer? x, PokerPlayer? y)
         {
-            if(x == null || y == null) return 0;
+            if (x == null || y == null) return 0;
             Card xCard = x.PlayerHand.Cards[0];
             Card yCard = y.PlayerHand.Cards[0];
 
@@ -42,8 +43,8 @@ namespace StudentSorter.CardGames.Poker.Player
             };
 
             if (xCard.Value > yCard.Value) return -1;
-            if(xCard.Value < yCard.Value) return 1;
-            if(xCard.Value == yCard.Value) return 0;
+            if (xCard.Value < yCard.Value) return 1;
+            if (xCard.Value == yCard.Value) return 0;
 
             return 0;
         }

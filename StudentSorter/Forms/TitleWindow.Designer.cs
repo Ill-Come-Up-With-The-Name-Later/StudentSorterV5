@@ -147,7 +147,7 @@
             SecretPassInput.Location = new Point(87, 413);
             SecretPassInput.Name = "SecretPassInput";
             SecretPassInput.PasswordChar = '*';
-            SecretPassInput.PlaceholderText = "Enter the secret key.";
+            SecretPassInput.PlaceholderText = "Enter the secret code.";
             SecretPassInput.Size = new Size(230, 34);
             SecretPassInput.TabIndex = 9;
             // 

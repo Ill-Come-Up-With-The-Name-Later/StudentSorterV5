@@ -129,16 +129,16 @@ namespace StudentSorter
 
             if (!SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase))
             {
-                ErrorProvider.SetError(SecretPassInput, "Incorrect pass key");
-                Debugger.Log("An incorrect pass key was entered");
+                ErrorProvider.SetError(SecretPassInput, "Incorrect pass code");
+                Debugger.Log("An incorrect pass code was entered");
             }
 
-            if(SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase) && !ErrorProvider.HasErrors)
+            if (SecretPassInput.Text.Equals(SecretPassKey, StringComparison.OrdinalIgnoreCase) && !ErrorProvider.HasErrors)
             {
                 CardGameMenu menu = new();
                 menu.Show();
 
-                Debugger.Log("The correct pass key was entered");
+                Debugger.Log("The correct pass code was entered");
             }
 
             SecretPassInput.Clear();

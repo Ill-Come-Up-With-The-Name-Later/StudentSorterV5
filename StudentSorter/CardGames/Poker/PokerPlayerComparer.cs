@@ -1,4 +1,6 @@
-﻿namespace StudentSorter.CardGames.Poker.Player
+﻿using StudentSorter.CardGames.Poker.Player;
+
+namespace StudentSorter.CardGames.Poker
 {
     internal class PokerPlayerComparer : IComparer<PokerPlayer>
     {
@@ -16,10 +18,10 @@
         /// </returns>
         public int Compare(PokerPlayer? x, PokerPlayer? y)
         {
-            if(x == null || y == null) return 0;
-            if(x.PlayerHand.GetHandValue() == y.PlayerHand.GetHandValue()) return 0;
-            if(x.PlayerHand.GetHandValue() > y.PlayerHand.GetHandValue()) return -1;
-            if(x.PlayerHand.GetHandValue() < y.PlayerHand.GetHandValue()) return 1; 
+            if (x == null || y == null) return 0;
+            if (x.PlayerHand.GetHandValue() == y.PlayerHand.GetHandValue()) return 0;
+            if (x.PlayerHand.GetHandValue() > y.PlayerHand.GetHandValue()) return -1;
+            if (x.PlayerHand.GetHandValue() < y.PlayerHand.GetHandValue()) return 1;
             return 0;
         }
     }
