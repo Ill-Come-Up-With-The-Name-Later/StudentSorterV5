@@ -68,30 +68,39 @@
             // 
             // Symbol1
             // 
-            Symbol1.Enabled = false;
+            Symbol1.BackColor = SystemColors.Control;
+            Symbol1.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Symbol1.ForeColor = Color.Lime;
             Symbol1.Location = new Point(51, 160);
             Symbol1.Name = "Symbol1";
             Symbol1.ReadOnly = true;
             Symbol1.Size = new Size(67, 34);
             Symbol1.TabIndex = 2;
+            Symbol1.Text = "X";
             // 
             // Symbol2
             // 
-            Symbol2.Enabled = false;
+            Symbol2.BackColor = SystemColors.Control;
+            Symbol2.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Symbol2.ForeColor = Color.FromArgb(192, 192, 0);
             Symbol2.Location = new Point(262, 160);
             Symbol2.Name = "Symbol2";
             Symbol2.ReadOnly = true;
             Symbol2.Size = new Size(67, 34);
             Symbol2.TabIndex = 3;
+            Symbol2.Text = "X";
             // 
             // Symbol3
             // 
-            Symbol3.Enabled = false;
+            Symbol3.BackColor = SystemColors.Control;
+            Symbol3.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            Symbol3.ForeColor = Color.Red;
             Symbol3.Location = new Point(474, 160);
             Symbol3.Name = "Symbol3";
             Symbol3.ReadOnly = true;
             Symbol3.Size = new Size(67, 34);
             Symbol3.TabIndex = 4;
+            Symbol3.Text = "X";
             // 
             // SymbolTitle
             // 

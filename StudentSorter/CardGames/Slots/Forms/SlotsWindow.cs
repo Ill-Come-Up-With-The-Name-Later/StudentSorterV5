@@ -56,6 +56,8 @@ namespace StudentSorter.CardGames.Slots
             Debugger.Log("Opened (Lucky) Slot machine");
             SlotMachineTimer.Stop();
             tick = 0;
+
+            ActiveControl = SpinButton;
         }
 
         /// <summary>
