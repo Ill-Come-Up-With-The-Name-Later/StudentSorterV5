@@ -32,6 +32,7 @@
             PokerButton = new Button();
             SlotsButton = new Button();
             Title = new Label();
+            BaccaratButton = new Button();
             SuspendLayout();
             // 
             // BlackjackButton
@@ -73,11 +74,22 @@
             Title.TabIndex = 3;
             Title.Text = "Definitely not a Vegas Casino";
             // 
+            // BaccaratButton
+            // 
+            BaccaratButton.Location = new Point(99, 322);
+            BaccaratButton.Name = "BaccaratButton";
+            BaccaratButton.Size = new Size(192, 46);
+            BaccaratButton.TabIndex = 4;
+            BaccaratButton.Text = "Baccarat";
+            BaccaratButton.UseVisualStyleBackColor = true;
+            BaccaratButton.Click += BaccaratButton_Click;
+            // 
             // CardGameMenu
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(395, 446);
+            Controls.Add(BaccaratButton);
             Controls.Add(Title);
             Controls.Add(SlotsButton);
             Controls.Add(PokerButton);
@@ -98,5 +110,6 @@
         private Button PokerButton;
         private Button SlotsButton;
         private Label Title;
+        private Button BaccaratButton;
     }
 }

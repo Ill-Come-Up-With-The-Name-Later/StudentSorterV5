@@ -1,4 +1,5 @@
-﻿using StudentSorter.CardGames.Poker.Forms;
+﻿using StudentSorter.CardGames.Baccarat.Forms;
+using StudentSorter.CardGames.Poker.Forms;
 using StudentSorter.CardGames.Slots;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.BlackJack.Forms;
@@ -44,6 +45,15 @@ namespace StudentSorter.CardGames
         {
             SlotsWindow slotsWindow = new();
             slotsWindow.Show();
+        }
+
+        /// <summary>
+        /// Opens Baccarat window
+        /// </summary>
+        private void BaccaratButton_Click(object sender, EventArgs e)
+        {
+            BaccaratWindow baccaratWindow = new();
+            baccaratWindow.Show();
         }
     }
 }

@@ -1,16 +1,30 @@
-﻿namespace StudentSorter.CardGames.Baccarat.Player
+﻿using StudentSorter.Gambling.Cards;
+
+namespace StudentSorter.CardGames.Baccarat.Player
 {
     public class BaccaratPlayer
     {
         public string Name { get; set; }
-        public Hand PlayerHand { get; set; }
 
-        public BaccaratPlayer(string name, Hand playerHand)
+        public Hand PlayerHand = new();
+
+        public BaccaratPlayer(string name = "Name")
         {
             Name = name;
-            PlayerHand = playerHand;
 
             PlayerHand.Owner = this;
+        }
+
+        /// <summary>
+        /// Adds a card to the player's
+        /// hand
+        /// </summary>
+        /// <param name="card">
+        /// The card to add to the hand
+        /// </param>
+        public void AddCard(Card card)
+        {
+            PlayerHand.Cards.Add(card);
         }
     }
 }
