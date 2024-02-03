@@ -107,9 +107,9 @@
             Player2HandValue.AutoSize = true;
             Player2HandValue.Location = new Point(493, 384);
             Player2HandValue.Name = "Player2HandValue";
-            Player2HandValue.Size = new Size(126, 28);
+            Player2HandValue.Size = new Size(131, 28);
             Player2HandValue.TabIndex = 6;
-            Player2HandValue.Text = "HandValue: 0";
+            Player2HandValue.Text = "Hand Value: 0";
             // 
             // StartButton
             // 

@@ -20,8 +20,6 @@ namespace StudentSorter.CardGames.Baccarat.Forms
             BaccaratPlayer Player2 = new("Real Human");
             Manager = new(Player1, Player2);
 
-
-
             Player1Cards.Columns.Add("Card", typeof(string));
             Player2Cards.Columns.Add("Card", typeof(string));
 
@@ -40,8 +38,8 @@ namespace StudentSorter.CardGames.Baccarat.Forms
         /// </summary>
         public void UpdateTables()
         {
-            if(Player1Cards.Rows.Count > 0) Player1Cards.Rows.Clear();
-            if(Player2Cards.Rows.Count > 0) Player2Cards.Rows.Clear();
+            if (Player1Cards.Rows.Count > 0) Player1Cards.Rows.Clear();
+            if (Player2Cards.Rows.Count > 0) Player2Cards.Rows.Clear();
 
             foreach (Card card in Manager.Player1.PlayerHand.Cards)
                 Player1Cards.Rows.Add(card);
@@ -83,24 +81,28 @@ namespace StudentSorter.CardGames.Baccarat.Forms
         public void ThirdCardPolicy()
         {
             // only go to third card if both players got 7 or less
-            if(!(Manager.Player1.PlayerHand.GetHandValue() >= 8 && Manager.Player2.PlayerHand.GetHandValue() >= 8))
+            if (!(Manager.Player1.PlayerHand.GetHandValue() >= 8 && Manager.Player2.PlayerHand.GetHandValue() >= 8))
             {
-                if (Player1TakeThirdCard())
+                if(Player1TakeThirdCard())
                 {
                     Manager.AddCard(Manager.Player1);
                     Debugger.Log($"{Manager.Player1.Name} was given a third card");
                 }
 
-                if (Player2TakeThirdCard())
+                if(Player2TakeThirdCard())
                 {
                     Manager.AddCard(Manager.Player2);
-                    Debugger.Log($"{Manager.Player1.Name} was given a third card");
+                    Debugger.Log($"{Manager.Player2.Name} was given a third card");
                 }
-
-                UpdateTables();
             }
+            UpdateTables();
+
+            BaccaratPlayer? winner = Winner();
+
+            WinnerWindow? winnerWindow = new(this, winner);
+            winnerWindow.Show();
         }
-        
+
         /// <summary>
         /// Determines if the player gets a third
         /// card
@@ -125,20 +127,33 @@ namespace StudentSorter.CardGames.Baccarat.Forms
         /// </returns>
         public bool Player2TakeThirdCard()
         {
-            if (Manager.Player1.PlayerHand.Cards.Count == 2) 
+            if (Manager.Player1.PlayerHand.Cards.Count == 2)
                 return Manager.Player2.PlayerHand.GetHandValue() <= 5;
 
             if (Manager.Player2.PlayerHand.GetHandValue() <= 2) return true;
             if (Manager.Player2.PlayerHand.GetHandValue() == 3) return !(Manager.Player1.PlayerHand.Cards[2].Value == 8);
             if (Manager.Player2.PlayerHand.GetHandValue() == 4) return Manager.Player1.PlayerHand.Cards[2].Value <= 7 &&
                     Manager.Player1.PlayerHand.Cards[2].Value >= 2;
-            if(Manager.Player2.PlayerHand.GetHandValue() == 5) return Manager.Player1.PlayerHand.Cards[2].Value <= 7 &&
+            if (Manager.Player2.PlayerHand.GetHandValue() == 5) return Manager.Player1.PlayerHand.Cards[2].Value <= 7 &&
                     Manager.Player1.PlayerHand.Cards[2].Value >= 4;
             if (Manager.Player2.PlayerHand.GetHandValue() == 6) return Manager.Player1.PlayerHand.Cards[2].Value == 6 ||
                      Manager.Player1.PlayerHand.Cards[2].Value == 7;
             if (Manager.Player2.PlayerHand.GetHandValue() == 7) return false;
 
             return false;
-        } 
+        }
+
+        /// <summary>
+        /// Determines who won
+        /// </summary>
+        /// <returns>
+        /// Whoever had closer to or equal to
+        /// 9, or null if there was a tie
+        /// </returns>
+        public BaccaratPlayer? Winner()
+        {
+            return Manager.Player1.PlayerHand.GetHandValue() > Manager.Player2.PlayerHand.GetHandValue() ? Manager.Player1 :
+                Manager.Player1.PlayerHand.GetHandValue() == Manager.Player2.PlayerHand.GetHandValue() ? null : Manager.Player2;
+        }
     }
 }

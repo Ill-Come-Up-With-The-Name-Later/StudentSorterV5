@@ -2,7 +2,6 @@
 using StudentSorter.CardGames.Cards;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
-using System.Drawing.Imaging;
 
 namespace StudentSorter.CardGames.Baccarat
 {
@@ -89,6 +88,7 @@ namespace StudentSorter.CardGames.Baccarat
 
             player.AddCard(card);
             Debugger.Log($"Gave {player.Name} card: {card}");
+            Deck.Remove(card);
         }
     }
 }
