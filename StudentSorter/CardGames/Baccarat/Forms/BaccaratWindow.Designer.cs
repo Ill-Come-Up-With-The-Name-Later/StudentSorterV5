@@ -34,6 +34,7 @@
             Player2Title = new Label();
             Player1HandValue = new Label();
             Player2HandValue = new Label();
+            StartButton = new Button();
             ((System.ComponentModel.ISupportInitialize)Player1Hand).BeginInit();
             ((System.ComponentModel.ISupportInitialize)Player2Hand).BeginInit();
             SuspendLayout();
@@ -110,11 +111,22 @@
             Player2HandValue.TabIndex = 6;
             Player2HandValue.Text = "HandValue: 0";
             // 
+            // StartButton
+            // 
+            StartButton.Location = new Point(30, 425);
+            StartButton.Name = "StartButton";
+            StartButton.Size = new Size(127, 42);
+            StartButton.TabIndex = 7;
+            StartButton.Text = "Start";
+            StartButton.UseVisualStyleBackColor = true;
+            StartButton.Click += StartButton_Click;
+            // 
             // BaccaratWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(781, 496);
+            Controls.Add(StartButton);
             Controls.Add(Player2HandValue);
             Controls.Add(Player1HandValue);
             Controls.Add(Player2Title);
@@ -141,5 +153,6 @@
         private Label Player2Title;
         private Label Player1HandValue;
         private Label Player2HandValue;
+        private Button StartButton;
     }
 }

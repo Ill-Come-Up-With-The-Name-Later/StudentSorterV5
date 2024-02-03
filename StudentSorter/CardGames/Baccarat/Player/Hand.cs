@@ -24,7 +24,7 @@ namespace StudentSorter.CardGames.Baccarat.Player
             foreach(Card card in Cards)
                 val+= card.Value;
 
-            if(val > 10) val -= 10;
+            if(val >= 10) val -= 10;
 
             return val;
         }
