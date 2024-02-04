@@ -33,13 +33,14 @@
             SlotsButton = new Button();
             Title = new Label();
             BaccaratButton = new Button();
+            FiveCardDrawButton = new Button();
             SuspendLayout();
             // 
             // BlackjackButton
             // 
-            BlackjackButton.Location = new Point(100, 99);
+            BlackjackButton.Location = new Point(100, 116);
             BlackjackButton.Name = "BlackjackButton";
-            BlackjackButton.Size = new Size(191, 56);
+            BlackjackButton.Size = new Size(191, 39);
             BlackjackButton.TabIndex = 0;
             BlackjackButton.Text = "Blackjack";
             BlackjackButton.UseVisualStyleBackColor = true;
@@ -47,9 +48,9 @@
             // 
             // PokerButton
             // 
-            PokerButton.Location = new Point(70, 175);
+            PokerButton.Location = new Point(99, 171);
             PokerButton.Name = "PokerButton";
-            PokerButton.Size = new Size(251, 53);
+            PokerButton.Size = new Size(191, 39);
             PokerButton.TabIndex = 1;
             PokerButton.Text = "Poker (Texas Hold'em)";
             PokerButton.UseVisualStyleBackColor = true;
@@ -57,9 +58,9 @@
             // 
             // SlotsButton
             // 
-            SlotsButton.Location = new Point(92, 250);
+            SlotsButton.Location = new Point(99, 225);
             SlotsButton.Name = "SlotsButton";
-            SlotsButton.Size = new Size(199, 47);
+            SlotsButton.Size = new Size(192, 40);
             SlotsButton.TabIndex = 2;
             SlotsButton.Text = "(Lucky) Slots";
             SlotsButton.UseVisualStyleBackColor = true;
@@ -68,27 +69,38 @@
             // Title
             // 
             Title.AutoSize = true;
-            Title.Location = new Point(57, 31);
+            Title.Location = new Point(89, 30);
             Title.Name = "Title";
-            Title.Size = new Size(264, 28);
+            Title.Size = new Size(211, 21);
             Title.TabIndex = 3;
             Title.Text = "Definitely not a Vegas Casino";
             // 
             // BaccaratButton
             // 
-            BaccaratButton.Location = new Point(99, 322);
+            BaccaratButton.Location = new Point(99, 280);
             BaccaratButton.Name = "BaccaratButton";
-            BaccaratButton.Size = new Size(192, 46);
+            BaccaratButton.Size = new Size(192, 40);
             BaccaratButton.TabIndex = 4;
             BaccaratButton.Text = "Baccarat";
             BaccaratButton.UseVisualStyleBackColor = true;
             BaccaratButton.Click += BaccaratButton_Click;
             // 
+            // FiveCardDrawButton
+            // 
+            FiveCardDrawButton.Location = new Point(100, 336);
+            FiveCardDrawButton.Name = "FiveCardDrawButton";
+            FiveCardDrawButton.Size = new Size(191, 40);
+            FiveCardDrawButton.TabIndex = 5;
+            FiveCardDrawButton.Text = "Poker (5-Card Draw)";
+            FiveCardDrawButton.UseVisualStyleBackColor = true;
+            FiveCardDrawButton.Click += FiveCardDrawButton_Click;
+            // 
             // CardGameMenu
             // 
-            AutoScaleDimensions = new SizeF(11F, 28F);
+            AutoScaleDimensions = new SizeF(9F, 21F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(395, 446);
+            ClientSize = new Size(395, 464);
+            Controls.Add(FiveCardDrawButton);
             Controls.Add(BaccaratButton);
             Controls.Add(Title);
             Controls.Add(SlotsButton);
@@ -111,5 +123,6 @@
         private Button SlotsButton;
         private Label Title;
         private Button BaccaratButton;
+        private Button FiveCardDrawButton;
     }
 }

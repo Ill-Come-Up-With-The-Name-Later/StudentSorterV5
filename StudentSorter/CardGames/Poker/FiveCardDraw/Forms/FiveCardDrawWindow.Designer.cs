@@ -1,0 +1,131 @@
+﻿namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
+{
+    partial class FiveCardDrawWindow
+    {
+        /// <summary>
+        /// Required designer variable.
+        /// </summary>
+        private System.ComponentModel.IContainer components = null;
+
+        /// <summary>
+        /// Clean up any resources being used.
+        /// </summary>
+        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
+        protected override void Dispose(bool disposing)
+        {
+            if (disposing && (components != null))
+            {
+                components.Dispose();
+            }
+            base.Dispose(disposing);
+        }
+
+        #region Windows Form Designer generated code
+
+        /// <summary>
+        /// Required method for Designer support - do not modify
+        /// the contents of this method with the code editor.
+        /// </summary>
+        private void InitializeComponent()
+        {
+            PlayerCards = new DataGridView();
+            Title = new Label();
+            PlayerHandTitle = new Label();
+            OtherPlayerTitle = new Label();
+            PlayerList = new DataGridView();
+            ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PlayerList).BeginInit();
+            SuspendLayout();
+            // 
+            // PlayerCards
+            // 
+            PlayerCards.AllowUserToAddRows = false;
+            PlayerCards.AllowUserToDeleteRows = false;
+            PlayerCards.AllowUserToResizeColumns = false;
+            PlayerCards.AllowUserToResizeRows = false;
+            PlayerCards.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PlayerCards.ColumnHeadersVisible = false;
+            PlayerCards.Location = new Point(23, 92);
+            PlayerCards.Name = "PlayerCards";
+            PlayerCards.ReadOnly = true;
+            PlayerCards.RowHeadersVisible = false;
+            PlayerCards.RowHeadersWidth = 51;
+            PlayerCards.RowTemplate.Height = 29;
+            PlayerCards.Size = new Size(166, 213);
+            PlayerCards.TabIndex = 11;
+            // 
+            // Title
+            // 
+            Title.AutoSize = true;
+            Title.Location = new Point(201, 19);
+            Title.Name = "Title";
+            Title.Size = new Size(99, 21);
+            Title.TabIndex = 12;
+            Title.Text = "5-Card Draw";
+            // 
+            // PlayerHandTitle
+            // 
+            PlayerHandTitle.AutoSize = true;
+            PlayerHandTitle.Location = new Point(23, 58);
+            PlayerHandTitle.Name = "PlayerHandTitle";
+            PlayerHandTitle.Size = new Size(83, 21);
+            PlayerHandTitle.TabIndex = 13;
+            PlayerHandTitle.Text = "Your Hand";
+            // 
+            // OtherPlayerTitle
+            // 
+            OtherPlayerTitle.AutoSize = true;
+            OtherPlayerTitle.Location = new Point(293, 58);
+            OtherPlayerTitle.Name = "OtherPlayerTitle";
+            OtherPlayerTitle.Size = new Size(104, 21);
+            OtherPlayerTitle.TabIndex = 15;
+            OtherPlayerTitle.Text = "Other Players";
+            // 
+            // PlayerList
+            // 
+            PlayerList.AllowUserToAddRows = false;
+            PlayerList.AllowUserToDeleteRows = false;
+            PlayerList.AllowUserToResizeColumns = false;
+            PlayerList.AllowUserToResizeRows = false;
+            PlayerList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PlayerList.ColumnHeadersVisible = false;
+            PlayerList.Location = new Point(293, 92);
+            PlayerList.Name = "PlayerList";
+            PlayerList.ReadOnly = true;
+            PlayerList.RowHeadersVisible = false;
+            PlayerList.RowHeadersWidth = 51;
+            PlayerList.RowTemplate.Height = 29;
+            PlayerList.Size = new Size(188, 125);
+            PlayerList.TabIndex = 16;
+            // 
+            // FiveCardDrawWindow
+            // 
+            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(505, 419);
+            Controls.Add(PlayerList);
+            Controls.Add(OtherPlayerTitle);
+            Controls.Add(PlayerHandTitle);
+            Controls.Add(Title);
+            Controls.Add(PlayerCards);
+            Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Margin = new Padding(4);
+            MaximizeBox = false;
+            Name = "FiveCardDrawWindow";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Five-Card Draw";
+            ((System.ComponentModel.ISupportInitialize)PlayerCards).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PlayerList).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
+        }
+
+        #endregion
+
+        private DataGridView PlayerCards;
+        private Label Title;
+        private Label PlayerHandTitle;
+        private Label OtherPlayerTitle;
+        private DataGridView PlayerList;
+    }
+}

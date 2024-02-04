@@ -53,6 +53,19 @@ namespace StudentSorter.CardGames.Poker.Player
         }
 
         /// <summary>
+        /// Removes a card from
+        /// the hand
+        /// </summary>
+        /// <param name="card">
+        /// The card to remove
+        /// </param>
+        public void RemoveCard(Card card)
+        {
+            Cards.Remove(card);
+            Debugger.Log($"Removed {card} from {Owner.Name}'s Hand");
+        }
+
+        /// <summary>
         /// Finds the highest value card in
         /// the hand
         /// </summary>

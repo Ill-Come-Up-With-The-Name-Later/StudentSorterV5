@@ -1,4 +1,5 @@
 ﻿using StudentSorter.CardGames.Baccarat.Forms;
+using StudentSorter.CardGames.Poker.FiveCardDraw.Forms;
 using StudentSorter.CardGames.Poker.Forms;
 using StudentSorter.CardGames.Slots;
 using StudentSorter.Debug;
@@ -54,6 +55,15 @@ namespace StudentSorter.CardGames
         {
             BaccaratWindow baccaratWindow = new();
             baccaratWindow.Show();
+        }
+
+        /// <summary>
+        /// Opens 5-Card Draw window
+        /// </summary>
+        private void FiveCardDrawButton_Click(object sender, EventArgs e)
+        {
+            FiveCardDrawWindow window = new();
+            window.Show();
         }
     }
 }
