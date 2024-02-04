@@ -208,32 +208,32 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             if(!(NumPairs() > 0)) return -1;
 
-            Dictionary<string, int> cardAmounts = new();
+            Dictionary<Card, int> cardAmounts = new();
             int pairs = 0;
 
             foreach (Card card in Cards)
             {
-                if (cardAmounts.ContainsKey(card.Name[..^1]))
+                if (cardAmounts.ContainsKey(card))
                 {
-                    cardAmounts[card.Name[..^1]]++;
+                    cardAmounts[card]++;
                 }
                 else
                 {
-                    cardAmounts[card.Name[..^1]] = 1;
+                    cardAmounts[card] = 1;
                 }
             }
 
-            foreach (string key in cardAmounts.Keys)
+            foreach (Card key in cardAmounts.Keys)
             {
                 if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
                     pairs++;
             }
 
-            List<int> PairVals = new(cardAmounts.Values);
-            PairVals.Sort();
+            List<Card> PairVals = new(cardAmounts.Keys);
+            PairVals.Sort(new CardComparer());
 
             Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[^1]}");
-            return PairVals[^1];
+            return PairVals[0].Value;
         }
 
         /// <summary>
