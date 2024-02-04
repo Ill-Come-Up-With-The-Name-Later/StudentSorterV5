@@ -32,7 +32,7 @@
             Title = new Label();
             AmountOfNumsToBet = new Label();
             NumberAmountInput = new NumericUpDown();
-            label1 = new Label();
+            EnterNumbersInstruction = new Label();
             SetAmountOfNumsButton = new Button();
             ChosenNumInput = new NumericUpDown();
             BetNumButton = new Button();
@@ -40,10 +40,16 @@
             PlayerNumsLabel = new Label();
             DrawButton = new Button();
             ErrorProvider = new ErrorProvider(components);
+            DrawnNumbers = new DataGridView();
+            DrawnTitle = new Label();
+            MatchLabel = new Label();
+            CloseButton = new Button();
+            ReplayButton = new Button();
             ((System.ComponentModel.ISupportInitialize)NumberAmountInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ChosenNumInput).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerNumbers).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)DrawnNumbers).BeginInit();
             SuspendLayout();
             // 
             // Title
@@ -74,14 +80,14 @@
             NumberAmountInput.TabIndex = 2;
             NumberAmountInput.Value = new decimal(new int[] { 1, 0, 0, 0 });
             // 
-            // label1
+            // EnterNumbersInstruction
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 218);
-            label1.Name = "label1";
-            label1.Size = new Size(364, 28);
-            label1.TabIndex = 3;
-            label1.Text = "Enter your numbers one at a time: (1-80)";
+            EnterNumbersInstruction.AutoSize = true;
+            EnterNumbersInstruction.Location = new Point(12, 218);
+            EnterNumbersInstruction.Name = "EnterNumbersInstruction";
+            EnterNumbersInstruction.Size = new Size(364, 28);
+            EnterNumbersInstruction.TabIndex = 3;
+            EnterNumbersInstruction.Text = "Enter your numbers one at a time: (1-80)";
             // 
             // SetAmountOfNumsButton
             // 
@@ -95,6 +101,7 @@
             // 
             // ChosenNumInput
             // 
+            ChosenNumInput.Enabled = false;
             ChosenNumInput.Location = new Point(12, 249);
             ChosenNumInput.Maximum = new decimal(new int[] { 80, 0, 0, 0 });
             ChosenNumInput.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
@@ -105,6 +112,7 @@
             // 
             // BetNumButton
             // 
+            BetNumButton.Enabled = false;
             BetNumButton.Location = new Point(12, 299);
             BetNumButton.Name = "BetNumButton";
             BetNumButton.Size = new Size(212, 40);
@@ -121,7 +129,7 @@
             PlayerNumbers.AllowUserToResizeRows = false;
             PlayerNumbers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             PlayerNumbers.ColumnHeadersVisible = false;
-            PlayerNumbers.Location = new Point(275, 330);
+            PlayerNumbers.Location = new Point(305, 330);
             PlayerNumbers.Name = "PlayerNumbers";
             PlayerNumbers.ReadOnly = true;
             PlayerNumbers.RowHeadersVisible = false;
@@ -133,7 +141,7 @@
             // PlayerNumsLabel
             // 
             PlayerNumsLabel.AutoSize = true;
-            PlayerNumsLabel.Location = new Point(294, 299);
+            PlayerNumsLabel.Location = new Point(305, 299);
             PlayerNumsLabel.Name = "PlayerNumsLabel";
             PlayerNumsLabel.Size = new Size(136, 28);
             PlayerNumsLabel.TabIndex = 13;
@@ -141,29 +149,91 @@
             // 
             // DrawButton
             // 
+            DrawButton.Enabled = false;
             DrawButton.Location = new Point(12, 459);
             DrawButton.Name = "DrawButton";
             DrawButton.Size = new Size(257, 42);
             DrawButton.TabIndex = 14;
             DrawButton.Text = "Draw Winning Numbers";
             DrawButton.UseVisualStyleBackColor = true;
+            DrawButton.Click += DrawButton_Click;
             // 
             // ErrorProvider
             // 
             ErrorProvider.ContainerControl = this;
             // 
+            // DrawnNumbers
+            // 
+            DrawnNumbers.AllowUserToAddRows = false;
+            DrawnNumbers.AllowUserToDeleteRows = false;
+            DrawnNumbers.AllowUserToResizeColumns = false;
+            DrawnNumbers.AllowUserToResizeRows = false;
+            DrawnNumbers.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            DrawnNumbers.ColumnHeadersVisible = false;
+            DrawnNumbers.Location = new Point(608, 330);
+            DrawnNumbers.Name = "DrawnNumbers";
+            DrawnNumbers.ReadOnly = true;
+            DrawnNumbers.RowHeadersVisible = false;
+            DrawnNumbers.RowHeadersWidth = 51;
+            DrawnNumbers.RowTemplate.Height = 29;
+            DrawnNumbers.Size = new Size(166, 161);
+            DrawnNumbers.TabIndex = 15;
+            // 
+            // DrawnTitle
+            // 
+            DrawnTitle.AutoSize = true;
+            DrawnTitle.Location = new Point(608, 299);
+            DrawnTitle.Name = "DrawnTitle";
+            DrawnTitle.Size = new Size(153, 28);
+            DrawnTitle.TabIndex = 16;
+            DrawnTitle.Text = "Drawn Numbers";
+            // 
+            // MatchLabel
+            // 
+            MatchLabel.AutoSize = true;
+            MatchLabel.Location = new Point(608, 271);
+            MatchLabel.Name = "MatchLabel";
+            MatchLabel.Size = new Size(108, 28);
+            MatchLabel.TabIndex = 17;
+            MatchLabel.Text = "Match: X/X";
+            // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(565, 536);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(130, 38);
+            CloseButton.TabIndex = 18;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
+            // ReplayButton
+            // 
+            ReplayButton.Location = new Point(723, 537);
+            ReplayButton.Name = "ReplayButton";
+            ReplayButton.Size = new Size(107, 37);
+            ReplayButton.TabIndex = 19;
+            ReplayButton.Text = "Replay";
+            ReplayButton.UseVisualStyleBackColor = true;
+            ReplayButton.Click += ReplayButton_Click;
+            // 
             // KenoWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(866, 532);
+            ClientSize = new Size(866, 586);
+            Controls.Add(ReplayButton);
+            Controls.Add(CloseButton);
+            Controls.Add(MatchLabel);
+            Controls.Add(DrawnTitle);
+            Controls.Add(DrawnNumbers);
             Controls.Add(DrawButton);
             Controls.Add(PlayerNumsLabel);
             Controls.Add(PlayerNumbers);
             Controls.Add(BetNumButton);
             Controls.Add(ChosenNumInput);
             Controls.Add(SetAmountOfNumsButton);
-            Controls.Add(label1);
+            Controls.Add(EnterNumbersInstruction);
             Controls.Add(NumberAmountInput);
             Controls.Add(AmountOfNumsToBet);
             Controls.Add(Title);
@@ -177,6 +247,7 @@
             ((System.ComponentModel.ISupportInitialize)ChosenNumInput).EndInit();
             ((System.ComponentModel.ISupportInitialize)PlayerNumbers).EndInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
+            ((System.ComponentModel.ISupportInitialize)DrawnNumbers).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -186,7 +257,7 @@
         private Label Title;
         private Label AmountOfNumsToBet;
         private NumericUpDown NumberAmountInput;
-        private Label label1;
+        private Label EnterNumbersInstruction;
         private Button SetAmountOfNumsButton;
         private NumericUpDown ChosenNumInput;
         private Button BetNumButton;
@@ -194,5 +265,10 @@
         private Label PlayerNumsLabel;
         private Button DrawButton;
         private ErrorProvider ErrorProvider;
+        private Label DrawnTitle;
+        private DataGridView DrawnNumbers;
+        private Label MatchLabel;
+        private Button ReplayButton;
+        private Button CloseButton;
     }
 }
