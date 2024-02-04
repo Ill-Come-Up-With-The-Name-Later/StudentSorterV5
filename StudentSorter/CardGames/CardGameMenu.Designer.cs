@@ -39,9 +39,9 @@
             // 
             // BlackjackButton
             // 
-            BlackjackButton.Location = new Point(100, 116);
+            BlackjackButton.Location = new Point(89, 115);
             BlackjackButton.Name = "BlackjackButton";
-            BlackjackButton.Size = new Size(191, 39);
+            BlackjackButton.Size = new Size(231, 39);
             BlackjackButton.TabIndex = 0;
             BlackjackButton.Text = "Blackjack";
             BlackjackButton.UseVisualStyleBackColor = true;
@@ -49,9 +49,9 @@
             // 
             // PokerButton
             // 
-            PokerButton.Location = new Point(99, 171);
+            PokerButton.Location = new Point(88, 160);
             PokerButton.Name = "PokerButton";
-            PokerButton.Size = new Size(191, 39);
+            PokerButton.Size = new Size(232, 39);
             PokerButton.TabIndex = 1;
             PokerButton.Text = "Poker (Texas Hold'em)";
             PokerButton.UseVisualStyleBackColor = true;
@@ -59,9 +59,9 @@
             // 
             // SlotsButton
             // 
-            SlotsButton.Location = new Point(99, 225);
+            SlotsButton.Location = new Point(88, 205);
             SlotsButton.Name = "SlotsButton";
-            SlotsButton.Size = new Size(192, 40);
+            SlotsButton.Size = new Size(232, 40);
             SlotsButton.TabIndex = 2;
             SlotsButton.Text = "(Lucky) Slots";
             SlotsButton.UseVisualStyleBackColor = true;
@@ -70,7 +70,7 @@
             // Title
             // 
             Title.AutoSize = true;
-            Title.Location = new Point(89, 30);
+            Title.Location = new Point(76, 27);
             Title.Name = "Title";
             Title.Size = new Size(264, 28);
             Title.TabIndex = 3;
@@ -78,9 +78,9 @@
             // 
             // BaccaratButton
             // 
-            BaccaratButton.Location = new Point(99, 280);
+            BaccaratButton.Location = new Point(88, 251);
             BaccaratButton.Name = "BaccaratButton";
-            BaccaratButton.Size = new Size(192, 40);
+            BaccaratButton.Size = new Size(232, 40);
             BaccaratButton.TabIndex = 4;
             BaccaratButton.Text = "Baccarat";
             BaccaratButton.UseVisualStyleBackColor = true;
@@ -88,9 +88,9 @@
             // 
             // FiveCardDrawButton
             // 
-            FiveCardDrawButton.Location = new Point(100, 336);
+            FiveCardDrawButton.Location = new Point(88, 297);
             FiveCardDrawButton.Name = "FiveCardDrawButton";
-            FiveCardDrawButton.Size = new Size(191, 40);
+            FiveCardDrawButton.Size = new Size(232, 40);
             FiveCardDrawButton.TabIndex = 5;
             FiveCardDrawButton.Text = "Poker (5-Card Draw)";
             FiveCardDrawButton.UseVisualStyleBackColor = true;
@@ -98,9 +98,9 @@
             // 
             // KneoButton
             // 
-            KneoButton.Location = new Point(100, 391);
+            KneoButton.Location = new Point(88, 343);
             KneoButton.Name = "KneoButton";
-            KneoButton.Size = new Size(190, 40);
+            KneoButton.Size = new Size(232, 40);
             KneoButton.TabIndex = 6;
             KneoButton.Text = "Keno";
             KneoButton.UseVisualStyleBackColor = true;
