@@ -34,6 +34,7 @@
             Title = new Label();
             BaccaratButton = new Button();
             FiveCardDrawButton = new Button();
+            KneoButton = new Button();
             SuspendLayout();
             // 
             // BlackjackButton
@@ -71,7 +72,7 @@
             Title.AutoSize = true;
             Title.Location = new Point(89, 30);
             Title.Name = "Title";
-            Title.Size = new Size(211, 21);
+            Title.Size = new Size(264, 28);
             Title.TabIndex = 3;
             Title.Text = "Definitely not a Vegas Casino";
             // 
@@ -95,11 +96,22 @@
             FiveCardDrawButton.UseVisualStyleBackColor = true;
             FiveCardDrawButton.Click += FiveCardDrawButton_Click;
             // 
+            // KneoButton
+            // 
+            KneoButton.Location = new Point(100, 391);
+            KneoButton.Name = "KneoButton";
+            KneoButton.Size = new Size(190, 40);
+            KneoButton.TabIndex = 6;
+            KneoButton.Text = "Keno";
+            KneoButton.UseVisualStyleBackColor = true;
+            KneoButton.Click += KneoButton_Click;
+            // 
             // CardGameMenu
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(395, 464);
+            Controls.Add(KneoButton);
             Controls.Add(FiveCardDrawButton);
             Controls.Add(BaccaratButton);
             Controls.Add(Title);
@@ -124,5 +136,6 @@
         private Label Title;
         private Button BaccaratButton;
         private Button FiveCardDrawButton;
+        private Button KneoButton;
     }
 }

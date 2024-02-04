@@ -1,4 +1,5 @@
 ﻿using StudentSorter.CardGames.Baccarat.Forms;
+using StudentSorter.CardGames.Keno.Forms;
 using StudentSorter.CardGames.Poker.FiveCardDraw.Forms;
 using StudentSorter.CardGames.Poker.Forms;
 using StudentSorter.CardGames.Slots;
@@ -63,6 +64,15 @@ namespace StudentSorter.CardGames
         private void FiveCardDrawButton_Click(object sender, EventArgs e)
         {
             FiveCardDrawWindow window = new();
+            window.Show();
+        }
+
+        /// <summary>
+        /// Opens Keno
+        /// </summary>
+        private void KneoButton_Click(object sender, EventArgs e)
+        {
+            KenoWindow window = new();
             window.Show();
         }
     }
