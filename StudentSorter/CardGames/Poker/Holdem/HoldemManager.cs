@@ -103,11 +103,7 @@ namespace StudentSorter.CardGames.Poker.Holdem
             // Deal first card to players, pick dealer, small blind, and big blind
             foreach (PokerPlayer pokerPlayer in Players)
             {
-                Card card = Deck[0];
-                pokerPlayer.PlayerHand.AddCard(card);
-                Deck.Remove(card);
-
-                Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
+                AddCard(pokerPlayer);
             }
 
             List<PokerPlayer> sortedPlayers = new(Players);
@@ -127,15 +123,26 @@ namespace StudentSorter.CardGames.Poker.Holdem
             // Deal second card to players
             foreach (PokerPlayer pokerPlayer in Players)
             {
-                Card card = Deck[0];
-                pokerPlayer.PlayerHand.AddCard(card);
-                Deck.Remove(card);
-
-                Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
+                AddCard(pokerPlayer);
             }
 
             Debugger.Log("Two cards have been dealt to all players");
             Debugger.Log("Set up Poker (Texas Hold'em)");
+        }
+
+        /// <summary>
+        /// Adds a card to a player's hand
+        /// </summary>
+        /// <param name="pokerPlayer">
+        /// The player to give a card to
+        /// </param>
+        public void AddCard(PokerPlayer pokerPlayer)
+        {
+            Card card = Deck[0];
+            pokerPlayer.PlayerHand.AddCard(card);
+            Deck.Remove(card);
+
+            Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
         }
 
         /// <summary>

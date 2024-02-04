@@ -1,0 +1,137 @@
+﻿using StudentSorter.CardGames.Cards;
+using StudentSorter.CardGames.Poker.Player;
+using StudentSorter.Debug;
+using StudentSorter.Gambling.Cards;
+
+namespace StudentSorter.CardGames.Poker.FiveCardDraw
+{
+    public class DrawManager
+    {
+        public List<PokerPlayer> Players = new();
+        public List<string> PlayerNames = new()
+        {
+            "Sgt. Pepper", // Sgt. Pepper's Lonely Hearts Club Band (The Beatles)
+            "Jude", // Hey Jude (The Beatles)
+            "Elanor Rigby", // Elanor Rigby (The Beatles)
+            "Rose", // Everything's Coming Up Rose's (Roger Miller)
+            "Mr. Mustard", // Mean Mr. Mustard (The Beatles)
+            "Desmond Jones", // O-bla-di, O-bla-da (The Beatles)
+            "Molly Jones", // O-bla-di, O-bla-da (The Beatles)
+            "Billy Shears", // With a Little Help From My Friends (The Beatles)
+            "Lucy", // Lucy in the Sky With Diamonds (The Beatles)
+            "Prudence", // Dear Prudence (The Beatles)
+            "Bobby McGee", // Me and Bobby McGee (Roger Miller)
+            "Maxwell Edison", // Maxwell's Silver Hammer (The Beatles)
+            "Joan", // Maxwell's Silver Hammer (The Beatles)
+            "P.C. 31", // Maxwell's Silver Hammer (The Beatles)
+            "Rose", // Maxwell's Silver Hammer (The Beatles)
+            "Valerie", // Maxwell's Silver Hammer (The Beatles)
+            "Polythene Pam", // Polythene Pam (The Beatles)
+            "Billy Bayou", // Billy Bayou (Roger Miller)
+            "Vera", // When I'm Sixty-Four (The Beatles)
+            "Chuck", // When I'm Sixty-Four (The Beatles)
+            "Dave", // When I'm Sixty-Four (The Beatles)
+        };
+
+        public List<Card> Deck = new();
+
+        public DrawManager()
+        {
+        }
+
+        /// <summary>
+        /// Sets up Poker (5-Card Draw)
+        /// </summary>
+        public void SetupGame()
+        {
+            // Add player
+            PokerPlayer player = new();
+            Players.Add(player);
+
+            // Add bots
+            for (int i = 0; i < 3; i++)
+            {
+                string name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
+
+                while (NameDuplicate(name))
+                    name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
+
+                PokerPlayer botPlayer = new(name);
+
+                Players.Add(botPlayer);
+                Debugger.Log($"Added {botPlayer.Name} to the table");
+            }
+
+            // Set up the deck
+            foreach (Suit suit in Card.Suits)
+            {
+                for (int j = 2; j <= 10; j++)
+                {
+                    Card card = new($"{j}", j, suit);
+                    Deck.Add(card);
+                }
+
+                Card ace = new("A", 14, suit);
+                Deck.Add(ace);
+
+                Card jack = new("J", 11, suit);
+                Deck.Add(jack);
+
+                Card king = new("K", 13, suit);
+                Deck.Add(king);
+
+                Card queen = new("Q", 12, suit);
+                Deck.Add(queen);
+            }
+
+            // Shuffles the deck
+            Deck.Sort(new CardShuffler());
+
+            Debugger.Log($"Deck Size: {Deck.Count}/52");
+            Debugger.Log("Setup Poker deck");
+
+            // Deal cards
+            foreach (PokerPlayer pokerPlayer in Players)
+            {
+                for(int i = 0; i < 5; i++)
+                    AddCard(pokerPlayer);
+            }
+
+            Debugger.Log("Setup Poker (5-Card Draw)");
+        }
+
+        /// <summary>
+        /// Adds a card to a player's hand
+        /// </summary>
+        /// <param name="pokerPlayer">
+        /// The player to give a card to
+        /// </param>
+        public void AddCard(PokerPlayer pokerPlayer)
+        {
+            Card card = Deck[0];
+            pokerPlayer.PlayerHand.AddCard(card);
+            Deck.Remove(card);
+
+            Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
+        }
+
+        /// <summary>
+        /// Checks if a name is a duplicate
+        /// </summary>
+        /// <param name="name">
+        /// The name to check
+        /// </param>
+        /// <returns>
+        /// If the name is a duplicate
+        /// </returns>
+        public bool NameDuplicate(string name)
+        {
+            int occurences = 0;
+
+            foreach (PokerPlayer pokerPlayer in Players)
+                if (pokerPlayer.Name.Equals(name)) occurences++;
+
+            return occurences > 0;
+        }
+    }
+}
