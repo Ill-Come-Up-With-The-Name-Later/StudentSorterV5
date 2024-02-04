@@ -193,7 +193,7 @@ namespace StudentSorter.CardGames.Poker.Player
                     pairs++;
             }
 
-            Debugger.Log($"Hand contains {pairs} pairs");
+            Debugger.Log($"{Owner.Name}'s hand contains {pairs} pairs");
             return pairs;
         }
 
@@ -232,7 +232,7 @@ namespace StudentSorter.CardGames.Poker.Player
             List<int> PairVals = new(cardAmounts.Values);
             PairVals.Sort();
 
-            Debugger.Log($"Highest pair value in hand: {PairVals[0]}");
+            Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[0]}");
             return PairVals[0];
         }
 
