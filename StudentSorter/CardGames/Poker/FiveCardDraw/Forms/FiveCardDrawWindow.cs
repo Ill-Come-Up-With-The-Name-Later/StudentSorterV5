@@ -91,10 +91,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 
             Manager.BotDiscard();
 
-            ShowdownWindow window = new(Manager);
-            window.Show();
-
-            Close();
+            ShowdownButton.Enabled = true;
         }
 
         /// <summary>
@@ -146,6 +143,14 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
             Debugger.Log("Player finished discarding");
             UpdatePlayerCards();
 
+            ShowdownButton.Enabled = true;
+        }
+
+        /// <summary>
+        /// Goes to the showdown
+        /// </summary>
+        private void ShowdownButton_Click(object sender, EventArgs e)
+        {
             ShowdownWindow window = new(Manager);
             window.Show();
 

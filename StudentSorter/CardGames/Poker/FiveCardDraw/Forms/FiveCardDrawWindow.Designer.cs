@@ -38,6 +38,7 @@
             FoldButton = new Button();
             DoneButton = new Button();
             Instructions = new Label();
+            ShowdownButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerList).BeginInit();
             SuspendLayout();
@@ -81,7 +82,7 @@
             // OtherPlayerTitle
             // 
             OtherPlayerTitle.AutoSize = true;
-            OtherPlayerTitle.Location = new Point(329, 58);
+            OtherPlayerTitle.Location = new Point(308, 58);
             OtherPlayerTitle.Name = "OtherPlayerTitle";
             OtherPlayerTitle.Size = new Size(128, 28);
             OtherPlayerTitle.TabIndex = 15;
@@ -95,13 +96,13 @@
             PlayerList.AllowUserToResizeRows = false;
             PlayerList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             PlayerList.ColumnHeadersVisible = false;
-            PlayerList.Location = new Point(338, 92);
+            PlayerList.Location = new Point(308, 92);
             PlayerList.Name = "PlayerList";
             PlayerList.ReadOnly = true;
             PlayerList.RowHeadersVisible = false;
             PlayerList.RowHeadersWidth = 51;
             PlayerList.RowTemplate.Height = 29;
-            PlayerList.Size = new Size(188, 125);
+            PlayerList.Size = new Size(218, 144);
             PlayerList.TabIndex = 16;
             // 
             // DiscardButton
@@ -155,11 +156,23 @@
             Instructions.Text = "Double-Click on a card to discard it";
             Instructions.Visible = false;
             // 
+            // ShowdownButton
+            // 
+            ShowdownButton.Enabled = false;
+            ShowdownButton.Location = new Point(264, 398);
+            ShowdownButton.Name = "ShowdownButton";
+            ShowdownButton.Size = new Size(156, 45);
+            ShowdownButton.TabIndex = 22;
+            ShowdownButton.Text = "Showdown";
+            ShowdownButton.UseVisualStyleBackColor = true;
+            ShowdownButton.Click += ShowdownButton_Click;
+            // 
             // FiveCardDrawWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(555, 462);
+            Controls.Add(ShowdownButton);
             Controls.Add(Instructions);
             Controls.Add(DoneButton);
             Controls.Add(FoldButton);
@@ -194,5 +207,6 @@
         private Button FoldButton;
         private Button DoneButton;
         private Label Instructions;
+        private Button ShowdownButton;
     }
 }
