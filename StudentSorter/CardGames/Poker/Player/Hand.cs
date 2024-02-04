@@ -232,7 +232,7 @@ namespace StudentSorter.CardGames.Poker.Player
             List<Card> PairVals = new(cardAmounts.Keys);
             PairVals.Sort(new CardComparer());
 
-            Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[^1]}");
+            Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[0].Value}");
             return PairVals[0].Value;
         }
 
