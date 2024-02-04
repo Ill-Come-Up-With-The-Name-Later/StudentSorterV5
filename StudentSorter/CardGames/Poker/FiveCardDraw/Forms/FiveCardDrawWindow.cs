@@ -93,6 +93,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 
             ShowdownWindow window = new(Manager);
             window.Show();
+
+            Close();
         }
 
         /// <summary>
@@ -146,6 +148,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 
             ShowdownWindow window = new(Manager);
             window.Show();
+
+            Close();
         }
     }
 }

@@ -100,5 +100,25 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 
             UpdatePlayerCardDisplay(SelectedIndex);
         }
+
+        /// <summary>
+        /// Closes 5-Card Draw poker
+        /// </summary>
+        private void CloseButton_Click(object sender, EventArgs e)
+        {
+            Close();
+            Debugger.Log("Closed 5-Card Draw");
+        }
+
+        /// <summary>
+        /// Replays 5-Card Draw
+        /// </summary>
+        private void ReplayButton_Click(object sender, EventArgs e)
+        {
+            Close();
+            Debugger.Log("Replaying 5-Card Draw");
+            FiveCardDrawWindow window = new();
+            window.Show();
+        }
     }
 }

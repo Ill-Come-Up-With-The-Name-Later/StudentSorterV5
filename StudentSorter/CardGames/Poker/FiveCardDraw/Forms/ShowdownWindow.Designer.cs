@@ -33,6 +33,8 @@
             NextHandButton = new Button();
             PreviousHandButton = new Button();
             WinnerLabel = new Label();
+            CloseButton = new Button();
+            ReplayButton = new Button();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             SuspendLayout();
             // 
@@ -91,11 +93,33 @@
             WinnerLabel.TabIndex = 16;
             WinnerLabel.Text = "Winner:";
             // 
+            // CloseButton
+            // 
+            CloseButton.Location = new Point(181, 443);
+            CloseButton.Name = "CloseButton";
+            CloseButton.Size = new Size(94, 41);
+            CloseButton.TabIndex = 17;
+            CloseButton.Text = "Close";
+            CloseButton.UseVisualStyleBackColor = true;
+            CloseButton.Click += CloseButton_Click;
+            // 
+            // ReplayButton
+            // 
+            ReplayButton.Location = new Point(326, 443);
+            ReplayButton.Name = "ReplayButton";
+            ReplayButton.Size = new Size(102, 41);
+            ReplayButton.TabIndex = 18;
+            ReplayButton.Text = "Replay";
+            ReplayButton.UseVisualStyleBackColor = true;
+            ReplayButton.Click += ReplayButton_Click;
+            // 
             // ShowdownWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(705, 464);
+            ClientSize = new Size(705, 496);
+            Controls.Add(ReplayButton);
+            Controls.Add(CloseButton);
             Controls.Add(WinnerLabel);
             Controls.Add(PreviousHandButton);
             Controls.Add(NextHandButton);
@@ -119,5 +143,7 @@
         private Button NextHandButton;
         private Button PreviousHandButton;
         private Label WinnerLabel;
+        private Button CloseButton;
+        private Button ReplayButton;
     }
 }
