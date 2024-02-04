@@ -189,13 +189,62 @@ namespace StudentSorter.CardGames.Poker.Player
 
             foreach(string key in cardAmounts.Keys)
             {
-                if (cardAmounts[key] >= 2)
+                if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
                     pairs++;
             }
 
             Debugger.Log($"Hand contains {pairs} pairs");
             return pairs;
         }
+
+        /// <summary>
+        /// Gets the highest value pair
+        /// in the hand
+        /// </summary>
+        /// <returns>
+        /// The highest valued pair in the hand
+        /// </returns>
+        public int HighestPairValue()
+        {
+            if(!(NumPairs() > 0)) return -1;
+
+            Dictionary<string, int> cardAmounts = new();
+            int pairs = 0;
+
+            foreach (Card card in Cards)
+            {
+                if (cardAmounts.ContainsKey(card.Name[..^1]))
+                {
+                    cardAmounts[card.Name[..^1]]++;
+                }
+                else
+                {
+                    cardAmounts[card.Name[..^1]] = 1;
+                }
+            }
+
+            foreach (string key in cardAmounts.Keys)
+            {
+                if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
+                    pairs++;
+            }
+
+            List<int> PairVals = new(cardAmounts.Values);
+            PairVals.Sort();
+
+            Debugger.Log($"Highest pair value in hand: {PairVals[0]}");
+            return PairVals[0];
+        }
+
+        /// <summary>
+        /// Gets the value of the highest ranked
+        /// card
+        /// </summary>
+        /// <returns>
+        /// The value of the highest ranked
+        /// card
+        /// </returns>
+        public int HighestCardValue() => GetHighestCard().Value;
 
         /// <summary>
         /// Finds the number of cards of a

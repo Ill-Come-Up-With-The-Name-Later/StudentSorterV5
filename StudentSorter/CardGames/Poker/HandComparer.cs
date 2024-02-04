@@ -26,9 +26,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.RoyalFlush() && !y.RoyalFlush()) return -1;
             else if (x.RoyalFlush() && y.RoyalFlush())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
             }
             else if (!x.RoyalFlush() && y.RoyalFlush()) return 1;
 
@@ -36,9 +36,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.StraightFlush() && !y.StraightFlush()) return -1;
             else if (x.StraightFlush() && y.StraightFlush())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
             }
             else if (!x.StraightFlush() && y.StraightFlush()) return 1;
 
@@ -48,9 +48,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.FourOfAKind(i) && !y.FourOfAKind(i)) return -1;
                 else if (x.FourOfAKind(i) && y.FourOfAKind(i))
                 {
-                    if (x.GetHandValue() < y.GetHandValue()) return 1;
-                    else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                    else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
                 }
             }
 
@@ -60,9 +60,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.FullHouse(i) && !y.FullHouse(i)) return -1;
                 else if (x.FullHouse(i) && y.FullHouse(i))
                 {
-                    if (x.GetHandValue() < y.GetHandValue()) return 1;
-                    else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                    else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
                 }
                 else if (!x.FullHouse(i) && y.FullHouse(i)) return 1;
             }
@@ -71,9 +71,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.Flush() && !x.Flush()) return -1;
             else if (x.Flush() && y.Flush())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
             }
             else if (!x.Flush() && y.Flush()) return 1;
 
@@ -81,9 +81,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.Straight() && !y.Straight()) return -1;
             else if (x.Straight() && y.Straight())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
             }
             else if (!x.Straight() && y.Straight()) return 1;
 
@@ -93,9 +93,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.ThreeOfAKind(i) && !y.ThreeOfAKind(i)) return -1;
                 else if (x.ThreeOfAKind(i) && y.ThreeOfAKind(i))
                 {
-                    if (x.GetHandValue() < y.GetHandValue()) return 1;
-                    else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                    else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
+                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
+                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
                 }
                 else if (!x.ThreeOfAKind(i) && y.ThreeOfAKind(i)) return 1;
             }
@@ -104,9 +104,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.TwoPairs() && !y.TwoPairs()) return -1;
             else if (x.TwoPairs() && y.TwoPairs())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestPairValue() < y.HighestPairValue()) return 1;
+                else if (x.HighestPairValue() > y.HighestPairValue()) return -1;
+                else if (x.HighestPairValue() == y.HighestPairValue()) return 0;
             }
             else if (!x.TwoPairs() && y.TwoPairs()) return 1;
 
@@ -114,9 +114,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.OnePair() && !y.OnePair()) return -1;
             else if (x.OnePair() && y.OnePair())
             {
-                if (x.GetHandValue() < y.GetHandValue()) return 1;
-                else if (x.GetHandValue() > y.GetHandValue()) return -1;
-                else if (x.GetHandValue() == y.GetHandValue()) return 0;
+                if (x.HighestPairValue() < y.HighestPairValue()) return 1;
+                else if (x.HighestPairValue() > y.HighestPairValue()) return -1;
+                else if (x.HighestPairValue() == y.HighestPairValue()) return 0;
             }
             else if (!x.OnePair() && y.OnePair()) return 1;
 
