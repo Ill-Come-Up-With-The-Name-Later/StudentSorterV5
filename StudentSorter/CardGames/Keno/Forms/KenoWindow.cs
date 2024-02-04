@@ -33,6 +33,9 @@ namespace StudentSorter.CardGames.Keno.Forms
         /// </summary>
         public void UpdateTables()
         {
+            PlayerNums.Sort();
+            DrawnNums.Sort();
+
             if (BetNums.Rows.Count > 0) BetNums.Rows.Clear();
             if (WinningNums.Rows.Count > 0) WinningNums.Rows.Clear();
 
