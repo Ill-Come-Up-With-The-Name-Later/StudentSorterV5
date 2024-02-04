@@ -66,9 +66,9 @@
             AmountOfNumsToBet.AutoSize = true;
             AmountOfNumsToBet.Location = new Point(12, 62);
             AmountOfNumsToBet.Name = "AmountOfNumsToBet";
-            AmountOfNumsToBet.Size = new Size(331, 28);
+            AmountOfNumsToBet.Size = new Size(335, 28);
             AmountOfNumsToBet.TabIndex = 1;
-            AmountOfNumsToBet.Text = "Amount of Number to bet on: (1-10)";
+            AmountOfNumsToBet.Text = "Amount of numbers to bet on: (1-10)";
             // 
             // NumberAmountInput
             // 
