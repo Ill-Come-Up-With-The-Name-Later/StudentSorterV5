@@ -33,6 +33,11 @@
             PlayerHandTitle = new Label();
             OtherPlayerTitle = new Label();
             PlayerList = new DataGridView();
+            DiscardButton = new Button();
+            PassButton = new Button();
+            FoldButton = new Button();
+            DoneButton = new Button();
+            Instructions = new Label();
             ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerList).BeginInit();
             SuspendLayout();
@@ -53,13 +58,14 @@
             PlayerCards.RowTemplate.Height = 29;
             PlayerCards.Size = new Size(166, 213);
             PlayerCards.TabIndex = 11;
+            PlayerCards.CellDoubleClick += PlayerCards_CellDoubleClick;
             // 
             // Title
             // 
             Title.AutoSize = true;
             Title.Location = new Point(201, 19);
             Title.Name = "Title";
-            Title.Size = new Size(99, 21);
+            Title.Size = new Size(122, 28);
             Title.TabIndex = 12;
             Title.Text = "5-Card Draw";
             // 
@@ -68,16 +74,16 @@
             PlayerHandTitle.AutoSize = true;
             PlayerHandTitle.Location = new Point(23, 58);
             PlayerHandTitle.Name = "PlayerHandTitle";
-            PlayerHandTitle.Size = new Size(83, 21);
+            PlayerHandTitle.Size = new Size(103, 28);
             PlayerHandTitle.TabIndex = 13;
             PlayerHandTitle.Text = "Your Hand";
             // 
             // OtherPlayerTitle
             // 
             OtherPlayerTitle.AutoSize = true;
-            OtherPlayerTitle.Location = new Point(293, 58);
+            OtherPlayerTitle.Location = new Point(329, 58);
             OtherPlayerTitle.Name = "OtherPlayerTitle";
-            OtherPlayerTitle.Size = new Size(104, 21);
+            OtherPlayerTitle.Size = new Size(128, 28);
             OtherPlayerTitle.TabIndex = 15;
             OtherPlayerTitle.Text = "Other Players";
             // 
@@ -89,7 +95,7 @@
             PlayerList.AllowUserToResizeRows = false;
             PlayerList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             PlayerList.ColumnHeadersVisible = false;
-            PlayerList.Location = new Point(293, 92);
+            PlayerList.Location = new Point(338, 92);
             PlayerList.Name = "PlayerList";
             PlayerList.ReadOnly = true;
             PlayerList.RowHeadersVisible = false;
@@ -98,11 +104,67 @@
             PlayerList.Size = new Size(188, 125);
             PlayerList.TabIndex = 16;
             // 
+            // DiscardButton
+            // 
+            DiscardButton.Location = new Point(23, 347);
+            DiscardButton.Name = "DiscardButton";
+            DiscardButton.Size = new Size(199, 45);
+            DiscardButton.TabIndex = 17;
+            DiscardButton.Text = "Discard Cards";
+            DiscardButton.UseVisualStyleBackColor = true;
+            DiscardButton.Click += DiscardButton_Click;
+            // 
+            // PassButton
+            // 
+            PassButton.Location = new Point(254, 347);
+            PassButton.Name = "PassButton";
+            PassButton.Size = new Size(139, 45);
+            PassButton.TabIndex = 18;
+            PassButton.Text = "Pass";
+            PassButton.UseVisualStyleBackColor = true;
+            PassButton.Click += PassButton_Click;
+            // 
+            // FoldButton
+            // 
+            FoldButton.Location = new Point(409, 347);
+            FoldButton.Name = "FoldButton";
+            FoldButton.Size = new Size(134, 45);
+            FoldButton.TabIndex = 19;
+            FoldButton.Text = "Fold";
+            FoldButton.UseVisualStyleBackColor = true;
+            FoldButton.Click += FoldButton_Click;
+            // 
+            // DoneButton
+            // 
+            DoneButton.Enabled = false;
+            DoneButton.Location = new Point(23, 398);
+            DoneButton.Name = "DoneButton";
+            DoneButton.Size = new Size(199, 45);
+            DoneButton.TabIndex = 20;
+            DoneButton.Text = "Finish Discarding";
+            DoneButton.UseVisualStyleBackColor = true;
+            DoneButton.Click += DoneButton_Click;
+            // 
+            // Instructions
+            // 
+            Instructions.AutoSize = true;
+            Instructions.Location = new Point(206, 277);
+            Instructions.Name = "Instructions";
+            Instructions.Size = new Size(320, 28);
+            Instructions.TabIndex = 21;
+            Instructions.Text = "Double-Click on a card to discard it";
+            Instructions.Visible = false;
+            // 
             // FiveCardDrawWindow
             // 
-            AutoScaleDimensions = new SizeF(9F, 21F);
+            AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(505, 419);
+            ClientSize = new Size(555, 462);
+            Controls.Add(Instructions);
+            Controls.Add(DoneButton);
+            Controls.Add(FoldButton);
+            Controls.Add(PassButton);
+            Controls.Add(DiscardButton);
             Controls.Add(PlayerList);
             Controls.Add(OtherPlayerTitle);
             Controls.Add(PlayerHandTitle);
@@ -127,5 +189,10 @@
         private Label PlayerHandTitle;
         private Label OtherPlayerTitle;
         private DataGridView PlayerList;
+        private Button DiscardButton;
+        private Button PassButton;
+        private Button FoldButton;
+        private Button DoneButton;
+        private Label Instructions;
     }
 }

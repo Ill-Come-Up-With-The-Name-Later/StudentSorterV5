@@ -133,5 +133,31 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
 
             return occurences > 0;
         }
+
+        /// <summary>
+        /// Allows the bots to discard
+        /// their cards
+        /// </summary>
+        public void BotDiscard()
+        {
+            for(int i = 1; i < Players.Count; i++)
+            {
+                PokerPlayer player = Players[i];
+
+                if (player.Folded) continue;
+
+                if(player.PlayerHand.GetHandValue() < 45)
+                {
+                    if(new Random().Next(0, 4) == 1)
+                    {
+                        for (int j = 0; j < 3; j++)
+                        {
+                            player.PlayerHand.RemoveCard(player.PlayerHand.Cards[j]);
+                            AddCard(player);
+                        }
+                    }
+                }
+            }
+        }
     }
 }
