@@ -58,7 +58,7 @@
             // PlayerCardTitle
             // 
             PlayerCardTitle.AutoSize = true;
-            PlayerCardTitle.Location = new Point(266, 52);
+            PlayerCardTitle.Location = new Point(250, 52);
             PlayerCardTitle.Name = "PlayerCardTitle";
             PlayerCardTitle.Size = new Size(130, 28);
             PlayerCardTitle.TabIndex = 13;
