@@ -3,9 +3,9 @@ using StudentSorter.CardGames.Poker.Player;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
 
-namespace StudentSorter.CardGames.Poker
+namespace StudentSorter.CardGames.Poker.Holdem
 {
-    public class PokerManager
+    public class HoldemManager
     {
         public List<PokerPlayer> Players = new();
         public List<string> PlayerNames = new()
@@ -44,7 +44,7 @@ namespace StudentSorter.CardGames.Poker
         public int Pot { get; set; }
         public int MinBet { get; set; }
 
-        public PokerManager() 
+        public HoldemManager()
         {
             Pot = 0;
             BetRound = 1;
@@ -59,11 +59,11 @@ namespace StudentSorter.CardGames.Poker
             PokerPlayer player = new();
             Players.Add(player);
 
-            for(int i = 0; i < 3; i++)
+            for (int i = 0; i < 3; i++)
             {
                 string name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
-                
-                while(NameDuplicate(name))
+
+                while (NameDuplicate(name))
                     name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
 
                 PokerPlayer botPlayer = new(name);
@@ -101,7 +101,7 @@ namespace StudentSorter.CardGames.Poker
             Debugger.Log("Setup Poker deck");
 
             // Deal first card to players, pick dealer, small blind, and big blind
-            foreach(PokerPlayer pokerPlayer in Players)
+            foreach (PokerPlayer pokerPlayer in Players)
             {
                 Card card = Deck[0];
                 pokerPlayer.PlayerHand.AddCard(card);
@@ -149,8 +149,8 @@ namespace StudentSorter.CardGames.Poker
         /// </returns>
         public PokerPlayer LeftOf(PokerPlayer pokerPlayer)
         {
-            if(Players.IndexOf(pokerPlayer) == 0) return Players[^1];
-            if(Players.IndexOf(pokerPlayer) == Players.Count - 1) return Players[0];
+            if (Players.IndexOf(pokerPlayer) == 0) return Players[^1];
+            if (Players.IndexOf(pokerPlayer) == Players.Count - 1) return Players[0];
             return Players[Players.IndexOf(pokerPlayer) - 1];
         }
 
@@ -190,7 +190,7 @@ namespace StudentSorter.CardGames.Poker
                 if (player.Folded) continue;
                 if (player.Name.Equals("Player")) continue;
 
-                if(bettingRound == 1 && (player.BigBlind || player.SmallBlind)) continue;
+                if (bettingRound == 1 && (player.BigBlind || player.SmallBlind)) continue;
 
                 int action = new Random().Next(0, 3);
                 int playerIndex = new Random().Next(0, Players.Count);
@@ -209,19 +209,19 @@ namespace StudentSorter.CardGames.Poker
                 {
                     if (action == 0) player.SetBet(player.Bet + BigBlind.Bet, this); // Match Big Blind
                     if (action == 1) player.SetBet(player.Bet + BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
-                    if (action == 2) player.SetBet(player.Bet + Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet 
+                    if (action == 2) player.SetBet(player.Bet + Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet
                         : player.Bet + BigBlind.Bet, this);
-                } 
+                }
                 else
                 {
                     if (action == 0) continue; // Don't make an additional bet
                     if (action == 1) player.SetBet(player.Bet + BigBlind.Bet + new Random().Next(5, 51), this); // Bet higher than Big Blind
-                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet 
+                    if (action == 2) player.SetBet(Players[playerIndex].Bet > 0 ? player.Bet + Players[playerIndex].Bet
                         : player.Bet + BigBlind.Bet, this);
                 }
             }
 
-            if(BetRound > 1)
+            if (BetRound > 1)
             {
                 Card card = Deck[0];
                 CommunityCards.Add(card);
@@ -247,8 +247,8 @@ namespace StudentSorter.CardGames.Poker
         {
             int occurences = 0;
 
-            foreach(PokerPlayer pokerPlayer in Players)
-                if(pokerPlayer.Name.Equals(name)) occurences++;
+            foreach (PokerPlayer pokerPlayer in Players)
+                if (pokerPlayer.Name.Equals(name)) occurences++;
 
             return occurences > 0;
         }

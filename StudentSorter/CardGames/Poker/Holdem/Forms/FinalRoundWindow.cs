@@ -3,12 +3,13 @@ using System.Data;
 using StudentSorter.Debug;
 using StudentSorter.CardGames.Poker.Player;
 using StudentSorter.CardGames.Cards;
+using StudentSorter.CardGames.Poker.Holdem;
 
 namespace StudentSorter.CardGames.Poker.Forms
 {
     public partial class FinalRoundWindow : Form
     {
-        public PokerManager Manager { get; set; }
+        public HoldemManager Manager { get; set; }
 
         public DataTable PlayerCardTable = new();
         public DataTable CommunityCardTable = new();
@@ -16,7 +17,7 @@ namespace StudentSorter.CardGames.Poker.Forms
 
         public List<Card> BestPlayerHand = new();
 
-        public FinalRoundWindow(PokerManager manager)
+        public FinalRoundWindow(HoldemManager manager)
         {
             InitializeComponent();
             Manager = manager;

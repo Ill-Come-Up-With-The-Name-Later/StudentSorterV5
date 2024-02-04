@@ -1,4 +1,5 @@
-﻿using StudentSorter.Debug;
+﻿using StudentSorter.CardGames.Poker.Holdem;
+using StudentSorter.Debug;
 
 namespace StudentSorter.CardGames.Poker.Player
 {
@@ -48,7 +49,7 @@ namespace StudentSorter.CardGames.Poker.Player
         /// <param name="manager">
         /// GameManager to use for the bet
         /// </param>
-        public void SetBet(int bet, PokerManager manager)
+        public void SetBet(int bet, HoldemManager manager)
         {
             Bet = bet;
             manager.Pot += Bet;

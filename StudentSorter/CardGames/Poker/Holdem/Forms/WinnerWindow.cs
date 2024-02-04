@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.CardGames.Poker.Holdem;
 using StudentSorter.CardGames.Poker.Player;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
@@ -7,14 +8,14 @@ namespace StudentSorter.CardGames.Poker.Forms
 {
     public partial class WinnerWindow : Form
     {
-        public PokerManager Manager { get; set; }
+        public HoldemManager Manager { get; set; }
 
         public DataTable PlayerCards = new();
         public DataTable Player2Cards = new();
         public DataTable Player3Cards = new();
         public DataTable Player4Cards = new();
 
-        public WinnerWindow(PokerManager manager)
+        public WinnerWindow(HoldemManager manager)
         {
             InitializeComponent();
             Manager = manager;

@@ -2,12 +2,13 @@
 using StudentSorter.Gambling.Cards;
 using System.Data;
 using StudentSorter.Debug;
+using StudentSorter.CardGames.Poker.Holdem;
 
 namespace StudentSorter.CardGames.Poker.Forms
 {
     public partial class PokerWindow : Form
     {
-        public PokerManager Manager = new();
+        public HoldemManager Manager = new();
         public DataTable PlayerCardTable = new();
 
         public DataTable Player2CardTable = new();
