@@ -120,7 +120,7 @@
             PassButton.Name = "PassButton";
             PassButton.Size = new Size(139, 45);
             PassButton.TabIndex = 18;
-            PassButton.Text = "Pass";
+            PassButton.Text = "Stand";
             PassButton.UseVisualStyleBackColor = true;
             PassButton.Click += PassButton_Click;
             // 

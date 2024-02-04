@@ -220,7 +220,8 @@ namespace StudentSorter.CardGames.Poker.Player
 
         /// <summary>
         /// Returns if the hand's cards
-        /// are in descending order
+        /// are in descending order and go
+        /// down in increments of 1.
         /// (greatest -> least)
         /// </summary>
         /// <returns>
@@ -232,7 +233,7 @@ namespace StudentSorter.CardGames.Poker.Player
 
             foreach(Card card in Cards)
             {
-                if(card.Value < prevVal) prevVal = card.Value;
+                if(prevVal - 1 == card.Value) prevVal = card.Value;
                 else return false;
             }
 

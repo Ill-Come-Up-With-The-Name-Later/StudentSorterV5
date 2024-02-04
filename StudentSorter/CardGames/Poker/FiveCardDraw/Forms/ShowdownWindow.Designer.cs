@@ -28,22 +28,96 @@
         /// </summary>
         private void InitializeComponent()
         {
+            PlayerCards = new DataGridView();
+            PlayerCardTitle = new Label();
+            NextHandButton = new Button();
+            PreviousHandButton = new Button();
+            WinnerLabel = new Label();
+            ((System.ComponentModel.ISupportInitialize)PlayerCards).BeginInit();
             SuspendLayout();
+            // 
+            // PlayerCards
+            // 
+            PlayerCards.AllowUserToAddRows = false;
+            PlayerCards.AllowUserToDeleteRows = false;
+            PlayerCards.AllowUserToResizeColumns = false;
+            PlayerCards.AllowUserToResizeRows = false;
+            PlayerCards.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PlayerCards.ColumnHeadersVisible = false;
+            PlayerCards.Location = new Point(250, 92);
+            PlayerCards.Name = "PlayerCards";
+            PlayerCards.ReadOnly = true;
+            PlayerCards.RowHeadersVisible = false;
+            PlayerCards.RowHeadersWidth = 51;
+            PlayerCards.RowTemplate.Height = 29;
+            PlayerCards.Size = new Size(166, 213);
+            PlayerCards.TabIndex = 12;
+            // 
+            // PlayerCardTitle
+            // 
+            PlayerCardTitle.AutoSize = true;
+            PlayerCardTitle.Location = new Point(266, 52);
+            PlayerCardTitle.Name = "PlayerCardTitle";
+            PlayerCardTitle.Size = new Size(130, 28);
+            PlayerCardTitle.TabIndex = 13;
+            PlayerCardTitle.Text = "Player's Hand";
+            // 
+            // NextHandButton
+            // 
+            NextHandButton.Location = new Point(362, 330);
+            NextHandButton.Name = "NextHandButton";
+            NextHandButton.Size = new Size(153, 49);
+            NextHandButton.TabIndex = 14;
+            NextHandButton.Text = "Next Hand";
+            NextHandButton.UseVisualStyleBackColor = true;
+            NextHandButton.Click += NextHandButton_Click;
+            // 
+            // PreviousHandButton
+            // 
+            PreviousHandButton.Location = new Point(162, 330);
+            PreviousHandButton.Name = "PreviousHandButton";
+            PreviousHandButton.Size = new Size(173, 49);
+            PreviousHandButton.TabIndex = 15;
+            PreviousHandButton.Text = "Previous Hand";
+            PreviousHandButton.UseVisualStyleBackColor = true;
+            PreviousHandButton.Click += PreviousHandButton_Click;
+            // 
+            // WinnerLabel
+            // 
+            WinnerLabel.AutoSize = true;
+            WinnerLabel.Location = new Point(250, 399);
+            WinnerLabel.Name = "WinnerLabel";
+            WinnerLabel.Size = new Size(79, 28);
+            WinnerLabel.TabIndex = 16;
+            WinnerLabel.Text = "Winner:";
             // 
             // ShowdownWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(705, 428);
+            ClientSize = new Size(705, 464);
+            Controls.Add(WinnerLabel);
+            Controls.Add(PreviousHandButton);
+            Controls.Add(NextHandButton);
+            Controls.Add(PlayerCardTitle);
+            Controls.Add(PlayerCards);
             Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             MaximizeBox = false;
             Name = "ShowdownWindow";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Showdown";
+            ((System.ComponentModel.ISupportInitialize)PlayerCards).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
+
+        private DataGridView PlayerCards;
+        private Label PlayerCardTitle;
+        private Button NextHandButton;
+        private Button PreviousHandButton;
+        private Label WinnerLabel;
     }
 }

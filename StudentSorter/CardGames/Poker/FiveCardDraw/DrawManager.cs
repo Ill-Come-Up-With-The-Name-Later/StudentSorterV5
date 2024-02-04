@@ -157,6 +157,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
                         }
                     }
                 }
+
+                player.PlayerHand.Cards.Sort(new CardComparer());
             }
         }
     }

@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.CardGames.Cards;
 using StudentSorter.Debug;
 using StudentSorter.Gambling.Cards;
 
@@ -51,6 +52,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
         /// </summary>
         public void UpdatePlayerCards()
         {
+            Manager.Players[0].PlayerHand.Cards.Sort(new CardComparer());
+
             if (PlayerHand.Rows.Count > 0) PlayerHand.Rows.Clear();
 
             foreach (Card card in Manager.Players[0].PlayerHand.Cards)
@@ -84,11 +87,11 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
         private void PassButton_Click(object sender, EventArgs e)
         {
             DiscardButton.Enabled = false;
-            Debugger.Log("Player passed and didn't discard");
+            Debugger.Log("Player stood and didn't discard");
 
             Manager.BotDiscard();
 
-            ShowdownWindow window = new();
+            ShowdownWindow window = new(Manager);
             window.Show();
         }
 
@@ -109,7 +112,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
         {
             if (!DiscardMode) return;
 
-            if(Manager.Players[0].PlayerHand.ContainsAce())
+            if (Manager.Players[0].PlayerHand.ContainsAce())
             {
                 if (Manager.Players[0].PlayerHand.Cards.Count < 2) return;
             }
@@ -138,9 +141,10 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
             while (Manager.Players[0].PlayerHand.Cards.Count < 5)
                 Manager.AddCard(Manager.Players[0]);
 
+            Debugger.Log("Player finished discarding");
             UpdatePlayerCards();
 
-            ShowdownWindow window = new();
+            ShowdownWindow window = new(Manager);
             window.Show();
         }
     }
