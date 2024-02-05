@@ -209,7 +209,6 @@ namespace StudentSorter.CardGames.Poker.Player
             if(!(NumPairs() > 0)) return -1;
 
             Dictionary<Card, int> cardAmounts = new();
-            int pairs = 0;
 
             foreach (Card card in Cards)
             {
@@ -223,17 +222,23 @@ namespace StudentSorter.CardGames.Poker.Player
                 }
             }
 
+            List<int> PairVals = new();
             foreach (Card key in cardAmounts.Keys)
             {
                 if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
-                    pairs++;
+                    PairVals.Add(key.Value);
             }
 
-            List<Card> PairVals = new(cardAmounts.Keys);
-            PairVals.Sort(new CardComparer());
+            if (PairVals.Count > 0)
+            {
+                PairVals.Sort();
 
-            Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[0].Value}");
-            return PairVals[0].Value;
+                Debugger.Log($"{Owner.Name}: Highest pair value in hand: {PairVals[0]}");
+                return PairVals[0];
+            }
+
+            Debugger.Log($"{Owner.Name}'s hand has no pairs to compare");
+            return -1;
         }
 
         /// <summary>
