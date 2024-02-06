@@ -31,6 +31,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             "Vera", // When I'm Sixty-Four (The Beatles)
             "Chuck", // When I'm Sixty-Four (The Beatles)
             "Dave", // When I'm Sixty-Four (The Beatles)
+            "Maggie Mae", // Maggie Mae (The Beatles)
         };
 
         public List<Card> Deck = new();
@@ -49,7 +50,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             Players.Add(player);
 
             // Add bots
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < 5; i++)
             {
                 string name = PlayerNames[new Random().Next(0, PlayerNames.Count)];
 

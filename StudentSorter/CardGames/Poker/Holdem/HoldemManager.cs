@@ -10,27 +10,19 @@ namespace StudentSorter.CardGames.Poker.Holdem
         public List<PokerPlayer> Players = new();
         public List<string> PlayerNames = new()
         {
-            "Sgt. Pepper", // Sgt. Pepper's Lonely Hearts Club Band (The Beatles)
-            "Jude", // Hey Jude (The Beatles)
-            "Elanor Rigby", // Elanor Rigby (The Beatles)
-            "Rose", // Everything's Coming Up Rose's (Roger Miller)
-            "Mr. Mustard", // Mean Mr. Mustard (The Beatles)
-            "Desmond Jones", // O-bla-di, O-bla-da (The Beatles)
-            "Molly Jones", // O-bla-di, O-bla-da (The Beatles)
-            "Billy Shears", // With a Little Help From My Friends (The Beatles)
-            "Lucy", // Lucy in the Sky With Diamonds (The Beatles)
-            "Prudence", // Dear Prudence (The Beatles)
-            "Bobby McGee", // Me and Bobby McGee (Roger Miller)
-            "Maxwell Edison", // Maxwell's Silver Hammer (The Beatles)
-            "Joan", // Maxwell's Silver Hammer (The Beatles)
-            "P.C. 31", // Maxwell's Silver Hammer (The Beatles)
-            "Rose", // Maxwell's Silver Hammer (The Beatles)
-            "Valerie", // Maxwell's Silver Hammer (The Beatles)
-            "Polythene Pam", // Polythene Pam (The Beatles)
-            "Billy Bayou", // Billy Bayou (Roger Miller)
-            "Vera", // When I'm Sixty-Four (The Beatles)
-            "Chuck", // When I'm Sixty-Four (The Beatles)
-            "Dave", // When I'm Sixty-Four (The Beatles)
+            "James Bond",
+            "Vesper Lynd",
+            "Le Chiffre",
+            "Rene Mathis",
+            "M",
+            "Villiers",
+            "Steven Obanno",
+            "Alex Dimitrios",
+            "Valenka",
+            "Solange Dimitrios",
+            "Felix Leiter",
+            "Carlos",
+            "Mollaka"
         };
 
         public List<Card> CommunityCards = new();
