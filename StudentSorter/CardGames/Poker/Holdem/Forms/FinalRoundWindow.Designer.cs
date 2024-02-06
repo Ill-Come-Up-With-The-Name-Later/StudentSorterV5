@@ -37,6 +37,7 @@
             Instructions = new Label();
             EndRoundButton = new Button();
             BestHandInstructions = new Label();
+            FoldButton = new Button();
             ((System.ComponentModel.ISupportInitialize)CommunityCardList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)PlayerCardList).BeginInit();
             ((System.ComponentModel.ISupportInitialize)BestHandList).BeginInit();
@@ -135,7 +136,7 @@
             // EndRoundButton
             // 
             EndRoundButton.Enabled = false;
-            EndRoundButton.Location = new Point(373, 414);
+            EndRoundButton.Location = new Point(280, 414);
             EndRoundButton.Name = "EndRoundButton";
             EndRoundButton.Size = new Size(169, 42);
             EndRoundButton.TabIndex = 9;
@@ -152,11 +153,22 @@
             BestHandInstructions.TabIndex = 10;
             BestHandInstructions.Text = "Double-Click a card in Your Best Hand to remove it.";
             // 
+            // FoldButton
+            // 
+            FoldButton.Location = new Point(473, 414);
+            FoldButton.Name = "FoldButton";
+            FoldButton.Size = new Size(155, 42);
+            FoldButton.TabIndex = 11;
+            FoldButton.Text = "Fold";
+            FoldButton.UseVisualStyleBackColor = true;
+            FoldButton.Click += FoldButton_Click;
+            // 
             // FinalRoundWindow
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(930, 468);
+            Controls.Add(FoldButton);
             Controls.Add(BestHandInstructions);
             Controls.Add(EndRoundButton);
             Controls.Add(Instructions);
@@ -190,5 +202,6 @@
         private Label Instructions;
         private Button EndRoundButton;
         private Label BestHandInstructions;
+        private Button FoldButton;
     }
 }

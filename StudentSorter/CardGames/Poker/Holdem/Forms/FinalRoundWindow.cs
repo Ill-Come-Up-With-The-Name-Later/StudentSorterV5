@@ -123,17 +123,17 @@ namespace StudentSorter.CardGames.Poker.Forms
             Close();
             Manager.Players[0].PlayerHand.Cards.Clear();
 
-            foreach(Card card in BestPlayerHand)
+            foreach (Card card in BestPlayerHand)
                 Manager.Players[0].PlayerHand.AddCard(card);
 
             // All bots pick their 5 best cards
-            foreach(PokerPlayer player in Manager.Players)
+            foreach (PokerPlayer player in Manager.Players)
             {
                 if (player.Folded || player.Name.Equals("Player")) continue;
 
                 List<Card> BestFive = new(Manager.CommunityCards);
 
-                foreach(Card card in player.PlayerHand.Cards)
+                foreach (Card card in player.PlayerHand.Cards)
                     BestFive.Add(card);
 
                 BestFive.Sort(new CardComparer());
@@ -143,7 +143,7 @@ namespace StudentSorter.CardGames.Poker.Forms
 
                 player.PlayerHand.Cards.Clear();
 
-                foreach(Card card in BestFive)
+                foreach (Card card in BestFive)
                     player.PlayerHand.AddCard(card);
 
                 Debugger.Log($"{player.Name} has chosen their best hand");
@@ -151,6 +151,15 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             WinnerWindow winnerWindow = new(Manager);
             winnerWindow.Show();
+        }
+
+        /// <summary>
+        /// Folds and surrenders the game
+        /// </summary>
+        private void FoldButton_Click(object sender, EventArgs e)
+        {
+            Manager.Players[0].Fold();
+            Close();
         }
     }
 }
