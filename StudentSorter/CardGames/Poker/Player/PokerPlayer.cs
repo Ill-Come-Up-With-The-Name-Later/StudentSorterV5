@@ -60,5 +60,29 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             return $"{Name}: Dealer: {Dealer} | Big Blind: {BigBlind} | Small Blind: {SmallBlind}";
         }
+
+        /// <summary>
+        /// Gets the value of a card based on
+        /// the first character of its name
+        /// </summary>
+        /// <param name="cardName">
+        /// The card name without the suit
+        /// </param>
+        public static int GetCardValue(string cardName)
+        {
+            switch(cardName)
+            {
+                case "A":
+                    return 14;
+                case "K":
+                    return 13;
+                case "Q":
+                    return 12;
+                case "J":
+                    return 11;
+                default:
+                    return int.Parse(cardName);
+            }
+        }
     }
 }

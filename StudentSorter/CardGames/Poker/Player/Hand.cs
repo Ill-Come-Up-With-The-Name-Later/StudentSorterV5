@@ -208,25 +208,30 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             if(!(NumPairs() > 0)) return -1;
 
-            Dictionary<Card, int> cardAmounts = new();
+            Dictionary<string, int> cardAmounts = new();
 
             foreach (Card card in Cards)
             {
-                if (cardAmounts.ContainsKey(card))
+                if (cardAmounts.ContainsKey(card.Name[..^1]))
                 {
-                    cardAmounts[card]++;
+                    cardAmounts[card.Name[..^1]]++;
                 }
                 else
                 {
-                    cardAmounts[card] = 1;
+                    cardAmounts[card.Name[..^1]] = 1;
                 }
             }
 
             List<int> PairVals = new();
-            foreach (Card key in cardAmounts.Keys)
+            foreach(string key in cardAmounts.Keys)
             {
                 if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
-                    PairVals.Add(key.Value);
+                {
+                    PairVals.Add(PokerPlayer.GetCardValue(key));
+                    Debugger.Log($"{key} is a pair in {Owner.Name}'s hand ({cardAmounts[key]} occurances)");
+                    continue;
+                }
+                Debugger.Log($"{key} is not in a par in {Owner.Name}'s hand ({cardAmounts[key]} occurances)");
             }
 
             if (PairVals.Count > 0)
