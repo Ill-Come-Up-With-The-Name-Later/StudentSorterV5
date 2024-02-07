@@ -79,14 +79,10 @@ namespace StudentSorter
         /// </returns>
         public bool InGroup()
         {
-            foreach (Group group in Sorter.GlobalInstance().AllGroups)
+            foreach(Group group in Sorter.GlobalInstance().AllGroups)
                 if (group.Contains(this))
-                {
-                    Debugger.Log($"{Name} is in a group");
                     return true;
-                }
 
-            Debugger.Log($"{Name} is not in a group");
             return false;
         }
 
@@ -101,8 +97,6 @@ namespace StudentSorter
         /// </returns>
         public bool DeterminantMatches(Group group)
         {
-            Debugger.Log($"{Name}'s determinant matches {group.Name} requirements: " +
-                $"{group.MinDeterminant <= Determinant && Determinant <= group.MaxDeterminant}");
             return group.MinDeterminant <= Determinant && Determinant <= group.MaxDeterminant;
         }
 
@@ -117,8 +111,6 @@ namespace StudentSorter
         /// </returns>
         public bool CanJoinGroup(Group group)
         {
-            //Debugger.Log($"{Name} can join group {group.Name}? " +
-            //   $"{DeterminantMatches(group) && !(group.IsFull() || InGroup() || group.Contains(this))}");
             return DeterminantMatches(group) && !(group.IsFull() || InGroup() || group.Contains(this));
         }
 
@@ -175,7 +167,6 @@ namespace StudentSorter
                 {
                     if (Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
                     {
-                        Debugger.Log($"{Name} is manually assigned");
                         return true;
                     }
                 }

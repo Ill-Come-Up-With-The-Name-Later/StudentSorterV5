@@ -1,5 +1,4 @@
 ﻿using Newtonsoft.Json;
-using StudentSorter.Debug;
 
 namespace StudentSorter
 {
@@ -85,7 +84,6 @@ namespace StudentSorter
         /// </returns>
         public bool IsFull()
         {
-            Debugger.Log($"Group {Name} Full: {Size >= Capacity}");
             return Size >= Capacity;
         }
 
@@ -100,7 +98,6 @@ namespace StudentSorter
         /// </returns>
         public bool Contains(Student student)
         {
-            Debugger.Log($"{student.Name} is in group {Name}: {Students.Contains(student)}");
             return Students.Contains(student);
         }
 
@@ -117,7 +114,6 @@ namespace StudentSorter
         {
             if(students.Count > Capacity)
             {
-                Debugger.Log("List to check is larger than the group");
                 return false;
             }
 
@@ -152,7 +148,6 @@ namespace StudentSorter
         /// </param>
         public void RemoveStudent(Student student)
         {
-            Debugger.Log($"Attempted to remove {student} from group {Name}");
             if(Contains(student)) Students.Remove(student);
         }
 
@@ -161,7 +156,6 @@ namespace StudentSorter
         /// </summary>
         public void Clear()
         {
-            Debugger.Log($"Group {Name} cleared");
             Students.Clear();
         }
 
