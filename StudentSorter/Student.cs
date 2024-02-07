@@ -111,6 +111,8 @@ namespace StudentSorter
         /// </returns>
         public bool CanJoinGroup(Group group)
         {
+            Debugger.Log($"{Name} can join group {group.Name} | Determinant Matches: {DeterminantMatches(group)} | Group Full: {group.IsFull()}" +
+                $" | Already in a group: {InGroup()} | Student in the group already: {group.Contains(this)}");
             return DeterminantMatches(group) && !(group.IsFull() || InGroup() || group.Contains(this));
         }
 

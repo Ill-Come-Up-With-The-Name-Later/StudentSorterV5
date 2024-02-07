@@ -205,6 +205,8 @@ namespace StudentSorter
 
             firstGroup.RemoveStudent(student1);
             firstGroup.AddStudent(student2);
+
+            Debugger.Log($"Swapped {student1.Name} and {student2.Name}");
         }
 
         /// <summary>
