@@ -1,4 +1,6 @@
-﻿namespace StudentSorter.Gambling.Cards
+﻿using StudentSorter.Debug;
+
+namespace StudentSorter.Gambling.Cards
 {
     public class Card
     {
@@ -8,7 +10,7 @@
             Suit.Hearts,
             Suit.Spades,
             Suit.Clubs,
-            Suit.Diamonds
+            Suit.Diamonds,
         };
 
         public string Name { get; set; }
@@ -34,24 +36,14 @@
             Value = value;
             CardSuit = suit;
 
-            switch (Name)
+            Type = Name switch
             {
-                case "J":
-                    Type = CardType.Face;
-                    break;
-                case "Q":
-                    Type = CardType.Face;
-                    break;
-                case "K":
-                    Type = CardType.Face;
-                    break;
-                case "A":
-                    Type = CardType.Ace;
-                    break;
-                default:
-                    Type = CardType.Number;
-                    break;
-            }
+                "J" => CardType.Face,
+                "Q" => CardType.Face,
+                "K" => CardType.Face,
+                "A" => CardType.Ace,
+                _ => CardType.Number,
+            };
 
             switch (CardSuit)
             {
@@ -68,6 +60,39 @@
                     Name += "♠";
                     break;
             }
+        }
+
+        /// <summary>
+        /// Finds a card in a list of
+        /// cards. Suit and name must match.
+        /// </summary>
+        /// <param name="name">
+        /// The card to find
+        /// </param>
+        /// <param name="cardList">
+        /// The list to search
+        /// </param>
+        /// <returns>
+        /// The index of card
+        /// </returns>
+        public static int FindCardInList(string name, List<Card> cardList)
+        {
+            Suit suit = Suit.Clubs;
+
+            suit = name[^1] switch
+            {
+                '♥' => Suit.Hearts,
+                '♣' => Suit.Clubs,
+                '♦' => Suit.Diamonds,
+                '♠' => Suit.Spades,
+            };
+
+            foreach (Card card in cardList)
+            {
+                if(card.Name.Equals(name) && card.CardSuit == suit) return cardList.IndexOf(card);
+            }
+            Debugger.Log($"Couldn't find card {name} in list");
+            return -1;
         }
 
         public override string ToString()

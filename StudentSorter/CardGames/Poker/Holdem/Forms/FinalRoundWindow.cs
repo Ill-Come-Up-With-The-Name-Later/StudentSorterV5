@@ -40,6 +40,8 @@ namespace StudentSorter.CardGames.Poker.Forms
         /// </summary>
         public void UpdateTables()
         {
+            BestPlayerHand.Sort(new CardComparer());
+
             if (PlayerCardTable.Rows.Count > 0) PlayerCardTable.Rows.Clear();
             if (CommunityCardTable.Rows.Count > 0) CommunityCardTable.Rows.Clear();
             if (BestHandTable.Rows.Count > 0) BestHandTable.Rows.Clear();
@@ -105,13 +107,21 @@ namespace StudentSorter.CardGames.Poker.Forms
         /// </summary>
         private void BestHandList_CellDoubleClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = CommunityCardList.CurrentCell.RowIndex;
-            Card card = BestPlayerHand[index];
+            try
+            {
+                Card card = BestPlayerHand[Card.FindCardInList(BestHandList.CurrentCell.Value.ToString(), BestPlayerHand)];
 
-            BestPlayerHand.Remove(card);
-            EndRoundButton.Enabled = false;
+                BestPlayerHand.Remove(card);
+                EndRoundButton.Enabled = false;
 
-            Debugger.Log($"Removed {card} from Player's hand");
+                try { Debugger.Log($"Removed {card} from Player's hand"); }
+                catch (Exception) { Debugger.Log("Player best hand is probably empty."); }
+            }
+            catch(Exception)
+            {
+                Debugger.Log("Error in removing the card");
+            }
+
             UpdateTables();
         }
 
