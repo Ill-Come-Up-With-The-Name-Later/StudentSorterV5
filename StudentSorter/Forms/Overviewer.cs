@@ -4,6 +4,12 @@ using System.Data;
 
 namespace StudentSorter
 {
+    enum SortAlgorithm
+    {
+        SelectiveShuffle,
+        HatDrawShuffle
+    }
+
     public partial class Overviewer : Form
     {
         private readonly DataTable students = new();
@@ -13,6 +19,8 @@ namespace StudentSorter
         public string GroupFile = "";
         public string IllegalPairFile = "";
         public string ManualAssignmentsFile = "";
+
+        private SortAlgorithm Algorithm = SortAlgorithm.SelectiveShuffle;
 
         public Overviewer()
         {
@@ -120,7 +128,19 @@ namespace StudentSorter
                     Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
             Sorter.GlobalInstance().RandomizeDeterminants();
-            Sorter.GlobalInstance().ShuffleGroups();
+
+            // Sort using a different algorithm depending on what is
+            // selected
+            if (Algorithm == SortAlgorithm.SelectiveShuffle)
+            {
+                Debugger.Log("Selected Shuffle Sort");
+                Sorter.GlobalInstance().ShuffleGroups();
+            }
+            else
+            {
+                Debugger.Log("Selected Hat Draw Shuffle");
+                Sorter.GlobalInstance().HatDrawShuffle();
+            }
 
             SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""));
             display.Show();
@@ -260,6 +280,24 @@ namespace StudentSorter
 
             ManualAssignmentFile.Text = $"Manual Assignment File Source: {SaveAssignmentDialog.FileName}";
             Debugger.Log($"Created configuration: {SaveAssignmentDialog.FileName}");
+        }
+
+        /// <summary>
+        /// Selects the shuffling algorithm:
+        /// Selective Shuffle Sort
+        /// </summary>
+        private void StandardSortButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(StandardSortButton.Checked) Algorithm = SortAlgorithm.SelectiveShuffle;
+        }
+
+        /// <summary>
+        /// Selects the shuffling algorithm:
+        /// 'Hat Draw Shuffle
+        /// </summary>
+        private void HatDrawButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(HatDrawButton.Checked) Algorithm = SortAlgorithm.HatDrawShuffle;
         }
     }
 }

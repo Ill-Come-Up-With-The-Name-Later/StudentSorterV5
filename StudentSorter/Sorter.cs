@@ -151,6 +151,47 @@ namespace StudentSorter
         }
 
         /// <summary>
+        /// Uses a 'hat draw' shuffle.
+        /// The algorithm will pick random numbers
+        /// for a student and add them to a group corresponding
+        /// to the number.
+        /// </summary>
+        public void HatDrawShuffle()
+        {
+            int sortedStudents = 0;
+
+            AllStudents.Sort(new StudentComparer()); // Shuffle master list
+
+            ManuallyAssign(); // Do all manual assignments first
+
+            foreach(Student student in AllStudents)
+            {
+                if(student.InGroup()) continue;
+
+                int groupIndex = new Random().Next(0, AllGroups.Count);
+                Group group = AllGroups[groupIndex];
+
+                while(group.IsFull())
+                {
+                    groupIndex = new Random().Next(0, AllGroups.Count);
+                    group = AllGroups[groupIndex];
+                }
+
+                group.AddStudent(student);
+                sortedStudents++;
+                Debugger.Log($"{student.Name} added to {group.Name}");
+                Debugger.Log($"Sorted Students: {sortedStudents}");
+            }
+
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+
+            if (IllegalPairs.Count > 0)
+            {
+                ReviseSort();
+            }
+        }
+
+        /// <summary>
         /// Checks if an illegal pair exists with 2 students
         /// </summary>
         /// <param name="s1">

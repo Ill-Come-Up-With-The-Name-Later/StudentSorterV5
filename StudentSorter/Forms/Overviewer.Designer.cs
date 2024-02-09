@@ -53,9 +53,13 @@
             OpenAssignments = new OpenFileDialog();
             SaveAssignmentsButton = new Button();
             SaveAssignmentDialog = new SaveFileDialog();
+            SortModeButtons = new GroupBox();
+            HatDrawButton = new RadioButton();
+            StandardSortButton = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).BeginInit();
+            SortModeButtons.SuspendLayout();
             SuspendLayout();
             // 
             // StudentViewer
@@ -208,7 +212,7 @@
             // 
             // SaveConfigButton
             // 
-            SaveConfigButton.Location = new Point(446, 475);
+            SaveConfigButton.Location = new Point(446, 577);
             SaveConfigButton.Name = "SaveConfigButton";
             SaveConfigButton.Size = new Size(274, 45);
             SaveConfigButton.TabIndex = 11;
@@ -226,7 +230,7 @@
             // StudentSource
             // 
             StudentSource.AutoSize = true;
-            StudentSource.Location = new Point(12, 608);
+            StudentSource.Location = new Point(12, 674);
             StudentSource.Name = "StudentSource";
             StudentSource.Size = new Size(230, 28);
             StudentSource.TabIndex = 12;
@@ -235,7 +239,7 @@
             // GroupSource
             // 
             GroupSource.AutoSize = true;
-            GroupSource.Location = new Point(12, 636);
+            GroupSource.Location = new Point(12, 702);
             GroupSource.Name = "GroupSource";
             GroupSource.Size = new Size(225, 28);
             GroupSource.TabIndex = 13;
@@ -244,7 +248,7 @@
             // DisallowedPairsSource
             // 
             DisallowedPairsSource.AutoSize = true;
-            DisallowedPairsSource.Location = new Point(12, 664);
+            DisallowedPairsSource.Location = new Point(12, 730);
             DisallowedPairsSource.Name = "DisallowedPairsSource";
             DisallowedPairsSource.Size = new Size(302, 28);
             DisallowedPairsSource.TabIndex = 14;
@@ -253,7 +257,7 @@
             // ManualAssignmentFile
             // 
             ManualAssignmentFile.AutoSize = true;
-            ManualAssignmentFile.Location = new Point(12, 692);
+            ManualAssignmentFile.Location = new Point(12, 758);
             ManualAssignmentFile.Name = "ManualAssignmentFile";
             ManualAssignmentFile.Size = new Size(341, 28);
             ManualAssignmentFile.TabIndex = 15;
@@ -295,12 +299,48 @@
             SaveAssignmentDialog.Title = "Save Manual Assignments to JSON";
             SaveAssignmentDialog.FileOk += SaveAssignmentDialog_FileOk;
             // 
+            // SortModeButtons
+            // 
+            SortModeButtons.Controls.Add(HatDrawButton);
+            SortModeButtons.Controls.Add(StandardSortButton);
+            SortModeButtons.Location = new Point(448, 459);
+            SortModeButtons.Name = "SortModeButtons";
+            SortModeButtons.Size = new Size(274, 112);
+            SortModeButtons.TabIndex = 18;
+            SortModeButtons.TabStop = false;
+            SortModeButtons.Text = "Shuffle Algorithm";
+            // 
+            // HatDrawButton
+            // 
+            HatDrawButton.AutoSize = true;
+            HatDrawButton.Location = new Point(6, 67);
+            HatDrawButton.Name = "HatDrawButton";
+            HatDrawButton.Size = new Size(189, 32);
+            HatDrawButton.TabIndex = 1;
+            HatDrawButton.Text = "'Hat Draw' Shuffle";
+            HatDrawButton.UseVisualStyleBackColor = true;
+            HatDrawButton.CheckedChanged += HatDrawButton_CheckedChanged;
+            // 
+            // StandardSortButton
+            // 
+            StandardSortButton.AutoSize = true;
+            StandardSortButton.Checked = true;
+            StandardSortButton.Location = new Point(6, 33);
+            StandardSortButton.Name = "StandardSortButton";
+            StandardSortButton.Size = new Size(254, 32);
+            StandardSortButton.TabIndex = 0;
+            StandardSortButton.TabStop = true;
+            StandardSortButton.Text = "Selective Random Shuffle";
+            StandardSortButton.UseVisualStyleBackColor = true;
+            StandardSortButton.CheckedChanged += StandardSortButton_CheckedChanged;
+            // 
             // Overviewer
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(1155, 761);
+            ClientSize = new Size(1155, 808);
+            Controls.Add(SortModeButtons);
             Controls.Add(SaveAssignmentsButton);
             Controls.Add(ManualAssignmentButton);
             Controls.Add(ManualAssignmentFile);
@@ -328,6 +368,8 @@
             ((System.ComponentModel.ISupportInitialize)StudentViewer).EndInit();
             ((System.ComponentModel.ISupportInitialize)GroupViewer).EndInit();
             ((System.ComponentModel.ISupportInitialize)ErrorProvider).EndInit();
+            SortModeButtons.ResumeLayout(false);
+            SortModeButtons.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -358,5 +400,8 @@
         private OpenFileDialog OpenAssignments;
         private Button SaveAssignmentsButton;
         private SaveFileDialog SaveAssignmentDialog;
+        private GroupBox SortModeButtons;
+        private RadioButton HatDrawButton;
+        private RadioButton StandardSortButton;
     }
 }
