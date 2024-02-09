@@ -77,7 +77,7 @@ namespace StudentSorter
 
             Overviewer overviewer = new();
 
-            SortDisplay display = new(overviewer, sort);
+            SortDisplay display = new(overviewer, sort, SortAlgorithm.HatDrawShuffle);
             display.Show();
         }
 

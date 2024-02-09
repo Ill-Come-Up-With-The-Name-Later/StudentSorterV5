@@ -4,7 +4,7 @@ using System.Data;
 
 namespace StudentSorter
 {
-    enum SortAlgorithm
+    public enum SortAlgorithm
     {
         SelectiveShuffle,
         HatDrawShuffle
@@ -20,7 +20,7 @@ namespace StudentSorter
         public string IllegalPairFile = "";
         public string ManualAssignmentsFile = "";
 
-        private SortAlgorithm Algorithm = SortAlgorithm.SelectiveShuffle;
+        public SortAlgorithm Algorithm = SortAlgorithm.SelectiveShuffle;
 
         public Overviewer()
         {
@@ -142,7 +142,7 @@ namespace StudentSorter
                 Sorter.GlobalInstance().HatDrawShuffle();
             }
 
-            SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""));
+            SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""), Algorithm);
             display.Show();
         }
 

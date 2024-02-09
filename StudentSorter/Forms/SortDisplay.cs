@@ -8,11 +8,13 @@ namespace StudentSorter
         private readonly DataTable Groups = new();
         private readonly Overviewer FormParent;
 
+        private SortAlgorithm Algorithm;
+
         private readonly List<GroupStudentList> ChildForms = new();
 
-        private SorterConfig Config { get; set; }
+        public SorterConfig Config { get; set; }
 
-        public SortDisplay(Overviewer formParent, SorterConfig config)
+        public SortDisplay(Overviewer formParent, SorterConfig config, SortAlgorithm algorithm)
         {
             InitializeComponent();
 
@@ -20,6 +22,7 @@ namespace StudentSorter
             Groups.Columns.Add("Name", typeof(string));
             FormParent = formParent;
             Config = config;
+            Algorithm = algorithm;
         }
 
         /// <summary>
@@ -75,7 +78,9 @@ namespace StudentSorter
             Debugger.Log("Reshuffling begun");
 
             Sorter.GlobalInstance().Reset();
-            Sorter.GlobalInstance().ShuffleGroups();
+
+            if(Algorithm == SortAlgorithm.SelectiveShuffle) Sorter.GlobalInstance().ShuffleGroups();
+            else Sorter.GlobalInstance().HatDrawShuffle();
 
             if (StudentDropDown.SelectedIndex > 0)
             {
