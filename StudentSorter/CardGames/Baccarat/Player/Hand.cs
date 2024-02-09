@@ -26,6 +26,8 @@ namespace StudentSorter.CardGames.Baccarat.Player
 
             if(val >= 10) val -= 10;
 
+            if (val >= 10) val = 9;
+
             return val;
         }
     }
