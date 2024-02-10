@@ -88,6 +88,7 @@ namespace StudentSorter
         /// </summary>
         public void ManuallyAssign()
         {
+            Debugger.Log("Fulfilling manual assignments");
             foreach(ManualAssignment assignment in Assignments)
             {
                 try
@@ -110,6 +111,7 @@ namespace StudentSorter
         /// </summary>
         public void ReviseSort()
         {
+            Debugger.Log("Resolving illegal pairs");
             foreach(IllegalPair pair in IllegalPairs)
             {
                 foreach(Group group in AllGroups)
@@ -166,13 +168,19 @@ namespace StudentSorter
 
             foreach(Student student in AllStudents)
             {
-                if(student.InGroup()) continue;
+                if (student.InGroup())
+                {
+                    Debugger.Log($"{student.Name} is in a group");
+                    continue;
+                } 
 
                 int groupIndex = new Random().Next(0, AllGroups.Count);
                 Group group = AllGroups[groupIndex];
 
                 while(group.IsFull())
                 {
+                    Debugger.Log($"{group.Name} is full");
+
                     groupIndex = new Random().Next(0, AllGroups.Count);
                     group = AllGroups[groupIndex];
                 }
@@ -491,7 +499,7 @@ namespace StudentSorter
         /// A list of names in the format
         /// last, first
         /// </returns>
-        public static List<string> GetNamesFromPDF(string filePath, int startPage, int pageLimit)
+        public static List<string> GetNamesFromPDF(string filePath, int startPage, int endPage)
         {
             using var file = File.OpenRead($@"{filePath}");
             GcPdfDocument document = new();
@@ -499,10 +507,11 @@ namespace StudentSorter
 
             List<string> names = new();
 
-            pageLimit = Math.Min(pageLimit, document.Pages.Count);
+            // Prevent nonsense page numbers such as before PDF starts or after PDF ends
+            endPage = Math.Min(endPage, document.Pages.Count);
             startPage = Math.Min(Math.Max(startPage, 0), document.Pages.Count);
 
-            for (int i = startPage; i <= pageLimit; i++) // read all pages from startPage to pageLimit
+            for (int i = startPage; i <= endPage; i++) // read all pages from startPage to pageLimit
             {
                 var PageText = document.Pages[i].GetText();
 

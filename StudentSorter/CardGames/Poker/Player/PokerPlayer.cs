@@ -1,5 +1,6 @@
 ﻿using StudentSorter.CardGames.Poker.Holdem;
 using StudentSorter.Debug;
+using StudentSorter.Gambling.Cards;
 
 namespace StudentSorter.CardGames.Poker.Player
 {
@@ -83,6 +84,30 @@ namespace StudentSorter.CardGames.Poker.Player
                 default:
                     return int.Parse(cardName);
             }
+        }
+
+        /// <summary>
+        /// Adds a card to the player's
+        /// hand
+        /// </summary>
+        /// <param name="card">
+        /// The card to add
+        /// </param>
+        public void AddCard(Card card)
+        {
+            PlayerHand.AddCard(card);
+        }
+
+        /// <summary>
+        /// Removes a card from the player's
+        /// hand
+        /// </summary>
+        /// <param name="card">
+        /// The card to remove
+        /// </param>
+        public void RemoveCard(Card card)
+        {
+            PlayerHand.RemoveCard(card);
         }
     }
 }

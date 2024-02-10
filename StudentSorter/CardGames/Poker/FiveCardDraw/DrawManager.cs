@@ -110,7 +110,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         public void AddCard(PokerPlayer pokerPlayer)
         {
             Card card = Deck[0];
-            pokerPlayer.PlayerHand.AddCard(card);
+            pokerPlayer.AddCard(card);
             Deck.Remove(card);
 
             Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
@@ -153,7 +153,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
                     {
                         for (int j = 0; j < 3; j++)
                         {
-                            player.PlayerHand.RemoveCard(player.PlayerHand.Cards[j]);
+                            player.RemoveCard(player.PlayerHand.Cards[j]);
                             AddCard(player);
                         }
                     }

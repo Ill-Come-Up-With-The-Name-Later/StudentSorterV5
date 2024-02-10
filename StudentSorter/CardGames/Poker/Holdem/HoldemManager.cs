@@ -131,7 +131,7 @@ namespace StudentSorter.CardGames.Poker.Holdem
         public void AddCard(PokerPlayer pokerPlayer)
         {
             Card card = Deck[0];
-            pokerPlayer.PlayerHand.AddCard(card);
+            pokerPlayer.AddCard(card);
             Deck.Remove(card);
 
             Debugger.Log($"Gave {card} to {pokerPlayer.Name}");
@@ -187,7 +187,7 @@ namespace StudentSorter.CardGames.Poker.Holdem
             foreach (PokerPlayer player in Players)
             {
                 if (player.Folded) continue;
-                if (player.Name.Equals("Player")) continue;
+                if (player.Equals("Player")) continue;
 
                 if (bettingRound == 1 && (player.BigBlind || player.SmallBlind)) continue;
 

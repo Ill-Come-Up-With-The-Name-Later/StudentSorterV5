@@ -123,7 +123,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
             int index = PlayerCards.CurrentCell.RowIndex;
             Card card = Manager.Players[0].PlayerHand.Cards[index];
 
-            Manager.Players[0].PlayerHand.RemoveCard(card);
+            Manager.Players[0].RemoveCard(card);
 
             UpdatePlayerCards();
         }
