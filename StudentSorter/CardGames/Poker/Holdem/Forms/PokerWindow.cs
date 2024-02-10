@@ -76,7 +76,7 @@ namespace StudentSorter.CardGames.Poker.Forms
 
             foreach (Card card in player.PlayerHand.Cards)
             {
-                if (player.PlayerHand.Cards.IndexOf(card) > 0 && obfuscate)
+                if(obfuscate)
                 {
                     cardSource.Rows.Add("???");
                     continue;
