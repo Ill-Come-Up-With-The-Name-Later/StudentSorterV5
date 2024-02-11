@@ -179,7 +179,7 @@ namespace StudentSorter
 
                 while(group.IsFull())
                 {
-                    Debugger.Log($"{group.Name} is full");
+                    Debugger.Log($"{group.Name} is full, cannot add {student.Name}");
 
                     groupIndex = new Random().Next(0, AllGroups.Count);
                     group = AllGroups[groupIndex];
