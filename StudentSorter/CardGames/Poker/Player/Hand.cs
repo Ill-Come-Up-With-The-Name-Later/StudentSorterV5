@@ -164,6 +164,32 @@ namespace StudentSorter.CardGames.Poker.Player
         }
 
         /// <summary>
+        /// Gets the amount of each card in the hand
+        /// </summary>
+        /// <returns>
+        /// A dictionary detailing the amount of
+        /// each card in this hand
+        /// </returns>
+        public Dictionary<string, int> CardAmounts()
+        {
+            Dictionary<string, int> cardAmounts = new();
+
+            foreach (Card card in Cards)
+            {
+                if (cardAmounts.ContainsKey(card.Name[..^1]))
+                {
+                    cardAmounts[card.Name[..^1]]++;
+                }
+                else
+                {
+                    cardAmounts[card.Name[..^1]] = 1;
+                }
+            }
+
+            return cardAmounts;
+        }
+
+        /// <summary>
         /// Finds the number of pairs in
         /// the hand
         /// </summary>
@@ -172,20 +198,8 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int NumPairs()
         {
-            Dictionary<string, int> cardAmounts = new();
+            Dictionary<string, int> cardAmounts = CardAmounts();
             int pairs = 0;
-
-            foreach(Card card in Cards)
-            {
-                if (cardAmounts.ContainsKey(card.Name[..^1]))
-                {
-                    cardAmounts[card.Name[..^1]]++;
-                } 
-                else
-                {
-                    cardAmounts[card.Name[..^1]] = 1;
-                }
-            }
 
             foreach(string key in cardAmounts.Keys)
             {
@@ -208,19 +222,7 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             if(!(NumPairs() > 0)) return -1;
 
-            Dictionary<string, int> cardAmounts = new();
-
-            foreach (Card card in Cards)
-            {
-                if (cardAmounts.ContainsKey(card.Name[..^1]))
-                {
-                    cardAmounts[card.Name[..^1]]++;
-                }
-                else
-                {
-                    cardAmounts[card.Name[..^1]] = 1;
-                }
-            }
+            Dictionary<string, int> cardAmounts = CardAmounts();
 
             List<int> PairVals = new();
             foreach(string key in cardAmounts.Keys)
@@ -247,6 +249,39 @@ namespace StudentSorter.CardGames.Poker.Player
         }
 
         /// <summary>
+        /// Gets the value of a three of 
+        /// a kind in the hand if there is one
+        /// </summary>
+        /// <returns>
+        /// The value of the three of a kind in
+        /// this hand if there is one, otherwise, -1
+        /// </returns>
+        public int ThreeOfAKindValue()
+        {
+            for(int i = 1; i <= 14; i++)
+                if (ThreeOfAKind(i)) return i;
+
+            return -1;
+        }
+
+        /// <summary>
+        /// Gets the value of a four
+        /// of a kind in this hand if there is
+        /// one
+        /// </summary>
+        /// <returns>
+        /// The value of the four of a kind in
+        /// the hand if there is one, otherwise, -1
+        /// </returns>
+        public int FourOfAKindValue()
+        {
+            for (int i = 1; i <= 14; i++)
+                if (FourOfAKind(i)) return i;
+
+            return -1;
+        }
+
+        /// <summary>
         /// Gets the value of the highest ranked
         /// card
         /// </summary>
@@ -255,6 +290,28 @@ namespace StudentSorter.CardGames.Poker.Player
         /// card
         /// </returns>
         public int HighestCardValue() => GetHighestCard().Value;
+
+        /// <summary>
+        /// Gets the highest unique card value
+        /// </summary>
+        /// <returns>
+        /// The highest value card that doesn't appear
+        /// more than once in the hand
+        /// </returns>
+        public int HighestUniqueCardValue()
+        {
+            Dictionary<string, int> cardAmounts = CardAmounts();
+
+            int max = -1;
+            foreach(string name in cardAmounts.Keys)
+            {
+                if (cardAmounts[name] > 1) continue;
+
+                if(PokerPlayer.GetCardValue(name) > max) 
+                    max = PokerPlayer.GetCardValue(name);
+            }
+            return max;
+        }
 
         /// <summary>
         /// Finds the number of cards of a

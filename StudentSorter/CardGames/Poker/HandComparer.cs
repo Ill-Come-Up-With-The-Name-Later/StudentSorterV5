@@ -48,9 +48,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.FourOfAKind(i) && !y.FourOfAKind(i)) return -1;
                 else if (x.FourOfAKind(i) && y.FourOfAKind(i))
                 {
-                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                    if (x.FourOfAKindValue() < y.FourOfAKindValue()) return 1;
+                    else if (x.FourOfAKindValue() > y.FourOfAKindValue()) return -1;
+                    else if (x.FourOfAKindValue() == y.FourOfAKindValue()) return 0;
                 }
             }
 
@@ -93,9 +93,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.ThreeOfAKind(i) && !y.ThreeOfAKind(i)) return -1;
                 else if (x.ThreeOfAKind(i) && y.ThreeOfAKind(i))
                 {
-                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                    if (x.ThreeOfAKindValue() < y.ThreeOfAKindValue()) return 1;
+                    else if (x.ThreeOfAKindValue() > y.ThreeOfAKindValue()) return -1;
+                    else if (x.ThreeOfAKindValue() == y.ThreeOfAKindValue()) return 0;
                 }
                 else if (!x.ThreeOfAKind(i) && y.ThreeOfAKind(i)) return 1;
             }
@@ -106,7 +106,10 @@ namespace StudentSorter.CardGames.Poker
             {
                 if (x.HighestPairValue() < y.HighestPairValue()) return 1;
                 else if (x.HighestPairValue() > y.HighestPairValue()) return -1;
-                else if (x.HighestPairValue() == y.HighestPairValue()) return 0;
+                else if (x.HighestPairValue() == y.HighestPairValue())
+                    if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                    else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                    else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.TwoPairs() && y.TwoPairs()) return 1;
 
@@ -116,7 +119,10 @@ namespace StudentSorter.CardGames.Poker
             {
                 if (x.HighestPairValue() < y.HighestPairValue()) return 1;
                 else if (x.HighestPairValue() > y.HighestPairValue()) return -1;
-                else if (x.HighestPairValue() == y.HighestPairValue()) return 0;
+                else if (x.HighestPairValue() == y.HighestPairValue())
+                    if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                    else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                    else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.OnePair() && y.OnePair()) return 1;
 
