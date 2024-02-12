@@ -288,16 +288,24 @@ namespace StudentSorter
         /// </summary>
         private void StandardSortButton_CheckedChanged(object sender, EventArgs e)
         {
-            if(StandardSortButton.Checked) Algorithm = SortAlgorithm.SelectiveShuffle;
+            if (StandardSortButton.Checked) 
+            {
+                Debugger.Log("Selective Shuffle algorithm selected");
+                Algorithm = SortAlgorithm.SelectiveShuffle; 
+            }
         }
 
         /// <summary>
         /// Selects the shuffling algorithm:
-        /// 'Hat Draw Shuffle
+        /// 'Hat Draw' Shuffle
         /// </summary>
         private void HatDrawButton_CheckedChanged(object sender, EventArgs e)
         {
-            if(HatDrawButton.Checked) Algorithm = SortAlgorithm.HatDrawShuffle;
+            if (HatDrawButton.Checked) 
+            {
+                Debugger.Log("'Hat Draw' shuffle alogrithm selected");
+                Algorithm = SortAlgorithm.HatDrawShuffle; 
+            }
         }
     }
 }
