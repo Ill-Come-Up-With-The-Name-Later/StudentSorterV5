@@ -24,6 +24,8 @@ namespace StudentSorter.CardGames.Keno.Forms
             BetNums.Columns.Add("Num", typeof(int));
             WinningNums.Columns.Add("Num", typeof(int));
 
+            EnterNumbersInstruction.Text = $"Enter your numbers one at a time: (1-80) (0/0 Bet)";
+
             Debugger.Log("Opened Keno");
         }
 
@@ -69,6 +71,7 @@ namespace StudentSorter.CardGames.Keno.Forms
             ChosenNumInput.Enabled = true;
 
             Debugger.Log($"Player is betting on {NumberOfNums} number(s)");
+            EnterNumbersInstruction.Text = $"Enter your numbers one at a time: (1-80) (0/{NumberOfNums} Bet)";
         }
 
         /// <summary>
@@ -105,6 +108,7 @@ namespace StudentSorter.CardGames.Keno.Forms
 
             PlayerNums.Add((int)ChosenNumInput.Value);
             Debugger.Log($"Player is betting on {ChosenNumInput.Value}");
+            EnterNumbersInstruction.Text = $"Enter your numbers one at a time: (1-80) ({PlayerNums.Count}/{NumberOfNums} Bet)";
 
             UpdateTables();
         }

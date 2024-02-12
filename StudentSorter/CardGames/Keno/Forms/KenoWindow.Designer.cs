@@ -85,9 +85,9 @@
             EnterNumbersInstruction.AutoSize = true;
             EnterNumbersInstruction.Location = new Point(12, 218);
             EnterNumbersInstruction.Name = "EnterNumbersInstruction";
-            EnterNumbersInstruction.Size = new Size(364, 28);
+            EnterNumbersInstruction.Size = new Size(446, 28);
             EnterNumbersInstruction.TabIndex = 3;
-            EnterNumbersInstruction.Text = "Enter your numbers one at a time: (1-80)";
+            EnterNumbersInstruction.Text = "Enter your numbers one at a time: (1-80) (X/X Bet)";
             // 
             // SetAmountOfNumsButton
             // 
