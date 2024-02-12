@@ -147,6 +147,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
 
                 if (player.Folded) continue;
 
+                if(player.PlayerHand.SpecialHand()) continue; // Don't risk a possibly decent hand
+
                 if(player.PlayerHand.GetHandValue() < 45)
                 {
                     if(new Random().Next(0, 4) == 1)

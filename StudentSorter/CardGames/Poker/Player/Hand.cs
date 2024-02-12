@@ -396,6 +396,22 @@ namespace StudentSorter.CardGames.Poker.Player
         }
 
         /// <summary>
+        /// Gets if this hand is a special hand
+        /// that has something that counts
+        /// </summary>
+        /// <returns>
+        /// If the hand is speical
+        /// </returns>
+        public bool SpecialHand()
+        {
+            for(int i = 1; i <= 14; i++)
+            {
+                if (ThreeOfAKind(i) || FourOfAKind(i) || FullHouse(i)) return true;
+            }
+            return RoyalFlush() || StraightFlush() || Flush() || Straight() || TwoPairs() || OnePair();
+        }
+
+        /// <summary>
         /// Returns if the hand is a royal
         /// flush
         /// </summary>
