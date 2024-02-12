@@ -201,6 +201,7 @@ namespace StudentSorter.CardGames.Poker.Forms
                 }
 
                 BestFive = new List<Card>(hand.Cards);
+                BestFive.Sort(new CardComparer());
                 
                 // Ensure there can be no more than 5
                 // cards in the final hand
