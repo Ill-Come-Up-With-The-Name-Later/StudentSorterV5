@@ -131,7 +131,7 @@ namespace StudentSorter.Gambling.BlackJack.Forms
         /// </summary>
         public void DealerTurn()
         {
-            while (Manager.Player2.CardValue <= 17 || (Manager.Player2.CardValue <= Manager.Player1.CardValue && Manager.Player2.CardValue <= 21))
+            while (Manager.Player2.CardValue <= 17 && (Manager.Player2.CardValue <= Manager.Player1.CardValue && Manager.Player2.CardValue <= 21))
             {
                 if (Manager.Player2.CardValue > Manager.Player1.CardValue)
                     break;

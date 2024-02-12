@@ -9,11 +9,26 @@ namespace StudentSorter.CardGames.Poker.Player
         public List<Card> Cards = new();
         public PokerPlayer Owner;
 
+        public Card this[int index] { get { return Cards[index]; } set { Cards[index] = value; } }
+        public Card this[Index index] { get { return Cards[index.Value]; } set { Cards[index.Value] = value; } }
+
         /// <summary>
         /// A hand of cards
         /// </summary>
         public Hand()
         {
+        }
+
+        /// <summary>
+        /// Adds all cards from a list
+        /// to this hand
+        /// </summary>
+        /// <param name="cards">
+        /// The cards to add
+        /// </param>
+        public void AddAll(List<Card> cards)
+        {
+            cards.ForEach(x => { AddCard(x); });
         }
 
         /// <summary>
@@ -62,7 +77,7 @@ namespace StudentSorter.CardGames.Poker.Player
         public void RemoveCard(Card card)
         {
             Cards.Remove(card);
-            Debugger.Log($"Removed {card} from {Owner.Name}'s Hand");
+            Debugger.Log($"Removed {card} from {(Owner == null ? "x" : Owner.Name)}'s Hand");
         }
 
         /// <summary>
@@ -80,6 +95,29 @@ namespace StudentSorter.CardGames.Poker.Player
 
             return cards[0];
         }
+        
+        /// <summary>
+        /// Gets if removing a card would
+        /// affect this hand significantly.
+        /// (USE THIS ONLY IF THE HAND HAS MORE
+        /// THAN 5 CARDS)
+        /// </summary>
+        /// <param name="card">
+        /// The card to check
+        /// </param>
+        /// <returns>
+        /// If removal of the card affects the hand
+        /// </returns>
+        public bool RemovalAffectsHand(Card card)
+        {
+            if (!SpecialHand()) return false;
+            Hand clone = new();
+            clone.AddAll(Cards);
+
+            clone.RemoveCard(card);
+
+            return clone.SpecialHand();
+        }
 
         /// <summary>
         /// Returns if the suits of all the cards
@@ -93,8 +131,12 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             Suit suit = Cards[0].CardSuit;
 
+            int i = 1;
             foreach (Card card in Cards)
-                if(card.CardSuit != suit) return false;
+            {
+                if (i >= 5) break;
+                if (card.CardSuit != suit) return false;
+            }
 
             return true;
         }
@@ -207,7 +249,7 @@ namespace StudentSorter.CardGames.Poker.Player
                     pairs++;
             }
 
-            Debugger.Log($"{Owner.Name}'s hand contains {pairs} pairs");
+            Debugger.Log($"{(Owner == null ? "x" : Owner.Name)}'s hand contains {pairs} pairs");
             return pairs;
         }
 
@@ -310,6 +352,7 @@ namespace StudentSorter.CardGames.Poker.Player
                 if(PokerPlayer.GetCardValue(name) > max) 
                     max = PokerPlayer.GetCardValue(name);
             }
+
             return max;
         }
 
@@ -335,7 +378,7 @@ namespace StudentSorter.CardGames.Poker.Player
         }
 
         /// <summary>
-        /// Returns if the hand's cards
+        /// Returns if the hand's first 5 cards
         /// are in descending order and go
         /// down in increments of 1.
         /// (greatest -> least)
@@ -346,10 +389,16 @@ namespace StudentSorter.CardGames.Poker.Player
         public bool InDescendingOrder()
         {
             int prevVal = int.MaxValue;
+            int i = 1;
 
             foreach(Card card in Cards)
             {
-                if(prevVal - 1 == card.Value) prevVal = card.Value;
+                if (i >= 5) break;
+                if (prevVal - 1 == card.Value) 
+                { 
+                    prevVal = card.Value; 
+                    i++; 
+                }
                 else return false;
             }
 
@@ -409,6 +458,29 @@ namespace StudentSorter.CardGames.Poker.Player
                 if (ThreeOfAKind(i) || FourOfAKind(i) || FullHouse(i)) return true;
             }
             return RoyalFlush() || StraightFlush() || Flush() || Straight() || TwoPairs() || OnePair();
+        }
+
+        /// <summary>
+        /// Gets if a list of cards would be a special
+        /// hand
+        /// </summary>
+        /// <param name="cards">
+        /// The list to check
+        /// </param>
+        /// <returns>
+        /// If the list is a special hand
+        /// </returns>
+        public static bool SpecialHand(List<Card> cards, PokerPlayer player)
+        {
+            Hand hand = new()
+            {
+                Owner = player
+            };
+
+            foreach (Card card in cards) 
+                hand.AddCard(card);
+
+            return hand.SpecialHand();
         }
 
         /// <summary>

@@ -141,22 +141,7 @@ namespace StudentSorter.CardGames.Poker.Forms
             {
                 if (player.Folded || player.Name.Equals("Player")) continue;
 
-                List<Card> BestFive = new(Manager.CommunityCards);
-
-                foreach (Card card in player.PlayerHand.Cards)
-                    BestFive.Add(card);
-
-                BestFive.Sort(new CardComparer());
-
-                BestFive.Remove(BestFive[^1]);
-                BestFive.Remove(BestFive[^1]);
-
-                player.PlayerHand.Cards.Clear();
-
-                foreach (Card card in BestFive)
-                    player.PlayerHand.AddCard(card);
-
-                Debugger.Log($"{player.Name} has chosen their best hand");
+                PickBestHand(player);
             }
 
             WinnerWindow winnerWindow = new(Manager);
@@ -170,6 +155,70 @@ namespace StudentSorter.CardGames.Poker.Forms
         {
             Manager.Players[0].Fold();
             Close();
+        }
+
+        /// <summary>
+        /// Allows a player to pick their best
+        /// hand. (Used for bots)
+        /// </summary>
+        /// <param name="player">
+        /// The player who is picking their best
+        /// hand
+        /// </param>
+        public void PickBestHand(PokerPlayer player)
+        {
+            List<Card> BestFive = new(Manager.CommunityCards);
+
+            foreach (Card card in player.PlayerHand.Cards)
+                BestFive.Add(card);
+
+            BestFive.Sort(new CardComparer());
+
+            if(Hand.SpecialHand(BestFive, player))
+            {
+                Hand hand = new()
+                {
+                    Owner = player
+                };
+
+                hand.AddAll(BestFive);
+                
+                if(hand.RoyalFlush() || hand.StraightFlush() || hand.Straight() || hand.Flush())
+                {
+                    hand.RemoveCard(hand[^1]);
+                    hand.RemoveCard(hand[^1]);
+                } 
+                else
+                {
+                    List<Card> removeCards = new(); // mark unneeded cards for removal
+                    foreach(Card card in hand.Cards) 
+                    {
+                        if (hand.RemovalAffectsHand(card)) continue;
+                        else if (hand.Cards.Count > 5) removeCards.Add(card);
+                    }
+
+                    foreach (Card card in removeCards) hand.RemoveCard(card);
+                }
+
+                BestFive = new List<Card>(hand.Cards);
+                
+                // Ensure there can be no more than 5
+                // cards in the final hand
+                if (BestFive.Count > 5)
+                    while (BestFive.Count > 5)
+                        BestFive.Remove(BestFive[^1]);
+            }
+            else
+            {
+                BestFive.Remove(BestFive[^1]);
+                BestFive.Remove(BestFive[^1]);
+            }
+
+            player.PlayerHand.Cards.Clear();
+
+            player.PlayerHand.AddAll(BestFive);
+
+            Debugger.Log($"{player.Name} has chosen their best hand");
         }
     }
 }
