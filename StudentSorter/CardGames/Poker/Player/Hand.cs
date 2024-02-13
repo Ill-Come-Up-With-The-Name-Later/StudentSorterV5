@@ -131,7 +131,7 @@ namespace StudentSorter.CardGames.Poker.Player
         {
             Suit suit = Cards[0].CardSuit;
 
-            int i = 1;
+            int i = 0;
             foreach (Card card in Cards)
             {
                 if (i >= 5) break;
@@ -389,7 +389,7 @@ namespace StudentSorter.CardGames.Poker.Player
         public bool InDescendingOrder()
         {
             int prevVal = int.MaxValue;
-            int i = 1;
+            int i = 0;
 
             foreach(Card card in Cards)
             {
