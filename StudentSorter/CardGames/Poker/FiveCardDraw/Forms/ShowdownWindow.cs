@@ -2,6 +2,7 @@
 using StudentSorter.Gambling.Cards;
 using System.Data;
 using StudentSorter.Debug;
+using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 {
@@ -19,6 +20,9 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
             PlayerHand.Columns.Add("Card", typeof(string));
             SelectedIndex = 0;
             PlayerCards.DataSource = PlayerHand;
+
+            // Sort all player's hands by card rank for display
+            Manager.Players.ForEach(player => { player.PlayerHand.Cards.Sort(new CardComparer()); });
 
             // Determine winner
             PokerPlayer winner = Winner();
