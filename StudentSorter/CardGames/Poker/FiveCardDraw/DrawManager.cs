@@ -323,7 +323,72 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             player.AddCard(card4);
             player.AddCard(card5);
 
-            Debugger.Log($"Gave {player.Name} a straight");
+            Debugger.Log($"Gave {player.Name} a straight flush");
+        }
+
+        /// <summary>
+        /// Gives a player two pairs
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveTwoPairs(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("A", 14, Suit.Spades);
+            Card card3 = new("K", 13, Suit.Clubs);
+            Card card4 = new("K", 13, Suit.Diamonds);
+            AddCard(player);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+
+            Debugger.Log($"Gave {player.Name} two pairs");
+        }
+
+        /// <summary>
+        /// Gives a player one pair
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveOnePair(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("A", 14, Suit.Spades);
+            AddCard(player);
+            AddCard(player);
+            AddCard(player);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+
+            Debugger.Log($"Gave {player.Name} one pair");
+        }
+
+        /// <summary>
+        /// Gives a player a flush
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to
+        /// </param>
+        public void GiveFlush(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("K", 13, Suit.Clubs);
+            Card card3 = new("Q", 12, Suit.Clubs);
+            Card card4 = new("J", 11, Suit.Clubs);
+            Card card5 = new("9", 9, Suit.Clubs);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            player.AddCard(card5);
+
+            Debugger.Log($"Gave {player.Name} a flush");
         }
     }
 }
