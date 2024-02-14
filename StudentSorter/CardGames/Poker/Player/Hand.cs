@@ -380,7 +380,7 @@ namespace StudentSorter.CardGames.Poker.Player
             foreach(Card card in Cards)
                 if(card.Value == rank) numCards++;
 
-            Debugger.Log($"There is {numCards} card(s) of rank {rank} in {Owner.Name}'s hand");
+            if(numCards > 0) Debugger.Log($"There is {numCards} card(s) of rank {rank} in {Owner.Name}'s hand");
             return numCards;
         }
 

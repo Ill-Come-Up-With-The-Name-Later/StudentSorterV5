@@ -124,7 +124,7 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
 
                 Debugger.Log($"{pokerPlayer.Name} has two pairs: {pokerPlayer.PlayerHand.TwoPairs()}");
                 Debugger.Log($"{pokerPlayer.Name} has pair: {pokerPlayer.PlayerHand.OnePair()}");
-            } 
+            }
         }
 
         /// <summary>
