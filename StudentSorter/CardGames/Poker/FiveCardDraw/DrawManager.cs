@@ -91,8 +91,6 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             Debugger.Log($"Deck Size: {Deck.Count}/52");
             Debugger.Log("Setup Poker deck");
 
-            GiveFourOfAKind(Players[0]);
-
             // Deal cards
             foreach (PokerPlayer pokerPlayer in Players)
             {
