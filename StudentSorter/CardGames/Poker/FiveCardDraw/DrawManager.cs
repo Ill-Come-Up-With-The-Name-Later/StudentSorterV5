@@ -91,14 +91,42 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             Debugger.Log($"Deck Size: {Deck.Count}/52");
             Debugger.Log("Setup Poker deck");
 
+            GiveFourOfAKind(Players[0]);
+
             // Deal cards
             foreach (PokerPlayer pokerPlayer in Players)
             {
+                if (pokerPlayer.PlayerHand.Cards.Count > 0) continue;
                 for(int i = 0; i < 5; i++)
                     AddCard(pokerPlayer);
             }
 
             Debugger.Log("Setup Poker (5-Card Draw)");
+
+            // Show if player has a special hand
+            foreach(PokerPlayer pokerPlayer in Players)
+            {
+                Debugger.Log($"{pokerPlayer.Name} has royal flush: {pokerPlayer.PlayerHand.RoyalFlush()}");
+                Debugger.Log($"{pokerPlayer.Name} has straight flush: {pokerPlayer.PlayerHand.StraightFlush()}");
+
+                for(int i = 2; i <= 14; i++)
+                    if(pokerPlayer.PlayerHand.FourOfAKind(i))
+                        Debugger.Log($"{pokerPlayer.Name} has four of a kind: {pokerPlayer.PlayerHand.FourOfAKind(i)}");
+
+                for (int i = 2; i <= 14; i++)
+                    if (pokerPlayer.PlayerHand.FullHouse(i))
+                        Debugger.Log($"{pokerPlayer.Name} has full house: {pokerPlayer.PlayerHand.FullHouse(i)}");
+
+                Debugger.Log($"{pokerPlayer.Name} has flush: {pokerPlayer.PlayerHand.Flush()}");
+                Debugger.Log($"{pokerPlayer.Name} has straight: {pokerPlayer.PlayerHand.Straight()}");
+
+                for (int i = 2; i <= 14; i++)
+                    if (pokerPlayer.PlayerHand.ThreeOfAKind(i))
+                        Debugger.Log($"{pokerPlayer.Name} has full house: {pokerPlayer.PlayerHand.ThreeOfAKind(i)}");
+
+                Debugger.Log($"{pokerPlayer.Name} has two pairs: {pokerPlayer.PlayerHand.TwoPairs()}");
+                Debugger.Log($"{pokerPlayer.Name} has pair: {pokerPlayer.PlayerHand.OnePair()}");
+            } 
         }
 
         /// <summary>
@@ -163,6 +191,141 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
 
                 player.PlayerHand.Cards.Sort(new CardComparer());
             }
+        }
+
+        /// <summary>
+        /// Gives a player a three of a kind
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveThreeOfAKind(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("A", 14, Suit.Hearts);
+            Card card3 = new("A", 14, Suit.Spades);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            AddCard(player);
+            AddCard(player);
+
+            Debugger.Log($"Gave {player.Name} a three of a kind");
+        }
+
+        /// <summary>
+        /// Gives a player a four of a kind
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveFourOfAKind(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("A", 14, Suit.Hearts);
+            Card card3 = new("A", 14, Suit.Spades);
+            Card card4 = new("A", 14, Suit.Diamonds);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            AddCard(player);
+
+            Debugger.Log($"Gave {player.Name} a four of a kind");
+        }
+
+        /// <summary>
+        /// Gives a player a royal flush
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveRoyalFlush(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("K", 13, Suit.Clubs);
+            Card card3 = new("Q", 12, Suit.Clubs);
+            Card card4 = new("J", 11, Suit.Clubs);
+            Card card5 = new("10", 10, Suit.Clubs);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            player.AddCard(card5);
+
+            Debugger.Log($"Gave {player.Name} a royal flush");
+        }
+
+        /// <summary>
+        /// Gives a player a full house
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveFullHouse(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Clubs);
+            Card card2 = new("A", 14, Suit.Clubs);
+            Card card3 = new("A", 14, Suit.Clubs);
+            Card card4 = new("K", 13, Suit.Clubs);
+            Card card5 = new("K", 13, Suit.Clubs);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            player.AddCard(card5);
+
+            Debugger.Log($"Gave {player.Name} a full house");
+        }
+
+        /// <summary>
+        /// Gives a player a straight
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveStraight(PokerPlayer player)
+        {
+            Card card1 = new("A", 14, Suit.Spades);
+            Card card2 = new("K", 13, Suit.Clubs);
+            Card card3 = new("Q", 12, Suit.Diamonds);
+            Card card4 = new("J", 11, Suit.Clubs);
+            Card card5 = new("10", 10, Suit.Hearts);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            player.AddCard(card5);
+
+            Debugger.Log($"Gave {player.Name} a straight");
+        }
+
+        /// <summary>
+        /// Gives a player a straight
+        /// </summary>
+        /// <param name="player">
+        /// The player to give the cards to 
+        /// </param>
+        public void GiveStraightFlush(PokerPlayer player)
+        {
+            Card card1 = new("K", 13, Suit.Clubs);
+            Card card2 = new("Q", 12, Suit.Clubs);
+            Card card3 = new("J", 11, Suit.Clubs);
+            Card card4 = new("10", 10, Suit.Clubs);
+            Card card5 = new("9", 9, Suit.Clubs);
+
+            player.AddCard(card1);
+            player.AddCard(card2);
+            player.AddCard(card3);
+            player.AddCard(card4);
+            player.AddCard(card5);
+
+            Debugger.Log($"Gave {player.Name} a straight");
         }
     }
 }

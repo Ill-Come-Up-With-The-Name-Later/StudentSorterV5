@@ -43,7 +43,7 @@ namespace StudentSorter.CardGames.Poker
             else if (!x.StraightFlush() && y.StraightFlush()) return 1;
 
             // Four of a kind
-            for (int i = 1; i <= 14; i++)
+            for (int i = 2; i <= 14; i++)
             {
                 if (x.FourOfAKind(i) && !y.FourOfAKind(i)) return -1;
                 else if (x.FourOfAKind(i) && y.FourOfAKind(i))
@@ -52,10 +52,11 @@ namespace StudentSorter.CardGames.Poker
                     else if (x.FourOfAKindValue() > y.FourOfAKindValue()) return -1;
                     else if (x.FourOfAKindValue() == y.FourOfAKindValue()) return 0;
                 }
+                else if (!x.FourOfAKind(i) && y.FourOfAKind(i)) return 1;
             }
 
             // Full House
-            for (int i = 1; i <= 14; i++)
+            for (int i = 2; i <= 14; i++)
             {
                 if (x.FullHouse(i) && !y.FullHouse(i)) return -1;
                 else if (x.FullHouse(i) && y.FullHouse(i))
@@ -88,7 +89,7 @@ namespace StudentSorter.CardGames.Poker
             else if (!x.Straight() && y.Straight()) return 1;
 
             // Three of a Kind
-            for (int i = 1; i <= 14; i++)
+            for (int i = 2; i <= 14; i++)
             {
                 if (x.ThreeOfAKind(i) && !y.ThreeOfAKind(i)) return -1;
                 else if (x.ThreeOfAKind(i) && y.ThreeOfAKind(i))

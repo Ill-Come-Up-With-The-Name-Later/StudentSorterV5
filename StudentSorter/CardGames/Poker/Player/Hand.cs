@@ -243,7 +243,7 @@ namespace StudentSorter.CardGames.Poker.Player
 
             foreach(string key in cardAmounts.Keys)
             {
-                if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
+                if (cardAmounts[key] == 2)
                     pairs++;
             }
 
@@ -267,7 +267,7 @@ namespace StudentSorter.CardGames.Poker.Player
             List<int> PairVals = new();
             foreach(string key in cardAmounts.Keys)
             {
-                if (cardAmounts[key] % 2 == 0 && cardAmounts[key] > 0)
+                if (cardAmounts[key] == 2)
                 {
                     PairVals.Add(PokerPlayer.GetCardValue(key));
                     Debugger.Log($"{key} is a pair in {Owner.Name}'s hand ({cardAmounts[key]} occurances)");
@@ -298,8 +298,12 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int ThreeOfAKindValue()
         {
-            for(int i = 1; i <= 14; i++)
-                if (ThreeOfAKind(i)) return i;
+            for (int i = 2; i <= 14; i++)
+                if (ThreeOfAKind(i)) 
+                {
+                    Debugger.Log($"{Owner.Name}'s three of a kind value: {i}");
+                    return i; 
+                }
 
             return -1;
         }
@@ -315,8 +319,12 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public int FourOfAKindValue()
         {
-            for (int i = 1; i <= 14; i++)
-                if (FourOfAKind(i)) return i;
+            for (int i = 2; i <= 14; i++)
+                if (FourOfAKind(i)) 
+                {
+                    Debugger.Log($"{Owner.Name}'s four of a kind value: {i}");
+                    return i; 
+                }
 
             return -1;
         }
@@ -372,6 +380,7 @@ namespace StudentSorter.CardGames.Poker.Player
             foreach(Card card in Cards)
                 if(card.Value == rank) numCards++;
 
+            Debugger.Log($"There is {numCards} card(s) of rank {rank} in {Owner.Name}'s hand");
             return numCards;
         }
 
