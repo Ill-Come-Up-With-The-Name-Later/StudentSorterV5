@@ -397,16 +397,17 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public bool InDescendingOrder()
         {
-            Cards.Sort(new CardComparer());
-            Cards.Reverse();
+            List<Card> dummyList = new(Cards);
+            dummyList.Sort(new CardComparer());
+            dummyList.Reverse();
 
-            int prevVal = Cards[0].Value;
+            int prevVal = dummyList[0].Value;
 
             for(int i = 1; i < 5; i++)
             {
-                if (prevVal + 1 == Cards[i].Value) 
+                if (prevVal + 1 == dummyList[i].Value) 
                 { 
-                    prevVal = Cards[i].Value; 
+                    prevVal = dummyList[i].Value; 
                 }
                 else return false;
             }
