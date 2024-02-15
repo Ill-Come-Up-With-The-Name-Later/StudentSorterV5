@@ -398,18 +398,20 @@ namespace StudentSorter.CardGames.Poker.Player
         public bool InDescendingOrder()
         {
             Cards.Sort(new CardComparer());
-            int prevVal = int.MaxValue;
+            Cards.Reverse();
 
-            for(int i = 0; i < 5; i++)
+            int prevVal = Cards[0].Value;
+
+            for(int i = 1; i < 5; i++)
             {
-                if (prevVal - 1 == Cards[i].Value) 
+                if (prevVal + 1 == Cards[i].Value) 
                 { 
                     prevVal = Cards[i].Value; 
-                    i++; 
                 }
                 else return false;
             }
 
+            Debugger.Log($"{Owner.Name}'s hand is a straight");
             return true;
         }
 

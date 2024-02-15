@@ -199,6 +199,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveThreeOfAKind(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("A", 14, Suit.Hearts);
             Card card3 = new("A", 14, Suit.Spades);
@@ -220,6 +222,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveFourOfAKind(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("A", 14, Suit.Hearts);
             Card card3 = new("A", 14, Suit.Spades);
@@ -242,6 +246,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveRoyalFlush(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("K", 13, Suit.Clubs);
             Card card3 = new("Q", 12, Suit.Clubs);
@@ -265,6 +271,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveFullHouse(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("A", 14, Suit.Clubs);
             Card card3 = new("A", 14, Suit.Clubs);
@@ -288,6 +296,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveStraight(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Spades);
             Card card2 = new("K", 13, Suit.Clubs);
             Card card3 = new("Q", 12, Suit.Diamonds);
@@ -311,6 +321,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveStraightFlush(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("K", 13, Suit.Clubs);
             Card card2 = new("Q", 12, Suit.Clubs);
             Card card3 = new("J", 11, Suit.Clubs);
@@ -334,6 +346,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveTwoPairs(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("A", 14, Suit.Spades);
             Card card3 = new("K", 13, Suit.Clubs);
@@ -356,6 +370,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveOnePair(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("A", 14, Suit.Spades);
             AddCard(player);
@@ -376,6 +392,8 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
         /// </param>
         public void GiveFlush(PokerPlayer player)
         {
+            player.PlayerHand.Cards.Clear();
+
             Card card1 = new("A", 14, Suit.Clubs);
             Card card2 = new("K", 13, Suit.Clubs);
             Card card3 = new("Q", 12, Suit.Clubs);
