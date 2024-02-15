@@ -397,6 +397,7 @@ namespace StudentSorter.CardGames.Poker.Player
         /// </returns>
         public bool InDescendingOrder()
         {
+            Cards.Sort(new CardComparer());
             int prevVal = int.MaxValue;
 
             for(int i = 0; i < 5; i++)
