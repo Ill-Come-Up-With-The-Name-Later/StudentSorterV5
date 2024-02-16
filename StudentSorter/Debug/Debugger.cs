@@ -11,6 +11,8 @@
         /// </param>
         public static void Log(string message)
         {
+            if (Program.Debugger == null) return;
+
             DateTime now = DateTime.Now; // Format soo that if a value is less than 10, put a leading 0, ex: 06:09.04
             Program.Debugger.DebugLog.Text += $"\n[{(now.Hour < 10 ? $"0{now.Hour}" : $"{now.Hour}")}:{(now.Minute < 10 ? $"0{now.Minute}" 
                 : $"{now.Minute}")}.{(now.Second < 10 ? $"0{now.Second}" : $"{now.Second}")}]: {message}";
