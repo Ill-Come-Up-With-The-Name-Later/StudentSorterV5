@@ -26,9 +26,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.RoyalFlush() && !y.RoyalFlush()) return -1;
             else if (x.RoyalFlush() && y.RoyalFlush())
             {
-                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.RoyalFlush() && y.RoyalFlush()) return 1;
 
@@ -36,9 +36,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.StraightFlush() && !y.StraightFlush()) return -1;
             else if (x.StraightFlush() && y.StraightFlush())
             {
-                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.StraightFlush() && y.StraightFlush()) return 1;
 
@@ -61,9 +61,9 @@ namespace StudentSorter.CardGames.Poker
                 if (x.FullHouse(i) && !y.FullHouse(i)) return -1;
                 else if (x.FullHouse(i) && y.FullHouse(i))
                 {
-                    if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                    else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                    else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                    if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                    else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                    else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
                 }
                 else if (!x.FullHouse(i) && y.FullHouse(i)) return 1;
             }
@@ -72,9 +72,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.Flush() && !x.Flush()) return -1;
             else if (x.Flush() && y.Flush())
             {
-                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.Flush() && y.Flush()) return 1;
 
@@ -82,9 +82,9 @@ namespace StudentSorter.CardGames.Poker
             if (x.Straight() && !y.Straight()) return -1;
             else if (x.Straight() && y.Straight())
             {
-                if (x.HighestCardValue() < y.HighestCardValue()) return 1;
-                else if (x.HighestCardValue() > y.HighestCardValue()) return -1;
-                else if (x.HighestCardValue() == y.HighestCardValue()) return 0;
+                if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
             }
             else if (!x.Straight() && y.Straight()) return 1;
 
