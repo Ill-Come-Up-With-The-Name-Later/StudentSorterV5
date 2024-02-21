@@ -7,7 +7,8 @@ namespace StudentSorter
     public enum SortAlgorithm
     {
         SelectiveShuffle,
-        HatDrawShuffle
+        HatDrawShuffle,
+        DodgeballTeamShuffle
     }
 
     public partial class Overviewer : Form
@@ -131,15 +132,21 @@ namespace StudentSorter
 
             // Sort using a different algorithm depending on what is
             // selected
-            if (Algorithm == SortAlgorithm.SelectiveShuffle)
+            switch(Algorithm)
             {
-                Debugger.Log("Selected Shuffle Sort");
-                Sorter.GlobalInstance().ShuffleGroups();
-            }
-            else
-            {
-                Debugger.Log("Selected Hat Draw Shuffle");
-                Sorter.GlobalInstance().HatDrawShuffle();
+                case SortAlgorithm.SelectiveShuffle:
+                    Debugger.Log("Selected Shuffle Sort");
+                    Sorter.GlobalInstance().ShuffleGroups();
+                    break;
+                case SortAlgorithm.HatDrawShuffle:
+                    Debugger.Log("Selected 'Hat Draw' Shuffle");
+                    Sorter.GlobalInstance().HatDrawShuffle();
+                    break;
+                case SortAlgorithm.DodgeballTeamShuffle:
+                    Debugger.Log("Selected 'Dodgeball Team' Shuffle");
+                    Sorter.GlobalInstance().DodgeballTeamShuffle();
+                    break;
+
             }
 
             SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""), Algorithm);
@@ -288,10 +295,10 @@ namespace StudentSorter
         /// </summary>
         private void StandardSortButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (StandardSortButton.Checked) 
+            if (StandardSortButton.Checked)
             {
                 Debugger.Log("Selective Shuffle algorithm selected");
-                Algorithm = SortAlgorithm.SelectiveShuffle; 
+                Algorithm = SortAlgorithm.SelectiveShuffle;
             }
         }
 
@@ -301,10 +308,22 @@ namespace StudentSorter
         /// </summary>
         private void HatDrawButton_CheckedChanged(object sender, EventArgs e)
         {
-            if (HatDrawButton.Checked) 
+            if (HatDrawButton.Checked)
             {
                 Debugger.Log("'Hat Draw' shuffle alogrithm selected");
-                Algorithm = SortAlgorithm.HatDrawShuffle; 
+                Algorithm = SortAlgorithm.HatDrawShuffle;
+            }
+        }
+
+        /// <summary>
+        /// Selects the 'Dodgeball Team' Shuffle
+        /// </summary>
+        private void DodgeballTeamShuffleButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if (DodgeballTeamShuffleButton.Checked)
+            {
+                Debugger.Log("'Dodgeball Team' shuffle alogrithm selected");
+                Algorithm = SortAlgorithm.DodgeballTeamShuffle;
             }
         }
     }

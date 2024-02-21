@@ -74,6 +74,46 @@ namespace StudentSorter
                     }
                 }
             }
+
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+
+            if (IllegalPairs.Count > 0)
+            {
+                ReviseSort();
+            }
+        }
+
+        /// <summary>
+        /// Uses the "Dodgeball Team" Shuffle algorithm
+        /// 
+        /// Groups will pick who they want, and if that person is
+        /// able to be added to the group (not in a group), they are added
+        /// </summary>
+        public void DodgeballTeamShuffle()
+        {
+            int sortedStudents = 0;
+
+            AllStudents.Sort(new StudentComparer()); // Shuffle master list
+
+            ManuallyAssign(); // Do all manual assignments first
+
+            foreach(Group group in AllGroups)
+            {
+                if(group.IsFull()) continue;
+
+                while(!group.IsFull() && sortedStudents < AllStudents.Count)
+                {
+                    Student student = AllStudents[new Random().Next(0, AllStudents.Count)];
+
+                    while(student.InGroup())
+                        student = AllStudents[new Random().Next(0, AllStudents.Count)];
+
+                    Debugger.Log($"{student.Name} selected by {group.Name}");
+                    group.AddStudent(student);
+                    sortedStudents++;
+                }
+            }
+
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
 
             if (IllegalPairs.Count > 0)

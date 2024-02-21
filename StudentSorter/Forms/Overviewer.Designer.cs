@@ -54,6 +54,7 @@
             SaveAssignmentsButton = new Button();
             SaveAssignmentDialog = new SaveFileDialog();
             SortModeButtons = new GroupBox();
+            DodgeballTeamShuffleButton = new RadioButton();
             HatDrawButton = new RadioButton();
             StandardSortButton = new RadioButton();
             ((System.ComponentModel.ISupportInitialize)StudentViewer).BeginInit();
@@ -212,7 +213,7 @@
             // 
             // SaveConfigButton
             // 
-            SaveConfigButton.Location = new Point(446, 577);
+            SaveConfigButton.Location = new Point(12, 626);
             SaveConfigButton.Name = "SaveConfigButton";
             SaveConfigButton.Size = new Size(274, 45);
             SaveConfigButton.TabIndex = 11;
@@ -301,14 +302,27 @@
             // 
             // SortModeButtons
             // 
+            SortModeButtons.Controls.Add(DodgeballTeamShuffleButton);
             SortModeButtons.Controls.Add(HatDrawButton);
             SortModeButtons.Controls.Add(StandardSortButton);
             SortModeButtons.Location = new Point(448, 459);
             SortModeButtons.Name = "SortModeButtons";
-            SortModeButtons.Size = new Size(274, 112);
+            SortModeButtons.Size = new Size(274, 144);
             SortModeButtons.TabIndex = 18;
             SortModeButtons.TabStop = false;
             SortModeButtons.Text = "Shuffle Algorithm";
+            // 
+            // DodgeballTeamShuffleButton
+            // 
+            DodgeballTeamShuffleButton.AutoSize = true;
+            DodgeballTeamShuffleButton.Location = new Point(6, 105);
+            DodgeballTeamShuffleButton.Name = "DodgeballTeamShuffleButton";
+            DodgeballTeamShuffleButton.Size = new Size(250, 32);
+            DodgeballTeamShuffleButton.TabIndex = 2;
+            DodgeballTeamShuffleButton.TabStop = true;
+            DodgeballTeamShuffleButton.Text = "'Dodgeball Team' Shuffle";
+            DodgeballTeamShuffleButton.UseVisualStyleBackColor = true;
+            DodgeballTeamShuffleButton.CheckedChanged += DodgeballTeamShuffleButton_CheckedChanged;
             // 
             // HatDrawButton
             // 
@@ -403,5 +417,6 @@
         private GroupBox SortModeButtons;
         private RadioButton HatDrawButton;
         private RadioButton StandardSortButton;
+        private RadioButton DodgeballTeamShuffleButton;
     }
 }

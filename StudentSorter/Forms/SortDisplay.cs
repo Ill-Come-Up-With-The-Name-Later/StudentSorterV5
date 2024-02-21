@@ -79,8 +79,18 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().Reset();
 
-            if(Algorithm == SortAlgorithm.SelectiveShuffle) Sorter.GlobalInstance().ShuffleGroups();
-            else Sorter.GlobalInstance().HatDrawShuffle();
+            switch(Algorithm)
+            {
+                case SortAlgorithm.SelectiveShuffle:
+                    Sorter.GlobalInstance().ShuffleGroups();
+                    break;
+                case SortAlgorithm.HatDrawShuffle:
+                    Sorter.GlobalInstance().HatDrawShuffle();
+                    break;
+                case SortAlgorithm.DodgeballTeamShuffle:
+                    Sorter.GlobalInstance().DodgeballTeamShuffle();
+                    break;
+            }
 
             if (StudentDropDown.SelectedIndex > 0)
             {
