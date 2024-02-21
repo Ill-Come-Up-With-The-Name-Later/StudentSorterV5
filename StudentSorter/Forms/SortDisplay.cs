@@ -1,4 +1,8 @@
-﻿using System.Data;
+﻿using System.ComponentModel;
+using System.Data;
+using System.Threading.Tasks.Dataflow;
+using DocumentFormat.OpenXml.Packaging;
+using DocumentFormat.OpenXml.Wordprocessing;
 using StudentSorter.Debug;
 
 namespace StudentSorter
@@ -79,7 +83,7 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().Reset();
 
-            switch(Algorithm)
+            switch (Algorithm)
             {
                 case SortAlgorithm.SelectiveShuffle:
                     Sorter.GlobalInstance().ShuffleGroups();
@@ -193,6 +197,53 @@ namespace StudentSorter
             Groups.Rows.Clear();
 
             Groups.Rows.Add(Sorter.GlobalInstance().FindStudent(student).Name);
+        }
+
+        /// <summary>
+        /// Opens dialog to export
+        /// sort result to '.docx'
+        /// </summary>
+        private void ExportToWordButton_Click(object sender, EventArgs e)
+        {
+            SaveSortDoc.ShowDialog();
+        }
+
+        /// <summary>
+        /// Exports the sort result into
+        /// a word document
+        /// </summary>
+        private void SaveSortDoc_FileOk(object sender, CancelEventArgs e)
+        {
+            using WordprocessingDocument doc = WordprocessingDocument.Create(SaveSortDoc.FileName,
+                DocumentFormat.OpenXml.WordprocessingDocumentType.Document, true);
+
+            MainDocumentPart mainPart = doc.AddMainDocumentPart();
+            mainPart.Document = new Document();
+
+            Body body = mainPart.Document.AppendChild(new Body());
+            
+            foreach(Group group in Sorter.GlobalInstance().AllGroups) // Write every group in
+            {
+                Paragraph para = body.AppendChild(new Paragraph());
+                Run run = para.AppendChild(new Run());
+
+                run.AppendChild(new Text($"{group.Name}"));
+                for(int i = 0; i < group.Students.Count; i++) // Add in all student's names
+                {
+                    Paragraph paragraph = body.AppendChild(new Paragraph());
+                    Run part = paragraph.AppendChild(new Run());
+                    part.AppendChild(new Text($"- {group.Students[i].Name}"));
+
+                    if (i + 1 == group.Students.Count) // Skip a line at the end of each group
+                    {
+                        Paragraph newLine = body.AppendChild(new Paragraph());
+                        Run blank = newLine.AppendChild(new Run());
+                        blank.AppendChild(new Text(""));
+                    }
+                }
+            }
+            
+            doc.MainDocumentPart.Document.Save();
         }
     }
 }

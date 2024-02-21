@@ -37,6 +37,8 @@
             FindPersonLabel = new Label();
             StudentDropDown = new ComboBox();
             ConfigUsedLabel = new Label();
+            ExportToWordButton = new Button();
+            SaveSortDoc = new SaveFileDialog();
             ((System.ComponentModel.ISupportInitialize)GroupList).BeginInit();
             SuspendLayout();
             // 
@@ -72,7 +74,7 @@
             // 
             ReshuffleButton.Location = new Point(54, 453);
             ReshuffleButton.Name = "ReshuffleButton";
-            ReshuffleButton.Size = new Size(219, 50);
+            ReshuffleButton.Size = new Size(219, 45);
             ReshuffleButton.TabIndex = 2;
             ReshuffleButton.Text = "Reshuffle Groups";
             ReshuffleButton.UseVisualStyleBackColor = true;
@@ -82,9 +84,9 @@
             // 
             ExportSort.Location = new Point(337, 453);
             ExportSort.Name = "ExportSort";
-            ExportSort.Size = new Size(237, 50);
+            ExportSort.Size = new Size(237, 45);
             ExportSort.TabIndex = 3;
-            ExportSort.Text = "Export Sort to txt";
+            ExportSort.Text = "Export Sort to '.txt'";
             ExportSort.UseVisualStyleBackColor = true;
             ExportSort.Click += ExportSort_Click;
             // 
@@ -92,14 +94,14 @@
             // 
             SaveSort.DefaultExt = "txt";
             SaveSort.FileName = "SortResult.txt";
-            SaveSort.Title = "Export Sort to txt";
+            SaveSort.Title = "Save Sort Result";
             SaveSort.FileOk += SaveSort_FileOk;
             // 
             // ResetSorterButton
             // 
-            ResetSorterButton.Location = new Point(241, 509);
+            ResetSorterButton.Location = new Point(54, 520);
             ResetSorterButton.Name = "ResetSorterButton";
-            ResetSorterButton.Size = new Size(147, 42);
+            ResetSorterButton.Size = new Size(219, 45);
             ResetSorterButton.TabIndex = 4;
             ResetSorterButton.Text = "Reset Sorter";
             ResetSorterButton.UseVisualStyleBackColor = true;
@@ -126,18 +128,36 @@
             // ConfigUsedLabel
             // 
             ConfigUsedLabel.AutoSize = true;
-            ConfigUsedLabel.Location = new Point(54, 568);
+            ConfigUsedLabel.Location = new Point(12, 620);
             ConfigUsedLabel.Name = "ConfigUsedLabel";
             ConfigUsedLabel.Size = new Size(239, 28);
             ConfigUsedLabel.TabIndex = 7;
             ConfigUsedLabel.Text = "Configuration Used: None";
+            // 
+            // ExportToWordButton
+            // 
+            ExportToWordButton.Location = new Point(337, 520);
+            ExportToWordButton.Name = "ExportToWordButton";
+            ExportToWordButton.Size = new Size(237, 45);
+            ExportToWordButton.TabIndex = 8;
+            ExportToWordButton.Text = "Export Sort to '.docx'";
+            ExportToWordButton.UseVisualStyleBackColor = true;
+            ExportToWordButton.Click += ExportToWordButton_Click;
+            // 
+            // SaveSortDoc
+            // 
+            SaveSortDoc.DefaultExt = "docx";
+            SaveSortDoc.FileName = "SortResult.docx";
+            SaveSortDoc.Title = "Save Sort Result";
+            SaveSortDoc.FileOk += SaveSortDoc_FileOk;
             // 
             // SortDisplay
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(653, 614);
+            ClientSize = new Size(653, 657);
+            Controls.Add(ExportToWordButton);
             Controls.Add(ConfigUsedLabel);
             Controls.Add(StudentDropDown);
             Controls.Add(FindPersonLabel);
@@ -169,5 +189,7 @@
         private Label FindPersonLabel;
         private ComboBox StudentDropDown;
         private Label ConfigUsedLabel;
+        private Button ExportToWordButton;
+        private SaveFileDialog SaveSortDoc;
     }
 }
