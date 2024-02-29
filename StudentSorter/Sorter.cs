@@ -174,13 +174,13 @@ namespace StudentSorter
                         Student student1 = pair.Student1;
 
                         // The other student
-                        Student other = AllGroups[groupIndex].Students[studentIndex];
+                        Student other = AllGroups[groupIndex][studentIndex];
 
                         // Make sure that the randomly picked student the students in the pair
                         // aren't themselves an illegal pair
                         while(pair.Contains(other) && PairExists(other, pair.Student2))
                         {
-                            other = AllGroups[groupIndex].Students[studentIndex];
+                            other = AllGroups[groupIndex][studentIndex];
                             Debugger.Log($"New group also has disallowed pair.");
                         }
 

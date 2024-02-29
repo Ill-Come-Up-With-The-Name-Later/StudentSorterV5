@@ -1,4 +1,5 @@
 ﻿using Newtonsoft.Json;
+using System.Runtime.CompilerServices;
 
 namespace StudentSorter
 {
@@ -15,6 +16,9 @@ namespace StudentSorter
 
         [JsonIgnore]
         public List<Student> Students { get; private set; }
+
+        [JsonIgnore]
+        public Student this[int index] { get { return Students[index]; } set { Students[index] = value; } }
 
         /// <summary>
         /// Creates a group
