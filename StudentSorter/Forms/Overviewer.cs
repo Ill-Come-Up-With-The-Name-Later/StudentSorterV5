@@ -132,7 +132,7 @@ namespace StudentSorter
 
             // Sort using a different algorithm depending on what is
             // selected
-            switch(Algorithm)
+            switch (Algorithm)
             {
                 case SortAlgorithm.SelectiveShuffle:
                     Debugger.Log("Selected Shuffle Sort");

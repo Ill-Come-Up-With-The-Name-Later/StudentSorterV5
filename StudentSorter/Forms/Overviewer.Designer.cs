@@ -307,7 +307,7 @@
             SortModeButtons.Controls.Add(StandardSortButton);
             SortModeButtons.Location = new Point(448, 459);
             SortModeButtons.Name = "SortModeButtons";
-            SortModeButtons.Size = new Size(274, 144);
+            SortModeButtons.Size = new Size(274, 161);
             SortModeButtons.TabIndex = 18;
             SortModeButtons.TabStop = false;
             SortModeButtons.Text = "Shuffle Algorithm";
@@ -315,7 +315,7 @@
             // DodgeballTeamShuffleButton
             // 
             DodgeballTeamShuffleButton.AutoSize = true;
-            DodgeballTeamShuffleButton.Location = new Point(6, 105);
+            DodgeballTeamShuffleButton.Location = new Point(6, 109);
             DodgeballTeamShuffleButton.Name = "DodgeballTeamShuffleButton";
             DodgeballTeamShuffleButton.Size = new Size(250, 32);
             DodgeballTeamShuffleButton.TabIndex = 2;
@@ -327,7 +327,7 @@
             // HatDrawButton
             // 
             HatDrawButton.AutoSize = true;
-            HatDrawButton.Location = new Point(6, 67);
+            HatDrawButton.Location = new Point(6, 71);
             HatDrawButton.Name = "HatDrawButton";
             HatDrawButton.Size = new Size(189, 32);
             HatDrawButton.TabIndex = 1;
