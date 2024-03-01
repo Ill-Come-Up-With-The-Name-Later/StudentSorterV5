@@ -260,16 +260,14 @@ namespace StudentSorter
             Debugger.Log("Fixing groups that have few members");
             Debugger.Log($"Size percent difference: {GetDifferentialPercent()}");
 
-            while(GetDifferentialPercent() <= 50)
+            while(GetDifferentialPercent() >= 50)
             {
                 foreach (Group group in AllGroups)
                 {
-                    while (group.Size < group.Capacity / 2)
+                    foreach (Group search in AllGroups)
                     {
-                        foreach (Group search in AllGroups)
+                        if (GetDifferentialPercent(group, search) >= 50)
                         {
-                            if (search == group) continue;
-
                             Student student = search[new Random().Next(0, search.Size)];
                             search.RemoveStudent(student);
                             group.AddStudent(student);
@@ -279,6 +277,8 @@ namespace StudentSorter
                         }
                     }
                 }
+
+                if(GetDifferentialPercent() <= 50) break;
             }
         }
 
@@ -676,6 +676,24 @@ namespace StudentSorter
         public double GetDifferentialPercent()
         {
             return (GetSmallestGroup().Size / GetLargestGroup().Size) * 100;
+        }
+
+        /// <summary>
+        /// Calculates the percent size difference
+        /// between two groups
+        /// </summary>
+        /// <param name="g1">
+        /// A group
+        /// </param>
+        /// <param name="g2">
+        /// A group
+        /// </param>
+        /// <returns>
+        /// The size difference of the groups
+        /// </returns>
+        public double GetDifferentialPercent(Group g1, Group g2)
+        {
+            return (g1.Size / g2.Size) * 100;
         }
     }
 }

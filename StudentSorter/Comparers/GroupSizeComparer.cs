@@ -16,7 +16,7 @@
         /// </returns>
         public int Compare(Group? x, Group? y)
         {
-            if (x == null || y == null) return 0;
+            if (x is null || y is null) return 0;
             if (x == y) return 0;
 
             if(x.Size == y.Size) return 0;
