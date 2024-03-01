@@ -1,4 +1,4 @@
-﻿namespace StudentSorter
+﻿namespace StudentSorter.Comparers
 {
     public class StudentComparer : IComparer<Student>
     {
@@ -16,7 +16,7 @@
         /// </returns>
         public int Compare(Student? x, Student? y)
         {
-            if(x is null || y is null) return 0;
+            if (x is null || y is null) return 0;
             if (x == y) return 0;
 
             return new Random().Next(-1, 2);

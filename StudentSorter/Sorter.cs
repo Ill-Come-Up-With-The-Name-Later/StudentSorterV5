@@ -1,4 +1,5 @@
 ﻿using GrapeCity.Documents.Pdf;
+using StudentSorter.Comparers;
 using StudentSorter.Debug;
 
 namespace StudentSorter
@@ -77,6 +78,9 @@ namespace StudentSorter
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
 
+            if(GetDifferentialPercent() >= 50)
+                FixSmallestGroups();
+
             if (IllegalPairs.Count > 0)
             {
                 ReviseSort();
@@ -115,6 +119,59 @@ namespace StudentSorter
             }
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+
+            if(GetDifferentialPercent() >= 50)
+                FixSmallestGroups();
+
+            if (IllegalPairs.Count > 0)
+            {
+                ReviseSort();
+            }
+        }
+
+        /// <summary>
+        /// Uses a 'hat draw' shuffle.
+        /// The algorithm will pick random numbers
+        /// for a student and add them to a group corresponding
+        /// to the number.
+        /// </summary>
+        public void HatDrawShuffle()
+        {
+            int sortedStudents = 0;
+
+            AllStudents.Sort(new StudentComparer()); // Shuffle master list
+
+            ManuallyAssign(); // Do all manual assignments first
+
+            foreach (Student student in AllStudents)
+            {
+                if (student.InGroup())
+                {
+                    Debugger.Log($"{student.Name} is in a group");
+                    continue;
+                }
+
+                int groupIndex = new Random().Next(0, AllGroups.Count);
+                Group group = AllGroups[groupIndex];
+
+                while (group.IsFull())
+                {
+                    Debugger.Log($"{group.Name} is full, cannot add {student.Name}");
+
+                    groupIndex = new Random().Next(0, AllGroups.Count);
+                    group = AllGroups[groupIndex];
+                }
+
+                group.AddStudent(student);
+                sortedStudents++;
+                Debugger.Log($"{student.Name} added to {group.Name}");
+                Debugger.Log($"Sorted Students: {sortedStudents}");
+            }
+
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+
+            if(GetDifferentialPercent() >= 50)
+                FixSmallestGroups();
 
             if (IllegalPairs.Count > 0)
             {
@@ -193,49 +250,35 @@ namespace StudentSorter
         }
 
         /// <summary>
-        /// Uses a 'hat draw' shuffle.
-        /// The algorithm will pick random numbers
-        /// for a student and add them to a group corresponding
-        /// to the number.
+        /// Fixes groups that have few
+        /// members. Only will occur if there is a
+        /// 50% difference between the size of the smallest
+        /// and the largest group.
         /// </summary>
-        public void HatDrawShuffle()
+        public void FixSmallestGroups()
         {
-            int sortedStudents = 0;
+            Debugger.Log("Fixing groups that have few members");
+            Debugger.Log($"Size percent difference: {GetDifferentialPercent()}");
 
-            AllStudents.Sort(new StudentComparer()); // Shuffle master list
-
-            ManuallyAssign(); // Do all manual assignments first
-
-            foreach(Student student in AllStudents)
+            while(GetDifferentialPercent() <= 50)
             {
-                if (student.InGroup())
+                foreach (Group group in AllGroups)
                 {
-                    Debugger.Log($"{student.Name} is in a group");
-                    continue;
-                } 
+                    while (group.Size < group.Capacity / 2)
+                    {
+                        foreach (Group search in AllGroups)
+                        {
+                            if (search == group) continue;
 
-                int groupIndex = new Random().Next(0, AllGroups.Count);
-                Group group = AllGroups[groupIndex];
+                            Student student = search[new Random().Next(0, search.Size)];
+                            search.RemoveStudent(student);
+                            group.AddStudent(student);
 
-                while(group.IsFull())
-                {
-                    Debugger.Log($"{group.Name} is full, cannot add {student.Name}");
-
-                    groupIndex = new Random().Next(0, AllGroups.Count);
-                    group = AllGroups[groupIndex];
+                            Debugger.Log($"Took {student.Name} from {search.Name} to increase the size of {group.Name}");
+                            Debugger.Log($"Size percent difference: {GetDifferentialPercent()}");
+                        }
+                    }
                 }
-
-                group.AddStudent(student);
-                sortedStudents++;
-                Debugger.Log($"{student.Name} added to {group.Name}");
-                Debugger.Log($"Sorted Students: {sortedStudents}");
-            }
-
-            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
-
-            if (IllegalPairs.Count > 0)
-            {
-                ReviseSort();
             }
         }
 
@@ -571,6 +614,68 @@ namespace StudentSorter
             }
 
             return names;
+        }
+
+        /// <summary>
+        /// Gets the capacity of the smallest
+        /// group
+        /// </summary>
+        /// <returns>
+        /// The smallest group's maximum capacity
+        /// </returns>
+        public int GetLowestGroupCapacity()
+        {
+            int capacity = AllGroups[0].Capacity;
+
+            for(int i = 1; i < AllGroups.Count; i++)
+                if (AllGroups[i].Capacity < capacity)
+                    capacity = AllGroups[i].Capacity;
+
+            return capacity;
+        }
+
+        /// <summary>
+        /// Gets the smallest group by size
+        /// </summary>
+        /// <returns>
+        /// The smallest group
+        /// </returns>
+        public Group GetSmallestGroup()
+        {
+            List<Group> groups = new(AllGroups);
+            groups.Sort(new GroupSizeComparer());
+            return groups[^1];
+        }
+
+        /// <summary>
+        /// Gets the largest group by size
+        /// </summary>
+        /// <returns>
+        /// The largest group
+        /// </returns>
+        public Group GetLargestGroup()
+        {
+            List<Group> groups = new(AllGroups);
+            groups.Sort(new GroupSizeComparer());
+            return groups[0];
+        }
+
+        /// <summary>
+        /// Gets the percent difference between
+        /// the smallest and largest group.
+        /// 
+        /// <para>
+        /// Calculated as (smallest.size / largest.size) * 100
+        /// </para>
+        ///
+        /// </summary>
+        /// <returns>
+        /// The percent difference between the smallest
+        /// and largest group
+        /// </returns>
+        public double GetDifferentialPercent()
+        {
+            return (GetSmallestGroup().Size / GetLargestGroup().Size) * 100;
         }
     }
 }
