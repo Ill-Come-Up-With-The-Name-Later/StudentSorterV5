@@ -1,5 +1,4 @@
 ﻿using GrapeCity.Documents.Pdf;
-using Org.BouncyCastle.Tls.Crypto.Impl.BC;
 using StudentSorter.Comparers;
 using StudentSorter.Debug;
 
@@ -263,7 +262,7 @@ namespace StudentSorter
         /// </summary>
         public void FixSmallestGroups()
         {
-            Debugger.Log("Fixing groups that have few members");
+            Debugger.Log("Fixing member imbalances amongst groups");
 
             while(GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum) {
                 Group Largest = GetLargestGroup();
