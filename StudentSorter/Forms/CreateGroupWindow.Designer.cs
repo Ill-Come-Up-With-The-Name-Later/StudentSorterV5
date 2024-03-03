@@ -182,6 +182,7 @@
             // StudentsPerGroup
             // 
             StudentsPerGroup.Location = new Point(490, 339);
+            StudentsPerGroup.Maximum = new decimal(new int[] { 999999, 0, 0, 0 });
             StudentsPerGroup.Minimum = new decimal(new int[] { 1, 0, 0, 0 });
             StudentsPerGroup.Name = "StudentsPerGroup";
             StudentsPerGroup.Size = new Size(150, 34);

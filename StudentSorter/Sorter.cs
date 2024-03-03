@@ -21,6 +21,8 @@ namespace StudentSorter
 
         public int DeterminantRange { get; set; }
 
+        public readonly double ImbalanceMinimum = 50;
+
         /// <summary>
         /// Creates the sorter
         /// </summary>
@@ -77,8 +79,9 @@ namespace StudentSorter
             }
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+            Debugger.Log($"Size Difference Percent (Smallest/Largest) {GetDifferentialPercent()}%");
 
-            if(GetDifferentialPercent() >= 50)
+            if (GetDifferentialPercent() >= ImbalanceMinimum)
                 FixSmallestGroups();
 
             if (IllegalPairs.Count > 0)
@@ -119,8 +122,9 @@ namespace StudentSorter
             }
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+            Debugger.Log($"Size Difference Percent (Smallest/Largest) {GetDifferentialPercent()}%");
 
-            if(GetDifferentialPercent() >= 50)
+            if (GetDifferentialPercent() >= ImbalanceMinimum)
                 FixSmallestGroups();
 
             if (IllegalPairs.Count > 0)
@@ -169,8 +173,9 @@ namespace StudentSorter
             }
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+            Debugger.Log($"Size Difference Percent (Smallest/Largest) {GetDifferentialPercent()}%");
 
-            if(GetDifferentialPercent() >= 50)
+            if (GetDifferentialPercent() >= ImbalanceMinimum)
                 FixSmallestGroups();
 
             if (IllegalPairs.Count > 0)
@@ -258,27 +263,29 @@ namespace StudentSorter
         public void FixSmallestGroups()
         {
             Debugger.Log("Fixing groups that have few members");
-            Debugger.Log($"Size percent difference: {GetDifferentialPercent()}");
 
-            while(GetDifferentialPercent() >= 50)
+            while(GetDifferentialPercent() >= ImbalanceMinimum)
             {
-                foreach (Group group in AllGroups)
+                if(GetDifferentialPercent() <= ImbalanceMinimum) break;
+
+                foreach(Group group in AllGroups)
                 {
-                    foreach (Group search in AllGroups)
+                    foreach(Group search in AllGroups)
                     {
-                        if (GetDifferentialPercent(group, search) >= 50)
+                        if(group == search) continue;
+
+                        while(GetDifferentialPercent(group, search) >= ImbalanceMinimum)
                         {
                             Student student = search[new Random().Next(0, search.Size)];
                             search.RemoveStudent(student);
                             group.AddStudent(student);
 
                             Debugger.Log($"Took {student.Name} from {search.Name} to increase the size of {group.Name}");
-                            Debugger.Log($"Size percent difference: {GetDifferentialPercent()}");
+                            Debugger.Log($"Size percent difference (Smallest/Largest): {GetDifferentialPercent()}%");
+                            Debugger.Log($"Size percent difference ({group.Name}/{search.Name}): {GetDifferentialPercent(group, search)}%");
                         }
                     }
                 }
-
-                if(GetDifferentialPercent() <= 50) break;
             }
         }
 
@@ -644,7 +651,10 @@ namespace StudentSorter
         {
             List<Group> groups = new(AllGroups);
             groups.Sort(new GroupSizeComparer());
-            return groups[^1];
+            groups.Reverse();
+
+            Debugger.Log($"Smallest Group: {groups[0].Name} | {groups[0].Size}/{groups[0].Capacity}");
+            return groups[0];
         }
 
         /// <summary>
@@ -657,6 +667,8 @@ namespace StudentSorter
         {
             List<Group> groups = new(AllGroups);
             groups.Sort(new GroupSizeComparer());
+
+            Debugger.Log($"Largest Group: {groups[0].Name} | {groups[0].Size}/{groups[0].Capacity}");
             return groups[0];
         }
 
@@ -675,7 +687,8 @@ namespace StudentSorter
         /// </returns>
         public double GetDifferentialPercent()
         {
-            return (GetSmallestGroup().Size / GetLargestGroup().Size) * 100;
+            if(GetLargestGroup().Size == 0) return ImbalanceMinimum;
+            return Math.Min(100 - (GetSmallestGroup().Size / GetLargestGroup().Size * 100), 100);
         }
 
         /// <summary>
@@ -693,7 +706,8 @@ namespace StudentSorter
         /// </returns>
         public double GetDifferentialPercent(Group g1, Group g2)
         {
-            return (g1.Size / g2.Size) * 100;
+            if (g2.Size == 0) return ImbalanceMinimum;
+            return Math.Min(100 - (g1.Size / g2.Size * 100), 100);
         }
     }
 }

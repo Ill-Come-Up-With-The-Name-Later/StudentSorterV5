@@ -166,7 +166,6 @@ namespace StudentSorter
         public override bool Equals(object? obj)
         {
             if(obj == null) throw new ArgumentNullException("object was null");
-            if(typeof(object) != typeof(Group)) return false;
             Group objGroup = (Group)obj;
             return objGroup.Name.Equals(Name) && objGroup.Capacity == Capacity && 
                 objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;
