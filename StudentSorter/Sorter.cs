@@ -676,6 +676,7 @@ namespace StudentSorter
         /// </returns>
         public static double GetDifferentialPercent(double i, double j)
         {
+            if (j == 0) return i * 100;
             return Math.Ceiling((double)(i / j * 100));
         }
     }
