@@ -21,7 +21,7 @@ namespace StudentSorter
 
         public int DeterminantRange { get; set; }
 
-        public readonly double ImbalanceMinimum = 135;
+        public double ImbalanceMinimum = 135;
 
         /// <summary>
         /// Creates the sorter
@@ -81,6 +81,9 @@ namespace StudentSorter
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
             Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
 
+            ImbalanceMinimum = GetSizeDifferenceTolerance();
+            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
+
             if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
                 FixSmallestGroups();
 
@@ -123,6 +126,9 @@ namespace StudentSorter
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
             Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
+
+            ImbalanceMinimum = GetSizeDifferenceTolerance();
+            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
 
             if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
                 FixSmallestGroups();
@@ -174,6 +180,9 @@ namespace StudentSorter
 
             Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
             Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
+
+            ImbalanceMinimum = GetSizeDifferenceTolerance();
+            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
 
             if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
                 FixSmallestGroups();
@@ -677,6 +686,18 @@ namespace StudentSorter
         {
             if (j == 0) return i * 100;
             return Math.Ceiling((double)(i / j * 100));
+        }
+
+        /// <summary>
+        /// Calculates the size difference tolerance
+        /// for determining imbalanced groups
+        /// </summary>
+        /// <returns>
+        /// The size difference tolerance
+        /// </returns>
+        public double GetSizeDifferenceTolerance()
+        {
+            return 110 + (3 * AllStudents.Count / GetLargestGroup().Size);
         }
     }
 }
