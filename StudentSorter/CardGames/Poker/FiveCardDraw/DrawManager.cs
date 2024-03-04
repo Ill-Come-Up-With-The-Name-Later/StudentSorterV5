@@ -32,6 +32,9 @@ namespace StudentSorter.CardGames.Poker.FiveCardDraw
             "Chuck", // When I'm Sixty-Four (The Beatles)
             "Dave", // When I'm Sixty-Four (The Beatles)
             "Maggie Mae", // Maggie Mae (The Beatles)
+            "Loretta Martin", // Get Back (The Beatles)
+            "Father McKenzie", // Elanor Rigby (The Beatles)
+            "Mr. Kite", // Being For the Benefit of Mr. Kite! (The Beatles)
         };
 
         public List<Card> Deck = new();
