@@ -78,19 +78,7 @@ namespace StudentSorter
                 }
             }
 
-            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
-            Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
-
-            ImbalanceMinimum = GetSizeDifferenceTolerance();
-            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
-
-            if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
-                FixSmallestGroups();
-
-            if (IllegalPairs.Count > 0)
-            {
-                ReviseSort();
-            }
+            PostSortTasks(sortedStudents);
         }
 
         /// <summary>
@@ -124,19 +112,7 @@ namespace StudentSorter
                 }
             }
 
-            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
-            Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
-
-            ImbalanceMinimum = GetSizeDifferenceTolerance();
-            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
-
-            if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
-                FixSmallestGroups();
-
-            if (IllegalPairs.Count > 0)
-            {
-                ReviseSort();
-            }
+            PostSortTasks(sortedStudents);
         }
 
         /// <summary>
@@ -178,19 +154,7 @@ namespace StudentSorter
                 Debugger.Log($"Sorted Students: {sortedStudents}");
             }
 
-            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
-            Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
-
-            ImbalanceMinimum = GetSizeDifferenceTolerance();
-            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
-
-            if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
-                FixSmallestGroups();
-
-            if (IllegalPairs.Count > 0)
-            {
-                ReviseSort();
-            }
+            PostSortTasks(sortedStudents);
         }
 
         /// <summary>
@@ -301,7 +265,26 @@ namespace StudentSorter
                     Smallest.AddStudent(student);
                     Debugger.Log($"Moved {student.Name} from {Largest.Name} to {Smallest.Name} to resolve size imbalances");
                 }
-                //break;
+            }
+        }
+
+        /// <summary>
+        /// Calls to execute post shuffling tasks
+        /// </summary>
+        public void PostSortTasks(int sortedStudents)
+        {
+            Debugger.Log($"Sorted {sortedStudents}/{AllStudents.Count} students");
+            Debugger.Log($"Size Difference Percent (Largest/Smallest): {GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size)}%");
+
+            ImbalanceMinimum = GetSizeDifferenceTolerance();
+            Debugger.Log($"Size Difference Tolerance: {ImbalanceMinimum}%");
+
+            if (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum && GetLargestGroup().Capacity >= 3)
+                FixSmallestGroups();
+
+            if (IllegalPairs.Count > 0)
+            {
+                ReviseSort();
             }
         }
 
