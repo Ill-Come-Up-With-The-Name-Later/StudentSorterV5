@@ -149,7 +149,7 @@ namespace StudentSorter
 
             }
 
-            SortDisplay display = new(this, new SorterConfig("None", "", "", "", ""), Algorithm);
+            SortDisplay display = new(this, new SorterConfig("None", "", "", "", "", Algorithm), Algorithm);
             display.Show();
         }
 
@@ -244,7 +244,7 @@ namespace StudentSorter
         /// </summary>
         private void ConfigSaver_FileOk(object sender, CancelEventArgs e)
         {
-            SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile, ManualAssignmentsFile);
+            SorterConfig sort = new("Configuration", StudentFile, GroupFile, IllegalPairFile, ManualAssignmentsFile, Algorithm);
 
             Exporter.ExportObject(sort, ConfigSaver.FileName);
             Debugger.Log($"Created configuration: {ConfigSaver.FileName}");

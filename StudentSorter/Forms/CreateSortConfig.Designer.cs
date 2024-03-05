@@ -41,6 +41,11 @@
             ConfigNameInput = new TextBox();
             AddAssignmentFileButton = new Button();
             ManualAssignmentFile = new Label();
+            ShuffleAlgorithmBox = new GroupBox();
+            SelectiveShuffleButton = new RadioButton();
+            HatDrawButton = new RadioButton();
+            DodgeballTeamButton = new RadioButton();
+            ShuffleAlgorithmBox.SuspendLayout();
             SuspendLayout();
             // 
             // CreateConfigButton
@@ -159,12 +164,60 @@
             ManualAssignmentFile.TabIndex = 10;
             ManualAssignmentFile.Text = "Manual Assignment File: None";
             // 
+            // ShuffleAlgorithmBox
+            // 
+            ShuffleAlgorithmBox.Controls.Add(DodgeballTeamButton);
+            ShuffleAlgorithmBox.Controls.Add(HatDrawButton);
+            ShuffleAlgorithmBox.Controls.Add(SelectiveShuffleButton);
+            ShuffleAlgorithmBox.Location = new Point(550, 31);
+            ShuffleAlgorithmBox.Name = "ShuffleAlgorithmBox";
+            ShuffleAlgorithmBox.Size = new Size(291, 156);
+            ShuffleAlgorithmBox.TabIndex = 11;
+            ShuffleAlgorithmBox.TabStop = false;
+            ShuffleAlgorithmBox.Text = "Shuffling Algorithm";
+            // 
+            // SelectiveShuffleButton
+            // 
+            SelectiveShuffleButton.AutoSize = true;
+            SelectiveShuffleButton.Checked = true;
+            SelectiveShuffleButton.Location = new Point(6, 33);
+            SelectiveShuffleButton.Name = "SelectiveShuffleButton";
+            SelectiveShuffleButton.Size = new Size(269, 32);
+            SelectiveShuffleButton.TabIndex = 0;
+            SelectiveShuffleButton.TabStop = true;
+            SelectiveShuffleButton.Text = "Selective Shuffle Algorithm";
+            SelectiveShuffleButton.UseVisualStyleBackColor = true;
+            SelectiveShuffleButton.CheckedChanged += SelectiveShuffleButton_CheckedChanged;
+            // 
+            // HatDrawButton
+            // 
+            HatDrawButton.AutoSize = true;
+            HatDrawButton.Location = new Point(6, 71);
+            HatDrawButton.Name = "HatDrawButton";
+            HatDrawButton.Size = new Size(218, 32);
+            HatDrawButton.TabIndex = 1;
+            HatDrawButton.Text = "'Hat Draw' Algorithm";
+            HatDrawButton.UseVisualStyleBackColor = true;
+            HatDrawButton.CheckedChanged += HatDrawButton_CheckedChanged;
+            // 
+            // DodgeballTeamButton
+            // 
+            DodgeballTeamButton.AutoSize = true;
+            DodgeballTeamButton.Location = new Point(6, 109);
+            DodgeballTeamButton.Name = "DodgeballTeamButton";
+            DodgeballTeamButton.Size = new Size(250, 32);
+            DodgeballTeamButton.TabIndex = 2;
+            DodgeballTeamButton.Text = "'Dodgeball Team' Shuffle";
+            DodgeballTeamButton.UseVisualStyleBackColor = true;
+            DodgeballTeamButton.CheckedChanged += DodgeballTeamButton_CheckedChanged;
+            // 
             // CreateSortConfig
             // 
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(777, 315);
+            ClientSize = new Size(866, 315);
+            Controls.Add(ShuffleAlgorithmBox);
             Controls.Add(ManualAssignmentFile);
             Controls.Add(AddAssignmentFileButton);
             Controls.Add(ConfigNameInput);
@@ -182,6 +235,8 @@
             Name = "CreateSortConfig";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Create Sort Configuration";
+            ShuffleAlgorithmBox.ResumeLayout(false);
+            ShuffleAlgorithmBox.PerformLayout();
             ResumeLayout(false);
             PerformLayout();
         }
@@ -201,5 +256,9 @@
         private TextBox ConfigNameInput;
         private Button AddAssignmentFileButton;
         private Label ManualAssignmentFile;
+        private GroupBox ShuffleAlgorithmBox;
+        private RadioButton DodgeballTeamButton;
+        private RadioButton HatDrawButton;
+        private RadioButton SelectiveShuffleButton;
     }
 }

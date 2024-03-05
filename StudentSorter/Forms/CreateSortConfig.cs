@@ -8,6 +8,7 @@ namespace StudentSorter.Forms
         private string GroupFile = "";
         private string PairsFile = "";
         private string AssignmentsFile = "";
+        private SortAlgorithm Algorithm = SortAlgorithm.SelectiveShuffle;
 
         const string StudentTitle = "Select Student File";
         const string GroupTitle = "Select Group File";
@@ -105,7 +106,7 @@ namespace StudentSorter.Forms
         /// </summary>
         private void SaveConfig_FileOk(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            SorterConfig sort = new(ConfigNameInput.Text, StudentFile, GroupFile, PairsFile, AssignmentsFile);
+            SorterConfig sort = new(ConfigNameInput.Text, StudentFile, GroupFile, PairsFile, AssignmentsFile, Algorithm);
 
             Exporter.ExportObject(sort, SaveConfig.FileName);
             Close();
@@ -120,6 +121,45 @@ namespace StudentSorter.Forms
         {
             SelectFile.Title = AssignFile;
             SelectFile.ShowDialog();
+        }
+
+        /// <summary>
+        /// Selects sorting algorithm:
+        /// Selective Shuffle
+        /// </summary>
+        private void SelectiveShuffleButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(SelectiveShuffleButton.Checked)
+            {
+                Debugger.Log("Selective Shuffle algorithm selected");
+                Algorithm = SortAlgorithm.SelectiveShuffle;
+            }
+        }
+
+        /// <summary>
+        /// Selects sorting algorithm:
+        /// 'Hat Draw' Shuffle
+        /// </summary>
+        private void HatDrawButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(HatDrawButton.Checked)
+            {
+                Debugger.Log("'Hat Draw' shuffle alogrithm selected");
+                Algorithm = SortAlgorithm.HatDrawShuffle;
+            }
+        }
+
+        /// <summary>
+        /// Selects sorting algorithm:
+        /// 'Dodgeball Team' Shuffle
+        /// </summary>
+        private void DodgeballTeamButton_CheckedChanged(object sender, EventArgs e)
+        {
+            if(DodgeballTeamButton.Checked)
+            {
+                Debugger.Log("'Dodgeball Team' shuffle alogrithm selected");
+                Algorithm = SortAlgorithm.DodgeballTeamShuffle;
+            }
         }
     }
 }
