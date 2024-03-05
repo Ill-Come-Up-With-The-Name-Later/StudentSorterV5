@@ -129,7 +129,7 @@ namespace StudentSorter.Forms
         /// </summary>
         private void SelectiveShuffleButton_CheckedChanged(object sender, EventArgs e)
         {
-            if(SelectiveShuffleButton.Checked)
+            if (SelectiveShuffleButton.Checked)
             {
                 Debugger.Log("Selective Shuffle algorithm selected");
                 Algorithm = SortAlgorithm.SelectiveShuffle;
@@ -142,7 +142,7 @@ namespace StudentSorter.Forms
         /// </summary>
         private void HatDrawButton_CheckedChanged(object sender, EventArgs e)
         {
-            if(HatDrawButton.Checked)
+            if (HatDrawButton.Checked)
             {
                 Debugger.Log("'Hat Draw' shuffle alogrithm selected");
                 Algorithm = SortAlgorithm.HatDrawShuffle;
@@ -155,7 +155,7 @@ namespace StudentSorter.Forms
         /// </summary>
         private void DodgeballTeamButton_CheckedChanged(object sender, EventArgs e)
         {
-            if(DodgeballTeamButton.Checked)
+            if (DodgeballTeamButton.Checked)
             {
                 Debugger.Log("'Dodgeball Team' shuffle alogrithm selected");
                 Algorithm = SortAlgorithm.DodgeballTeamShuffle;
