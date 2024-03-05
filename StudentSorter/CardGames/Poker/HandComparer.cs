@@ -50,7 +50,10 @@ namespace StudentSorter.CardGames.Poker
                 {
                     if (x.FourOfAKindValue() < y.FourOfAKindValue()) return 1;
                     else if (x.FourOfAKindValue() > y.FourOfAKindValue()) return -1;
-                    else if (x.FourOfAKindValue() == y.FourOfAKindValue()) return 0;
+                    else if (x.FourOfAKindValue() == y.FourOfAKindValue())
+                        if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                        else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                        else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
                 }
                 else if (!x.FourOfAKind(i) && y.FourOfAKind(i)) return 1;
             }
@@ -96,7 +99,10 @@ namespace StudentSorter.CardGames.Poker
                 {
                     if (x.ThreeOfAKindValue() < y.ThreeOfAKindValue()) return 1;
                     else if (x.ThreeOfAKindValue() > y.ThreeOfAKindValue()) return -1;
-                    else if (x.ThreeOfAKindValue() == y.ThreeOfAKindValue()) return 0;
+                    else if (x.ThreeOfAKindValue() == y.ThreeOfAKindValue())
+                        if (x.HighestUniqueCardValue() < y.HighestUniqueCardValue()) return 1;
+                        else if (x.HighestUniqueCardValue() > y.HighestUniqueCardValue()) return -1;
+                        else if (x.HighestUniqueCardValue() == y.HighestUniqueCardValue()) return 0;
                 }
                 else if (!x.ThreeOfAKind(i) && y.ThreeOfAKind(i)) return 1;
             }
