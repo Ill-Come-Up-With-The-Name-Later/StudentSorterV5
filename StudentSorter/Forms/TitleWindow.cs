@@ -73,8 +73,20 @@ namespace StudentSorter
                     Sorter.GlobalInstance().AllStudents.Count / Sorter.GlobalInstance().AllGroups.Count;
 
             Sorter.GlobalInstance().RandomizeDeterminants();
-            Sorter.GlobalInstance().ShuffleGroups();
 
+            switch(sort.Algorithm)
+            {
+                case SortAlgorithm.SelectiveShuffle:
+                    Sorter.GlobalInstance().ShuffleGroups();
+                    break;
+                case SortAlgorithm.HatDrawShuffle:
+                    Sorter.GlobalInstance().HatDrawShuffle();
+                    break;
+                case SortAlgorithm.DodgeballTeamShuffle:
+                    Sorter.GlobalInstance().DodgeballTeamShuffle();
+                    break;
+            }
+           
             Overviewer overviewer = new();
 
             SortDisplay display = new(overviewer, sort, SortAlgorithm.HatDrawShuffle);
