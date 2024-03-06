@@ -74,7 +74,7 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().RandomizeDeterminants();
 
-            switch(sort.Algorithm)
+            switch (sort.Algorithm)
             {
                 case SortAlgorithm.SelectiveShuffle:
                     Sorter.GlobalInstance().ShuffleGroups();
@@ -86,7 +86,7 @@ namespace StudentSorter
                     Sorter.GlobalInstance().DodgeballTeamShuffle();
                     break;
             }
-           
+
             Overviewer overviewer = new();
 
             SortDisplay display = new(overviewer, sort, sort.Algorithm);

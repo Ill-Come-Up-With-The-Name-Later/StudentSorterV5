@@ -48,7 +48,7 @@
             // 
             TitleLabel.AutoSize = true;
             TitleLabel.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            TitleLabel.Location = new Point(146, 27);
+            TitleLabel.Location = new Point(144, 38);
             TitleLabel.Margin = new Padding(4, 0, 4, 0);
             TitleLabel.Name = "TitleLabel";
             TitleLabel.Size = new Size(251, 28);
@@ -57,10 +57,10 @@
             // 
             // OpenButton
             // 
-            OpenButton.Location = new Point(125, 107);
+            OpenButton.Location = new Point(114, 106);
             OpenButton.Margin = new Padding(4);
             OpenButton.Name = "OpenButton";
-            OpenButton.Size = new Size(272, 43);
+            OpenButton.Size = new Size(307, 43);
             OpenButton.TabIndex = 1;
             OpenButton.Text = "Open";
             OpenButton.UseVisualStyleBackColor = true;
@@ -68,11 +68,11 @@
             // 
             // ConfigSortButton
             // 
-            ConfigSortButton.Location = new Point(125, 215);
+            ConfigSortButton.Location = new Point(114, 204);
             ConfigSortButton.Name = "ConfigSortButton";
-            ConfigSortButton.Size = new Size(272, 43);
+            ConfigSortButton.Size = new Size(307, 43);
             ConfigSortButton.TabIndex = 2;
-            ConfigSortButton.Text = "Sort Using a Configuration";
+            ConfigSortButton.Text = "Shuffle Using a Configuration";
             ConfigSortButton.UseVisualStyleBackColor = true;
             ConfigSortButton.Click += ConfigSortButton_Click;
             // 
@@ -85,9 +85,9 @@
             // 
             // CreateConfigButton
             // 
-            CreateConfigButton.Location = new Point(125, 167);
+            CreateConfigButton.Location = new Point(114, 156);
             CreateConfigButton.Name = "CreateConfigButton";
-            CreateConfigButton.Size = new Size(272, 42);
+            CreateConfigButton.Size = new Size(307, 42);
             CreateConfigButton.TabIndex = 3;
             CreateConfigButton.Text = "Create New Configuration";
             CreateConfigButton.UseVisualStyleBackColor = true;
