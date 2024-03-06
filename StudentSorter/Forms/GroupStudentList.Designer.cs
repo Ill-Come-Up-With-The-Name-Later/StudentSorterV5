@@ -74,7 +74,7 @@
             MaximizeBox = false;
             Name = "GroupStudentList";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Group Student List";
+            Text = "Student List";
             Load += GroupStudentList_Load;
             ((System.ComponentModel.ISupportInitialize)StudentList).EndInit();
             ResumeLayout(false);

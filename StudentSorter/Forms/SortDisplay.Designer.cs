@@ -171,7 +171,7 @@
             MaximizeBox = false;
             Name = "SortDisplay";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Sort Result Display";
+            Text = "Randomizer Result Display";
             Load += SortDisplay_Load;
             ((System.ComponentModel.ISupportInitialize)GroupList).EndInit();
             ResumeLayout(false);

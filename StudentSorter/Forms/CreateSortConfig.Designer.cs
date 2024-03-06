@@ -54,7 +54,7 @@
             CreateConfigButton.Name = "CreateConfigButton";
             CreateConfigButton.Size = new Size(279, 49);
             CreateConfigButton.TabIndex = 0;
-            CreateConfigButton.Text = "Create Sort Configuration";
+            CreateConfigButton.Text = "Create Shuffle Configuration";
             CreateConfigButton.UseVisualStyleBackColor = true;
             CreateConfigButton.Click += CreateConfigButton_Click;
             // 
@@ -171,7 +171,7 @@
             ShuffleAlgorithmBox.Controls.Add(SelectiveShuffleButton);
             ShuffleAlgorithmBox.Location = new Point(511, 31);
             ShuffleAlgorithmBox.Name = "ShuffleAlgorithmBox";
-            ShuffleAlgorithmBox.Size = new Size(351, 156);
+            ShuffleAlgorithmBox.Size = new Size(276, 156);
             ShuffleAlgorithmBox.TabIndex = 11;
             ShuffleAlgorithmBox.TabStop = false;
             ShuffleAlgorithmBox.Text = "Shuffling Algorithm";
@@ -181,9 +181,9 @@
             DodgeballTeamButton.AutoSize = true;
             DodgeballTeamButton.Location = new Point(6, 109);
             DodgeballTeamButton.Name = "DodgeballTeamButton";
-            DodgeballTeamButton.Size = new Size(344, 32);
+            DodgeballTeamButton.Size = new Size(250, 32);
             DodgeballTeamButton.TabIndex = 2;
-            DodgeballTeamButton.Text = "'Dodgeball Team' Shuffle Algorithm";
+            DodgeballTeamButton.Text = "'Dodgeball Team' Shuffle";
             DodgeballTeamButton.UseVisualStyleBackColor = true;
             DodgeballTeamButton.CheckedChanged += DodgeballTeamButton_CheckedChanged;
             // 
@@ -192,9 +192,9 @@
             HatDrawButton.AutoSize = true;
             HatDrawButton.Location = new Point(6, 71);
             HatDrawButton.Name = "HatDrawButton";
-            HatDrawButton.Size = new Size(283, 32);
+            HatDrawButton.Size = new Size(189, 32);
             HatDrawButton.TabIndex = 1;
-            HatDrawButton.Text = "'Hat Draw' Shuffle Algorithm";
+            HatDrawButton.Text = "'Hat Draw' Shuffle";
             HatDrawButton.UseVisualStyleBackColor = true;
             HatDrawButton.CheckedChanged += HatDrawButton_CheckedChanged;
             // 
@@ -204,10 +204,10 @@
             SelectiveShuffleButton.Checked = true;
             SelectiveShuffleButton.Location = new Point(6, 33);
             SelectiveShuffleButton.Name = "SelectiveShuffleButton";
-            SelectiveShuffleButton.Size = new Size(269, 32);
+            SelectiveShuffleButton.Size = new Size(175, 32);
             SelectiveShuffleButton.TabIndex = 0;
             SelectiveShuffleButton.TabStop = true;
-            SelectiveShuffleButton.Text = "Selective Shuffle Algorithm";
+            SelectiveShuffleButton.Text = "Selective Shuffle";
             SelectiveShuffleButton.UseVisualStyleBackColor = true;
             SelectiveShuffleButton.CheckedChanged += SelectiveShuffleButton_CheckedChanged;
             // 
@@ -234,7 +234,7 @@
             MaximizeBox = false;
             Name = "CreateSortConfig";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Create Sort Configuration";
+            Text = "Create Shuffle Configuration";
             ShuffleAlgorithmBox.ResumeLayout(false);
             ShuffleAlgorithmBox.PerformLayout();
             ResumeLayout(false);

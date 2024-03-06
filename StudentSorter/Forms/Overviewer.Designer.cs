@@ -310,7 +310,7 @@
             SortModeButtons.Size = new Size(274, 161);
             SortModeButtons.TabIndex = 18;
             SortModeButtons.TabStop = false;
-            SortModeButtons.Text = "Shuffle Algorithm";
+            SortModeButtons.Text = "Shuffling Algorithm";
             // 
             // DodgeballTeamShuffleButton
             // 

@@ -222,14 +222,14 @@ namespace StudentSorter
             Body body = mainPart.Document.AppendChild(new Body());
 
             Debugger.Log("Started writing document");
-            foreach(Group group in Sorter.GlobalInstance().AllGroups) // Write every group in
+            foreach (Group group in Sorter.GlobalInstance().AllGroups) // Write every group in
             {
                 Debugger.Log($"Writing {group.Name}");
                 Paragraph para = body.AppendChild(new Paragraph());
                 Run run = para.AppendChild(new Run());
 
                 run.AppendChild(new Text($"{group.Name}"));
-                for(int i = 0; i < group.Students.Count; i++) // Add in all student's names
+                for (int i = 0; i < group.Students.Count; i++) // Add in all student's names
                 {
                     Paragraph paragraph = body.AppendChild(new Paragraph());
                     Run part = paragraph.AppendChild(new Run());
@@ -243,7 +243,7 @@ namespace StudentSorter
                     }
                 }
             }
-            
+
             doc.MainDocumentPart.Document.Save();
             Debugger.Log($"Created {SaveSortDoc.FileName}");
         }

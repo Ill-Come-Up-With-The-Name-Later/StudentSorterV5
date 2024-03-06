@@ -10,7 +10,7 @@ namespace StudentSorter
         public string GroupFile { get; set; }
         public string IllegalPairsFile { get; set; }
         public string ManualAssignmentsFile { get; set; }
-        public SortAlgorithm Algorithm {  get; set; }
+        public SortAlgorithm Algorithm { get; set; }
 
         /// <summary>
         /// Constructs a sorter config
