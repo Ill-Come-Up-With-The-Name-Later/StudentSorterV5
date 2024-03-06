@@ -50,7 +50,7 @@
             // 
             // CreateConfigButton
             // 
-            CreateConfigButton.Location = new Point(351, 254);
+            CreateConfigButton.Location = new Point(183, 437);
             CreateConfigButton.Name = "CreateConfigButton";
             CreateConfigButton.Size = new Size(279, 49);
             CreateConfigButton.TabIndex = 0;
@@ -169,7 +169,7 @@
             ShuffleAlgorithmBox.Controls.Add(DodgeballTeamButton);
             ShuffleAlgorithmBox.Controls.Add(HatDrawButton);
             ShuffleAlgorithmBox.Controls.Add(SelectiveShuffleButton);
-            ShuffleAlgorithmBox.Location = new Point(511, 31);
+            ShuffleAlgorithmBox.Location = new Point(41, 257);
             ShuffleAlgorithmBox.Name = "ShuffleAlgorithmBox";
             ShuffleAlgorithmBox.Size = new Size(276, 156);
             ShuffleAlgorithmBox.TabIndex = 11;
@@ -216,7 +216,7 @@
             AutoScaleDimensions = new SizeF(11F, 28F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoSizeMode = AutoSizeMode.GrowAndShrink;
-            ClientSize = new Size(909, 315);
+            ClientSize = new Size(633, 509);
             Controls.Add(ShuffleAlgorithmBox);
             Controls.Add(ManualAssignmentFile);
             Controls.Add(AddAssignmentFileButton);
