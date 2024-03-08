@@ -1,10 +1,11 @@
 ﻿using Newtonsoft.Json;
+using StudentSorter.FileHandling.Data;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class ManualAssignment : Serializeable
     {
-        public int StudentHashCode {  get; set; }
+        public int StudentHashCode { get; set; }
         public int GroupHashCode { get; set; }
 
         /// <summary>

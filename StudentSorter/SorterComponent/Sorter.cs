@@ -2,7 +2,7 @@
 using StudentSorter.Comparers;
 using StudentSorter.Debug;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class Sorter
     {
@@ -61,7 +61,7 @@ namespace StudentSorter
 
             foreach (Group AnalysisGroup in AllGroups) // sort by capacity
             {
-                if(AnalysisGroup.IsFull())
+                if (AnalysisGroup.IsFull())
                 {
                     continue;
                 }
@@ -95,15 +95,15 @@ namespace StudentSorter
 
             ManuallyAssign(); // Do all manual assignments first
 
-            foreach(Group group in AllGroups)
+            foreach (Group group in AllGroups)
             {
-                if(group.IsFull()) continue;
+                if (group.IsFull()) continue;
 
-                while(!group.IsFull() && sortedStudents < AllStudents.Count)
+                while (!group.IsFull() && sortedStudents < AllStudents.Count)
                 {
                     Student student = AllStudents[new Random().Next(0, AllStudents.Count)];
 
-                    while(student.InGroup())
+                    while (student.InGroup())
                         student = AllStudents[new Random().Next(0, AllStudents.Count)];
 
                     Debugger.Log($"{student.Name} selected by {group.Name}");
@@ -164,7 +164,7 @@ namespace StudentSorter
         public void ManuallyAssign()
         {
             Debugger.Log("Fulfilling manual assignments");
-            foreach(ManualAssignment assignment in Assignments)
+            foreach (ManualAssignment assignment in Assignments)
             {
                 try
                 {
@@ -174,7 +174,7 @@ namespace StudentSorter
                     group.AddStudent(student);
                     Debugger.Log($"Assigned {student.Name} to {group.Name}");
                 }
-                catch(Exception) 
+                catch (Exception)
                 {
                     Debugger.Log("Couldn't find student or group.");
                 }
@@ -187,11 +187,11 @@ namespace StudentSorter
         public void ReviseSort()
         {
             Debugger.Log("Resolving illegal pairs");
-            foreach(IllegalPair pair in IllegalPairs)
+            foreach (IllegalPair pair in IllegalPairs)
             {
-                foreach(Group group in AllGroups)
+                foreach (Group group in AllGroups)
                 {
-                    if(group.Contains(pair.AsList()))
+                    if (group.Contains(pair.AsList()))
                     {
                         Debugger.Log($"{pair} found in {group.Name}");
                         int groupIndex = new Random().Next(0, AllGroups.Count);
@@ -213,7 +213,7 @@ namespace StudentSorter
 
                         // Make sure that the randomly picked student the students in the pair
                         // aren't themselves an illegal pair
-                        while(pair.Contains(other) && PairExists(other, pair.Student2))
+                        while (pair.Contains(other) && PairExists(other, pair.Student2))
                         {
                             other = AllGroups[groupIndex][studentIndex];
                             Debugger.Log($"New group also has disallowed pair.");
@@ -237,7 +237,8 @@ namespace StudentSorter
         {
             Debugger.Log("Fixing member imbalances amongst groups");
 
-            while(GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum) {
+            while (GetDifferentialPercent(GetLargestGroup().Size, GetSmallestGroup().Size) >= ImbalanceMinimum)
+            {
                 Group Largest = GetLargestGroup();
                 Group Smallest = GetSmallestGroup();
 
@@ -246,11 +247,11 @@ namespace StudentSorter
 
                 List<Student> students = new();
 
-                while(GetDifferentialPercent(largestSize, smallestSize) >= ImbalanceMinimum)
+                while (GetDifferentialPercent(largestSize, smallestSize) >= ImbalanceMinimum)
                 {
                     Student student = Largest[new Random().Next(0, Largest.Size)];
 
-                    while(students.Contains(student))
+                    while (students.Contains(student))
                         student = Largest[new Random().Next(0, Largest.Size)];
 
                     students.Add(student);
@@ -259,7 +260,7 @@ namespace StudentSorter
                     smallestSize++;
                 }
 
-                foreach(Student student in  students)
+                foreach (Student student in students)
                 {
                     Largest.RemoveStudent(student);
                     Smallest.AddStudent(student);
@@ -302,9 +303,9 @@ namespace StudentSorter
         /// </returns>
         public bool PairExists(Student s1, Student s2)
         {
-            foreach(IllegalPair pair in IllegalPairs)
+            foreach (IllegalPair pair in IllegalPairs)
             {
-                if(pair.Student1 == s1 && pair.Student2 == s2) 
+                if (pair.Student1 == s1 && pair.Student2 == s2)
                 {
                     return true;
                 }
@@ -326,7 +327,7 @@ namespace StudentSorter
             Group? firstGroup = FindStudent(student1);
             Group? secondGroup = FindStudent(student2);
 
-            if(firstGroup is null || secondGroup is null) 
+            if (firstGroup is null || secondGroup is null)
             {
                 Debugger.Log("At least one of the students is not in a group");
                 return;
@@ -358,9 +359,9 @@ namespace StudentSorter
         /// </returns>
         public Group? FindStudent(Student student)
         {
-            foreach(Group group in AllGroups)
+            foreach (Group group in AllGroups)
             {
-                if(group.Contains(student))
+                if (group.Contains(student))
                 {
                     return group;
                 }
@@ -385,7 +386,7 @@ namespace StudentSorter
         public void RandomizeDeterminants()
         {
             foreach (var student in AllStudents)
-                if(!student.DeterminiantSet)
+                if (!student.DeterminiantSet)
                     student.Determinant = new Random().Next(1, MaxDeterminant(DeterminantRange));
         }
 
@@ -426,8 +427,8 @@ namespace StudentSorter
         /// </returns>
         public Student? GetStudentByHashCode(int code)
         {
-            foreach(Student student in AllStudents)
-                if(student.GetHashCode() == code)
+            foreach (Student student in AllStudents)
+                if (student.GetHashCode() == code)
                     return student;
 
             Debugger.Log($"No student exists with the HashCode {code}!");
@@ -447,7 +448,7 @@ namespace StudentSorter
         public Group? GetGroupByHashCode(int code)
         {
             foreach (Group group in AllGroups)
-                if(group.GetHashCode() == code) 
+                if (group.GetHashCode() == code)
                     return group;
 
             Debugger.Log($"No group exists with the HashCode {code}");
@@ -485,13 +486,13 @@ namespace StudentSorter
         /// </returns>
         public Group? GetGroupByName(string name)
         {
-            foreach(Group group in AllGroups)
-                if(group.Name.Equals(name))
+            foreach (Group group in AllGroups)
+                if (group.Name.Equals(name))
                     return group;
 
             return null;
         }
-        
+
         /// <summary>
         /// Checks if a group already has
         /// a given name
@@ -505,8 +506,8 @@ namespace StudentSorter
         /// </returns>
         public bool IsGroupNameDuplicate(string name)
         {
-            foreach(Group group in AllGroups)
-                if(group.Name.Equals(name))
+            foreach (Group group in AllGroups)
+                if (group.Name.Equals(name))
                     return true;
 
             return false;
@@ -525,8 +526,8 @@ namespace StudentSorter
         {
             int occurences = 0;
 
-            foreach(Student student in AllStudents)
-                if(student.Name.Equals(name))
+            foreach (Student student in AllStudents)
+                if (student.Name.Equals(name))
                     occurences++;
 
             return occurences > 1;
@@ -544,8 +545,8 @@ namespace StudentSorter
         /// </returns>
         public bool StudentNameExists(string name)
         {
-            foreach(Student student in AllStudents)
-                if(student.Name.Equals(name)) 
+            foreach (Student student in AllStudents)
+                if (student.Name.Equals(name))
                     return true;
 
             return false;
@@ -566,11 +567,11 @@ namespace StudentSorter
         /// </returns>
         public bool IllegalPairExists(Student s1, Student s2)
         {
-            foreach(IllegalPair pair in IllegalPairs)
+            foreach (IllegalPair pair in IllegalPairs)
             {
-                if(pair.Student1 ==  s1 && pair.Student2 == s2) 
+                if (pair.Student1 == s1 && pair.Student2 == s2)
                     return true;
-                else if(pair.Student2 == s1 && pair.Student1 == s2)
+                else if (pair.Student2 == s1 && pair.Student1 == s2)
                     return true;
             }
 
@@ -680,7 +681,7 @@ namespace StudentSorter
         /// </returns>
         public double GetSizeDifferenceTolerance()
         {
-            return 110 + (3 * AllStudents.Count / GetLargestGroup().Size);
+            return 110 + 3 * AllStudents.Count / GetLargestGroup().Size;
         }
     }
 }

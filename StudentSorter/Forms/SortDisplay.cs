@@ -3,6 +3,7 @@ using System.Data;
 using DocumentFormat.OpenXml.Packaging;
 using DocumentFormat.OpenXml.Wordprocessing;
 using StudentSorter.Debug;
+using StudentSorter.SorterComponent;
 
 namespace StudentSorter
 {

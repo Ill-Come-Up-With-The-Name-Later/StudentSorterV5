@@ -1,13 +1,14 @@
 ﻿using Newtonsoft.Json;
+using StudentSorter.FileHandling.Data;
 using System.Runtime.CompilerServices;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class Group : Serializeable
     {
         public string Name { get; set; }
         public int MinDeterminant { get; set; }
-        public int MaxDeterminant { get; set;}
+        public int MaxDeterminant { get; set; }
         public int Capacity { get; set; }
         public int HashCode { get; set; }
 
@@ -79,7 +80,7 @@ namespace StudentSorter
 
             Sorter.GlobalInstance().AllGroups.Add(this);
         }
-        
+
         /// <summary>
         /// Determines if the group is full
         /// </summary>
@@ -116,14 +117,14 @@ namespace StudentSorter
         /// </returns>
         public bool Contains(List<Student> students)
         {
-            if(students.Count > Capacity)
+            if (students.Count > Capacity)
             {
                 return false;
             }
 
-            foreach(Student student in students)
+            foreach (Student student in students)
             {
-                if(!Contains(student))
+                if (!Contains(student))
                 {
                     return false;
                 }
@@ -152,7 +153,7 @@ namespace StudentSorter
         /// </param>
         public void RemoveStudent(Student student)
         {
-            if(Contains(student)) Students.Remove(student);
+            if (Contains(student)) Students.Remove(student);
         }
 
         /// <summary>
@@ -165,18 +166,18 @@ namespace StudentSorter
 
         public override bool Equals(object? obj)
         {
-            if(obj == null) throw new ArgumentNullException("object was null");
+            if (obj == null) throw new ArgumentNullException("object was null");
             Group objGroup = (Group)obj;
-            return objGroup.Name.Equals(Name) && objGroup.Capacity == Capacity && 
+            return objGroup.Name.Equals(Name) && objGroup.Capacity == Capacity &&
                 objGroup.MinDeterminant == MinDeterminant && objGroup.MaxDeterminant == MaxDeterminant;
         }
 
-        public static bool operator == (Group a, Group b)
+        public static bool operator ==(Group a, Group b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator != (Group a, Group b)
+        public static bool operator !=(Group a, Group b)
         {
             return !a.Equals(b);
         }

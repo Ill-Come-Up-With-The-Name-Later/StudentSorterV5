@@ -1,6 +1,6 @@
 ﻿using Newtonsoft.Json;
 
-namespace StudentSorter
+namespace StudentSorter.FileHandling.Data
 {
     public class Serializeable
     {

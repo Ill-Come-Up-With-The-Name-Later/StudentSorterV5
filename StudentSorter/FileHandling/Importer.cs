@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
 using StudentSorter.Debug;
 
-namespace StudentSorter
+namespace StudentSorter.FileHandling
 {
     public static class Importer
     {
@@ -30,7 +30,8 @@ namespace StudentSorter
                     JsonSerializer serializer = new();
                     T? obj = serializer.Deserialize<T>(jsonReader);
                 }
-            } catch (Exception) { Debugger.Log("Import error!"); }
+            }
+            catch (Exception) { Debugger.Log("Import error!"); }
         }
     }
 }

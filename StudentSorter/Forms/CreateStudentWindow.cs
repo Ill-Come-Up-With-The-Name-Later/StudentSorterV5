@@ -1,5 +1,7 @@
 ﻿using System.ComponentModel;
 using StudentSorter.Debug;
+using StudentSorter.FileHandling;
+using StudentSorter.SorterComponent;
 
 namespace StudentSorter
 {

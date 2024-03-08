@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
 using StudentSorter.Debug;
+using StudentSorter.FileHandling.Data;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class Student : Serializeable
     {
@@ -16,10 +17,10 @@ namespace StudentSorter
         /// <param name="name">
         /// Student name
         /// </param>
-        public Student(string name) 
+        public Student(string name)
         {
             Name = name;
-            Determinant = int.MinValue; 
+            Determinant = int.MinValue;
             DeterminiantSet = false;
             HashCode = new Random().Next();
 
@@ -79,7 +80,7 @@ namespace StudentSorter
         /// </returns>
         public bool InGroup()
         {
-            foreach(Group group in Sorter.GlobalInstance().AllGroups)
+            foreach (Group group in Sorter.GlobalInstance().AllGroups)
                 if (group.Contains(this))
                     return true;
 
@@ -119,18 +120,16 @@ namespace StudentSorter
         public override bool Equals(object? obj)
         {
             if (obj == null) throw new ArgumentNullException("object was null");
-            if(obj.GetType() != typeof(Student)) return false;
-
             Student s = (Student)obj;
             return s.Name.Equals(Name) && s.Determinant == Determinant;
         }
 
-        public static bool operator == (Student s1, Student s2)
+        public static bool operator ==(Student s1, Student s2)
         {
             return s1.Equals(s2);
         }
 
-        public static bool operator != (Student s1, Student s2)
+        public static bool operator !=(Student s1, Student s2)
         {
             return !s1.Equals(s2);
         }
@@ -148,7 +147,7 @@ namespace StudentSorter
         /// <returns>
         /// An illegal pair containing both students
         /// </returns>
-        public static IllegalPair operator + (Student s1, Student s2)
+        public static IllegalPair operator +(Student s1, Student s2)
         {
             return new IllegalPair(s1, s2);
         }
@@ -190,16 +189,16 @@ namespace StudentSorter
         /// </returns>
         public ManualAssignment? GetAssignment()
         {
-            if(HasAssignment())
+            if (HasAssignment())
             {
-                foreach(ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
+                foreach (ManualAssignment assignment in Sorter.GlobalInstance().Assignments)
                 {
                     try
                     {
                         if (Sorter.GlobalInstance().GetStudentByHashCode(assignment.StudentHashCode) == this)
                             return assignment;
                     }
-                    catch(NullReferenceException)
+                    catch (NullReferenceException)
                     {
                         Debugger.Log("Couldn't find the student.");
                     }

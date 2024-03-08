@@ -1,4 +1,6 @@
 ﻿using StudentSorter.Debug;
+using StudentSorter.FileHandling;
+using StudentSorter.SorterComponent;
 
 namespace StudentSorter.Forms
 {

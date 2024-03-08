@@ -1,4 +1,5 @@
 ﻿using System.Data;
+using StudentSorter.SorterComponent;
 
 namespace StudentSorter
 {

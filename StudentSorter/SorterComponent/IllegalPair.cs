@@ -1,7 +1,8 @@
 ﻿using Newtonsoft.Json;
+using StudentSorter.FileHandling.Data;
 using Debugger = StudentSorter.Debug.Debugger;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class IllegalPair : Serializeable
     {
@@ -57,16 +58,16 @@ namespace StudentSorter
         [JsonConstructor]
         public IllegalPair(int student1Hash, int student2Hash, int hashCode)
         {
-            Student1Hash = student1Hash; 
-            Student2Hash = student2Hash; 
+            Student1Hash = student1Hash;
+            Student2Hash = student2Hash;
             HashCode = hashCode;
 
             try
             {
                 Student1 = Sorter.GlobalInstance().GetStudentByHashCode(Student1Hash);
                 Student2 = Sorter.GlobalInstance().GetStudentByHashCode(Student2Hash);
-            } 
-            catch(NullReferenceException)
+            }
+            catch (NullReferenceException)
             {
                 Debugger.Log("A student couldn't be found.");
             }
@@ -106,18 +107,18 @@ namespace StudentSorter
         public override bool Equals(object? obj)
         {
             if (obj == null) throw new ArgumentNullException();
-            if(obj.GetType() != typeof(Student)) return false;
+            if (obj.GetType() != typeof(Student)) return false;
             IllegalPair pair = (IllegalPair)obj;
 
-            return pair.Student1 == this.Student1 && pair.Student2 == this.Student2;
+            return pair.Student1 == Student1 && pair.Student2 == Student2;
         }
 
-        public static bool operator == (IllegalPair a, IllegalPair b)
+        public static bool operator ==(IllegalPair a, IllegalPair b)
         {
             return a.Equals(b);
         }
 
-        public static bool operator != (IllegalPair a, IllegalPair b)
+        public static bool operator !=(IllegalPair a, IllegalPair b)
         {
             return !a.Equals(b);
         }

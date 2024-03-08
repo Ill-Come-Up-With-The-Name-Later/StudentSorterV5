@@ -1,6 +1,7 @@
 ﻿using StudentSorter.Debug;
+using StudentSorter.FileHandling.Data;
 
-namespace StudentSorter
+namespace StudentSorter.FileHandling
 {
     public static class Exporter
     {
@@ -37,10 +38,7 @@ namespace StudentSorter
         /// </param>
         public static void ExportObject<T>(T obj, string fileName) where T : Serializeable
         {
-            List<string> lines = new()
-            {
-                obj.SerializeJSON()
-            };
+            List<string> lines = new() { obj.SerializeJSON() };
 
             WriteFile(fileName, lines);
         }
@@ -57,7 +55,6 @@ namespace StudentSorter
         public static void ExportObjects<T>(List<T> obj, string fileName) where T : Serializeable
         {
             List<string> lines = new();
-
             obj.ForEach(x => { lines.Add(x.SerializeJSON()); });
 
             WriteFile(fileName, lines);

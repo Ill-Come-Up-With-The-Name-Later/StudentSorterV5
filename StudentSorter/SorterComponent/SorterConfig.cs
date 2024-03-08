@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using Org.BouncyCastle.Tls.Crypto.Impl.BC;
+using StudentSorter.FileHandling.Data;
 
-namespace StudentSorter
+namespace StudentSorter.SorterComponent
 {
     public class SorterConfig : Serializeable
     {
@@ -64,7 +64,7 @@ namespace StudentSorter
         /// The algorithm to use
         /// </param>
         [JsonConstructor]
-        public SorterConfig(string name, string studentFile, string groupFile, string illegalPairFile, string manualAssignmentFile, int sortAlgorithm) 
+        public SorterConfig(string name, string studentFile, string groupFile, string illegalPairFile, string manualAssignmentFile, int sortAlgorithm)
         {
             Name = name;
             StudentFile = studentFile;
@@ -72,13 +72,13 @@ namespace StudentSorter
             IllegalPairsFile = illegalPairFile;
             ManualAssignmentsFile = manualAssignmentFile;
 
-            switch(sortAlgorithm)
+            switch (sortAlgorithm)
             {
                 case 0:
                     Algorithm = SortAlgorithm.SelectiveShuffle;
                     break;
                 case 1:
-                    Algorithm = SortAlgorithm.HatDrawShuffle; 
+                    Algorithm = SortAlgorithm.HatDrawShuffle;
                     break;
                 case 2:
                     Algorithm = SortAlgorithm.DodgeballTeamShuffle;

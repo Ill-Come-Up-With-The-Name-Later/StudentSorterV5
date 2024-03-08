@@ -1,4 +1,6 @@
-﻿namespace StudentSorter.Comparers
+﻿using StudentSorter.SorterComponent;
+
+namespace StudentSorter.Comparers
 {
     public class StudentComparer : IComparer<Student>
     {

@@ -1,6 +1,8 @@
 using StudentSorter.CardGames;
 using StudentSorter.Debug;
+using StudentSorter.FileHandling;
 using StudentSorter.Forms;
+using StudentSorter.SorterComponent;
 using System.Diagnostics;
 using Debugger = StudentSorter.Debug.Debugger;
 
