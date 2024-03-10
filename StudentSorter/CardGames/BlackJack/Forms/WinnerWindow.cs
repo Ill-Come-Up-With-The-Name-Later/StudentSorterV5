@@ -1,6 +1,7 @@
-﻿using StudentSorter.Gambling.Cards;
-using System.Data;
+﻿using System.Data;
 using StudentSorter.Debug;
+using StudentSorter.CardGames.BlackJack;
+using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.Gambling.BlackJack.Forms
 {

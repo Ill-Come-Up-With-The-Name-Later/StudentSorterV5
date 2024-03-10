@@ -1,4 +1,4 @@
-﻿namespace StudentSorter.Gambling.Cards
+﻿namespace StudentSorter.CardGames.Cards
 {
     public enum CardType
     {

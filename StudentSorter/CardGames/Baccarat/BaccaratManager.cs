@@ -1,7 +1,6 @@
 ﻿using StudentSorter.CardGames.Baccarat.Player;
 using StudentSorter.CardGames.Cards;
 using StudentSorter.Debug;
-using StudentSorter.Gambling.Cards;
 
 namespace StudentSorter.CardGames.Baccarat
 {

@@ -1,6 +1,5 @@
 ﻿using StudentSorter.CardGames.Cards;
 using StudentSorter.Debug;
-using StudentSorter.Gambling.Cards;
 
 namespace StudentSorter.CardGames.Poker.Player
 {

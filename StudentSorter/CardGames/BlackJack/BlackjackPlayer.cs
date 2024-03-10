@@ -1,13 +1,13 @@
-﻿using StudentSorter.Gambling.Cards;
-using StudentSorter.Debug;
+﻿using StudentSorter.Debug;
+using StudentSorter.CardGames.Cards;
 
-namespace StudentSorter.Gambling.BlackJack
+namespace StudentSorter.CardGames.BlackJack
 {
     public class BlackjackPlayer
     {
         public string Name { get; set; }
         public List<Card> Cards = new();
-        public int CardValue {  get; set; }
+        public int CardValue { get; set; }
 
         /// <summary>
         /// Blackjack player
@@ -15,7 +15,7 @@ namespace StudentSorter.Gambling.BlackJack
         /// <param name="name">
         /// The player's name
         /// </param>
-        public BlackjackPlayer(string name = "Player") 
+        public BlackjackPlayer(string name = "Player")
         {
             Name = name;
             CardValue = 0;
@@ -31,12 +31,12 @@ namespace StudentSorter.Gambling.BlackJack
         {
             Cards.Add(card);
 
-            if(card.Name.Contains('A'))
+            if (card.Name.Contains('A'))
             {
-                if(CardValue <= 10)
+                if (CardValue <= 10)
                 {
                     card.Value = 11;
-                } 
+                }
                 else
                 {
                     card.Value = 1;
@@ -45,9 +45,9 @@ namespace StudentSorter.Gambling.BlackJack
 
             CardValue += card.Value;
 
-            if(CardValue > 21)
+            if (CardValue > 21)
             {
-                foreach(Card pCard in Cards)
+                foreach (Card pCard in Cards)
                 {
                     if (pCard.Name.StartsWith('A') && pCard.Value == 11)
                     {

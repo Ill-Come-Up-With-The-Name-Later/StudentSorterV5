@@ -1,8 +1,8 @@
 ﻿using StudentSorter.CardGames.Poker.Player;
-using StudentSorter.Gambling.Cards;
 using System.Data;
 using StudentSorter.Debug;
 using StudentSorter.CardGames.Poker.Holdem;
+using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.CardGames.Poker.Forms
 {

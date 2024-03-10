@@ -1,7 +1,6 @@
 ﻿using System.Data;
 using StudentSorter.CardGames.Cards;
 using StudentSorter.Debug;
-using StudentSorter.Gambling.Cards;
 
 namespace StudentSorter.CardGames.Poker.FiveCardDraw.Forms
 {

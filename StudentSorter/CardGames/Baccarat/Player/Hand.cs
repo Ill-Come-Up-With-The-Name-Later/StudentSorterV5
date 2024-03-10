@@ -1,4 +1,4 @@
-﻿using StudentSorter.Gambling.Cards;
+﻿using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.CardGames.Baccarat.Player
 {

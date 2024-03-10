@@ -1,5 +1,5 @@
-﻿using StudentSorter.CardGames.Poker.Player;
-using StudentSorter.Gambling.Cards;
+﻿using StudentSorter.CardGames.Cards;
+using StudentSorter.CardGames.Poker.Player;
 using System.Collections;
 
 namespace StudentSorter.CardGames.Poker

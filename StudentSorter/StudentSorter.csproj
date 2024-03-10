@@ -6,7 +6,6 @@
     <Nullable>enable</Nullable>
     <UseWindowsForms>true</UseWindowsForms>
     <ImplicitUsings>enable</ImplicitUsings>
-    <ApplicationIcon>TextTemplate.ico</ApplicationIcon>
     <StartupObject>StudentSorter.Program</StartupObject>
   </PropertyGroup>
 

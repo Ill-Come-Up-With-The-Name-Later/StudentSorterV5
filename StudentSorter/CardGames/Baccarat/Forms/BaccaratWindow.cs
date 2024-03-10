@@ -1,8 +1,8 @@
 ﻿using StudentSorter.CardGames.Baccarat.Player;
-using StudentSorter.Gambling.Cards;
 using System.Data;
 using StudentSorter.Debug;
 using System.DirectoryServices.ActiveDirectory;
+using StudentSorter.CardGames.Cards;
 
 namespace StudentSorter.CardGames.Baccarat.Forms
 {

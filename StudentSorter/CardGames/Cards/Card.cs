@@ -1,6 +1,6 @@
 ﻿using StudentSorter.Debug;
 
-namespace StudentSorter.Gambling.Cards
+namespace StudentSorter.CardGames.Cards
 {
     public class Card
     {
@@ -89,7 +89,7 @@ namespace StudentSorter.Gambling.Cards
 
             foreach (Card card in cardList)
             {
-                if(card.Name.Equals(name) && card.CardSuit == suit) return cardList.IndexOf(card);
+                if (card.Name.Equals(name) && card.CardSuit == suit) return cardList.IndexOf(card);
             }
             Debugger.Log($"Couldn't find card {name} in list");
             return -1;

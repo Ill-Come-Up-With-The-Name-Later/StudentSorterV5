@@ -1,8 +1,8 @@
-﻿using StudentSorter.Gambling.Cards;
-using StudentSorter.Debug;
+﻿using StudentSorter.Debug;
 using System.Data;
+using StudentSorter.CardGames.Cards;
 
-namespace StudentSorter.Gambling.BlackJack
+namespace StudentSorter.CardGames.BlackJack
 {
     public class BlackjackManager
     {
@@ -54,7 +54,7 @@ namespace StudentSorter.Gambling.BlackJack
                 }
             }
 
-            for(int k = 0; k < 2; k++)
+            for (int k = 0; k < 2; k++)
             {
                 AddCard(Player1);
                 AddCard(Player2);
@@ -93,16 +93,17 @@ namespace StudentSorter.Gambling.BlackJack
         /// </param>
         public static void UpdatePlayerCardList(BlackjackPlayer player, DataTable table, DataGridView dataGrid, Label handVal, bool obfuscate = false)
         {
-            if(table.Rows.Count > 0)
+            if (table.Rows.Count > 0)
                 table.Rows.Clear();
 
-            for (int i = 0; i < player.Cards.Count; i++) {
+            for (int i = 0; i < player.Cards.Count; i++)
+            {
                 if (i == 0 || !obfuscate)
                 {
                     table.Rows.Add(player.Cards[i].ToString());
                 }
 
-                if(i > 0 && obfuscate)
+                if (i > 0 && obfuscate)
                 {
                     table.Rows.Add("???");
                 }
@@ -116,7 +117,7 @@ namespace StudentSorter.Gambling.BlackJack
             Debugger.Log($"{player.Name}'s Hand's Value: {player.CardValue}");
             Debugger.Log($"Updated cards for {player.Name}");
         }
-        
+
         /// <summary>
         /// Returns who won the game
         /// </summary>
@@ -138,23 +139,23 @@ namespace StudentSorter.Gambling.BlackJack
                 return new BlackjackPlayer("No One");
             }
 
-            if(player1.CardValue == 21)
+            if (player1.CardValue == 21)
                 return player1;
 
-            if(player2.CardValue == 21)
+            if (player2.CardValue == 21)
                 return player2;
 
             if (player1.CardValue > 21)
                 return player2;
 
-            if (player2.CardValue > 21) 
+            if (player2.CardValue > 21)
                 return player1;
 
-            if(pStand)
+            if (pStand)
             {
                 Debugger.Log($"{player1.Name} stood");
 
-                if(player1.CardValue < 21 && player2.CardValue < 21)
+                if (player1.CardValue < 21 && player2.CardValue < 21)
                 {
                     Debugger.Log("Both player have less than 21.");
                     if (player1.CardValue == player2.CardValue)
@@ -163,32 +164,32 @@ namespace StudentSorter.Gambling.BlackJack
                         return new BlackjackPlayer("No One");
                     }
 
-                    if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
+                    if (player1.CardValue > player2.CardValue && player1.CardValue <= 21)
                     {
                         Debugger.Log($"{player1.Name} wins with a higher value than {player2.Name}");
                         return player1;
                     }
 
-                    if ((player2.CardValue > player1.CardValue) && (player2.CardValue <= 21))
+                    if (player2.CardValue > player1.CardValue && player2.CardValue <= 21)
                     {
                         Debugger.Log($"{player2.Name} wins with a higher value than {player1.Name}");
                         return player2;
                     }
                 }
-                
+
                 if (player1.CardValue == player2.CardValue)
                 {
                     Debugger.Log($"{player1.Name} and {player2.Name} had card value {player1.CardValue} and tied");
                     return new BlackjackPlayer("No One");
                 }
 
-                if ((player1.CardValue > player2.CardValue) && (player1.CardValue <= 21))
+                if (player1.CardValue > player2.CardValue && player1.CardValue <= 21)
                 {
                     Debugger.Log($"{player1.Name} wins with a higher value than {player2.Name}");
                     return player1;
                 }
 
-                if ((player2.CardValue > player1.CardValue) && (player2.CardValue <= 21))
+                if (player2.CardValue > player1.CardValue && player2.CardValue <= 21)
                 {
                     Debugger.Log($"{player2.Name} wins with a higher value than {player1.Name}");
                     return player2;

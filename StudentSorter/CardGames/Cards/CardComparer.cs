@@ -1,6 +1,4 @@
-﻿using StudentSorter.Gambling.Cards;
-
-namespace StudentSorter.CardGames.Cards
+﻿namespace StudentSorter.CardGames.Cards
 {
     public class CardComparer : IComparer<Card>
     {
